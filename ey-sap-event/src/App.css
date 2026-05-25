@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Header */
+.header {
+  padding: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.header h1 {
+  color: #ffe600;
+  margin: 0;
+  font-size: 32px;
+}
+
+/* Section Layout */
+.container {
+  padding: 30px;
+}
+
+/* Top row (categories) */
+.top-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.top-box {
+  padding: 15px;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.yellow {
+  background-color: #ffe600;
+  color: black;
+}
+
+.dark {
+  background-color: #222;
+}
+
+/* Cards grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  background-color: #111;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  color: #ffe600;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #ccc;
+}

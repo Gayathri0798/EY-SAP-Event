@@ -1,0 +1,168 @@
+/* ================= PAGE ================= */
+
+.agent-page {
+  min-height: 100vh;
+  /* padding: 60px 100px; */
+
+  background: radial-gradient(circle at top right, #2a2a40, #000);
+  font-family: "Noto Sans", Arial, sans-serif;
+  color: white;
+}
+
+/* ================= HERO ================= */
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 60px;
+}
+
+/* Banner container */
+.banner-content {
+  text-align: center;
+  max-width: 800px;
+}
+
+/* Heading */
+.banner h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffe600;
+
+  margin-bottom: 12px;
+}
+
+/* Subtitle */
+.banner p {
+  font-size: 16px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* ================= TILES ================= */
+
+.tiles {
+  display: flex;
+  gap: 30px;
+}
+
+/* Card */
+.tile {
+  flex: 1;
+  border-radius: 14px;
+
+  background: rgba(40, 40, 60, 0.6);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  transition: all 0.3s ease;
+}
+
+/* Inner spacing */
+.tile-inner {
+  padding: 30px;
+}
+
+/* Hover effect (Nitro feel) */
+.tile:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ================= TAG ================= */
+
+.tag {
+  font-size: 12px;
+  color: #ffe600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+/* ================= TEXT ================= */
+
+.tile h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* Subtitle */
+.tile-subtitle {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 15px;
+}
+
+/* Description */
+.desc {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* ================= BUTTON ================= */
+
+.cta {
+  background: linear-gradient(135deg, #ffe600, #ffd700);
+
+  color: black;
+  border: none;
+  border-radius: 6px;
+
+  padding: 10px 22px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.cta:hover {
+  transform: translateX(4px);
+  box-shadow: 0 8px 20px rgba(255, 230, 0, 0.4);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .tiles {
+    flex-direction: column;
+  }
+
+  .agent-page {
+    padding: 30px;
+  }
+
+  .banner h1 {
+    font-size: 28px;
+  }
+}
+.banner-section {
+  width: 100%;
+
+  margin-bottom: 40px;   /* ✅ space below banner */
+}
+.content-section {
+  padding: 0px 100px 60px; 
+  margin-top: 20px;
+}
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}

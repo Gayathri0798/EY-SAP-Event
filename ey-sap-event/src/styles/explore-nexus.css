@@ -1,0 +1,83 @@
+/* ✅ Page background */
+.explore-dark {
+  background: #0f1115; /* EY dark */
+  padding: 80px 120px;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ✅ Section layout */
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  margin-bottom: 100px;
+}
+
+/* ✅ Alternate layout */
+.section.reverse {
+  flex-direction: row-reverse;
+}
+
+/* ✅ Image card */
+.image-card {
+  flex: 1;
+  border-radius: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #1a1f2b, #2b2f3a);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.image-card img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* ✅ Text */
+.text-content {
+  flex: 1;
+}
+
+/* ✅ EY Dark Typography */
+.text-content h2 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+/* ✅ EY Yellow Accent */
+.text-content h2::before {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: #ffe600;
+  margin-bottom: 12px;
+}
+
+.text-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #c7c9d1;
+  margin-bottom: 20px;
+  max-width: 520px;
+}
+
+/* ✅ Link */
+.explore-link {
+  color: #4da3ff; /* EY-like blue accent */
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.explore-link:hover {
+  text-decoration: underline;
+}
+
+/* ✅ Hover subtle effect */
+.section:hover {
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}

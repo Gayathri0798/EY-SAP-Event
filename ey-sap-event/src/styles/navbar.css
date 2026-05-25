@@ -1,0 +1,78 @@
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 5px;
+  background: #23232F;
+  font-size: small;
+  font-family: EYInterstate, Noto Sans, sans-serif;
+  font-size: .800rem;
+  color: #fff;
+}
+
+.nav-links a:last-child {
+  padding-right: 20px;
+}
+
+/* Nav links */
+.nav-links a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: white;
+  position: relative;
+  padding-bottom: 4px;
+  font-weight: 400;
+  font-size: .875rem;
+  font-size: inherit !important;
+}
+
+/* Hover underline */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 10px;
+  width: 0%;
+  height: 2px;
+  background: #ffe600;
+  transition: width 0.3s ease;
+}
+
+/* Show underline on hover */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active tab */
+.nav-links a.active {
+  color: #fffef3;
+  font-weight: 500;
+}
+
+/* Keep underline visible for active tab */
+.nav-links a.active::after {
+  width: 100%;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 15px;
+
+  text-decoration: none;
+  color: white;
+}
+
+/* logo image */
+.logo img {
+  height: 38px;
+  object-fit: contain;
+}
+
+/* EY-SAP text */
+.logo span {
+  color: #ffe600;
+  font-weight: bold;
+}

@@ -1,0 +1,141 @@
+/* Page Background */
+.library-page {
+  padding: 40px;
+  background: radial-gradient(circle at right, #2a2a40, #000);
+  min-height: 100vh;
+  color: white;
+}
+
+/* Header */
+.library-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.library-header h1 {
+  color: #ffe600;
+}
+
+/* Search */
+.library-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.08);
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background: #666;
+}
+
+/* Layout */
+.library-content {
+  display: flex;
+  gap: 20px;
+}
+
+.project-list {
+  flex: 3;
+}
+
+.side-panel {
+  flex: 1;
+}
+
+/* 🔥 PROJECT CARD (KEY PART) */
+.project-card {
+  display: grid;
+  grid-template-columns: 60px 2.5fr 1fr 1.3fr 1fr 1.5fr 30px;
+  align-items: center;
+  gap: 20px;
+
+  background: linear-gradient(to right, #2c2c44, #2a2a40);
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  background: linear-gradient(to right, #343454, #2f2f50);
+}
+
+/* Code box */
+.project-code {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #4e7cff, #3a6ff7);
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Title */
+.project-title {
+  font-size: 16px;
+  font-weight: 500;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Fields */
+.project-field {
+  display: flex;
+  flex-direction: column;
+}
+
+/* labels */
+.project-field span {
+  font-size: 11px;
+  color: #9a9ab0;
+}
+
+/* values */
+.project-field p {
+  margin: 2px 0 0;
+  font-size: 14px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Arrow */
+.arrow {
+  font-size: 22px;
+  color: #bbb;
+}
+
+/* Sidebar */
+.panel-card {
+  background: #2c2c44;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* Donut */
+.donut {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin: 20px auto;
+
+  background: conic-gradient(
+    #00c2a8 65%,
+    #8a7cff 20%,
+    #5bc0de 10%,
+    #888 5%
+  );
+}

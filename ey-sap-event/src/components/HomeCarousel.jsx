@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/carousel.css";
+import PrinciplesGrid from "../components/PrinciplesSection";
+import AwardsSection from "../components/AwardsSection";
 
 export default function HomeCarousel() {
   const [current, setCurrent] = useState(0);
@@ -70,6 +72,7 @@ export default function HomeCarousel() {
   //onMouseEnter={() => setPaused(true)}
 //onMouseLeave={() => setPaused(false)}
   return (
+    <>
     <div className="carousel"
 >
 
@@ -138,7 +141,10 @@ export default function HomeCarousel() {
           ></span>
         ))}
       </div>
-
     </div>
+    
+<PrinciplesGrid />
+      <AwardsSection />
+      </>
   );
 }

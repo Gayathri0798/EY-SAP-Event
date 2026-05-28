@@ -3,7 +3,8 @@ import "../styles/banner.css";
 export default function Banner({
   title,
   subtitle,
-  buttonText = "Learn more",
+  heading,
+  buttonText,
   image
 }) {
   return (
@@ -11,6 +12,7 @@ export default function Banner({
 
       <div className="banner-left">
         <h1>{title}</h1>
+        <div className="banner-heading">{heading}</div>
         <p>{subtitle}</p>
 
         <button className="banner-btn">

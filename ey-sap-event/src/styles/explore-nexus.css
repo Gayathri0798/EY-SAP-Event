@@ -1,17 +1,31 @@
 /* ✅ Page background */
 .explore-dark {
-  background: #0f1115; /* EY dark */
-  padding: 80px 120px;
-  font-family: "Segoe UI", Arial, sans-serif;
+
+ 
+ /* background:
+    radial-gradient(circle at 80% 20%, rgba(255, 230, 0, 0.08), transparent 40%),
+    linear-gradient(135deg, #1f1f2b, #2a2a35); */
+    
+background:
+    radial-gradient(circle at 80% 20%, rgba(0, 200, 255, 0.10), transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(200, 0, 255, 0.08), transparent 40%),
+    linear-gradient(135deg, #1c1c2e, #23233a);
+
+  font-family: EYInterstate, "Noto Sans", sans-serif;
 }
 
 /* ✅ Section layout */
 .section {
-  display: flex;
+  
+ display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 80px;
-  margin-bottom: 100px;
+
+  gap: 100px;                /* more breathing room */
+  margin: 120px 0;
+
+  padding: 0 80px;
+
 }
 
 /* ✅ Alternate layout */
@@ -22,15 +36,45 @@
 /* ✅ Image card */
 .image-card {
   flex: 1;
-  border-radius: 20px;
-  padding: 20px;
-  background: linear-gradient(135deg, #1a1f2b, #2b2f3a);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  border-radius: 24px;
+
+  padding: 14px;
+  background: linear-gradient(145deg, #2a2a38, #1c1c28);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.7),
+    inset 0 0 40px rgba(255, 255, 255, 0.03);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle glow accent */
+.image-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top right,
+    rgba(255, 230, 0, 0.08),
+    transparent 40%
+  );
+
+  pointer-events: none;
 }
 
 .image-card img {
   width: 100%;
-  border-radius: 14px;
+  border-radius: 18px;
+
+  transform: scale(1.02);
+  transition: transform 0.4s ease;
+}
+
+/* hover zoom */
+.section:hover .image-card img {
+  transform: scale(1.06);
 }
 
 /* ✅ Text */
@@ -40,29 +84,33 @@
 
 /* ✅ EY Dark Typography */
 .text-content h2 {
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 16px;
-  position: relative;
-}
 
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
 /* ✅ EY Yellow Accent */
 .text-content h2::before {
   content: "";
   display: block;
-  width: 50px;
+
+  width: 60px;
   height: 4px;
-  background: #ffe600;
-  margin-bottom: 12px;
+
+  background: linear-gradient(to right, #ffe600, transparent);
+  margin-bottom: 14px;
 }
 
 .text-content p {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.7;
+
   color: #c7c9d1;
-  margin-bottom: 20px;
-  max-width: 520px;
+  margin-bottom: 22px;
+
+  letter-spacing: 0.2px;
 }
 
 /* ✅ Link */
@@ -76,8 +124,44 @@
   text-decoration: underline;
 }
 
-/* ✅ Hover subtle effect */
+/* Hover subtle effect */
 .section:hover {
   transform: translateY(-4px);
   transition: all 0.3s ease;
+}
+
+.banner-heading {
+  font-size: 24px;     /* ✅ smaller than main */
+  font-weight: 500;
+
+  color: #ffffff;
+  line-height: 1.4;
+
+  margin-bottom: 14px;
+}
+.scroll-wrapper {
+  display: flex;
+  height: 200vh;
+}
+
+.fixed-image {
+  position: sticky;
+  top: 100px;
+  width: 50%;
+}
+
+.fixed-image img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.scroll-content {
+  width: 50%;
+}
+
+.scroll-block {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

@@ -1,31 +1,73 @@
 import "../styles/explore-nexus.css";
+import Banner from "../components/Banner";
+import EnterpriseCTA from "../components/EnterpriseCTA";
+import { useEffect, useState } from "react";
 
 export default function ExploreNexus() {
   const sections = [
     {
-      title: "Financial Closing Assistant",
-      desc: "The Financial Closing Assistant orchestrates the agentic team managing the financial-period close. Control each agent’s level of autonomy so they can selectively perform journal posting, clearing, and analysis tasks.",
-      image: "/images/finance.png",
+      title: "Pre-Built Enterprise Agents",
+      desc: "Start with ready-to-use agents for procurement, finance and enterprise operations.",
+      image: "/images/enterprise.jpeg",
     },
     {
-      title: "Procurement Assistant",
-      desc: "Automate procurement workflows, supplier interactions, and approvals with AI-powered agents integrated into enterprise systems.",
-      image: "/images/procurement.png",
+      title: "No-Code Agent Builder",
+      desc: "Configure intelligent agents without heavy engineering.",
+      image: "/images/no-code.jpeg",
     },
     {
-      title: "HR Assistant",
-      desc: "Streamline HR operations including onboarding and employee lifecycle management.",
-      image: "/images/hr.png",
+      title: "SAP Integration Fabric",
+      desc: "Connect directly to SAP S/4HANA, CDS views, APIs and enterprise systems.",
+      image: "/images/sap4hana.jpg",
     },
     {
-      title: "Analytics Assistant",
-      desc: "Generate insights and monitor performance using AI-powered analytics.",
-      image: "/images/analytics.png",
+      title: "Governance & Orchestration",
+      desc: "Monitor workflows, approvals, explainability and multi-agent operations.",
+      image: "/images/workflow.jpg",
     },
   ];
 
+const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const index = Math.floor(window.scrollY / 400);
+      setActive(Math.min(index, sections.length - 1));
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="explore-dark">
+        <Banner
+              title="EY SAP Nexus"
+              heading="The Enterprise Control Plane for AI Agents"
+              subtitle="Build, orchestrate and govern AI agents integrated directly with SAP and enterprise systems."
+              image="/images/lego.jpeg"
+              buttonText="Learn more"
+            />
+            
+<div className="scroll-wrapper">
+
+      {/* FIXED IMAGE */}
+      <div className="fixed-image">
+        {sections[active].image}
+      </div>
+
+      {/* TEXT STACK */}
+      <div className="scroll-content">
+        {sections.map((item, i) => (
+          <div key={i} className="scroll-block">
+            <h2>{item.title}</h2>
+            <p>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+
       {sections.map((section, index) => (
         <div
           key={index}
@@ -41,12 +83,14 @@ export default function ExploreNexus() {
             <h2>{section.title}</h2>
             <p>{section.desc}</p>
 
-            <a href="#" className="explore-link">
+            {/* <a href="#" className="explore-link">
               Explore {section.title} →
-            </a>
+            </a> */}
           </div>
         </div>
-      ))}
+      )
+      )}
+      <EnterpriseCTA />
     </div>
   );
 }

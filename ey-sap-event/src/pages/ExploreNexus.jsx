@@ -1,9 +1,12 @@
 import "../styles/explore-nexus.css";
 import Banner from "../components/Banner";
 import EnterpriseCTA from "../components/EnterpriseCTA";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+
 
 export default function ExploreNexus() {
+    const [active, setActive] = useState(0);
+
   const sections = [
     {
       title: "Pre-Built Enterprise Agents",
@@ -27,16 +30,14 @@ export default function ExploreNexus() {
     },
   ];
 
-const [active, setActive] = useState(0);
-
+  
+ // ✅ AUTO LOOP
   useEffect(() => {
-    const handleScroll = () => {
-      const index = Math.floor(window.scrollY / 400);
-      setActive(Math.min(index, sections.length - 1));
-    };
+    const interval = setInterval(() => {
+      setActive(prev => (prev + 1) % sections.length);
+    }, 4000);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -48,48 +49,35 @@ const [active, setActive] = useState(0);
               image="/images/lego.jpeg"
               buttonText="Learn more"
             />
-            
-<div className="scroll-wrapper">
 
-      {/* FIXED IMAGE */}
-      <div className="fixed-image">
-        {sections[active].image}
+<div className="auto-showcase">
+
+      {/* ✅ MAIN DISPLAY */}
+      <div className="showcase-content">
+
+        <div className="showcase-image">
+          <img src={sections[active].image} />
+        </div>
+
+        <div className="showcase-text">
+          <h2>{sections[active].title}</h2>
+          <p>{sections[active].desc}</p>
+        </div>
+
       </div>
 
-      {/* TEXT STACK */}
-      <div className="scroll-content">
-        {sections.map((item, i) => (
-          <div key={i} className="scroll-block">
-            <h2>{item.title}</h2>
-            <p>{item.desc}</p>
-          </div>
+      {/* ✅ PROGRESS INDICATORS */}
+      <div className="progress-dots">
+        {sections.map((_, i) => (
+          <span
+            key={i}
+            className={i === active ? "dot active" : "dot"}
+            onClick={() => setActive(i)}
+          />
         ))}
       </div>
 
     </div>
-
-      {sections.map((section, index) => (
-        <div
-          key={index}
-          className={`section ${index % 2 !== 0 ? "reverse" : ""}`}
-        >
-          {/* IMAGE CARD */}
-          <div className="image-card">
-            <img src={section.image} alt={section.title} />
-          </div>
-
-          {/* TEXT */}
-          <div className="text-content">
-            <h2>{section.title}</h2>
-            <p>{section.desc}</p>
-
-            {/* <a href="#" className="explore-link">
-              Explore {section.title} →
-            </a> */}
-          </div>
-        </div>
-      )
-      )}
       <EnterpriseCTA />
     </div>
   );

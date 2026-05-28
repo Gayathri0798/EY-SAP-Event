@@ -1,184 +1,104 @@
-.awards-section-dark {
 
-position: relative;
+.awards-section {
+  padding: 40px 50px;
+
+ background: #eaeaf2;
+
   text-align: center;
-  color: white;
-  overflow: hidden;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
   
- padding: 80px 0;
+border-top: 16px solid #ffffff;     
+  /* border-bottom: 16px solid #ffffff; */
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-
-  background: 
-radial-gradient(circle at 20% 30%, rgba(255, 120, 0, 0.18), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(120, 0, 255, 0.18), transparent 45%),
-    #1f1f2a;
-
-/* background: #23232f; */
-font-family: EYInterstate, "Noto Sans", sans-serif;
 }
+
+.awards-section::before {
+  top: 0;
+}
+
+.awards-section::after {
+  bottom: 0;
+}
+
+
+.awards-title {
+  font-size: 32px;        /* ✅ larger */
+  font-weight: 600;
+  color: #1f2937;
+
+  max-width: 1000px;
+  margin: 0 auto 20px auto;
+
+  line-height: 1.4;
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 60px;             /* ✅ more spacing */
+
+  max-width: 1400px;     /* ✅ wider layout */
+  margin: auto;
+}
+
+.award-item {
+  text-align: center;
+}
+
 .award-image {
-  background: #ffffff;
-  border-radius: 12px;
+  height: 120px;               /* ✅ bigger container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  padding: 14px;
-
-  border: 1px solid rgba(0,0,0,0.06);
-
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.15),
-    0 0 10px rgba(255, 230, 0, 0.05); /* subtle yellow glow */
-}
-.award-item:hover .award-image {
-  transform: translateY(-4px);
-  transition: 0.3s ease;
+  margin-bottom: 25px;
 }
 
 .award-image img {
-  max-height: 100px;
-  max-width: 200px;
+  max-height: 90px;            /* ✅ bigger logos */
+  max-width: 150px;
 
   object-fit: contain;
 }
-/* ✅ TITLE */
-.awards-title {
-  font-size: 30px;
-  margin-bottom: 50px;
+
+
+.award-item h5 {
+  font-size: 20px;             /* ✅ increased */
+  font-weight: 600;
+
+  color: #111827;
+  line-height: 1.4;
+
+  margin-bottom: 18px;
 }
 
-.carousel-wrapper {
- 
- position: relative;
+.award-item p {            /* ✅ increased */
+  color: #4b5563;
 
-  /* max-width: 900px;  */
-  width: 820px;     /* ✅ control overall width */
-  margin: 0 auto;       /* ✅ center it */
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  line-height: 1.7;            /* ✅ better readability */
+  max-width: 220px;
+  margin: 0 auto;
 }
 
-/* ✅ CAROUSEL WRAPPER */
-
-.center-carousel {
-  position: relative;
-  width: 100%;
-  height: 340px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  perspective: 1200px;
-}
-.carousel-card.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-/* ✅ CARD BASE */
-.carousel-card {
-  position: absolute;
-
-  width: 420px;
-  height: 240px;
-
-  padding: 30px;
-  border-radius: 20px;
-
-  /* ✅ LIGHTER GLASS (important fix) */
-  background: rgba(255, 255, 255, 0.12);
-
-  backdrop-filter: blur(10px);
-
-  transition: all 0.5s ease;
-
-  opacity: 0.10;      /* ✅ more faded sides */
+/* ✅ remove sub styling completely */
+.award-item p sub {
+  all: unset;
 }
 
-/* ACTIVE CENTER */
-.carousel-card.active {
-  transform: scale(1);
-  opacity: 1;
-  z-index: 3;
-
-  background: rgba(255, 255, 255, 0.18);  /* ✅ slightly stronger */
+@media (max-width: 1200px) {
+  .awards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.carousel-card.prev {
-  transform: translateX(-260px) rotateY(35deg);
-  opacity: 0.15;
+@media (max-width: 768px) {
+  .awards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.carousel-card.next {
-  transform: translateX(260px) rotateY(-35deg);
-  opacity: 0.15;
-}
-
-
-/* ✅ IMAGE */
-.carousel-card img {
-  height: 80px;
-  
-margin-bottom: 15px;
-
-  filter: brightness(1.1);
-
-}
-
-
-.carousel-card h3 {
-  color: #ffe600;
-  margin-bottom: 15px;
-}
-
-.carousel-card p {
-  font-size: 14px;
-  color: #d1d5db;
-  line-height: 1.6;
-}
-
-/* ✅ SIMPLE ARROWS (NO CIRCLE) */
-.nav-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  font-size: 42px;
-  font-weight: 300;
-
-  color: rgba(255,255,255,0.5);
-
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 999;
-}
-
-.nav-arrow.left {
-  left: -60px;   /* ✅ outside card */
-}
-
-.nav-arrow.right {
-  right: -60px;
-}
-
-.nav-arrow:hover {
-  color: white;
-}
-
-/* HOVER */
-.nav-arrow:hover {
-  color: white;
-}
-
-/* SLIDE COUNT */
-.slide-count {
-  margin-top: 20px;
-  color: #aaa;
-  letter-spacing: 2px;
+@media (max-width: 500px) {
+  .awards-grid {
+    grid-template-columns: 1fr;
+  }
 }

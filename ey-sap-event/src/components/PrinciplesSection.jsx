@@ -47,9 +47,7 @@ export default function PrinciplesGrid() {
   <div className="principles-intro">
 
 <h1 className="ey-heading">
-  <span className="quote-inline">“</span>
   How EY Helps Enterprises Scale AI
-  <span className="quote-inline">”</span>
 </h1>
  <div className="ey-divider"></div>
 

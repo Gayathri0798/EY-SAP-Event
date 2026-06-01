@@ -110,7 +110,7 @@ export default function HomeCarousel() {
             {slide.showLogos && (
     <div className="logos">
       <img src="/images/logo.png" alt="EY Logo" />
-      <img src="/images/image.png" alt="SAP Logo" className="sap-logo" />
+      <img src="/images/sap-logo.png" alt="SAP Logo" className="sap-logo" />
     </div>
   )}
 

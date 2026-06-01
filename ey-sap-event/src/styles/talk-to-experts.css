@@ -1,0 +1,224 @@
+.experts-page {
+   padding: 50px 80px 50px;           /* ✅ full viewport */
+  /* display: flex;
+  flex-direction: column; */
+ font-family:"ey_interstate";
+  background:
+    radial-gradient(circle at 80% 20%, rgba(255,0,120,0.2), transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(255,200,0,0.2), transparent 40%),
+    linear-gradient(135deg, #0c0c18, #1a1a2e);
+
+  color: white;
+
+  overflow: hidden;         /* ✅ prevents footer overlap */
+}
+.heading{
+    font-weight: 400;
+    font-size: 1.575rem;
+    color: #ffe600;
+}
+.experts-title {
+  color: #ffe600;
+  font-size: 32px;
+  margin-bottom: 60px;
+}
+.experts-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  height: 350px;
+}
+.main-avatar {
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 5px solid #ffe600;
+  background: #fff;
+
+  display: block;
+}
+
+.experts-main {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+.expert-profile {
+  position: absolute;
+
+  left: calc(50% - 240px);   /* ✅ adjust horizontal */
+  top: 60%;
+
+  transform: translate(-40%, -10%);   /* ✅ FULL CENTER FIX */
+
+  z-index: 3;
+  text-align: center;
+}
+/* .expert-profile::before {
+  content: "";
+  position: absolute;
+
+  width: 200px;
+  height: 200px;
+
+  border: 2px solid rgba(255, 230, 0, 0.3);
+  border-radius: 50%;
+
+  z-index: 0;
+} */
+
+.expert-name {
+  margin-top: 15px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.expert-role {
+  margin-top: 5px;
+  color: #ccc;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.expert-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.content-circle {
+  width: 380px;     /* ✅ reduced from 380/420 */
+  height: 380px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+
+  position: absolute;
+
+  right: 30%;        /* ✅ pushes circle slightly right */
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  z-index: 1;
+}
+
+.expert-carousel {
+  
+display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 340px; 
+
+}
+
+.arrow {
+  background: none;
+  border: none;
+
+  color: #ccc;
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+.arrow:hover {
+  color: #ffe600;
+}
+
+
+.arrow:hover {
+  color: #ffe600;
+}
+
+/* list */
+.carousel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  height: 350px;
+  overflow: hidden; 
+}
+
+/* each item */
+.carousel-item {
+  height: 90px;          /* ✅ fixed item height */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-item img {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  object-fit: cover;     /* ✅ prevents distortion */
+}
+
+/* .carousel-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+} */
+
+/* active one */
+.carousel-item.active {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.carousel-item.active img {
+  border: 3px solid #ffe600;
+}
+
+.carousel-window {
+  height: 270px;           /* ✅ exactly 3 items */
+  overflow: hidden;
+}
+
+.carousel-track {
+  
+display: flex;
+  flex-direction: column;
+
+  transition: transform 0.4s ease;
+
+}
+.carousel-item span {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.content-circle p {
+  position: absolute;
+
+  left: 100px;     /* ✅ pushes text OUTSIDE circle */
+  width: 430px; 
+  height: 150px;    /* ✅ allows natural flow */
+
+  top: 40%;
+  transform: translateY(-50%);
+
+  text-align: left; /* ✅ IMPORTANT */
+  color: #ddd;
+
+  line-height: 1.7;
+  font-size: 14px;
+}

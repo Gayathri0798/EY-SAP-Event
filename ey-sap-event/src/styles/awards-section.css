@@ -1,0 +1,104 @@
+
+.awards-section {
+  padding: 40px 50px;
+
+ background: #eaeaf2;
+
+  text-align: center;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
+  
+border-top: 16px solid #ffffff;     
+  /* border-bottom: 16px solid #ffffff; */
+
+}
+
+.awards-section::before {
+  top: 0;
+}
+
+.awards-section::after {
+  bottom: 0;
+}
+
+
+.awards-title {
+  font-size: 32px;        /* ✅ larger */
+  font-weight: 600;
+  color: #1f2937;
+
+  max-width: 1000px;
+  margin: 0 auto 20px auto;
+
+  line-height: 1.4;
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 60px;             /* ✅ more spacing */
+
+  max-width: 1400px;     /* ✅ wider layout */
+  margin: auto;
+}
+
+.award-item {
+  text-align: center;
+}
+
+.award-image {
+  height: 120px;               /* ✅ bigger container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 25px;
+}
+
+.award-image img {
+  max-height: 250px;            /* ✅ bigger logos */
+  max-width: 150px;
+
+  object-fit: contain;
+}
+
+
+.award-item h5 {
+  font-size: 20px;             /* ✅ increased */
+  font-weight: 600;
+
+  color: #111827;
+  line-height: 1.4;
+
+  margin-bottom: 18px;
+}
+
+.award-item p {            /* ✅ increased */
+  color: #4b5563;
+
+  line-height: 1.7;            /* ✅ better readability */
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+/* ✅ remove sub styling completely */
+.award-item p sub {
+  all: unset;
+}
+
+@media (max-width: 1200px) {
+  .awards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .awards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .awards-grid {
+    grid-template-columns: 1fr;
+  }
+}

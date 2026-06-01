@@ -1,0 +1,258 @@
+/* ✅ WRAPPER */
+.mainclass {
+  background: #f3f4f6;
+  color: #111;
+  padding: 60px 0;
+  font-family: Arial, sans-serif;
+}
+
+
+/* ===== HEADER ===== */
+.headingWrapper {
+  text-align: center;
+  margin-bottom: 50px;
+  background: radial-gradient(
+      circle at top left,
+      rgba(255, 212, 0, 0.12),
+      rgba(255, 212, 0, 0.04) 40%,
+      transparent 70%
+    ),
+    linear-gradient(180deg, #111, #0a0a0f);
+
+  border: 1px solid rgba(255, 212, 0, 0.18);
+  padding: 60px 20px;
+  border-radius: 12px;
+  max-width: 100%;
+
+}
+
+.headingWrapper h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+}
+
+
+.headingWrapper p {
+   font-size: 18px;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  /* max-width: 512px;
+  text-align: center; */
+}
+
+/* ✅ YELLOW TEXT */
+.yellowText {
+color: #facc15;
+  text-shadow: 
+    0 1px 0 #ca8a04,
+    0 2px 0 #ca8a04;
+
+}
+
+
+/* ===== BUTTONS ===== */
+.btnGroup {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.primaryBtn {
+  background: #ffd400;
+  color: #000;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+}
+
+.secondaryBtn {
+  border: 1px solid #444;
+  background: transparent;
+  color: #111;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+
+
+/* ===== GRID ===== */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 40px 60px;
+}
+
+
+/* ===== CARD ===== */
+.cardNew {
+  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
+  text-align: center;
+  align-items: center;
+  padding: 28px 24px;
+  border-radius: 18px;
+  min-height: 260px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+
+  /* ✅ KEEP DARK CARD (contrast stays) */
+  background: radial-gradient(
+      circle at top left,
+      rgba(255, 212, 0, 0.12),
+      rgba(255, 212, 0, 0.04) 40%,
+      transparent 70%
+    ),
+    linear-gradient(180deg, #111, #0a0a0f);
+
+  border: 1px solid rgba(255, 212, 0, 0.18);
+
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+
+/* ===== TEXT ===== */
+.cardNew h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.cardNew p {
+  font-size: 18px;
+  color: #bbb;
+  font-size: 14px;
+  line-height: 1.5;
+  height: 60px;
+  overflow: hidden;
+}
+
+
+/* ===== ICON ===== */
+.icon {
+  color: #ffd400;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+
+/* ===== FOOTER ===== */
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag {
+  background: #1a1a22;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+
+.deployBtn {
+  background: none;
+  border: none;
+  color: #ffd400;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+/* ===== WRAPPER ===== */
+.sliderWrapper {
+  overflow: hidden;
+  margin-top: 40px;
+  
+}
+
+
+/* ===== EACH ROW ===== */
+.slider {
+  position: relative;
+  overflow: hidden;
+margin-top: 30px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+/* ✅ FIX fade for light bg */
+.slider::before {
+  left: 0;
+  background: linear-gradient(to right, #f3f4f6, transparent);
+}
+
+.slider::after {
+  right: 0;
+  background: linear-gradient(to left, #f3f4f6, transparent);
+}
+
+
+/* ===== TRACK ===== */
+.track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  align-items: stretch;
+}
+
+
+/* ===== ANIMATION ===== */
+.moveRight {
+  animation: scrollRight 205s linear infinite;
+}
+
+.moveLeft {
+  animation: scrollLeft 205s linear infinite;
+}
+
+@keyframes scrollRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrollLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,112 @@
+/* Main container */
+.sap-now {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* Background video */
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Overlay (EY style gradient) */
+.sap-now::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.2)
+  );
+
+  z-index: 1;
+}
+
+/* Content container */
+.sap-now-content {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+  color: white;
+
+  max-width: 750px;
+  padding: 0 20px;
+}
+
+/* Heading (EY bold style) */
+.sap-now-content h1 {
+  font-size: 64px;
+  font-weight: 700;            /* EY Bold equivalent */
+  letter-spacing: 1px;
+  line-height: 1.2;
+
+  color: #ffe600;              /* EY yellow */
+  margin-bottom: 10px;
+}
+
+/* Subtitle (regular body text) */
+.subtitle {
+  font-size: 18px;
+  font-weight: 400;            /* EY regular weight */
+  line-height: 1.6;
+
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+/* Horizontal divider */
+.horizontal-line {
+  width: 140px;
+  height: 2px;
+  margin: 12px auto;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    #ffffff,
+    transparent
+  );
+}
+
+/* Button */
+.sap-now-content button {
+  margin-top: 20px;
+  padding: 10px 26px;
+
+  background: #ffe600;
+  color: #000;
+
+  border: none;
+  border-radius: 3px;
+
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-weight: 600;            /* medium/bold */
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.sap-now-content button:hover {
+  background: #e6d000;
+  transform: translateY(-2px);
+}

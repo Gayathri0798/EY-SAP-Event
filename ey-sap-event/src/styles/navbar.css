@@ -1,0 +1,92 @@
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+  background: #23232F;
+  font-family: EYInterstate, Noto Sans, sans-serif;
+  
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+   
+  letter-spacing: -0.02em;
+
+  
+position: fixed;   /* ✅ makes it stick */
+  top: 0;            /* ✅ sticks to top */
+  left: 0;
+  width: 100%;  
+  z-index: 900;
+
+   
+}
+
+.nav-links a:last-child {
+  padding-right: 20px;
+}
+
+/* Nav links */
+.nav-links a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: white;
+  position: relative;
+  padding-bottom: 4px;
+  font-weight: 400;
+  font-size: .875rem;
+  font-size: inherit !important;
+}
+
+/* Hover underline */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 10px;
+  width: 0%;
+  height: 2px;
+  background: #ffe600;
+  transition: width 0.3s ease;
+}
+
+/* Show underline on hover */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active tab */
+.nav-links a.active {
+  color: #fffef3;
+  font-weight: 500;
+}
+
+/* Keep underline visible for active tab */
+.nav-links a.active::after {
+  width: 100%;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 15px;
+
+  text-decoration: none;
+  color: white;
+}
+
+/* logo image */
+.logo img {
+  height: 36px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 10px
+}
+
+/* EY-SAP text */
+.logo span {
+  color: #ffe600;
+  font-weight: bold;
+}

@@ -1,0 +1,13 @@
+/* Footer section */
+.footer {
+position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #23232F;
+  padding: 2px;
+  text-align: center;
+color: #aaa;
+height: fit-content;
+font-size: 8px;
+font-family: Georgia, serif;
+}

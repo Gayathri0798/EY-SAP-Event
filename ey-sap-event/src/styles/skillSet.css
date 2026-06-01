@@ -1,0 +1,270 @@
+.layout {
+  display: flex;
+  gap: 20px;
+}
+
+/* LEFT PANEL */
+.sidebar {
+  width: 260px;
+  background: #f5f6f8;
+  padding: 20px;
+  border-radius: 10px;
+  color: #374151;
+}
+
+.filterItem {
+  padding: 10px;
+  margin: 6px 0;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.filterItem:hover {
+  background: #e2e6ea;
+}
+
+.filterItem.active {
+  background: #f0df76;
+  color: white;
+}
+
+/* RIGHT GRID */
+.content {
+  flex: 1;
+}
+
+/* .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+} */
+
+/* CARD */
+/* .skillCard {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+} */
+
+.skillCard {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  
+ transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-style: preserve-3d;
+
+
+   /* background: radial-gradient(
+      circle at top left,
+      rgba(255, 212, 0, 0.12),
+      rgba(255, 212, 0, 0.04) 40%,
+      transparent 70%
+    ),
+    linear-gradient(180deg, #111, #0a0a0f); */
+}
+
+/* 🔥 3D Hover Effect */
+.skillCard:hover {
+  transform: rotateX(6deg) rotateY(-6deg) scale(1.03);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+}
+
+
+/* .skillCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+} */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  perspective: 1000px;   /* ✅ REQUIRED */
+}
+
+
+.bucket {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+
+
+}
+
+.desc {
+  font-size: 18px;
+  color: #bbb;
+  
+}
+
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* .skillsPage {
+  padding-top: 202px; 
+} */
+
+.iconCircle {
+  width: 36px;
+  height: 36px;
+  background: #eef2ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  background: #e0e7ff;
+  color: #4f46e5;
+  border-radius: 8px;
+}
+
+/* TEXT */
+.title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #1f2937;
+ white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis
+
+}
+
+.desc-text  {
+  font-size: 14px;
+  color: #817e7e;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* TAGS */
+.tags {
+  margin-top: auto;
+}
+
+.tag {
+  font-size: 11px;
+  background: #f3f4f6;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #374151;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+.headingText{
+    text-align: center;
+    margin-bottom: 50px;
+    background: radial-gradient(circle at top left, rgba(255, 212, 0, 0.12), rgba(255, 212, 0, 0.04) 40%, transparent 70%), linear-gradient(180deg, #111, #0a0a0f);
+    border: 1px solid rgba(255, 212, 0, 0.18);
+    padding: 100px 20px;
+    border-radius: 12px;
+    max-width: 100%;  
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+
+}
+
+.headingText h1{
+  font-size: 40px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+}
+
+
+.headingText p{
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* font-size: 42px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px; */
+
+
+    /* ✅ PAGE FADE IN */
+.animatePage {
+  animation: fadeInPage 0.8s ease-in-out;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ✅ TEXT ANIMATION */
+.animateFadeUp {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards ease;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+/* ✅ CARD STAGGER ANIMATION */
+.animateCard {
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  animation: cardFadeUp 0.6s forwards ease;
+}
+
+/* ✅ KEYFRAMES */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

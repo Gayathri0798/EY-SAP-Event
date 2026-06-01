@@ -1,0 +1,178 @@
+/* ✅ WRAPPER */
+.homeWrap {
+  font-family: "Segoe UI", sans-serif;
+  background: white;
+  color: white;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* ✅ HERO */
+.homeHero {
+  position: relative;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  padding: 60px;
+
+  background: url("https://img.freepik.com/premium-photo/ai-with-artificial-intelligence-concept-background-3d-rendering-3d-illustration_1094261-1291.jpg?w=1500") center/cover;
+  overflow: hidden;
+}
+
+/* ✅ BLACK FADE */
+.homeHero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 65%;
+  height: 100%;
+
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.9) 20%,
+    rgba(0, 0, 0, 0.75) 45%,
+    rgba(0, 0, 0, 0.4) 70%,
+    transparent 100%
+  );
+
+  z-index: 1;
+}
+
+.homeHeroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+
+/* ✅ ✅ HERO TEXT (UPDATED - Tailwind Style) */
+.homeHeroContent h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+
+  /* ✅ Gradient Text */
+  background: linear-gradient(to right, #facc15, #ca8a04);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.homeHeroContent p {
+  font-size: 18px;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 512px;
+}
+
+
+/* ✅ BUTTONS */
+.homeBtn,
+.homeBtnAlt,
+.homeBtnPrimary {
+  margin-top: 25px;
+  background: #ffd700;
+  color: #111;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.35);
+  transition: all 0.25s ease;
+}
+
+
+.homeBtn,
+.homeBtnAlt {
+  margin-top: auto; 
+}
+
+
+.homeBtn:hover,
+.homeBtnAlt:hover,
+.homeBtnPrimary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #ffdf33;
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+}
+
+.homeBtn:active,
+.homeBtnAlt:active,
+.homeBtnPrimary:active {
+  transform: scale(0.97);
+}
+
+/* ✅ SECTION */
+.homeSection {
+  padding: 124px 120px;
+  margin-top: -60px;
+  background: #ffffff;
+}
+
+/* ✅ TILES */
+.homeTiles {
+  display: flex;
+  gap: 120px; /* reduced from 262 (better spacing) */
+  justify-content: center;
+}
+
+/* ✅ TILE */
+.homeTile {
+  padding: 24px;
+  border-radius: 18px;
+  width: 540px;
+
+  background-color: rgb(29, 29, 29);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.25),
+    0 20px 50px rgba(0, 0, 0, 0.15);
+
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.homeTile:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.35),
+    0 30px 70px rgba(0,0,0,0.25);
+}
+
+/* ✅ INNER */
+.homeTileInner {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 100%;
+}
+
+/* ✅ TEXT */
+.homeTag {
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.homeDesc {
+    font-size: 18px;
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 512px;
+}
+
+/* ✅ BACK */
+.homeBack {
+  text-align: center;
+  margin: 30px;
+}
+

@@ -1,0 +1,108 @@
+/* Section */
+.stepper-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f9fafb;
+}
+
+/* Title */
+.stepper-section h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 50px;
+  font-size: 15px;
+}
+
+/* Container */
+.stepper-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Line */
+.stepper-line {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #d1d5db;
+  z-index: 0;
+}
+
+/* Step */
+.step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 20%;
+}
+
+/* Number circle */
+.circle {
+  width: 48px;
+  height: 48px;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+/* Icon */
+.icon {
+  margin-top: 14px;
+  font-size: 22px;
+  color: #2563eb;
+}
+
+/* Label */
+.step p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Hover Effects */
+.step:hover .circle {
+  transform: scale(1.15);
+  background: #1d4ed8;
+}
+
+.step:hover .icon {
+  color: #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stepper-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .stepper-line {
+    display: none;
+  }
+
+  .step {
+    width: 100%;
+  }
+}
+.circle.active {
+  background: #22c55e;
+}

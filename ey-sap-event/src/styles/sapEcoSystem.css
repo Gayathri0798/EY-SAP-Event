@@ -1,0 +1,92 @@
+.ai-container {
+  display: flex;
+  margin-top: 100px;
+  padding: 40px;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+
+.content-area {
+  flex: 1;
+  width: 100%;
+}
+
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+}
+
+.filter {
+  padding: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  background: #f1f5f9;
+}
+
+.filter.active {
+  background: #facc15;
+}
+
+/* GRID */
+.pill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* CARD PILL */
+.big-pill {
+  background: #fff;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  transition: 0.3s;
+}
+
+.big-pill:hover {
+  transform: translateY(-6px);
+  border: 1px solid #facc15;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.pill-header {
+  display: flex;
+  align-items: center;
+  /* gap: 10px; */
+}
+
+.pill-header h4 {
+  flex: 1;
+  min-width: 0;
+
+  font-size: 18px;
+  font-weight: bold;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.icon {
+  color: #facc15;
+  margin-top:15px;
+}
+
+/* TEXT */
+.big-pill p {
+  font-size: 16px;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
+    color: rgb(173, 167, 167);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 512px;
+
+  /* ✅ IMPORTANT (no cutting) */
+  white-space: normal;
+}

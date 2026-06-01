@@ -1,6 +1,6 @@
 .principles-grid-section {
-  padding: 50px 80px 10px;
-  background: #23232f;
+  padding: 50px 80px 20px;
+  /* background: #23232f; */
 
   font-family: EYInterstate, "Noto Sans", sans-serif;
   color: #fff;
@@ -16,7 +16,7 @@
 .ey-tag {
   display: inline-block;
   font-size: 12px;
-  color: #9ca3af;
+  color: #23232F;
   letter-spacing: 1px;
   margin-bottom: 12px;
 }
@@ -26,17 +26,17 @@
   font-size: 42px;          
   font-weight: 500;          /* ✅ not too bold */
   line-height: 1.2;
-
-  color: #ffffff;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
+  color: #090909f0;
   margin-bottom: 20px;
 }
 
 /* Subtext */
 .ey-subtext {
   font-size: 18px;
-  color: #cbd5e1;
+  color: #6f757d;
   line-height: 1.6;
-
+  font-family: EYInterstate, "Noto Sans", sans-serif;
   max-width: 890px;
   text-align: center;  
 }
@@ -83,7 +83,7 @@
   text-align: center;
   font-size: 34px;   /* ✅ bigger */
   font-weight: 600;
-  color: #ffe600;
+  color: #23232F;
 
   margin-bottom: 70px;
 }
@@ -102,9 +102,9 @@
 
 /*  CARD STYLE */
 .grid-item {
-  padding: 30px 25px;
+  padding: 25px 25px;
 
-  background: #3a3a4ab3;
+  background: #23232F;
   border-radius: 10px;
 
   border: 1px solid rgba(134, 132, 132, 0.08);
@@ -124,18 +124,18 @@
 /* PRINCIPLE LABEL */
 .principle-id {
   font-size: 12px;
-  color: #9ca3af;
+  color: #b2b8c2;
   letter-spacing: 1px;
   margin-bottom: 10px;
   display: block;
 }
 
 /* Title */
-.title {
+.card-title {
   font-size: 20px;   /* ✅ bigger */
   font-weight: 600;
 
-  color: #ffe600;
+  color: #ffd700;
 
   margin-bottom: 15px;
 }

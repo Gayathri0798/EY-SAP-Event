@@ -9,6 +9,24 @@
   font-family: EYInterstate, Noto Sans, sans-serif;
   font-size: .800rem;
   color: #fff;
+  padding: 10px 5px;
+  background: #23232F;
+  font-family: EYInterstate, Noto Sans, sans-serif;
+  
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+   
+  letter-spacing: -0.02em;
+
+  
+position: fixed;   /* ✅ makes it stick */
+  top: 0;            /* ✅ sticks to top */
+  left: 0;
+  width: 100%;  
+  z-index: 900;
+
+   
 }
 
 .nav-links a:last-child {
@@ -67,8 +85,10 @@
 
 /* logo image */
 .logo img {
-  height: 38px;
+  height: 36px;
   object-fit: contain;
+  display: block;
+  margin-bottom: 10px
 }
 
 /* EY-SAP text */

@@ -2,131 +2,155 @@
 
 .agent-page {
   min-height: 100vh;
-  /* padding: 60px 100px; */
-
-  background: radial-gradient(circle at top right, #2a2a40, #000);
-  font-family: "Noto Sans", Arial, sans-serif;
-  color: white;
+  font-family: "EYInterstate", "Noto Sans", sans-serif;
+  background-color: #efefef;
+  color: #000;
 }
 
-/* ================= HERO ================= */
+/* ================= BANNER ================= */
 
-.banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 60px;
+.banner-section {
+  width: 100%;
 }
 
-/* Banner container */
-.banner-content {
-  text-align: center;
-  max-width: 800px;
-}
+/* ================= CONTENT ================= */
 
-/* Heading */
-.banner h1 {
-  font-size: 36px;
-  font-weight: 700;
-  color: #ffe600;
-
-  margin-bottom: 12px;
-}
-
-/* Subtitle */
-.banner p {
-  font-size: 16px;
-  color: #ccc;
-  line-height: 1.6;
+.content-section {
+  padding: 55px 120px;
+  background-color: #efefef;
 }
 
 /* ================= TILES ================= */
 
 .tiles {
   display: flex;
-  gap: 30px;
+  gap: 90px;
+  margin-top: 40px;
 }
 
-/* Card */
+/* ================= CARD ================= */
+
 .tile {
   flex: 1;
-  border-radius: 14px;
+   padding: 24px;
+  border-radius: 18px;
+  width: 420px;
 
-  background: rgba(40, 40, 60, 0.6);
-  backdrop-filter: blur(12px);
+  background-color: #23232f;
 
-  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.25),
+    0 20px 50px rgba(0, 0, 0, 0.15);
 
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Inner spacing */
-.tile-inner {
-  padding: 30px;
-}
-
-/* Hover effect (Nitro feel) */
 .tile:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-
-  border: 1px solid rgba(255,255,255,0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
 }
 
-/* ================= TAG ================= */
+/* ================= INNER ================= */
 
-.tag {
-  font-size: 12px;
-  color: #ffe600;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  display: inline-block;
-}
+/* .tile-inner {
+  padding: 35px;
+} */
 
 /* ================= TEXT ================= */
 
-.tile h2 {
-  font-size: 22px;
+.tags {
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 5px;
+  color: #ffd700 !important;
+  margin-bottom: 12px;
 }
 
-/* Subtitle */
+.tile h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: white;
+}
+
 .tile-subtitle {
   font-size: 14px;
-  color: #999;
+  color: #bbbbbb;
   margin-bottom: 15px;
 }
+.banner{
+  height: 100vh;
+}
 
-/* Description */
-.desc {
-  font-size: 14px;
-  color: #ccc;
-  line-height: 1.6;
-  margin-bottom: 25px;
+.description {
+    font-size: 18px;
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 512px;
+    font-family: 'EYInterstate', "Noto Sans", sans-serif;;
 }
 
 /* ================= BUTTON ================= */
 
 .cta {
-  background: linear-gradient(135deg, #ffe600, #ffd700);
+  background: #ffe600;
+  color: #000;
 
-  color: black;
   border: none;
   border-radius: 6px;
 
-  padding: 10px 22px;
+  padding: 10px 20px;
   font-weight: 600;
 
   cursor: pointer;
   transition: all 0.3s ease;
+  width: 200px;
 }
 
-/* Hover */
 .cta:hover {
+  background: #ffd700;
   transform: translateX(4px);
-  box-shadow: 0 8px 20px rgba(255, 230, 0, 0.4);
+}
+
+
+.cta,
+.cta,
+.ctaPrimary {
+  width: 280px;
+  margin-top: 30px;
+  background: #ffd700;
+  color: #23232f;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.35);
+  transition: all 0.25s ease;
+}
+
+
+/* .cta,
+.ctaAlt {
+  margin-top: auto; 
+} */
+
+
+.cta:hover,
+.cta:hover,
+.ctaPrimary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #ffdf33;
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+}
+
+.cta:active,
+.cta:active,
+.cta:active {
+  transform: scale(0.97);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -136,33 +160,7 @@
     flex-direction: column;
   }
 
-  .agent-page {
-    padding: 30px;
+  .content-section {
+    padding: 40px 20px;
   }
-
-  .banner h1 {
-    font-size: 28px;
-  }
-}
-.banner-section {
-  width: 100%;
-
-  margin-bottom: 40px;   /* ✅ space below banner */
-}
-.content-section {
-  padding: 0px 100px 60px; 
-  margin-top: 20px;
-}
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  padding: 40px;
-}
-
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }

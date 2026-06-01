@@ -75,7 +75,7 @@
 /* LEFT aligned content */
 .hero-content-left {
   position: absolute;
-  top: 40%;
+  top: 55%;
   left: 80px;     /* ✅ spacing from left */
 
   transform: translateY(-50%);

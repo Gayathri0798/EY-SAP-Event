@@ -1,109 +1,79 @@
-import "../styles/agent-landing.css";
-import Banner from "../components/Banner";
-import { useNavigate } from "react-router-dom";
+import "../styles/aiSap.css";
+import { Link } from "react-router-dom"
+
 
 export default function EnterpriseSolutions() {
-  const navigate = useNavigate();
-  const handleExternalRedirect = () => {
-    window.open(
-      "https://ey-nexus-approuter.cfapps.eu10-004.hana.ondemand.com/",
-      "_blank",
-    );
-  };
+  const features = [
+    {
+      title: "SAP AI Ecosystem",
+      desc: "120+ enterprise use cases powered by Joule, Embedded AI and GenAI across Finance, spend, SCM, HCM, Customer experience.",
+      img: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1200&auto=format&fit=crop",
+      link: "/sapEcoSystem",
+    },
+    {
+      title: "Joule Studio & Enterprise Agents",
+      desc: "Build and deploy enterprise-ready Joule agents and reusable AI skills integrated with SAP workflows.",
+      img: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=1200&auto=format&fit=crop",
+      link: "/sapJouleSystem"
+    },
+    {
+      title: "EY AI Solutions",
+      desc: "EY’s portfolio of SAP-integrated AI solutions accelerating enterprise transformation and operational intelligence.",
+      img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200&auto=format&fit=crop",
+      link:"/aiSolution"
+    },
+  ];
+
+  // const navigate = useNavigate();
+
 
   return (
-    <div className="agent-page">
+    <>
+      {/* HERO SECTION */}
+      <section className="hero">
+        <div className="overlay"></div>
 
-  {/* ✅ FULL WIDTH BANNER */}
-  <div className="banner-section">
-    <Banner
-      title="Build Enterprise AI Agents at Scale"
-      subtitle="Create, orchestrate and govern intelligent agents powered by EY Nexus."
-      buttonText="Learn more"
-      image="/images/lego.jpeg"
-    />
-  </div>
+        <div className="content">
+          <h1>
+            EY's AI Solutions Embedded Across<br/> Enterprise Functions
+          </h1>
 
-  {/* ✅ CONTENT SECTION (WITH PADDING) */}
-  <div className="content-section">
-
-    <div className="tiles">
-        {/* TILE 1 */}
-        <div className="tile">
-          <div className="tile-inner">
-            {/* <span className="tag">Platform</span> */}
-
-            <h2>Autonomous Procurement Intelligence</h2>
-            {/* <p className="tile-subtitle">Enterprise Agent Platform</p> */}
-
-            <p className="desc">
-              Transform sourcing, supplier management and procurement operations using AI-powered enterprise agents.
-            </p>
-
-            <button className="cta" onClick={() => navigate("/explore-nexus")}>Explore More →</button>
-          </div>
+          <p>
+            AI-powered enterprise solutions transforming finance, procurement,
+            HR and customer experiences through SAP-integrated intelligence and
+            automation.
+          </p>
         </div>
+      </section>
 
-        {/* TILE 2 */}
-        <div className="tile">
-          <div className="tile-inner">
-            {/* <span className="tag">Builder</span> */}
+      {/* FEATURES SECTION */}
+      <section className="features">
+        <div className="features-container">
+          {features.map((item, index) => (
+            <div
+              className={`feature-card ${index === 2 ? "feature-card-wide" : ""
+                }`}
+              key={index}
+            >
+              <div className="img-box">
+                <img src={item.img} alt={item.title} />
+              </div>
 
-            <h2>AI for Intelligent Finance Operations</h2>
-            {/* <p className="tile-subtitle">No-Code Agent Builder</p> */}
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
 
-            <p className="desc">
-              Create custom enterprise agents using workflows, prompts,
-              constraints and SAP-connected data.
-            </p>
 
-            <button className="cta" onClick={handleExternalRedirect}>
-              Explore More →
-            </button>
-          </div>
+
+              <Link to={item.link} className="learn">
+                Learn more →
+              </Link>
+
+
+
+            </div>
+          ))}
         </div>
-        {/* TILE 3 */}
-
-        <div className="tile">
-          <div className="tile-inner">
-            {/* <span className="tag">Builder</span> */}
-
-            <h2>Intelligent Customer Experience</h2>
-            {/* <p className="tile-subtitle">No-Code Agent Builder</p> */}
-
-            <p className="desc">
-              Create custom enterprise agents using workflows, prompts,
-              constraints and SAP-connected data.
-            </p>
-
-            <button className="cta" onClick={handleExternalRedirect}>
-              Explore More →
-            </button>
-          </div>
-        </div>
-
-        {/* TILE 4 */}
-        <div className="tile">
-          <div className="tile-inner">
-            {/* <span className="tag">Builder</span> */}
-
-            <h2>AI for Intelligent Workforce Management (HR)</h2>
-            {/* <p className="tile-subtitle">No-Code Agent Builder</p> */}
-
-            <p className="desc">
-              Create custom enterprise agents using workflows, prompts,
-              constraints and SAP-connected data.
-            </p>
-
-            <button className="cta" onClick={handleExternalRedirect}>
-              Explore More →
-            </button>
-          </div>
-        </div>
-    </div>
-
-  </div>
-
-</div>
+      </section>
+    </>
   );
 }

@@ -1,19 +1,200 @@
+import { useState } from "react";
+import "../styles/eySap.css";
 
 export default function SapAI() {
+  const [active, setActive] = useState(0);
+
+  const data = [
+    {
+      title: "Identify the right AI opportunities",
+      content:
+        "Prioritize SAP AI use cases that can improve productivity, decision-making and business outcomes.",
+      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+    },
+    {
+      title: "Build on a trusted SAP foundation",
+      content:
+        "Use SAP BTP, SAP Business AI, Joule, data and integration capabilities to embed AI into enterprise workflows.",
+      img: "https://images.unsplash.com/photo-1581093588401-16ec1c1a3c7b?q=80&w=1000&auto=format&fit=crop",
+    },
+    {
+      title: "Scale with confidence",
+      content:
+        "Apply EY’s experience in governance, security, change management and value realization to make AI adoption sustainable.",
+      img: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1000&auto=format&fit=crop",
+    },
+  ];
+
   return (
-    <div style={{
-      margin: 0,
-      height: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%"
-    }}>
-      <img 
-        src="/images/sap-ai.png" 
-        alt="Sample" 
-        style={{ maxWidth: "100%", maxHeight: "100%" }}
-      />
-    </div>
+    <>
+      {/* HERO */}
+      <section className="hero-banner">
+        <div className="overlay"></div>
+        <div className="content">
+          <p>
+            Unlock the power of SAP Business AI with EY’s industry knowledge,
+            transformation experience and responsible AI approach.
+          </p>
+        </div>
+      </section>
+
+      {/* SECTION 2 - ACCORDION */}
+      <section className="sap-section">
+        <div className="sap-container">
+          <h2>How EY helps bring SAP AI to life</h2>
+
+          <p className="sap-desc">
+            EY helps organizations design, build and scale SAP AI capabilities
+            by connecting business processes, enterprise data, SAP technology
+            and responsible AI governance.
+          </p>
+
+          <div className="accordion">
+            {data.map((item, index) => (
+              <div
+                key={index}
+                className="accordion-item"
+                onMouseEnter={() => setActive(index)}
+              >
+                <h3 className={active === index ? "active" : ""}>
+                  {item.title}
+                </h3>
+
+                {active === index && (
+                  <div className="accordion-content">
+                    <div className="content-row">
+
+                      {/* TEXT */}
+                      <div className="text">
+                        <p>{item.content}</p>
+                      </div>
+
+                      {/* ✅ FIXED: PROPER IMAGE TAG */}
+                      <div className="image">
+                        <img src={item.img} alt="ai visual" />
+                      </div>
+
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3 - CARDS */}
+      <div className="maturity-grid">
+
+        {/* SALES */}
+        <div className="card">
+          <div className="card-header blue">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg"
+              alt="SAP"
+            />
+          </div>
+
+          <h3>Sales</h3>
+          <h4>Smarter selling with AI</h4>
+
+          <p>
+            Assess the readiness of your organization to apply SAP AI across
+            customer insights, forecasting, lead-to-cash automation and
+            personalized engagement.
+          </p>
+
+          <a
+            href="https://discovery-center.cloud.sap/maturity-assessment/?type=ai-cx"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Start Assessment →
+          </a>
+        </div>
+
+        {/* FINANCE */}
+        <div className="card">
+          <div className="card-header purple">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg"
+              alt="SAP"
+            />
+          </div>
+
+          <h3>Finance</h3>
+          <h4>Intelligent finance operations</h4>
+
+          <p>
+            Assess the readiness of your organisation to apply SAP AI across
+            planning, financial close, reporting, controls, cash visibility and
+            decision support.
+          </p>
+
+          <a
+            href="https://discovery-center.cloud.sap/maturity-assessment/?type=ai-finance"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Start Assessment →
+          </a>
+        </div>
+
+        {/* PROCUREMENT */}
+        <div className="card">
+          <div className="card-header green">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg"
+              alt="SAP"
+            />
+          </div>
+
+          <h3>Procurement</h3>
+          <h4>Intelligent spend management</h4>
+
+          <p>
+            Assess the readiness of your organization to apply SAP AI across
+            sourcing, supplier insights, spend analysis, contract compliance and
+            process efficiency.
+          </p>
+
+          <a
+            href="https://discovery-center.cloud.sap/maturity-assessment/?type=ai-procurement"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Start Assessment →
+          </a>
+        </div>
+
+        {/* HR */}
+        <div className="card">
+          <div className="card-header orange">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg"
+              alt="SAP"
+            />
+          </div>
+
+          <h3>Human Resources</h3>
+          <h4>AI-enabled workforce experiences</h4>
+
+          <p>
+            Assess the readiness of your organization to apply SAP AI across
+            employee experience, service delivery, skills planning, talent
+            processes and workforce insights.
+          </p>
+
+          <a
+            href="https://discovery-center.cloud.sap/maturity-assessment/?type=ai-hr"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Start Assessment →
+          </a>
+        </div>
+
+      </div>
+    </>
   );
 }

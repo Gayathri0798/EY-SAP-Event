@@ -3,27 +3,24 @@ import "../styles/banner.css";
 export default function Banner({
   title,
   subtitle,
-  heading,
-  buttonText,
-  image
+  heading
 }) {
   return (
-    <div className="banner">
+   <div className="banner">
 
-      <div className="banner-left">
-        <h1>{title}</h1>
-        <div className="banner-heading">{heading}</div>
-        <p>{subtitle}</p>
+  {/* ✅ IMAGE */}
+  <div className="banner-bg"></div>
 
-        <button className="banner-btn">
-          {buttonText}
-        </button>
-      </div>
+  {/* ✅ DARK OVERLAY */}
+  <div className="banner-overlay"></div>
 
-      <div className="banner-right">
-        <img src={image} alt="banner visual" />
-      </div>
+  {/* ✅ CONTENT */}
+  <div className="banner-content">
+    <h1>{title}</h1>
+    <div className="banner-heading">{heading}</div>
+    <p>{subtitle}</p>
+  </div>
 
-    </div>
+</div>
   );
 }

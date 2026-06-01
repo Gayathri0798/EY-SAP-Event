@@ -63,16 +63,15 @@ export default function PrinciplesGrid() {
     {principles.map((item, index) => (
       <div className="grid-item" key={index}>
         
-        <span className="principle-id">{item.id}</span>
+        {/* <span className="principle-id">{item.id}</span> */}
 
-        <h3 className="title">{item.title}</h3>
+        <h3 className="card-title">{item.title}</h3>
 
         <div className="underline"></div>
 
         <p className="description">{item.description}</p>
 
         <div className="highlights">
-          <h4>Key Highlights</h4>
           <ul>
             {item.highlights.map((point, i) => (
               <li key={i}>{point}</li>

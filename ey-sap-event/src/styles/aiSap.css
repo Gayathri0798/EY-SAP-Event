@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   height: 100vh;
-  background: url("https://images.unsplash.com/photo-1677442136019-21780ecad995")
+  background: url("/images/aihumhand.jpg")
     no-repeat center center/cover;
   display: flex;
   align-items: center;
@@ -150,11 +150,6 @@
 
 
 /* THIRD CARD BELOW */
-.feature-card-wide {
-  grid-column: span 2;
-  max-width: 600px;
-  justify-self: center;
-}
 
 
 /* Learn More Link */

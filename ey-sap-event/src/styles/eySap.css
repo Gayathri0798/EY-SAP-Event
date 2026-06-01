@@ -26,6 +26,7 @@
 .sap-section {
   padding: 80px 20px;
   background: #f5f7fb;
+  margin-bottom: 20px;
 }
 
 .sap-container {
@@ -42,14 +43,15 @@
   margin-bottom: 20px;
 }
 
+
 .accordion-item h3 {
   cursor: pointer;
   font-weight: bold;
 }
 
 .accordion-item h3.active {
-  color: #0a66c2;
-  border-left: 4px solid #0a66c2;
+  color: #ffe600;
+  border-left: 4px solid #ffe600;
   padding-left: 10px;
 }
 
@@ -78,6 +80,10 @@
   padding: 80px 20px;
 }
 
+.font-ey{
+  font-family: EYInterstate, "Noto Sans", sans-serif;
+}
+
 .maturity-container {
   max-width: 1200px;
   margin: auto;
@@ -87,6 +93,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  margin-bottom: 35px;
 }
 
 .card {

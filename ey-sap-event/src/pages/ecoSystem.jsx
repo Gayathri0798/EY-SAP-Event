@@ -184,7 +184,7 @@ export default function SAPEcoSystem() {
 
       {/* ✅ CONTENT */}
       <div className="content-area">
-        <h2>{active} Solutions</h2>
+        <h2 className="ai-font">{active} Solutions</h2>
 
         <div className="pill-grid">
           {filtered.map((item) => (
@@ -196,7 +196,7 @@ export default function SAPEcoSystem() {
               </div>
 
               {/* ✅ FULL TEXT (NOT CUT) */}
-              <p>{item.desc}</p>
+              <p className="box-descr">{item.desc}</p>
 
             </div>
           ))}

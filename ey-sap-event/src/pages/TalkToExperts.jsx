@@ -10,6 +10,12 @@ export default function TalkToExperts() {
       text: "I wanted to recognize the strong contribution NITRO team has made to the Agent Controllership Suite (ACS) workstream. As part of the highly strategic 1EY Finance transformation, this work requires both execution excellence and forward looking thinking—and the team’s contributions have materially shaped that trajectory. From an innovation standpoint, NITRO has elevated ACS by translating complex agent led concepts into tangible artifacts. The ACS engineering guidelines are a clear example, and the team’s influence on the product engineering/architecture has ensured innovation is anchored in scalable, governable, and reusable foundations.",
     },
     {
+      name: "Surinder Nanda",
+      role: "SAP Integration",
+      image: "/images/surinder.png",
+      text: "The overall sentiment has been very positive. Everyone consistently highlighted how well-structured, intuitive, and realistic the experience felt - especially the scenario-based questions, accuracy of questions/prompt and impressive speech-to-text responsiveness and the availability of a detailed feedback report at the end of the session. The tool helps presenters focus on structure, timing, and critical talking points. Our team plans to use it before their upcoming presentations because they see it adds real value. The flexibility across different permit types and scenarios to practice was also called out as a standout feature, along with the reflective follow up questions that simulate a genuine discussion.",
+    },
+    {
       name: "Hari Balaji",
       role: "Partner, Technology ConsultingGenAI | AI-led Transformation, EY",
       image: "/images/hari-balaji.png",
@@ -29,12 +35,6 @@ export default function TalkToExperts() {
     },
     {
       name: "Shomik",
-      role: "SAP Integration",
-      image: "/images/expert3.jpg",
-      text: "The overall sentiment has been very positive. Everyone consistently highlighted how well-structured, intuitive, and realistic the experience felt - especially the scenario-based questions, accuracy of questions/prompt and impressive speech-to-text responsiveness and the availability of a detailed feedback report at the end of the session. The tool helps presenters focus on structure, timing, and critical talking points. Our team plans to use it before their upcoming presentations because they see it adds real value. The flexibility across different permit types and scenarios to practice was also called out as a standout feature, along with the reflective follow up questions that simulate a genuine discussion.",
-    },
-    {
-      name: "Surinder Nanda",
       role: "SAP Integration",
       image: "/images/expert3.jpg",
       text: "The overall sentiment has been very positive. Everyone consistently highlighted how well-structured, intuitive, and realistic the experience felt - especially the scenario-based questions, accuracy of questions/prompt and impressive speech-to-text responsiveness and the availability of a detailed feedback report at the end of the session. The tool helps presenters focus on structure, timing, and critical talking points. Our team plans to use it before their upcoming presentations because they see it adds real value. The flexibility across different permit types and scenarios to practice was also called out as a standout feature, along with the reflective follow up questions that simulate a genuine discussion.",

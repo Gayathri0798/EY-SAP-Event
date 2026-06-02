@@ -11,13 +11,7 @@
 .headingWrapper {
   text-align: center;
   margin-bottom: 50px;
-  background: radial-gradient(
-      circle at top left,
-      rgba(255, 212, 0, 0.12),
-      rgba(255, 212, 0, 0.04) 40%,
-      transparent 70%
-    ),
-    linear-gradient(180deg, #111, #0a0a0f);
+  background: #23232f;
 
   border: 1px solid rgba(255, 212, 0, 0.18);
   padding: 60px 20px;

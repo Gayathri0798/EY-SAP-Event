@@ -9,19 +9,19 @@ export default function SapAI() {
       title: "Identify the right AI opportunities",
       content:
         "Prioritize SAP AI use cases that can improve productivity, decision-making and business outcomes.",
-      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+      img: "/images/bot.jpeg",
     },
     {
       title: "Build on a trusted SAP foundation",
       content:
         "Use SAP BTP, SAP Business AI, Joule, data and integration capabilities to embed AI into enterprise workflows.",
-      img: "https://images.unsplash.com/photo-1581093588401-16ec1c1a3c7b?q=80&w=1000&auto=format&fit=crop",
+      img: "/images/aihumhand.jpg",
     },
     {
       title: "Scale with confidence",
       content:
         "Apply EY’s experience in governance, security, change management and value realization to make AI adoption sustainable.",
-      img: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1000&auto=format&fit=crop",
+      img: "/images/thinking.jpeg",
     },
   ];
 

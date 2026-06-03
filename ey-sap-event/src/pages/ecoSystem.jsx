@@ -171,6 +171,11 @@ export default function SAPEcoSystem() {
 
       {/* ✅ SIDEBAR */}
       <div className="sidebar">
+        
+<h2 className="filter-main-heading">
+    Solution Filter
+  </h2>
+
         {categories.map((cat) => (
           <div
             key={cat}
@@ -188,17 +193,19 @@ export default function SAPEcoSystem() {
 
         <div className="pill-grid">
           {filtered.map((item) => (
-            <div className="big-pill" key={item.sno}>
-              
-              <div className="pill-header">
-                <span className="icon">⚡</span>
-                <h4>{item.name}</h4>
-              </div>
+            
+<div className="big-pill">
 
-              {/* ✅ FULL TEXT (NOT CUT) */}
-              <p className="box-descr">{item.desc}</p>
+  {/* HEADER ROW */}
+  <div className="pill-header">
+    <span className="icon">⚡</span>
+    <h4>{item.name}</h4>
+  </div>
 
-            </div>
+  <p className="box-descr">{item.desc}</p>
+
+</div>
+
           ))}
         </div>
       </div>

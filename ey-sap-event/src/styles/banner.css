@@ -42,10 +42,18 @@
 }
 
 .banner-content h1 {
-  font-size: 64px;
-  font-weight: 700;
+  font-size: 48px;
+    font-weight: 800;
 
-  color: #ffe600;   /* EY yellow */
+  
+ background: linear-gradient(to right, #facc15, #ca8a04);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  background-clip: text;
+  color: transparent;
+
   margin-bottom: 16px;
 }
 .banner-heading {

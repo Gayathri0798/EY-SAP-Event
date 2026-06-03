@@ -1,15 +1,22 @@
 .layout {
   display: flex;
   gap: 20px;
+height: calc(100vh - 120px);
+  min-height: 0;
+
 }
 
 /* LEFT PANEL */
 .sidebar {
-  width: 260px;
+  width: 220px;
   background: #f5f6f8;
   padding: 20px;
   border-radius: 10px;
   color: #374151;
+
+  height: 100%;           /* ✅ fill container */
+  overflow-y: auto;       /* ✅ scroll INSIDE sidebar */
+
 }
 
 .filterItem {
@@ -25,14 +32,26 @@
 
 .filterItem.active {
   background: #ffe600;
-  color: white;
+  color: #374151;
 }
 
 /* RIGHT GRID */
 .skills-content {
   flex: 1;
-  z-index: -999 !important;
+  /* z-index: -999; */
   padding-right: 30px;
+  
+overflow-y: auto;   /* ✅ ADD THIS */
+  height: 100%;       /* ✅ ADD THIS */
+  min-height: 0; 
+
+scrollbar-width: none;
+  -ms-overflow-style: none
+
+}
+
+.skills-content::-webkit-scrollbar {
+  display: none;
 }
 
 /* .grid {
@@ -125,6 +144,9 @@
 .skillsPage {
   font-family: EYInterstate, "Noto Sans", sans-serif;
   padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .iconCircle {
@@ -194,7 +216,7 @@
     /* position: sticky; */
     top: 0;
     z-index: 10;
-
+    flex-shrink: 0;
 
 }
 

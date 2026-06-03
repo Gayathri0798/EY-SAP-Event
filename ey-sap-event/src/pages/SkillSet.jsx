@@ -259,7 +259,7 @@ export default function SkillsGrid() {
         </div>
 
         {/* ✅ CONTENT */}
-        <div className="content">
+        <div className="skills-content">
           <div className="grid">
             {filteredCards.map((item, i) => (
               <div

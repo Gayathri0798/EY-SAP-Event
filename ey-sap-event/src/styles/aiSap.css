@@ -5,6 +5,7 @@
     no-repeat center center/cover;
   display: flex;
   align-items: center;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
 }
 
 /* Gradient overlay (dark left side like your image) */

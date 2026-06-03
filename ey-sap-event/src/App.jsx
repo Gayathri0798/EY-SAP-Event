@@ -1,9 +1,11 @@
-
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
 import Navbar from "./components/Navbar";
-import HomeCarousel from "./components/HomeCarousel";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+
+import HomeCarousel from "./components/HomeCarousel";
 import AgentLibrary from "./pages/AgentLibrary";
 import AgentLanding from "./pages/AgentLanding";
 import SapAI from "./pages/SapAI";
@@ -16,28 +18,54 @@ import SkillsGrid from "./pages/SkillSet";
 import SAPEcoSystem from "./pages/ecoSystem";
 import JouleAiSystem from "./pages/jouleAI";
 import SapAiSolution from "./pages/aiSolution";
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+   
+      
+initial={{ scale: 0.98, opacity: 0 }}
+animate={{ scale: 1, opacity: 1 }}
+exit={{ scale: 0.98, opacity: 0 }}
+
+
+        transition={{ duration: 0, ease: "easeOut" }}
+      >
+        <Routes location={location}>
+          <Route path="/" element={<HomeCarousel />} />
+          <Route path="/marketplace" element={<AgentLibrary />} />
+          <Route path="/studio" element={<AgentLanding />} />
+          <Route path="/sap-ai" element={<SapAI />} />
+          <Route path="/explore-nexus" element={<ExploreNexus />} />
+          <Route path="/enterprise-solutions" element={<EnterpriseSolutions />} />
+          <Route path="/talk-to-experts" element={<TalkToExperts />} />
+          <Route path="/insights" element={<Insights />} />
+          <Route path="/aiMarketPlace" element={<AiMarketPlace />} />
+          <Route path="/skillCard" element={<SkillsGrid />} />
+          <Route path="/sapEcoSystem" element={<SAPEcoSystem />} />
+          <Route path="/sapJouleSystem" element={<JouleAiSystem />} />
+          <Route path="/aiSolution" element={<SapAiSolution />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   return (
     <div className="page-wrapper">
-          <Navbar />
-          
-<Routes>
-        <Route path="/" element={<HomeCarousel />} />
-        <Route path="/marketplace" element={<AgentLibrary />} />
-        <Route path="/studio" element={<AgentLanding />} />
-        <Route path="/sap-ai" element={<SapAI />} />
-        <Route path="/explore-nexus" element={<ExploreNexus />} />
-        <Route path="/enterprise-solutions" element={<EnterpriseSolutions />} />
-        <Route path="/talk-to-experts" element={<TalkToExperts />} />
-        <Route path="/insights" element={<Insights />} />
-        <Route path ="/aiMarketPlace" element={<AiMarketPlace/>}/>
-        <Route path ="/skillCard" element = {<SkillsGrid/>}/>
-        <Route path ="/sapEcoSystem" element={<SAPEcoSystem/>}/>
-        <Route path ="/sapJouleSystem" element={<JouleAiSystem/>}/>
-        <Route path ="/aiSolution" element={<SapAiSolution/>}/>
-      </Routes>
-          <Footer />
-          </div>
+      <Navbar />
+
+      <ScrollToTop /> {/* ✅ scroll always reset */}
+
+      <AnimatedRoutes /> {/* ✅ animated navigation */}
+
+      <Footer />
+    </div>
   );
 }
 

@@ -50,35 +50,45 @@ export default function SapAI() {
           </p>
 
           <div className="accordion">
-            {data.map((item, index) => (
-              <div
-                key={index}
-                className="accordion-item"
-                onMouseEnter={() => setActive(index)}
-                onMouseLeave={() => setActive(null)}
-              >
-                <h3 className={active === index ? "active" : "" + " font-ey"}>
-                  {item.title}
-                </h3>
+  {data.map((item, index) => (
+    <div
+      key={index}
+      className={`accordion-item ${active === index ? "active" : ""}`}
+      onClick={() =>
+        setActive(active === index ? null : index)   /* ✅ toggle */
+      }
+    >
+      {/* HEADER */}
+      <div className="accordion-header">
+        <h3 className={`font-ey ${active === index ? "active" : ""}`}>
+          {item.title}
+        </h3>
 
-                {active === index && (
-                  <div className="accordion-content">
-                    <div className="content-row">
-                      {/* TEXT */}
-                      <div className="text">
-                        <p className="font-ey">{item.content}</p>
-                      </div>
+        {/* ✅ CARET ICON */}
+        <span className={`caret ${active === index ? "open" : ""}`}>
+          ▾
+        </span>
+      </div>
 
-                      {/* ✅ FIXED: PROPER IMAGE TAG */}
-                      <div className="image">
-                        <img src={item.img} alt="ai visual" />
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+      {/* CONTENT */}
+      {active === index && (
+        <div className="accordion-content">
+          <div className="content-row">
+
+            <div className="text">
+              <p className="font-ey">{item.content}</p>
+            </div>
+
+            <div className="image">
+              <img src={item.img} alt="ai visual" />
+            </div>
+
           </div>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
         </div>
       </section>
 

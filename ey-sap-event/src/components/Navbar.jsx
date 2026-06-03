@@ -14,7 +14,7 @@ export default function Navbar() {
       <div className="nav-links">
         {/* <NavLink to="/sap-now">SAP Now</NavLink> */}
         <NavLink to="/studio">Agent Studio</NavLink>
-        <NavLink to="/aiMarketPlace">AI Marketplace</NavLink>
+        <NavLink to="/marketPlace">AI Marketplace</NavLink>
         <NavLink to="/enterprise-solutions">EY AI SAP Solutions</NavLink>
         <NavLink to="/sap-ai">SAP AI</NavLink>
         <NavLink to="/insights">Insights</NavLink>

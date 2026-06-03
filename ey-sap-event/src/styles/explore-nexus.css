@@ -5,10 +5,7 @@
     radial-gradient(circle at 80% 20%, rgba(255, 230, 0, 0.08), transparent 40%),
     linear-gradient(135deg, #1f1f2b, #2a2a35); */
     
- background:
-    radial-gradient(circle at 80% 20%, rgba(255, 230, 0, 0.08), transparent 40%),
-    radial-gradient(circle at 20% 80%, #23232f, transparent 40%),
-    #1e1f2a;
+ background: #fff;
 
   font-family: EYInterstate, "Noto Sans", sans-serif;
 }

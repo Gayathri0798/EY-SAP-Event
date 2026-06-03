@@ -1,6 +1,6 @@
 /* ✅ WRAPPER */
 .homeWrap {
-  font-family: "Segoe UI", sans-serif;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
   background: white;
   color: white;
   width: 100%;
@@ -63,7 +63,7 @@
 }
 
 .homeHeroContent p {
-  font-size: 18px;
+  /* font-size: 18px; */
   color: #d1d5db;
   line-height: 1.6;
   margin-bottom: 25px;
@@ -122,6 +122,7 @@
   display: flex;
   gap: 120px; /* reduced from 262 (better spacing) */
   justify-content: center;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
 }
 
 /* ✅ TILE */
@@ -138,6 +139,7 @@
 
   border: 1px solid rgba(255,255,255,0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .homeTile:hover {
@@ -153,18 +155,24 @@
   flex-direction: column;
   gap: 5px;
   height: 100%;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
 }
 
 /* ✅ TEXT */
 .homeTag {
   color: #ffd700;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
+}
+.tagTitle{
+  font-size: 12px ;
+  font-weight: 500 ;
+  color: #bbbbbb;
 }
 
 .homeDesc {
-    font-size: 18px;
-    color: #d1d5db;
+    font-size: 13px ;
+    color: #555 ;
     line-height: 1.6;
     margin-bottom: 25px;
     max-width: 512px;
@@ -176,3 +184,152 @@
   margin: 30px;
 }
 
+.content-section {
+  padding: 20px 120px 55px;
+  background-color: #efefef;
+}
+
+/* ================= TILES ================= */
+
+.tiles {
+  display: flex;
+  gap: 90px;
+  margin-top: 40px;
+}
+
+/* ================= CARD ================= */
+
+.tile {
+  flex: 1;
+   padding: 24px;
+  border-radius: 18px;
+  width: 420px;
+
+  background-color: #23232f;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.25),
+    0 20px 50px rgba(0, 0, 0, 0.15);
+
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tile:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+
+/* ================= INNER ================= */
+
+/* .tile-inner {
+  padding: 35px;
+} */
+
+/* ================= TEXT ================= */
+
+.tags {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffd700 !important;
+  margin-bottom: 12px;
+}
+
+.tile h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.tile-subtitle {
+  font-size: 14px;
+  color: #bbbbbb;
+  margin-bottom: 15px;
+}
+.banner{
+  height: 100vh;
+}
+
+.description {
+    font-size: 18px;
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 512px;
+    font-family: 'EYInterstate', "Noto Sans", sans-serif;;
+}
+
+/* ================= BUTTON ================= */
+
+.cta {
+  background: #ffe600;
+  color: #000;
+
+  border: none;
+  border-radius: 6px;
+
+  padding: 10px 20px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 200px;
+}
+
+.cta:hover {
+  background: #ffd700;
+  transform: translateX(4px);
+}
+
+
+.cta,
+.cta,
+.ctaPrimary {
+  width: 280px;
+  margin-top: 30px;
+  background: #ffd700;
+  color: #23232f;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.35);
+  transition: all 0.25s ease;
+}
+
+
+/* .cta,
+.ctaAlt {
+  margin-top: auto; 
+} */
+
+
+.cta:hover,
+.cta:hover,
+.ctaPrimary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #ffdf33;
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+}
+
+.cta:active,
+.cta:active,
+.cta:active {
+  transform: scale(0.97);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .tiles {
+    flex-direction: column;
+  }
+
+  .content-section {
+    padding: 40px 20px;
+  }
+}

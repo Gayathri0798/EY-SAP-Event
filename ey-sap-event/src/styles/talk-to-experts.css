@@ -2,7 +2,7 @@
    padding: 70px 80px 95px;           /* ✅ full viewport */
   /* display: flex;
   flex-direction: column; */
- font-family:"ey_interstate";
+ font-family: EYInterstate, "Noto Sans", sans-serif;
   background:
     radial-gradient(circle at 80% 20%, rgba(255,0,120,0.2), transparent 40%),
     radial-gradient(circle at 20% 80%, rgba(255,200,0,0.2), transparent 40%),
@@ -62,18 +62,6 @@
   z-index: 3;
   text-align: center;
 }
-/* .expert-profile::before {
-  content: "";
-  position: absolute;
-
-  width: 200px;
-  height: 200px;
-
-  border: 2px solid rgba(255, 230, 0, 0.3);
-  border-radius: 50%;
-
-  z-index: 0;
-} */
 
 .expert-name {
   margin-top: 15px;
@@ -220,5 +208,5 @@ display: flex;
   color: #ddd;
 
   line-height: 1.7;
-  font-size: 14px;
+  font-size: 13px;
 }

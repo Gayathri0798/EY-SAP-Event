@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import SkillsGrid from "./SkillSet";
 import "../styles/homepage.css";
 import { useNavigate } from "react-router-dom";
-function HomePage() {
+function AgentLibrary() {
   const [view] = useState("home");
   // const [loadingAI, setLoadingAI] = useState(false);
   const navigate = useNavigate();
@@ -41,55 +41,44 @@ function HomePage() {
           </div>
  
           {/* ✅ SECTION */}
-          <div className="homeSection">
-            <div className="homeTiles">
- 
-              {/* ✅ MARKETPLACE TILE */}
-              <div className="homeTile">
-                <div className="homeTileInner">
- 
-                  <span className="homeTag">Agent Library </span>
- 
-                  <h3>20+ enterprise agents, ready to explore</h3>
- 
-                  <p className="homeDesc">
-                    Your agent may already be built. Browse our library of pre-built agents designed to support common business processes, improve productivity, and accelerate deployment.
-                  </p>
- 
-                  <button
-                    className="homeBtn"
-                    onClick={() => navigate("/aiMarketPlace")}
-                  >
-                    Explore Agent Library
-                  </button>
- 
-                </div>
-              </div>
- 
-              {/* ✅ SKILLS TILE */}
-              <div className="homeTile">
-                <div className="homeTileInner">
- 
-                  <span className="homeTag">Skill Library</span>
- 
-                  <h3>90+ reusable skills to power your agents</h3>
- 
-                  <p className="homeDesc">
-                    Build faster with modular skills designed for extraction, analysis, orchestration, workflow automation, risk checks, and enterprise integrations.
-                  </p>
- 
-                  <button
-                    className="homeBtnAlt"
-                    onClick={() => navigate("/skillCard")}
-                  >
-                    Explore Skill Library
-                  </button>
- 
-                </div>
-              </div>
- 
-            </div>
+
+          <div className="content-section">
+
+    <div className="tiles">
+        {/* TILE 1 */}
+        <div className="tile">
+          <div className="tile-inner">
+
+            <h2>Agent Library</h2>
+            <p className="tile-subtitle">20+ enterprise agents, ready to explore</p>
+
+            <p className="desc">
+              Your agent may already be built. Browse our library of pre-built agents designed to support common business processes, improve productivity, and accelerate deployment.
+            </p>
+
+            <button className="cta" onClick={() => navigate("/aiMarketPlace")}>Explore Agent Library →</button>
           </div>
+        </div>
+
+        {/* TILE 2 */}
+        <div className="tile">
+          <div className="tile-inner">
+
+            <h2>Skills Library</h2>
+            <p className="tile-subtitle">90+ reusable skills to power your agents</p>
+
+            <p className="desc">
+Build faster with modular skills designed for extraction, analysis, orchestration, workflow automation, risk checks, and enterprise integrations.
+            </p>
+
+            <button className="cta" onClick={() => navigate("/skillCard")}>
+              Explore Skill Library →
+            </button>
+          </div>
+        </div>
+    </div>
+
+  </div>
         </>
       )}
  
@@ -130,4 +119,4 @@ function HomePage() {
   );
 }
  
-export default HomePage;
+export default AgentLibrary;

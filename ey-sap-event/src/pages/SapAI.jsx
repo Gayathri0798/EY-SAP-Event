@@ -9,19 +9,19 @@ export default function SapAI() {
       title: "Identify the right AI opportunities",
       content:
         "Prioritize SAP AI use cases that can improve productivity, decision-making and business outcomes.",
-      img: "/images/bot.jpeg",
+      img: "/images/sap1.png",
     },
     {
       title: "Build on a trusted SAP foundation",
       content:
         "Use SAP BTP, SAP Business AI, Joule, data and integration capabilities to embed AI into enterprise workflows.",
-      img: "/images/aihumhand.jpg",
+      img: "/images/sap2.png",
     },
     {
       title: "Scale with confidence",
       content:
         "Apply EY’s experience in governance, security, change management and value realization to make AI adoption sustainable.",
-      img: "/images/thinking.jpeg",
+      img: "/images/sap3.png",
     },
   ];
 
@@ -41,7 +41,7 @@ export default function SapAI() {
       {/* SECTION 2 - ACCORDION */}
       <section className="sap-section">
         <div className="sap-container">
-          <h2 className="font-ey">How EY helps bring SAP AI to life</h2>
+          <p className="sapai-title-heading">How EY helps bring SAP AI to life</p>
 
           <p className="sap-desc font-ey">
             EY helps organizations design, build and scale SAP AI capabilities
@@ -60,7 +60,7 @@ export default function SapAI() {
     >
       {/* HEADER */}
       <div className="accordion-header">
-        <h3 className={`font-ey ${active === index ? "active" : ""}`}>
+        <h3 className={`${active === index ? "active" : ""}`}>
           {item.title}
         </h3>
 
@@ -73,17 +73,17 @@ export default function SapAI() {
       {/* CONTENT */}
       {active === index && (
         <div className="accordion-content">
-          <div className="content-row">
+          {/* <div className="content-row"> */}
 
             <div className="text">
-              <p className="font-ey">{item.content}</p>
+              <p>{item.content}</p>
             </div>
 
             <div className="image">
               <img src={item.img} alt="ai visual" />
             </div>
 
-          </div>
+          {/* </div> */}
         </div>
       )}
     </div>
@@ -103,22 +103,24 @@ export default function SapAI() {
             />
           </div>
 
-          <h3 className="font-ey">Sales</h3>
-          <h4 className="font-ey">Smarter selling with AI</h4>
+          <p className="font-ey btm-card-title">Sales</p>
+          <p className="font-ey btm-card-desc">Smarter selling with AI</p>
 
+         <div className="btm-card-ddesc">
           <p className="font-ey">
             Assess the readiness of your organization to apply SAP AI across
             customer insights, forecasting, lead-to-cash automation and
             personalized engagement.
           </p>
-
+</div>
+<div className="btm-anchor">
           <a
             href="https://discovery-center.cloud.sap/maturity-assessment/?type=ai-cx"
             target="_blank"
             rel="noreferrer"
           >
             Start Assessment →
-          </a>
+          </a></div>
         </div>
 
         {/* FINANCE */}
@@ -130,15 +132,15 @@ export default function SapAI() {
             />
           </div>
 
-          <h3 className="font-ey">Finance</h3>
-          <h4 className="font-ey">Intelligent finance operations</h4>
-
+          <p className="font-ey btm-card-title">Finance</p>
+          <p className="font-ey btm-card-desc">Intelligent finance operations</p>
+ <div className="btm-card-ddesc">
           <p className="font-ey">
             Assess the readiness of your organisation to apply SAP AI across
             planning, financial close, reporting, controls, cash visibility and
             decision support.
-          </p>
-
+          </p></div>
+<div className="btm-anchor">
           <a
             href="https://discovery-center.cloud.sap/maturity-assessment/?type=ai-finance"
             target="_blank"
@@ -146,7 +148,7 @@ export default function SapAI() {
           >
             Start Assessment →
           </a>
-        </div>
+        </div></div>
 
         {/* PROCUREMENT */}
         <div className="card">
@@ -157,15 +159,16 @@ export default function SapAI() {
             />
           </div>
 
-          <h3 className="font-ey">Procurement</h3>
-          <h4 className="font-ey">Intelligent spend management</h4>
-
-          <p className="font-ey">
+          <p className="font-ey btm-card-title">Procurement</p>
+          <p className="font-ey8 btm-card-desc">Intelligent spend management</p>
+ <div className="btm-card-ddesc">
+          <p className="font-ey btm-card-ddesc">
             Assess the readiness of your organization to apply SAP AI across
             sourcing, supplier insights, spend analysis, contract compliance and
             process efficiency.
           </p>
-
+</div>
+     <div className="btm-anchor">
           <a
             href="https://discovery-center.cloud.sap/maturity-assessment/?type=ai-procurement"
             target="_blank"
@@ -174,7 +177,7 @@ export default function SapAI() {
             Start Assessment →
           </a>
         </div>
-
+</div>
         {/* HR */}
         <div className="card">
           <div className="card-header orange">
@@ -184,15 +187,15 @@ export default function SapAI() {
             />
           </div>
 
-          <h3 className="font-ey">Human Resources</h3>
-          <h4 className="font-ey">AI-enabled workforce experiences</h4>
-
-          <p className="font-ey">
+          <p className="font-ey btm-card-title">Human Resources</p>
+          <p className="font-ey btm-card-desc">AI-enabled workforce experiences</p>
+ <div className="btm-card-ddesc">
+          <p className="font-ey btm-card-ddesc">
             Assess the readiness of your organization to apply SAP AI across
             employee experience, service delivery, skills planning, talent
             processes and workforce insights.
-          </p>
-
+          </p></div>
+<div className="btm-anchor">
           <a
             href="https://discovery-center.cloud.sap/maturity-assessment/?type=ai-hr"
             target="_blank"
@@ -200,6 +203,7 @@ export default function SapAI() {
           >
             Start Assessment →
           </a>
+          </div>
         </div>
       </div>
     </>

@@ -218,20 +218,17 @@ export default function SkillsGrid() {
   return (
     <div className="skillsPage animatePage">
 
-      <section className="skills-hero">
-        <div className="skills-overlay"></div>
-
-        <div className="skills-content-hero">
-          <h1>
-            Build faster with ready-to-use skills <br />
+      {/* ✅ HEADING */}
+      <div className="headingText animateFadeUp delay-1">
+        <h1>
+          Build faster with ready-to-use skills <br />
           Skill Library
-          </h1>
+        </h1>
 
-          <p>
-            Discover reusable skills designed to power enterprise agents.
-          </p>
-        </div>
-      </section>
+        <p>
+          Discover reusable skills designed to power enterprise agents.
+        </p>
+      </div>
 
       <div className="layout">
 
@@ -265,28 +262,7 @@ export default function SkillsGrid() {
         <div className="skills-content">
           <div className="grid">
             {filteredCards.map((item, i) => (
-              <div
-                className="skillCard animateCard"
-                key={i}
-                style={{ animationDelay: `${i * 0.07}s` }}
-
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-
-                  const rotateX = -(y - rect.height / 2) / 15;
-                  const rotateY = (x - rect.width / 2) / 15;
-
-                  e.currentTarget.style.transform =
-                    `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-                }}
-
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform =
-                    "rotateX(0deg) rotateY(0deg) scale(1)";
-                }}
-              >
+              <div className="skillCard" key={item.id || i}>
                 <div className="bucket">{item.bucket}</div>
                 <div className="title">{item.skill}</div>
                 <div className="desc-text">{item.desc}</div>

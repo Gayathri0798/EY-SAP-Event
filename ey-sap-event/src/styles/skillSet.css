@@ -3,7 +3,62 @@
   gap: 20px;
 height: calc(100vh - 120px);
   min-height: 0;
+ margin-top: 30px;
+}
+.skills-hero {
+  position: relative;
+  height: 100vh;
+  background: url("/images/bot.jpeg")
+    no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
+}
 
+/* Gradient overlay (dark left side like your image) */
+.skills-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.7) 40%,
+    rgba(0, 0, 0, 0.2) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Content */
+.skills-content-hero {
+  position: relative;
+  /* max-width: 600px; */
+  padding-left: 80px;
+  color: white;
+  /* padding-top: 100px; */
+}
+
+.skills-content-hero h1 {
+ font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
+
+  /* ✅ Gradient Text */
+  background: linear-gradient(to right, #facc15, #ca8a04);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.skills-content-hero p {
+  font-size: 18px;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 512px;
 }
 
 /* LEFT PANEL */
@@ -53,7 +108,9 @@ scrollbar-width: none;
 .skills-content::-webkit-scrollbar {
   display: none;
 }
-
+.overlay{
+  margin-bottom: 30px;
+}
 /* .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

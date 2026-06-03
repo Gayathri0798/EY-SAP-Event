@@ -96,21 +96,20 @@ export default function AiMarketPlace() {
     <div className="mainclass">
       
       {/* ===== HEADER ===== */}
-      <div className="headingWrapper">
-        <h1>
-          Before you build, browse <br />
-          our <span className="yellowText">agent library</span>
-        </h1>
+      <section className="agents-hero">
+        <div className="agents-overlay"></div>
 
-        <p>
-          Accelerate development with a curated collection of pre-built agents designed for common enterprise use cases. Reuse proven capabilities, reduce implementation effort, and scale faster across teams. 
-        </p>
+        <div className="agents-content-hero">
+          <h1>
+            Before you build, browse <br /> our 
+         Agent Library
+          </h1>
 
-        {/* <div className="btnGroup">
-          <button className="primaryBtn">Start Browsing</button>
-          <button className="secondaryBtn">Documentation</button>
-        </div> */}
-      </div>
+          <p>
+            Accelerate development with a curated collection of pre-built agents designed for common enterprise use cases. Reuse proven capabilities, reduce implementation effort, and scale faster across teams. 
+          </p>
+        </div>
+      </section>
 
       {/* ===== GRID CARDS ===== */}
       <div className="sliderWrapper">

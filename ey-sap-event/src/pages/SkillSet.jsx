@@ -218,17 +218,20 @@ export default function SkillsGrid() {
   return (
     <div className="skillsPage animatePage">
 
-      {/* ✅ HEADING */}
-      <div className="headingText animateFadeUp delay-1">
-        <h1>
-          Build faster with ready-to-use skills <br />
-          Skill Library
-        </h1>
+      <section className="skills-hero">
+        <div className="skills-overlay"></div>
 
-        <p>
-          Discover reusable skills designed to power enterprise agents.
-        </p>
-      </div>
+        <div className="skills-content-hero">
+          <h1>
+            Build faster with ready-to-use skills <br />
+          Skill Library
+          </h1>
+
+          <p>
+            Discover reusable skills designed to power enterprise agents.
+          </p>
+        </div>
+      </section>
 
       <div className="layout">
 

@@ -16,6 +16,12 @@ export default function TalkToExperts() {
       text: "The overall sentiment has been very positive. Everyone consistently highlighted how well-structured, intuitive, and realistic the experience felt - especially the scenario-based questions, accuracy of questions/prompt and impressive speech-to-text responsiveness and the availability of a detailed feedback report at the end of the session. The tool helps presenters focus on structure, timing, and critical talking points. Our team plans to use it before their upcoming presentations because they see it adds real value. The flexibility across different permit types and scenarios to practice was also called out as a standout feature, along with the reflective follow up questions that simulate a genuine discussion.",
     },
     {
+      name: "Bhavana Advani",
+      role: "SAP Alliance Lead - Partner",
+      image: "/images/bhavanaAdvani.png",
+      text: "The overall sentiment has been very positive. Everyone consistently highlighted how well-structured, intuitive, and realistic the experience felt - especially the scenario-based questions, accuracy of questions/prompt and impressive speech-to-text responsiveness and the availability of a detailed feedback report at the end of the session. The tool helps presenters focus on structure, timing, and critical talking points. Our team plans to use it before their upcoming presentations because they see it adds real value. The flexibility across different permit types and scenarios to practice was also called out as a standout feature, along with the reflective follow up questions that simulate a genuine discussion.",
+    },
+    {
       name: "Hari Balaji",
       role: "Partner, Technology ConsultingGenAI | AI-led Transformation, EY",
       image: "/images/hari-balaji.png",
@@ -94,15 +100,65 @@ const prev = () => {
           </div>
 
           {/* SMALL PROFILE (OVERLAY) */}
-          <div className="expert-profile">
-            <img
-              src={experts[active].image}
-              alt={experts[active].name}
-              className="main-avatar"
-            />
-            <p className="expert-name">{experts[active].name}</p>
-            <p className="expert-role">{experts[active].role}</p>
-          </div>
+          <div 
+  className="expert-profile"
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center', // Keeps image, name, and role perfectly centered horizontally
+    justifyContent: 'center',
+    textAlign: 'center',
+    width: '180px', // Gives the block a fixed width so it doesn't expand/shrink
+    position: 'absolute', // Assuming this overlays on the circle graphic in "86a48bf7-cc16-4a2f-aeb0-38b1d289e5a5"
+    left: '15%', // Adjust this positioning offset to match your exact visual preference
+    top: '50%',
+    transform: 'translateY(-50%)',
+    zIndex: 10
+  }}
+>
+  <img
+    src={experts[active].image}
+    alt={experts[active].name}
+    className="main-avatar"
+    style={{
+      width: '120px', // Lock the image width explicitly
+      height: '120px', // Lock the image height explicitly
+      borderRadius: '50%', // Ensures a perfect circle shape
+      objectFit: 'cover', // Prevents image distortion if the aspect ratio varies
+      flexShrink: 0, // Crucial: Prevents text from squeezing or shrinking the image size
+      marginBottom: '12px' // Fixed separation space before the name text
+    }}
+  />
+  
+  <p 
+    className="expert-name"
+    style={{
+      fontSize: '1rem',
+      fontWeight: '600',
+      color: '#ffffff',
+      margin: '0 0 4px 0',
+      width: '100%', // Restricts text box width to the parent profile block boundary
+      whiteSpace: 'normal', // Allows long names to break wrap elegantly onto a second line
+      wordBreak: 'break-word' // Prevents extra long strings from breaking outside layout margins
+    }}
+  >
+    {experts[active].name}
+  </p>
+  
+  <p 
+    className="expert-role"
+    style={{
+      fontSize: '0.85rem',
+      color: '#cccccc',
+      margin: '0',
+      width: '100%',
+      whiteSpace: 'normal',
+      wordBreak: 'break-word'
+    }}
+  >
+    {experts[active].role}
+  </p>
+</div>
         </div>
 
         {/* ✅ RIGHT SIDE CAROUSEL */}

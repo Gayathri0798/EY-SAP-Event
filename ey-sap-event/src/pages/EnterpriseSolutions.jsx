@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 export default function EnterpriseSolutions() {
   const features = [
     {
-      title: "SAP AI Ecosystem",
+      title: "SAP Embedded Solutions",
       desc: "120+ enterprise use cases powered by Joule, Embedded AI and GenAI across Finance, spend, SCM, HCM, Customer experience.",
       img: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1200&auto=format&fit=crop",
       link: "/sapEcoSystem",

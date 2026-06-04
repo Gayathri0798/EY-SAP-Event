@@ -18,7 +18,7 @@ export default function AgentLanding() {
   <div className="banner-section">
     <Banner
       title="Build Enterprise AI Agents at Scale"
-      subtitle="Create, orchestrate and govern intelligent agents powered by EY Nexus."
+      subtitle="Create, orchestrate and govern intelligent agents powered by EY SAP Nexus."
       buttonText="Learn more"
       image="/images/lego.jpeg"
     />
@@ -33,7 +33,7 @@ export default function AgentLanding() {
           <div className="tile-inner">
             <span className="tag">Platform</span>
 
-            <h2>EY Nexus</h2>
+            <h2>EY SAP Nexus</h2>
             <p className="tile-subtitle">Enterprise Agent Platform</p>
 
             <p className="desc">

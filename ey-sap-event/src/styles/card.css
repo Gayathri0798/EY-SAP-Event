@@ -1,4 +1,4 @@
-/* ✅ WRAPPER */
+/*   WRAPPER */
 .mainclass {
   background: #f3f4f6;
   color: #111;
@@ -46,7 +46,7 @@
   margin-bottom: 24px;
   font-family: EYInterstate, "Noto Sans", sans-serif;
 
-  /* ✅ Gradient Text */
+  /*   Gradient Text */
   background: linear-gradient(to right, #facc15, #ca8a04);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -94,7 +94,7 @@
   text-align: center; */
 }
 
-/* ✅ YELLOW TEXT */
+/*   YELLOW TEXT */
 .yellowText {
 color: #facc15;
   text-shadow: 
@@ -161,7 +161,7 @@ color: #facc15;
     letter-spacing: -0.02em;
     margin-bottom: 24px;
 
-  /* ✅ KEEP DARK CARD (contrast stays) */
+  /*   KEEP DARK CARD (contrast stays) */
   background: radial-gradient(
       circle at top left,
       rgba(255, 212, 0, 0.12),
@@ -257,7 +257,7 @@ margin-top: 30px;
   );
 }
 
-/* ✅ FIX fade for light bg */
+/*   FIX fade for light bg */
 .slider::before {
   left: 0;
   background: linear-gradient(to right, #f3f4f6, transparent);

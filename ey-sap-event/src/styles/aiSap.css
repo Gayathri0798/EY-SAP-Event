@@ -38,7 +38,7 @@
   margin-bottom: 24px;
   font-family: EYInterstate, "Noto Sans", sans-serif;
 
-  /* ✅ Gradient Text */
+  /*   Gradient Text */
   background: linear-gradient(to right, #facc15, #ca8a04);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

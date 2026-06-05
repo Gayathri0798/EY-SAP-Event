@@ -45,15 +45,15 @@ export default function AwardsSection() {
         {awards.map((award, index) => (
           <div className="award-item" key={index}>
 
-            {/* ✅ Image */}
+            {/* Image */}
             <div className="award-image">
               <img src={award.image} alt={award.title} />
             </div>
 
-            {/* ✅ Title */}
+            {/* Title */}
             <h5>{award.title}</h5>
 
-            {/* ✅ Description */}
+            {/* Description */}
             <p>{award.description}</p>
 
           </div>

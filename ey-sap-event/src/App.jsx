@@ -64,9 +64,9 @@ function App() {
     <div className="page-wrapper">
       <Navbar />
 
-      <ScrollToTop /> {/* ✅ scroll always reset */}
+      <ScrollToTop /> {/* scroll always reset */}
 
-      <AnimatedRoutes /> {/* ✅ animated navigation */}
+      <AnimatedRoutes /> {/* animated navigation */}
 
       <Footer />
     </div>

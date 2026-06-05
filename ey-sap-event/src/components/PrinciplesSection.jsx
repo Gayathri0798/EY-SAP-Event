@@ -43,7 +43,7 @@ const principles = [
 export default function PrinciplesGrid() {
   return (
     <section className="principles-grid-section">
-        {/* ✅ NEW EY INTRO BLOCK */}
+        {/*   NEW EY INTRO BLOCK */}
   <div className="principles-intro">
 
 <h1 className="ey-heading">

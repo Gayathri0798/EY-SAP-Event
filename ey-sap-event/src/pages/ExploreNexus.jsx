@@ -31,7 +31,7 @@ export default function ExploreNexus() {
   ];
 
   
- // ✅ AUTO LOOP
+ //   AUTO LOOP
   useEffect(() => {
     const interval = setInterval(() => {
       setActive(prev => (prev + 1) % sections.length);
@@ -52,7 +52,7 @@ export default function ExploreNexus() {
 
 <div className="auto-showcase">
 
-      {/* ✅ MAIN DISPLAY */}
+      {/*   MAIN DISPLAY */}
       <div className="showcase-content">
 
         <div className="showcase-image">
@@ -66,7 +66,7 @@ export default function ExploreNexus() {
 
       </div>
 
-      {/* ✅ PROGRESS INDICATORS */}
+      {/*   PROGRESS INDICATORS */}
       <div className="progress-dots">
         {sections.map((_, i) => (
           <span

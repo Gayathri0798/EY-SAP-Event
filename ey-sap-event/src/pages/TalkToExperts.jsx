@@ -90,7 +90,7 @@ const prev = () => {
       </h2> */}
 
       <div className="experts-container">
-        {/* ✅ LEFT MAIN PROFILE */}
+        {/*   LEFT MAIN PROFILE */}
         <div className="experts-main">
           {/* BIG CIRCLE (CENTER) */}
           <div className="expert-content">
@@ -161,7 +161,7 @@ const prev = () => {
 </div>
         </div>
 
-        {/* ✅ RIGHT SIDE CAROUSEL */}
+        {/*   RIGHT SIDE CAROUSEL */}
 
 <div className="expert-carousel">
 
@@ -189,7 +189,7 @@ const prev = () => {
     </div>
   </div>
 
-  {/* BOTTOM ARROW ✅ FIXED */}
+  {/* BOTTOM ARROW   FIXED */}
   <button className="arrow bottom" onClick={next}>▼</button>
 
 </div>

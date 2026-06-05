@@ -125,7 +125,7 @@
 /* GRID -> 2 CARDS PER ROW */
 .solutions-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* ✅ fixed 2 per row */
+  grid-template-columns: repeat(2, 1fr); /*   fixed 2 per row */
   gap: 24px;
 }
 
@@ -178,7 +178,7 @@
   margin: 0 auto;
 }
 
-/* ✅ RESPONSIVE FIX */
+/*   RESPONSIVE FIX */
 @media (max-width: 768px) {
   .solutions-grid {
     grid-template-columns: 1fr; /* mobile */

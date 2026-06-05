@@ -76,7 +76,7 @@
 .hero-content-left {
   position: absolute;
   top: 55%;
-  left: 80px;     /* ✅ spacing from left */
+  left: 80px;     /*   spacing from left */
 
   transform: translateY(-50%);
   max-width: 700px;
@@ -200,9 +200,9 @@ height: 36px;
 
 .sap-logo {
   height: 20px;
-  width: 60px;         /* ✅ keep aspect ratio */
+  width: 60px;         /*   keep aspect ratio */
  filter: brightness(1.0);
-  /* transform: scaleX(1.3);  ✅ widen visually */
+  /* transform: scaleX(1.3);    widen visually */
   bottom: 0;
   padding-top: 10px
 }

@@ -180,8 +180,8 @@ radial-gradient(circle at 100% 10%, rgba(16, 16, 15, 0.25), transparent 40%),
   color: #ff7b7b;
 }
 .chart-container {
-  width: 160px;     /* ✅ control size */
-  height: 160px;    /* ✅ keep it square */
+  width: 160px;     /*   control size */
+  height: 160px;    /*   keep it square */
   margin: 10px auto 20px;
 }
 
@@ -332,8 +332,8 @@ position: fixed;
   display: flex;
   justify-content: center;
 
-  align-items: flex-start;   /* ✅ CHANGE THIS */
-  padding-top: 10px;         /* ✅ pushes modal slightly down */
+  align-items: flex-start;   /*   CHANGE THIS */
+  padding-top: 10px;         /*   pushes modal slightly down */
 
   backdrop-filter: blur(0px);
   z-index: 1000;
@@ -396,7 +396,7 @@ position: fixed;
   margin-top: 25px;
 
   border-radius: 10px;
-  overflow: hidden;   /* ✅ important */
+  overflow: hidden;   /*   important */
 }
 
 .modal-left {
@@ -407,14 +407,14 @@ flex: 2;
   padding: 25px;
 
   border-right: 1px solid #3a3a5a;
- /* ✅ divider */
+ /*   divider */
 }
 
 .modal-right {
   
 flex: 1.5;
 
-  background: #303041;  /* ✅ different shade (matches Nitro) */
+  background: #303041;  /*   different shade (matches Nitro) */
   padding: 25px;
 
   /* max-height: 65vh;

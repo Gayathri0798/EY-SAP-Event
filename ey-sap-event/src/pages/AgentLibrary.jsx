@@ -25,10 +25,10 @@ function AgentLibrary() {
       )} */}
  
  
-      {/* ✅ HOME VIEW */}
+      {/*   HOME VIEW */}
       {view === "home" && (
         <>
-          {/* ✅ HERO */}
+          {/*   HERO */}
           <div className="homeHero">
             <div className="homeHeroContent">
               <h1>
@@ -40,7 +40,7 @@ function AgentLibrary() {
             </div>
           </div>
  
-          {/* ✅ SECTION */}
+          {/*   SECTION */}
 
           <div className="content-section">
 
@@ -82,7 +82,7 @@ Build faster with modular skills designed for extraction, analysis, orchestratio
         </>
       )}
  
-      {/* ✅ MARKETPLACE */}
+      {/*   MARKETPLACE */}
       {view === "marketplace" && (
         <>
           <AiMarketPlace />
@@ -98,7 +98,7 @@ Build faster with modular skills designed for extraction, analysis, orchestratio
         </>
       )}
  
-      {/* ✅ SKILLS */}
+      {/*   SKILLS */}
       {view === "skills" && (
         <>
           <SkillsGrid />

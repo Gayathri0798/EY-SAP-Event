@@ -179,7 +179,7 @@ export default function SAPEcoSystem() {
   return (
     <div className="ai-container">
 
-      {/* ✅ SIDEBAR */}
+      {/*   SIDEBAR */}
       <div className="sidebar">
         
 <h2 className="filter-main-heading">
@@ -197,7 +197,7 @@ export default function SAPEcoSystem() {
         ))}
       </div>
 
-      {/* ✅ CONTENT */}
+      {/*   CONTENT */}
       <div className="content-area">
         <h2 className="ai-font">{active} Solutions</h2>
 

@@ -12,7 +12,7 @@ margin-top: 20px;
 
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }  /* ✅ THIS WAS MISSING */
+  50% { background-position: 100% 50%; }  /*   THIS WAS MISSING */
   100% { background-position: 0% 50%; }
 }
 

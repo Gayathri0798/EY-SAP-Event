@@ -3,7 +3,7 @@
     flex-direction: column;
     min-height: 75vh;
     justify-content: center;
-   padding: 70px 80px 95px;           /* ✅ full viewport */
+   padding: 70px 80px 95px;           /*   full viewport */
   /* display: flex;
   flex-direction: column; */
  font-family: EYInterstate, "Noto Sans", sans-serif;
@@ -14,7 +14,7 @@
 
   color: white;
 
-  overflow: hidden;         /* ✅ prevents footer overlap */
+  overflow: hidden;         /*   prevents footer overlap */
 }
 .heading{
     font-weight: 400;
@@ -58,10 +58,10 @@
 .expert-profile {
   position: absolute;
 
-  left: calc(50% - 240px);   /* ✅ adjust horizontal */
+  left: calc(50% - 240px);   /*   adjust horizontal */
   top: 60%;
 
-  transform: translate(-40%, -10%);   /* ✅ FULL CENTER FIX */
+  transform: translate(-40%, -10%);   /*   FULL CENTER FIX */
 
   z-index: 3;
   text-align: center;
@@ -87,7 +87,7 @@
 }
 
 .content-circle {
-  width: 380px;     /* ✅ reduced from 380/420 */
+  width: 380px;     /*   reduced from 380/420 */
   height: 380px;
 
   border-radius: 50%;
@@ -97,7 +97,7 @@
 
   position: absolute;
 
-  right: 30%;        /* ✅ pushes circle slightly right */
+  right: 30%;        /*   pushes circle slightly right */
   top: 50%;
 
   transform: translateY(-50%);
@@ -144,7 +144,7 @@ display: flex;
 
 /* each item */
 .carousel-item {
-  height: 90px;          /* ✅ fixed item height */
+  height: 90px;          /*   fixed item height */
 
   display: flex;
   flex-direction: column;
@@ -161,7 +161,7 @@ display: flex;
   height: 60px;
 
   border-radius: 50%;
-  object-fit: cover;     /* ✅ prevents distortion */
+  object-fit: cover;     /*   prevents distortion */
 }
 
 /* .carousel-item img {
@@ -181,7 +181,7 @@ display: flex;
 }
 
 .carousel-window {
-  height: 270px;           /* ✅ exactly 3 items */
+  height: 270px;           /*   exactly 3 items */
   overflow: hidden;
 }
 
@@ -201,14 +201,14 @@ display: flex;
 .content-circle p {
   position: absolute;
 
-  left: 100px;     /* ✅ pushes text OUTSIDE circle */
+  left: 100px;     /*   pushes text OUTSIDE circle */
   width: 430px; 
-  height: 150px;    /* ✅ allows natural flow */
+  height: 150px;    /*   allows natural flow */
 
   top: 40%;
   transform: translateY(-50%);
 
-  text-align: left; /* ✅ IMPORTANT */
+  text-align: left; /*   IMPORTANT */
   color: #ddd;
 
   line-height: 1.7;

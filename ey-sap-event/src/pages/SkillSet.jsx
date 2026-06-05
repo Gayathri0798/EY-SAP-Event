@@ -201,7 +201,7 @@ export default function SkillsGrid() {
   ]
   };
 
-  // ✅ Flatten data
+  //   Flatten data
   const allCards = Object.keys(data).flatMap(bucket =>
     data[bucket].map(item => ({
       ...item,
@@ -209,7 +209,7 @@ export default function SkillsGrid() {
     }))
   );
 
-  // ✅ Filter
+  //   Filter
   const filteredCards =
     selectedBucket === "All"
       ? allCards
@@ -218,7 +218,7 @@ export default function SkillsGrid() {
   return (
     <div className="skillsPage animatePage">
 
-      {/* ✅ HEADING */}
+      {/*   HEADING */}
       <div className="headingText animateFadeUp delay-1">
         <h1>
           Build faster with ready-to-use skills <br />
@@ -232,7 +232,7 @@ export default function SkillsGrid() {
 
       <div className="layout">
 
-        {/* ✅ SIDEBAR */}
+        {/*   SIDEBAR */}
         <div className="sidebar">
           <h3>Quick Filters</h3>
 
@@ -258,7 +258,7 @@ export default function SkillsGrid() {
           ))}
         </div>
 
-        {/* ✅ CONTENT */}
+        {/*   CONTENT */}
         <div className="skills-content">
           <div className="grid">
             {filteredCards.map((item, i) => (

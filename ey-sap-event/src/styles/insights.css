@@ -1,4 +1,4 @@
-/* ✅ Page */
+/*   Page */
 .insights-page {
   background: #ffffff;
   padding: 40px 80px;
@@ -6,7 +6,7 @@
   color: 2e2e38;
 }
 
-/* ✅ Title */
+/*   Title */
 .page-title {
   font-size: 28px;
   font-weight: 600;
@@ -15,14 +15,14 @@
   color: #1a1a1a;
 }
 
-/* ✅ Grid */
+/*   Grid */
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
-/* ✅ Card */
+/*   Card */
 .insight-card {
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
 
-  height: 100%;   /* ✅ important */
+  height: 100%;   /*   important */
 }
 
 .insight-card:hover {
@@ -53,7 +53,7 @@
 
   padding-top: 12px;
 
-  flex-grow: 1;   /* ✅ fills available space */
+  flex-grow: 1;   /*   fills available space */
 }
 
 /* Title inside card */

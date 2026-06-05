@@ -19,8 +19,8 @@
   letter-spacing: -0.02em;
 
   
-position: fixed;   /* ✅ makes it stick */
-  top: 0;            /* ✅ sticks to top */
+position: fixed;   /*   makes it stick */
+  top: 0;            /*   sticks to top */
   left: 0;
   width: 100%;  
   z-index: 900;

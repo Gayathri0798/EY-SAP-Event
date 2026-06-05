@@ -1,4 +1,4 @@
-/* ✅ Page background */
+/*   Page background */
 .explore-dark {
  
  /* background:
@@ -10,7 +10,7 @@
   font-family: EYInterstate, "Noto Sans", sans-serif;
 }
 
-/* ✅ Section layout */
+/*   Section layout */
 .section {
   
  display: flex;
@@ -24,12 +24,12 @@
 
 }
 
-/* ✅ Alternate layout */
+/*   Alternate layout */
 .section.reverse {
   flex-direction: row-reverse;
 }
 
-/* ✅ Image card */
+/*   Image card */
 .image-card {
   flex: 1;
   border-radius: 24px;
@@ -73,12 +73,12 @@
   transform: scale(1.06);
 }
 
-/* ✅ Text */
+/*   Text */
 .text-content {
   flex: 1;
 }
 
-/* ✅ EY Dark Typography */
+/*   EY Dark Typography */
 .text-content h2 {
   font-size: 34px;
   font-weight: 600;
@@ -87,7 +87,7 @@
   margin-bottom: 18px;
   line-height: 1.3;
 }
-/* ✅ EY Yellow Accent */
+/*   EY Yellow Accent */
 .text-content h2::before {
   content: "";
   display: block;
@@ -109,7 +109,7 @@
   letter-spacing: 0.2px;
 }
 
-/* ✅ Link */
+/*   Link */
 .explore-link {
   color: #4da3ff; /* EY-like blue accent */
   font-size: 16px;
@@ -127,7 +127,7 @@
 }
 
 .banner-heading {
-  font-size: 24px;     /* ✅ smaller than main */
+  font-size: 24px;     /*   smaller than main */
   font-weight: 500;
 
   color: #ffffff;

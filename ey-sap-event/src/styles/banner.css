@@ -14,7 +14,7 @@
 
   z-index: 0;
 
-  filter: brightness(2);   /* ✅ IMPORTANT: keep natural image */
+  filter: brightness(2);   /*   IMPORTANT: keep natural image */
 }
 .banner-overlay {
   position: absolute;
@@ -23,9 +23,9 @@
 
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.85) 0%,   /* ✅ readable area */
+    rgba(0, 0, 0, 0.85) 0%,   /*   readable area */
     rgba(0, 0, 0, 0.75) 25%,
-    rgba(0, 0, 0, 0.6) 40%,   /* ✅ smooth blending */
+    rgba(0, 0, 0, 0.6) 40%,   /*   smooth blending */
     rgba(0, 0, 0, 0.35) 60%,
     rgba(0, 0, 0, 0.15) 75%,
     transparent 10%
@@ -35,7 +35,7 @@
 
 .banner-content {
   position: relative;
-  z-index: 2;   /* ✅ text always visible */
+  z-index: 2;   /*   text always visible */
 
   max-width: 650px;
   padding-left: 80px;
@@ -105,7 +105,7 @@
   position: relative;
   z-index: 1;
 
-  /* ✅ BLEND EFFECT */
+  /*   BLEND EFFECT */
   mask-image: linear-gradient(
     to left,
     rgba(0,0,0,1) 70%,

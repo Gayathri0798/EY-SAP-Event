@@ -8,13 +8,13 @@ export default function Banner({
   return (
    <div className="banner">
 
-  {/* ✅ IMAGE */}
+  {/* IMAGE */}
   <div className="banner-bg"></div>
 
-  {/* ✅ DARK OVERLAY */}
+  {/* DARK OVERLAY */}
   <div className="banner-overlay"></div>
 
-  {/* ✅ CONTENT */}
+  {/* CONTENT */}
   <div className="banner-content">
     <h1>{title}</h1>
     <div className="banner-heading">{heading}</div>

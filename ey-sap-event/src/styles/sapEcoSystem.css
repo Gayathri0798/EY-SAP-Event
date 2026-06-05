@@ -8,7 +8,7 @@
   font-family: EYInterstate, "Noto Sans", sans-serif;
   overflow: hidden;
   
-height: calc(100vh - 65px);   /* ✅ MUST ADD THIS */
+height: calc(100vh - 65px);   /*   MUST ADD THIS */
   overflow: hidden;
 
 }
@@ -17,8 +17,8 @@ height: calc(100vh - 65px);   /* ✅ MUST ADD THIS */
 .content-area {
   flex: 1;
   width: 100%;
-  height: 100%;   /* ✅ full viewport height */
-overflow-y: auto;   /* ✅ ONLY THIS SCROLLS */
+  height: 100%;   /*   full viewport height */
+overflow-y: auto;   /*   ONLY THIS SCROLLS */
 scrollbar-width: none;
   min-height: 0;
 
@@ -32,8 +32,8 @@ scrollbar-width: none;
 .sidebar {
   width: 220px;
   
-height: 100%;     /* ✅ stretch full height */
-  overflow-y: auto; /* ✅ if filters grow */
+height: 100%;     /*   stretch full height */
+  overflow-y: auto; /*   if filters grow */
 
   flex-shrink: 0;
 
@@ -86,7 +86,7 @@ height: 100%;     /* ✅ stretch full height */
   display: flex;
 }
 .box-descr {
-  margin-left: 28px;   /* ✅ align with title start */
+  margin-left: 28px;   /*   align with title start */
 
   font-size: 14px;
   color: #6b7280;
@@ -122,7 +122,7 @@ height: 100%;     /* ✅ stretch full height */
     max-width: 512px;
     margin-top: 4px;
 
-  /* ✅ IMPORTANT (no cutting) */
+  /*   IMPORTANT (no cutting) */
   white-space: normal;
 }
 .filter-main-heading {

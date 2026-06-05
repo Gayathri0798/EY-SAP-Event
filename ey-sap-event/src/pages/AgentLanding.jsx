@@ -14,7 +14,7 @@ export default function AgentLanding() {
   return (
     <div className="agent-page">
 
-  {/* ✅ FULL WIDTH BANNER */}
+  {/*   FULL WIDTH BANNER */}
   <div className="banner-section">
     <Banner
       title="Build Enterprise AI Agents at Scale"
@@ -24,7 +24,7 @@ export default function AgentLanding() {
     />
   </div>
 
-  {/* ✅ CONTENT SECTION (WITH PADDING) */}
+  {/*   CONTENT SECTION (WITH PADDING) */}
   <div className="content-section">
 
     <div className="tiles">

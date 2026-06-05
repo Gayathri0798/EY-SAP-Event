@@ -46,7 +46,7 @@ height: calc(100vh - 120px);
   margin-bottom: 24px;
   font-family: EYInterstate, "Noto Sans", sans-serif;
 
-  /* ✅ Gradient Text */
+  /*   Gradient Text */
   background: linear-gradient(to right, #facc15, #ca8a04);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -96,8 +96,8 @@ height: calc(100vh - 120px);
   /* z-index: -999; */
   padding-right: 30px;
   
-overflow-y: auto;   /* ✅ ADD THIS */
-  height: 100%;       /* ✅ ADD THIS */
+overflow-y: auto;   /*   ADD THIS */
+  height: 100%;       /*   ADD THIS */
   min-height: 0; 
 
 scrollbar-width: none;
@@ -153,7 +153,7 @@ scrollbar-width: none;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 18px;
-  perspective: 1000px;   /* ✅ REQUIRED */
+  perspective: 1000px;   /*   REQUIRED */
 }
 
 
@@ -310,7 +310,7 @@ scrollbar-width: none;
     margin-bottom: 24px; */
 
 
-    /* ✅ PAGE FADE IN */
+    /*   PAGE FADE IN */
 .animatePage {
   animation: fadeInPage 0.8s ease-in-out;
 }
@@ -326,7 +326,7 @@ scrollbar-width: none;
   }
 }
 
-/* ✅ TEXT ANIMATION */
+/*   TEXT ANIMATION */
 .animateFadeUp {
   opacity: 0;
   transform: translateY(20px);
@@ -337,14 +337,14 @@ scrollbar-width: none;
   animation-delay: 0.2s;
 }
 
-/* ✅ CARD STAGGER ANIMATION */
+/*   CARD STAGGER ANIMATION */
 .animateCard {
   opacity: 0;
   transform: translateY(30px) scale(0.96);
   animation: cardFadeUp 0.6s forwards ease;
 }
 
-/* ✅ KEYFRAMES */
+/*   KEYFRAMES */
 @keyframes fadeUp {
   to {
     opacity: 1;

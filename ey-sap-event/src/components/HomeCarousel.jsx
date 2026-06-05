@@ -82,7 +82,7 @@ export default function HomeCarousel() {
           className={`slide ${index === current ? "active" : ""}`}
         >
 
-          {/* ✅ FIXED IMAGE RENDER */}
+          {/* FIXED IMAGE RENDER */}
           {slide.type === "video" ? (
   <video
     autoPlay

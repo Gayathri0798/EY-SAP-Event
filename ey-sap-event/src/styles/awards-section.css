@@ -22,7 +22,7 @@ border-top: 16px solid #ffffff;
 
 
 .awards-title {
-  font-size: 32px;        /* ✅ larger */
+  font-size: 32px;        /*   larger */
   font-weight: 600;
   color: #1f2937;
 
@@ -35,9 +35,9 @@ border-top: 16px solid #ffffff;
 .awards-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 60px;             /* ✅ more spacing */
+  gap: 60px;             /*   more spacing */
 
-  max-width: 1400px;     /* ✅ wider layout */
+  max-width: 1400px;     /*   wider layout */
   margin: auto;
 }
 
@@ -46,7 +46,7 @@ border-top: 16px solid #ffffff;
 }
 
 .award-image {
-  height: 120px;               /* ✅ bigger container */
+  height: 120px;               /*   bigger container */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,7 +55,7 @@ border-top: 16px solid #ffffff;
 }
 
 .award-image img {
-  max-height: 250px;            /* ✅ bigger logos */
+  max-height: 250px;            /*   bigger logos */
   max-width: 150px;
 
   object-fit: contain;
@@ -63,7 +63,7 @@ border-top: 16px solid #ffffff;
 
 
 .award-item h5 {
-  font-size: 20px;             /* ✅ increased */
+  font-size: 20px;             /*   increased */
   font-weight: 600;
 
   color: #111827;
@@ -72,15 +72,15 @@ border-top: 16px solid #ffffff;
   margin-bottom: 18px;
 }
 
-.award-item p {            /* ✅ increased */
+.award-item p {            /*   increased */
   color: #4b5563;
 
-  line-height: 1.7;            /* ✅ better readability */
+  line-height: 1.7;            /*   better readability */
   max-width: 220px;
   margin: 0 auto;
 }
 
-/* ✅ remove sub styling completely */
+/*   remove sub styling completely */
 .award-item p sub {
   all: unset;
 }

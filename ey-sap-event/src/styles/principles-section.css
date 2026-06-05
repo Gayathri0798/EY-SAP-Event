@@ -24,7 +24,7 @@
 /* Main Heading */
 .ey-heading {
   font-size: 42px;          
-  font-weight: 500;          /* ✅ not too bold */
+  font-weight: 500;          /*   not too bold */
   line-height: 1.2;
   font-family: EYInterstate, "Noto Sans", sans-serif;
   color: #090909f0;
@@ -68,7 +68,7 @@
 }
 
 .quote-mark {
-  font-size: 80px;       /* ✅ big visual impact */
+  font-size: 80px;       /*   big visual impact */
   line-height: 0.8;
   color: #ffffff;
 
@@ -76,12 +76,12 @@
 
   margin-bottom: 10px;
 
-  font-family: Georgia, serif;  /* ✅ elegant quote style */
+  font-family: Georgia, serif;  /*   elegant quote style */
 }
 
 .main-title {
   text-align: center;
-  font-size: 34px;   /* ✅ bigger */
+  font-size: 34px;   /*   bigger */
   font-weight: 600;
   color: #23232F;
 
@@ -116,7 +116,7 @@
 .grid-item:hover {
   transform: translateY(-8px);
   border-color: #fefbd9;
-      /* ✅ hover background */
+      /*   hover background */
   transform: translateY(-8px);
 
 }
@@ -132,7 +132,7 @@
 
 /* Title */
 .card-title {
-  font-size: 20px;   /* ✅ bigger */
+  font-size: 20px;   /*   bigger */
   font-weight: 600;
 
   color: #ffd700;

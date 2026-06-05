@@ -55,7 +55,7 @@ export default function SapAI() {
       key={index}
       className={`accordion-item ${active === index ? "active" : ""}`}
       onClick={() =>
-        setActive(active === index ? null : index)   /* ✅ toggle */
+        setActive(active === index ? null : index)   /*   toggle */
       }
     >
       {/* HEADER */}
@@ -64,7 +64,7 @@ export default function SapAI() {
           {item.title}
         </h3>
 
-        {/* ✅ CARET ICON */}
+        {/*   CARET ICON */}
         <span className={`caret ${active === index ? "open" : ""}`}>
           ▾
         </span>

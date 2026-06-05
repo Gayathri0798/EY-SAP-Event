@@ -6,12 +6,22 @@
   gap: 40px;
   background-color: #23232f;
   font-family: EYInterstate, "Noto Sans", sans-serif;
+  overflow: hidden;
+  
+height: calc(100vh - 65px);   /* ✅ MUST ADD THIS */
+  overflow: hidden;
+
 }
 
 
 .content-area {
   flex: 1;
   width: 100%;
+  height: 100%;   /* ✅ full viewport height */
+overflow-y: auto;   /* ✅ ONLY THIS SCROLLS */
+scrollbar-width: none;
+  min-height: 0;
+
 }
 .ai-font{
   color:#facc15;
@@ -21,6 +31,12 @@
 /* SIDEBAR */
 .sidebar {
   width: 220px;
+  
+height: 100%;     /* ✅ stretch full height */
+  overflow-y: auto; /* ✅ if filters grow */
+
+  flex-shrink: 0;
+
 }
 
 .filter {
@@ -40,6 +56,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
+  align-items: stretch;
 }
 
 /* CARD PILL */
@@ -50,6 +67,7 @@
   border: 3px solid #facc15;
   transition: 0.3s;
   box-shadow: 0 0 16px rgba(250, 204, 21, 0.45);
+  height: 100%;
   
 }
 
@@ -73,6 +91,7 @@
   font-size: 14px;
   color: #6b7280;
   line-height: 1.5;
+  flex-grow: 1;
 }
 .pill-header h4 {
   flex: 1;

@@ -18,6 +18,7 @@ import SkillsGrid from "./pages/SkillSet";
 import SAPEcoSystem from "./pages/ecoSystem";
 import JouleAiSystem from "./pages/jouleAI";
 import SapAiSolution from "./pages/aiSolution";
+import Procuresense from "./pages/procuresense";
 import BASample from "./pages/BASample";
 
 function AnimatedRoutes() {
@@ -50,6 +51,7 @@ exit={{ scale: 0.98, opacity: 0 }}
           <Route path="/sapEcoSystem" element={<SAPEcoSystem />} />
           <Route path="/sapJouleSystem" element={<JouleAiSystem />} />
           <Route path="/aiSolution" element={<SapAiSolution />} />
+          <Route path="/procuresense" element={<Procuresense />} />
           <Route path="/BASample" element={<BASample />} />
         </Routes>
       </motion.div>

@@ -69,8 +69,8 @@ height: calc(100vh - 120px);
   border-radius: 10px;
   color: #374151;
 
-  height: 100%;           /* ✅ fill container */
-  overflow-y: auto;       /* ✅ scroll INSIDE sidebar */
+  height: 100%;           /* fill container */
+  overflow-y: auto;       /* scroll INSIDE sidebar */
 
 }
 

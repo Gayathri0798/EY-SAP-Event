@@ -16,7 +16,7 @@ const solutions = [
     img: "https://cdn-icons-png.flaticon.com/512/4149/4149680.png"
   },
   {
-    name: "Price Wise",
+    name: "PriceWise",
     tagline: "Pricing intelligence",
     desc: "Optimize pricing strategies with predictive analytics.",
     img: "https://cdn-icons-png.flaticon.com/512/2331/2331712.png"
@@ -25,7 +25,8 @@ const solutions = [
     name: "ProcureSense",
     tagline: "AI-powered vendor intelligence",
     desc: "Maximize savings, minimize supplier risks and accelerate sourcing cycles.",
-    img: "https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
+    img: "https://cdn-icons-png.flaticon.com/512/4341/4341139.png",
+    url:"/procuresense",
   },
   {
     name: "BA Draft",

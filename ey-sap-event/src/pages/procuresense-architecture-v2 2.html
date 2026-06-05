@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>ProcureSense – Architecture Diagram v2</title>
+<style>
+/* ─────────────────────────────────────────
+   CSS Variables
+───────────────────────────────────────── */
+:root {
+  --bg:         #080B16;
+  --bg2:        #0C0F1E;
+  --card:       rgba(16, 19, 36, 0.92);
+  --card2:      rgba(20, 24, 44, 0.95);
+  --border:     rgba(255,255,255,0.07);
+  --border-hi:  rgba(255,255,255,0.14);
+  --yellow:     #FFE600;
+  --cyan:       #00D4FF;
+  --teal:       #2ECFB8;
+  --purple:     #8B5CF6;
+  --blue:       #3B82F6;
+  --blue-sap:   #0070F3;
+  --green:      #22C55E;
+  --white:      #EEF2FF;
+  --muted:      #7C85A0;
+  --muted2:     #444C64;
+  --font:       'Sora', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ─────────────────────────────────────────
+   Reset
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+/* ─────────────────────────────────────────
+   Page background
+───────────────────────────────────────── */
+body {
+  background: var(--bg);
+  font-family: var(--font);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px 0 40px;
+}
+
+/* ─────────────────────────────────────────
+   Canvas
+───────────────────────────────────────── */
+.canvas {
+  position: relative;
+  width: 1440px;
+  min-height: 810px;
+  background:
+    radial-gradient(ellipse 75% 65% at 50% 44%, #121830 0%, #080B16 100%);
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+/* subtle grid overlay */
+.canvas::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* all direct children sit above pseudo */
+.canvas > * { position: relative; z-index: 1; }
+
+/* ─────────────────────────────────────────
+   Title block
+───────────────────────────────────────── */
+.title-block {
+  position: absolute;
+  left: 0; right: 0; top: 26px;
+  text-align: center;
+  pointer-events: none;
+}
+.title-block h1 {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -.6px;
+  color: var(--white);
+  line-height: 1.15;
+}
+.title-block h1 .hl { color: var(--yellow); }
+.title-block p {
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: var(--muted);
+  letter-spacing: .3px;
+}
+
+/* ─────────────────────────────────────────
+   Left section
+───────────────────────────────────────── */
+.left-section {
+  position: absolute;
+  left: 28px; top: 108px;
+  width: 284px;
+}
+
+/* input group panel */
+.input-group {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 13px 13px 10px;
+  backdrop-filter: blur(14px);
+  transition: box-shadow .28s, border-color .28s;
+}
+.input-group:hover {
+  box-shadow: 0 0 28px rgba(59,130,246,.09);
+  border-color: rgba(59,130,246,.2);
+}
+.input-group + .input-group { margin-top: 12px; }
+
+/* group heading */
+.group-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 9px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* individual source row */
+.src-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 7px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: default;
+  margin-bottom: 4px;
+  transition: background .2s, border-color .2s, transform .2s;
+}
+.src-row:last-child { margin-bottom: 0; }
+.src-row:hover {
+  background: rgba(255,255,255,.04);
+  border-color: var(--border-hi);
+  transform: translateX(2px);
+}
+
+/* icon wrapper */
+.src-icon {
+  flex-shrink: 0;
+  width: 30px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* SAP badge */
+.sap-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0066B3;
+  border-radius: 5px;
+  padding: 2px 5px;
+  line-height: 1.1;
+}
+.sap-badge .sap-top {
+  font-size: 8px; font-weight: 800;
+  color: #fff; letter-spacing: .5px;
+}
+.sap-badge .sap-bot {
+  font-size: 7px; font-weight: 600;
+  color: rgba(255,255,255,.8);
+  letter-spacing: .3px;
+}
+
+.src-title {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.3;
+  flex: 1;
+}
+
+/* connector dot on right */
+.src-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px currentColor;
+}
+.grp-a .src-dot { background: var(--blue);  color: var(--blue); }
+.grp-b .src-dot { background: var(--teal);  color: var(--teal); }
+
+/* ─────────────────────────────────────────
+   Center card
+───────────────────────────────────────── */
+.center-card {
+  position: absolute;
+  left: 352px; top: 100px;
+  width: 510px;
+  /* Height is auto — grows to fit content */
+  background: linear-gradient(152deg,
+    rgba(16,20,44,.98) 0%,
+    rgba(10,12,26,.98) 100%);
+  border: 1px solid rgba(255,230,0,.22);
+  border-radius: 22px;
+  box-shadow:
+    0 0 70px rgba(255,230,0,.06),
+    0 0 140px rgba(0,212,255,.04),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  padding: 22px 26px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow .3s;
+}
+.center-card:hover {
+  box-shadow:
+    0 0 90px rgba(255,230,0,.1),
+    0 0 180px rgba(0,212,255,.07),
+    inset 0 1px 0 rgba(255,255,255,.09);
+}
+
+/* pill */
+.center-pill {
+  background: linear-gradient(90deg,
+    rgba(255,230,0,.18) 0%, rgba(0,212,255,.12) 100%);
+  border: 1px solid rgba(255,230,0,.38);
+  border-radius: 40px;
+  padding: 5px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 5px;
+}
+.center-sub {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .5px;
+  margin-bottom: 14px;
+}
+
+/* crew label */
+.crew-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 12px;
+  align-self: center;
+}
+
+/* ─────────────────────────────────────────
+   Agent orbit — no connector lines
+   Uses CSS positioning relative to a square
+   orbit container, all centered
+───────────────────────────────────────── */
+.orbit-wrap {
+  position: relative;
+  width: 360px;
+  height: 310px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* central AI node */
+.ai-node {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 38%,
+    rgba(255,230,0,.28) 0%, rgba(255,230,0,.06) 65%, transparent 100%);
+  border: 2px solid var(--yellow);
+  box-shadow:
+    0 0 22px rgba(255,230,0,.50),
+    0 0 55px rgba(255,230,0,.20),
+    inset 0 0 18px rgba(255,230,0,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 10;
+  animation: pulse-ai 3.2s ease-in-out infinite;
+  cursor: default;
+}
+.ai-node .ai-label {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--yellow);
+  letter-spacing: 1.5px;
+  line-height: 1;
+}
+.ai-node .ai-sub {
+  font-size: 7px;
+  font-weight: 600;
+  color: rgba(255,230,0,.5);
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+@keyframes pulse-ai {
+  0%,100% {
+    box-shadow: 0 0 22px rgba(255,230,0,.50), 0 0 55px rgba(255,230,0,.20),
+      inset 0 0 18px rgba(255,230,0,.08);
+  }
+  50% {
+    box-shadow: 0 0 34px rgba(255,230,0,.70), 0 0 80px rgba(255,230,0,.32),
+      inset 0 0 24px rgba(255,230,0,.12);
+  }
+}
+
+/* subtle orbit ring */
+.orbit-ring {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,.06);
+  pointer-events: none;
+  z-index: 1;
+}
+.orbit-ring-inner {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,230,0,.08);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* agent node */
+.agent-node {
+  position: absolute;
+  width: 76px; height: 54px;
+  border-radius: 11px;
+  background: rgba(18, 22, 46, 0.92);
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.25;
+  cursor: default;
+  transition: transform .22s, border-color .22s, box-shadow .22s;
+  z-index: 8;
+  padding: 5px 6px;
+}
+.agent-node:hover {
+  transform: scale(1.09);
+  border-color: currentColor;
+  box-shadow: 0 0 16px currentColor;
+}
+
+/* color variants — color also used for hover glow */
+.c-cyan   { color: var(--cyan);   border-color: rgba(0,212,255,.35); }
+.c-teal   { color: var(--teal);   border-color: rgba(46,207,184,.35); }
+.c-purple { color: var(--purple); border-color: rgba(139,92,246,.35); }
+.c-blue   { color: var(--blue);   border-color: rgba(59,130,246,.35); }
+.c-green  { color: var(--green);  border-color: rgba(34,197,94,.35); }
+.c-yellow { color: var(--yellow); border-color: rgba(255,230,0,.42); }
+
+/*
+  Orbit layout: center of orbit-wrap = 180, 155
+  Radius ~ 120px
+  6 nodes at 60° intervals starting from -120° (upper-left)
+  Angles:  UL=-120°  TC=-60°  UR=0°  RC=60°  BR=120°  BL=180°
+  x = 180 + 120*cos(a) - nodeW/2
+  y = 155 + 120*sin(a) - nodeH/2
+*/
+/* UL: a=-120° => cos=-0.5, sin=-0.866 => x=180-60-38=82, y=155-103.9-27=24.1 */
+.an-ul { left: 82px;  top: 24px; }
+/* TC: a=-60° => cos=0.5, sin=-0.866 => x=180+60-38=202, y=155-103.9-27=24.1 */
+.an-tc { left: 202px; top: 24px; }
+/* UR: a=0°  => cos=1, sin=0 => x=180+120-38=262, y=155-27=128 */
+.an-ur { left: 262px; top: 128px; }
+/* RC: a=60° => cos=0.5, sin=0.866 => x=202, y=155+103.9-27=231.9 */
+.an-rc { left: 202px; top: 232px; }
+/* BR: a=120° => cos=-0.5, sin=0.866 => x=82, y=232 */
+.an-br { left: 82px;  top: 232px; }
+/* BL: a=180° => cos=-1, sin=0 => x=180-120-38=22, y=128 */
+.an-bl { left: 22px;  top: 128px; }
+
+/* ─────────────────────────────────────────
+   Bottom capability tiles
+───────────────────────────────────────── */
+.cap-tiles {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  width: 100%;
+}
+.cap-tile {
+  flex: 1;
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--border-hi);
+  border-radius: 11px;
+  padding: 10px 9px 9px;
+  text-align: center;
+  transition: background .2s, border-color .2s, transform .2s;
+  cursor: default;
+}
+.cap-tile:hover {
+  background: rgba(255,255,255,.065);
+  border-color: rgba(255,255,255,.22);
+  transform: translateY(-2px);
+}
+.cap-tile-icon { font-size: 17px; margin-bottom: 5px; display: block; }
+.cap-tile-name {
+  font-size: 10px; font-weight: 700;
+  color: var(--white); letter-spacing: .3px;
+  margin-bottom: 3px;
+}
+.cap-tile-desc {
+  font-size: 8.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────
+   Right section
+───────────────────────────────────────── */
+.right-section {
+  position: absolute;
+  right: 18px; top: 100px;
+  width: 272px;
+}
+.right-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.out-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 11px;
+  margin-bottom: 7px;
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  cursor: default;
+  transition: background .2s, border-color .2s, transform .2s, box-shadow .2s;
+}
+.out-card:last-child { margin-bottom: 0; }
+.out-card:hover {
+  background: rgba(20,24,46,.98);
+  border-color: var(--border-hi);
+  transform: translateX(-2px);
+  box-shadow: -3px 0 18px rgba(0,0,0,.3);
+}
+.out-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+  box-shadow: 0 0 7px currentColor;
+}
+.out-title {
+  font-size: 11.5px; font-weight: 600;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+.out-desc {
+  font-size: 9px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────
+   Global connector SVG
+───────────────────────────────────────── */
+.conn-svg {
+  position: absolute;
+  inset: 0;
+  width: 1440px;
+  pointer-events: none;
+  z-index: 0;
+}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+<!-- ══════════════════════════════════════════
+     GLOBAL CONNECTOR SVG PATHS
+     Left groups → center, Center → right outputs
+════════════════════════════════════════════ -->
+<svg class="conn-svg" viewBox="0 0 1440 810" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- glow filter for connectors -->
+    <filter id="glow-c" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="2.8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-s" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- LEFT group A gradient: blue → transparent at center entry -->
+    <linearGradient id="lg-blue-in" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#3B82F6" stop-opacity="0"/>
+      <stop offset="55%"  stop-color="#3B82F6" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.12"/>
+    </linearGradient>
+
+    <!-- LEFT group B gradient: teal -->
+    <linearGradient id="lg-teal-in" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#2ECFB8" stop-opacity="0"/>
+      <stop offset="55%"  stop-color="#2ECFB8" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#2ECFB8" stop-opacity="0.12"/>
+    </linearGradient>
+
+    <!-- RIGHT output gradients -->
+    <linearGradient id="lg-yel-out" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#FFE600" stop-opacity="0.12"/>
+      <stop offset="45%"  stop-color="#FFE600" stop-opacity="0.60"/>
+      <stop offset="100%" stop-color="#FFE600" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lg-cyn-out" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#00D4FF" stop-opacity="0.12"/>
+      <stop offset="45%"  stop-color="#00D4FF" stop-opacity="0.60"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lg-tel-out" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#2ECFB8" stop-opacity="0.12"/>
+      <stop offset="45%"  stop-color="#2ECFB8" stop-opacity="0.60"/>
+      <stop offset="100%" stop-color="#2ECFB8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lg-pur-out" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#8B5CF6" stop-opacity="0.12"/>
+      <stop offset="45%"  stop-color="#8B5CF6" stop-opacity="0.60"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lg-blu-out" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#3B82F6" stop-opacity="0.12"/>
+      <stop offset="45%"  stop-color="#3B82F6" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lg-grn-out" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#22C55E" stop-opacity="0.12"/>
+      <stop offset="45%"  stop-color="#22C55E" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#22C55E" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── GROUP A: Enterprise Systems (4 rows) → convergence ~ x:340, y:218 → center entry x:352, y:340 ── -->
+  <!-- SAP Ariba row y≈163 -->
+  <path d="M312 163 C332 163 338 218 340 218" stroke="url(#lg-blue-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".85"/>
+  <!-- SAP S/4HANA row y≈189 -->
+  <path d="M312 189 C332 189 338 218 340 218" stroke="url(#lg-blue-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".75"/>
+  <!-- Non-SAP row y≈215 -->
+  <path d="M312 215 C328 215 338 218 340 218" stroke="url(#lg-blue-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".65"/>
+  <!-- Third-Party row y≈241 -->
+  <path d="M312 241 C328 241 338 218 340 218" stroke="url(#lg-blue-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".55"/>
+  <!-- convergence A → center card left edge at y:340 -->
+  <path d="M340 218 C352 218 352 280 352 340" stroke="#3B82F6" stroke-width="1.8" fill="none" filter="url(#glow-c)" opacity=".6"/>
+  <!-- convergence dot A -->
+  <circle cx="340" cy="218" r="4" fill="#3B82F6" opacity=".8" filter="url(#glow-s)"/>
+
+  <!-- ── GROUP B: Procurement Data (7 rows) → convergence ~ x:340, y:555 → center entry x:352, y:480 ── -->
+  <!-- Supplier y≈415 -->
+  <path d="M312 415 C332 415 338 530 340 530" stroke="url(#lg-teal-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".85"/>
+  <!-- PO & Invoice y≈441 -->
+  <path d="M312 441 C332 441 338 530 340 530" stroke="url(#lg-teal-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".8"/>
+  <!-- Pricing y≈467 -->
+  <path d="M312 467 C332 467 338 530 340 530" stroke="url(#lg-teal-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".72"/>
+  <!-- Contract y≈493 -->
+  <path d="M312 493 C332 493 338 530 340 530" stroke="url(#lg-teal-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".65"/>
+  <!-- Delivery y≈519 -->
+  <path d="M312 519 C328 519 338 530 340 530" stroke="url(#lg-teal-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".58"/>
+  <!-- External Risk y≈545 -->
+  <path d="M312 545 C328 545 338 530 340 530" stroke="url(#lg-teal-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".52"/>
+  <!-- Other Relevant y≈571 -->
+  <path d="M312 571 C328 571 338 530 340 530" stroke="url(#lg-teal-in)" stroke-width="1.4" fill="none" filter="url(#glow-s)" opacity=".46"/>
+  <!-- convergence B → center card left edge at y:480 -->
+  <path d="M340 530 C352 530 352 510 352 480" stroke="#2ECFB8" stroke-width="1.8" fill="none" filter="url(#glow-c)" opacity=".6"/>
+  <!-- convergence dot B -->
+  <circle cx="340" cy="530" r="4" fill="#2ECFB8" opacity=".8" filter="url(#glow-s)"/>
+
+  <!--
+    RIGHT OUTPUT CONNECTORS
+    Center card right edge = x:862 (left:352 + width:510)
+    Output fan-out origin ~ x:862, y:415 (vertical mid of center card)
+    7 output cards right section starts at x:1090
+    Output card centers (right side x:1090+272/2 = 1226, irrelevant — dots just reach left edge):
+      Right card left edge ≈ x:1090
+      Card mid-y values (top:100, spacing≈88px each with 7px margin, card height≈82px):
+      1. y ≈ 141
+      2. y ≈ 230
+      3. y ≈ 319
+      4. y ≈ 408
+      5. y ≈ 497
+      6. y ≈ 586
+      7. y ≈ 675
+  -->
+  <!-- 1 Vendor Shortlists — yellow -->
+  <path d="M862 340 C940 340 1010 141 1090 141" stroke="url(#lg-yel-out)" stroke-width="1.6" fill="none" filter="url(#glow-s)" opacity=".88"/>
+  <!-- 2 Vendor Comparisons — cyan -->
+  <path d="M862 360 C940 360 1010 230 1090 230" stroke="url(#lg-cyn-out)" stroke-width="1.6" fill="none" filter="url(#glow-s)" opacity=".82"/>
+  <!-- 3 Vendor KPI Dashboard — teal -->
+  <path d="M862 390 C940 390 1010 319 1090 319" stroke="url(#lg-tel-out)" stroke-width="1.6" fill="none" filter="url(#glow-s)" opacity=".78"/>
+  <!-- 4 Overall Negotiation Summary — purple -->
+  <path d="M862 415 C940 415 1010 408 1090 408" stroke="url(#lg-pur-out)" stroke-width="1.6" fill="none" filter="url(#glow-s)" opacity=".78"/>
+  <!-- 5 Savings Opportunities — green -->
+  <path d="M862 440 C940 440 1010 497 1090 497" stroke="url(#lg-grn-out)" stroke-width="1.6" fill="none" filter="url(#glow-s)" opacity=".74"/>
+  <!-- 6 Risk & Delivery Insights — blue -->
+  <path d="M862 460 C940 460 1010 586 1090 586" stroke="url(#lg-blu-out)" stroke-width="1.6" fill="none" filter="url(#glow-s)" opacity=".70"/>
+  <!-- 7 Conversational Chatbot — yellow -->
+  <path d="M862 480 C940 480 1010 675 1090 675" stroke="url(#lg-yel-out)" stroke-width="1.6" fill="none" filter="url(#glow-s)" opacity=".62"/>
+
+  <!-- center output dot -->
+  <circle cx="862" cy="415" r="5" fill="#FFE600" opacity=".55" filter="url(#glow-s)"/>
+</svg>
+
+
+<!-- ══════════════════════════════════════════
+     TITLE / SUBTITLE
+════════════════════════════════════════════ -->
+<div class="title-block">
+  <h1>How <span class="hl">ProcureSense</span> Works</h1>
+  <p>AI-powered procurement and negotiation intelligence for data-backed supplier decisions</p>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     LEFT SECTION
+     Enterprise Systems + Procurement Data
+════════════════════════════════════════════ -->
+<div class="left-section">
+
+  <!-- Group A: Enterprise Systems -->
+  <div class="input-group grp-a">
+    <div class="group-label">Enterprise Systems</div>
+
+    <!-- SAP Ariba -->
+    <div class="src-row">
+      <div class="src-icon">
+        <!-- SAP-style badge -->
+        <span class="sap-badge">
+          <span class="sap-top">SAP</span>
+          <span class="sap-bot">Ariba</span>
+        </span>
+      </div>
+      <span class="src-title">SAP Ariba</span>
+      <span class="src-dot"></span>
+    </div>
+
+    <!-- SAP S/4HANA -->
+    <div class="src-row">
+      <div class="src-icon">
+        <span class="sap-badge">
+          <span class="sap-top">SAP</span>
+          <span class="sap-bot">S/4HANA</span>
+        </span>
+      </div>
+      <span class="src-title">SAP S/4HANA</span>
+      <span class="src-dot"></span>
+    </div>
+
+    <!-- Non-SAP ERP -->
+    <div class="src-row">
+      <div class="src-icon">
+        <!-- Server stack icon -->
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="3" width="22" height="6" rx="2.5" fill="rgba(59,130,246,.15)" stroke="#3B82F6" stroke-width="1.2"/>
+          <rect x="2" y="11.5" width="22" height="6" rx="2.5" fill="rgba(59,130,246,.10)" stroke="#3B82F6" stroke-width="1" opacity=".7"/>
+          <circle cx="20" cy="6" r="1.5" fill="#3B82F6" opacity=".8"/>
+          <circle cx="20" cy="14.5" r="1.5" fill="#3B82F6" opacity=".55"/>
+        </svg>
+      </div>
+      <span class="src-title">Non-SAP ERP Systems</span>
+      <span class="src-dot"></span>
+    </div>
+
+    <!-- Third-Party Tool -->
+    <div class="src-row">
+      <div class="src-icon">
+        <!-- Plug/connector icon -->
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="3" width="10" height="14" rx="3" fill="rgba(59,130,246,.12)" stroke="#3B82F6" stroke-width="1.2"/>
+          <line x1="10" y1="17" x2="10" y2="21" stroke="#3B82F6" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="16" y1="17" x2="16" y2="21" stroke="#3B82F6" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="10" y1="7" x2="10" y2="3" stroke="#3B82F6" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="16" y1="7" x2="16" y2="3" stroke="#3B82F6" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="src-title">Third-Party Tool</span>
+      <span class="src-dot"></span>
+    </div>
+  </div><!-- /grp-a -->
+
+
+  <!-- Group B: Procurement Data -->
+  <div class="input-group grp-b" style="margin-top:12px">
+    <div class="group-label">Procurement Data</div>
+
+    <!-- Supplier Master Data -->
+    <div class="src-row">
+      <div class="src-icon">
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
+          <circle cx="13" cy="8" r="4" stroke="#2ECFB8" stroke-width="1.3" fill="rgba(46,207,184,.12)"/>
+          <path d="M5 20c0-4 4-6 8-6s8 2 8 6" stroke="#2ECFB8" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <span class="src-title">Supplier Master Data</span>
+      <span class="src-dot"></span>
+    </div>
+
+    <!-- PO & Invoice Data -->
+    <div class="src-row">
+      <div class="src-icon">
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
+          <rect x="5" y="3" width="16" height="18" rx="2.5" fill="rgba(46,207,184,.1)" stroke="#2ECFB8" stroke-width="1.3"/>
+          <line x1="9" y1="9"  x2="17" y2="9"  stroke="#2ECFB8" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="9" y1="13" x2="17" y2="13" stroke="#2ECFB8" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="9" y1="17" x2="13" y2="17" stroke="#2ECFB8" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="src-title">PO &amp; Invoice Data</span>
+      <span class="src-dot"></span>
+    </div>
+
+    <!-- Pricing & Discount History -->
+    <div class="src-row">
+      <div class="src-icon">
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
+          <polyline points="4,18 9,11 13,14 18,7 22,10" stroke="#2ECFB8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="22" cy="10" r="2" fill="rgba(46,207,184,.2)" stroke="#2ECFB8" stroke-width="1"/>
+        </svg>
+      </div>
+      <span class="src-title">Pricing &amp; Discount History</span>
+      <span class="src-dot"></span>
+    </div>
+
+    <!-- Contract & Payment Terms -->
+    <div class="src-row">
+      <div class="src-icon">
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
+          <path d="M7 3h12l2 3v15a1 1 0 01-1 1H6a1 1 0 01-1-1V4a1 1 0 011-1z" fill="rgba(46,207,184,.1)" stroke="#2ECFB8" stroke-width="1.3"/>
+          <path d="M10 10h6M10 14h4" stroke="#2ECFB8" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M15 3v4h4" stroke="#2ECFB8" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <span class="src-title">Contract &amp; Payment Terms</span>
+      <span class="src-dot"></span>
+    </div>
+
+    <!-- Delivery Performance Data -->
+    <div class="src-row">
+      <div class="src-icon">
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
+          <rect x="2" y="9" width="14" height="9" rx="2" fill="rgba(46,207,184,.1)" stroke="#2ECFB8" stroke-width="1.3"/>
+          <path d="M16 12h4l3 4v2h-7z" fill="rgba(46,207,184,.15)" stroke="#2ECFB8" stroke-width="1.2" stroke-linejoin="round"/>
+          <circle cx="7"  cy="20" r="2" fill="rgba(46,207,184,.2)" stroke="#2ECFB8" stroke-width="1.1"/>
+          <circle cx="20" cy="20" r="2" fill="rgba(46,207,184,.2)" stroke="#2ECFB8" stroke-width="1.1"/>
+        </svg>
+      </div>
+      <span class="src-title">Delivery Performance Data</span>
+      <span class="src-dot"></span>
+    </div>
+
+    <!-- External Risk / Market Data -->
+    <div class="src-row">
+      <div class="src-icon">
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
+          <path d="M13 3l8 4.5v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8V7.5z" fill="rgba(46,207,184,.1)" stroke="#2ECFB8" stroke-width="1.3" stroke-linejoin="round"/>
+          <line x1="13" y1="9"  x2="13" y2="13" stroke="#2ECFB8" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="13" cy="16" r="1" fill="#2ECFB8"/>
+        </svg>
+      </div>
+      <span class="src-title">External Risk / Market Data</span>
+      <span class="src-dot"></span>
+    </div>
+
+    <!-- Other Relevant Data (NEW) -->
+    <div class="src-row">
+      <div class="src-icon">
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
+          <ellipse cx="13" cy="12" rx="8" ry="5" fill="rgba(46,207,184,.1)" stroke="#2ECFB8" stroke-width="1.3"/>
+          <line x1="5" y1="12" x2="5"  y2="17" stroke="#2ECFB8" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="21" y1="12" x2="21" y2="17" stroke="#2ECFB8" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M5 17c0 2.8 3.6 5 8 5s8-2.2 8-5" stroke="#2ECFB8" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <span class="src-title">Other Relevant Data</span>
+      <span class="src-dot"></span>
+    </div>
+
+  </div><!-- /grp-b -->
+
+</div><!-- /left-section -->
+
+
+<!-- ══════════════════════════════════════════
+     CENTER CARD — ProcureSense AI
+════════════════════════════════════════════ -->
+<div class="center-card">
+
+  <!-- Header pill -->
+  <div class="center-pill">ProcureSense AI</div>
+  <div class="center-sub">Procurement Intelligence Agent</div>
+
+  <!-- Crew label -->
+  <div class="crew-label">Procurement Agent Crew</div>
+
+  <!-- ── Agent orbit cluster (no connector lines) ── -->
+  <div class="orbit-wrap">
+
+    <!-- Orbit rings (visual only, suggest connectivity) -->
+    <div class="orbit-ring"></div>
+    <div class="orbit-ring-inner"></div>
+
+    <!-- Central AI node -->
+    <div class="ai-node">
+      <span class="ai-label">AI</span>
+      <span class="ai-sub">ProcureSense</span>
+    </div>
+
+    <!--
+      Six agent nodes in balanced orbit (no lines)
+      Positions calculated at orbit radius ~120px around center (180,155)
+    -->
+
+    <!-- Upper-left: Vendor Shortlisting -->
+    <div class="agent-node c-cyan an-ul">Vendor<br>Shortlisting</div>
+
+    <!-- Top-center: Vendor Comparison -->
+    <div class="agent-node c-teal an-tc">Vendor<br>Comparison</div>
+
+    <!-- Upper-right: KPI Insights -->
+    <div class="agent-node c-purple an-ur">KPI<br>Insights</div>
+
+    <!-- Right: Negotiation Summary -->
+    <div class="agent-node c-blue an-rc">Negotiation<br>Summary</div>
+
+    <!-- Lower-right: Savings Opportunity -->
+    <div class="agent-node c-green an-br">Savings<br>Opportunity</div>
+
+    <!-- Lower-left: Risk & Delivery -->
+    <div class="agent-node c-yellow an-bl">Risk &amp;<br>Delivery</div>
+
+  </div><!-- /orbit-wrap -->
+
+  <!-- Bottom capability tiles -->
+  <div class="cap-tiles">
+    <div class="cap-tile">
+      <span class="cap-tile-icon">🧠</span>
+      <div class="cap-tile-name">Procurement Memory</div>
+      <div class="cap-tile-desc">Supplier, spend &amp; negotiation context</div>
+    </div>
+    <div class="cap-tile">
+      <span class="cap-tile-icon">⚡</span>
+      <div class="cap-tile-name">Negotiation Skills</div>
+      <div class="cap-tile-desc">Commercial levers &amp; tactics</div>
+    </div>
+    <div class="cap-tile">
+      <span class="cap-tile-icon">🛡️</span>
+      <div class="cap-tile-name">Data Guardrails</div>
+      <div class="cap-tile-desc">Grounded, masked &amp; policy-aware</div>
+    </div>
+  </div>
+
+</div><!-- /center-card -->
+
+
+<!-- ══════════════════════════════════════════
+     RIGHT SECTION — Procurement Intelligence Outputs
+     7 output cards
+════════════════════════════════════════════ -->
+<div class="right-section">
+  <div class="right-label">Procurement Intelligence Outputs</div>
+
+  <!-- 1. Vendor Shortlists -->
+  <div class="out-card">
+    <div class="out-dot" style="background:var(--yellow);color:var(--yellow)"></div>
+    <div>
+      <div class="out-title">Vendor Shortlists</div>
+      <div class="out-desc">Ranked vendors based on savings, risk, PO value, delivery terms, and commercial fit.</div>
+    </div>
+  </div>
+
+  <!-- 2. Vendor Comparisons -->
+  <div class="out-card">
+    <div class="out-dot" style="background:var(--cyan);color:var(--cyan)"></div>
+    <div>
+      <div class="out-title">Vendor Comparisons</div>
+      <div class="out-desc">Side-by-side comparison of pricing, payment terms, delivery, discounts, and risk.</div>
+    </div>
+  </div>
+
+  <!-- 3. Vendor KPI Dashboard -->
+  <div class="out-card">
+    <div class="out-dot" style="background:var(--teal);color:var(--teal)"></div>
+    <div>
+      <div class="out-title">Vendor KPI Dashboard</div>
+      <div class="out-desc">Annual spend, invoice values, average price per unit, discounts, and supplier metrics.</div>
+    </div>
+  </div>
+
+  <!-- 4. Overall Negotiation Summary -->
+  <div class="out-card">
+    <div class="out-dot" style="background:var(--purple);color:var(--purple)"></div>
+    <div>
+      <div class="out-title">Overall Negotiation Summary</div>
+      <div class="out-desc">Summarized negotiation position, supplier context, key risks, savings opportunities, and recommended talking points.</div>
+    </div>
+  </div>
+
+  <!-- 5. Savings Opportunities -->
+  <div class="out-card">
+    <div class="out-dot" style="background:var(--green);color:var(--green)"></div>
+    <div>
+      <div class="out-title">Savings Opportunities</div>
+      <div class="out-desc">Price-above-average gaps, discount leakage, and supplier consolidation opportunities.</div>
+    </div>
+  </div>
+
+  <!-- 6. Risk & Delivery Insights -->
+  <div class="out-card">
+    <div class="out-dot" style="background:var(--blue);color:var(--blue)"></div>
+    <div>
+      <div class="out-title">Risk &amp; Delivery Insights</div>
+      <div class="out-desc">Supplier risk signals, delivery performance trends, and reliability indicators.</div>
+    </div>
+  </div>
+
+  <!-- 7. Conversational Chatbot -->
+  <div class="out-card">
+    <div class="out-dot" style="background:var(--yellow);color:var(--yellow)"></div>
+    <div>
+      <div class="out-title">Conversational Chatbot</div>
+      <div class="out-desc">Role-based procurement intelligence through an interactive chatbot.</div>
+    </div>
+  </div>
+
+</div><!-- /right-section -->
+
+</div><!-- /canvas -->
+</body>
+</html>

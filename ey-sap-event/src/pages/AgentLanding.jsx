@@ -31,7 +31,7 @@ export default function AgentLanding() {
         {/* TILE 1 */}
         <div className="tile">
           <div className="tile-inner">
-            <span className="tag">Platform</span>
+            <span className="tags">Platform</span>
 
             <h2>EY SAP Nexus</h2>
             <p className="tile-subtitle">Enterprise Agent Platform</p>
@@ -48,7 +48,7 @@ export default function AgentLanding() {
         {/* TILE 2 */}
         <div className="tile">
           <div className="tile-inner">
-            <span className="tag">Builder</span>
+            <span className="tags">Builder</span>
 
             <h2>Build Your Agent</h2>
             <p className="tile-subtitle">No-Code Agent Builder</p>

@@ -175,9 +175,6 @@
   );
 }
 
-.banner {
-  height: 100vh;   /* ✅ NOT full screen */
-}
 
 .auto-showcase {
   text-align: center;

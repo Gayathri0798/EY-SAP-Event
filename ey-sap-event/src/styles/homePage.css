@@ -11,7 +11,7 @@
 /* ✅ HERO */
 .homeHero {
   position: relative;
-  height: 420px;
+  height: 97.5vh;
   display: flex;
   align-items: center;
   padding: 60px;
@@ -247,9 +247,9 @@
   color: #bbbbbb;
   margin-bottom: 15px;
 }
-.banner{
+/* .banner{
   height: 100vh;
-}
+} */
 
 .description {
     font-size: 18px;

@@ -1,879 +1,636 @@
 import "../styles/procuresense.css";
+import Banner from "../components/Banner";
+import {
+  Zap,
+  ShieldCheck,
+  DollarSign,
+  Clock
+} from "lucide-react";
+import { useRef, useState } from "react";
 
 export default function ProcureSense() {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const percent = (video.currentTime / video.duration) * 100;
+    setProgress(percent);
+  };
+
+  const handleSeek = (e) => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const rect = e.target.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const width = rect.width;
+
+    const newTime = (clickX / width) * video.duration;
+    video.currentTime = newTime;
+  };
   return (
-    <div className="canvas">
-  {/* ══════════════════════════════════════════
-     GLOBAL CONNECTOR SVG PATHS
-     Left groups → center, Center → right outputs
-════════════════════════════════════════════ */}
-  <svg
-    className="conn-svg"
-    viewBox="0 0 1440 810"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      {/* glow filter for connectors */}
-      <filter id="glow-c" x="-60%" y="-60%" width="220%" height="220%">
-        <feGaussianBlur stdDeviation="2.8" result="blur" />
-        <feMerge>
-          <feMergeNode in="blur" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-      <filter id="glow-s" x="-60%" y="-60%" width="220%" height="220%">
-        <feGaussianBlur stdDeviation={2} result="blur" />
-        <feMerge>
-          <feMergeNode in="blur" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-      {/* LEFT group A gradient: blue → transparent at center entry */}
-      <linearGradient id="lg-blue-in" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#3B82F6" stopOpacity={0} />
-        <stop offset="55%" stopColor="#3B82F6" stopOpacity="0.55" />
-        <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.12" />
-      </linearGradient>
-      {/* LEFT group B gradient: teal */}
-      <linearGradient id="lg-teal-in" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#2ECFB8" stopOpacity={0} />
-        <stop offset="55%" stopColor="#2ECFB8" stopOpacity="0.55" />
-        <stop offset="100%" stopColor="#2ECFB8" stopOpacity="0.12" />
-      </linearGradient>
-      {/* RIGHT output gradients */}
-      <linearGradient id="lg-yel-out" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#FFE600" stopOpacity="0.12" />
-        <stop offset="45%" stopColor="#FFE600" stopOpacity="0.60" />
-        <stop offset="100%" stopColor="#FFE600" stopOpacity={0} />
-      </linearGradient>
-      <linearGradient id="lg-cyn-out" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#00D4FF" stopOpacity="0.12" />
-        <stop offset="45%" stopColor="#00D4FF" stopOpacity="0.60" />
-        <stop offset="100%" stopColor="#00D4FF" stopOpacity={0} />
-      </linearGradient>
-      <linearGradient id="lg-tel-out" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#2ECFB8" stopOpacity="0.12" />
-        <stop offset="45%" stopColor="#2ECFB8" stopOpacity="0.60" />
-        <stop offset="100%" stopColor="#2ECFB8" stopOpacity={0} />
-      </linearGradient>
-      <linearGradient id="lg-pur-out" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.12" />
-        <stop offset="45%" stopColor="#8B5CF6" stopOpacity="0.60" />
-        <stop offset="100%" stopColor="#8B5CF6" stopOpacity={0} />
-      </linearGradient>
-      <linearGradient id="lg-blu-out" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.12" />
-        <stop offset="45%" stopColor="#3B82F6" stopOpacity="0.55" />
-        <stop offset="100%" stopColor="#3B82F6" stopOpacity={0} />
-      </linearGradient>
-      <linearGradient id="lg-grn-out" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#22C55E" stopOpacity="0.12" />
-        <stop offset="45%" stopColor="#22C55E" stopOpacity="0.55" />
-        <stop offset="100%" stopColor="#22C55E" stopOpacity={0} />
-      </linearGradient>
-    </defs>
-    {/* ── GROUP A: Enterprise Systems (4 rows) → convergence ~ x:340, y:218 → center entry x:352, y:340 ── */}
-    {/* SAP Ariba row y≈163 */}
-    <path
-      d="M312 163 C332 163 338 218 340 218"
-      stroke="url(#lg-blue-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".85"
-    />
-    {/* SAP S/4HANA row y≈189 */}
-    <path
-      d="M312 189 C332 189 338 218 340 218"
-      stroke="url(#lg-blue-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".75"
-    />
-    {/* Non-SAP row y≈215 */}
-    <path
-      d="M312 215 C328 215 338 218 340 218"
-      stroke="url(#lg-blue-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".65"
-    />
-    {/* Third-Party row y≈241 */}
-    <path
-      d="M312 241 C328 241 338 218 340 218"
-      stroke="url(#lg-blue-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".55"
-    />
-    {/* convergence A → center card left edge at y:340 */}
-    <path
-      d="M340 218 C352 218 352 280 352 340"
-      stroke="#3B82F6"
-      strokeWidth="1.8"
-      fill="none"
-      filter="url(#glow-c)"
-      opacity=".6"
-    />
-    {/* convergence dot A */}
-    <circle
-      cx={340}
-      cy={218}
-      r={4}
-      fill="#3B82F6"
-      opacity=".8"
-      filter="url(#glow-s)"
-    />
-    {/* ── GROUP B: Procurement Data (7 rows) → convergence ~ x:340, y:555 → center entry x:352, y:480 ── */}
-    {/* Supplier y≈415 */}
-    <path
-      d="M312 415 C332 415 338 530 340 530"
-      stroke="url(#lg-teal-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".85"
-    />
-    {/* PO & Invoice y≈441 */}
-    <path
-      d="M312 441 C332 441 338 530 340 530"
-      stroke="url(#lg-teal-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".8"
-    />
-    {/* Pricing y≈467 */}
-    <path
-      d="M312 467 C332 467 338 530 340 530"
-      stroke="url(#lg-teal-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".72"
-    />
-    {/* Contract y≈493 */}
-    <path
-      d="M312 493 C332 493 338 530 340 530"
-      stroke="url(#lg-teal-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".65"
-    />
-    {/* Delivery y≈519 */}
-    <path
-      d="M312 519 C328 519 338 530 340 530"
-      stroke="url(#lg-teal-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".58"
-    />
-    {/* External Risk y≈545 */}
-    <path
-      d="M312 545 C328 545 338 530 340 530"
-      stroke="url(#lg-teal-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".52"
-    />
-    {/* Other Relevant y≈571 */}
-    <path
-      d="M312 571 C328 571 338 530 340 530"
-      stroke="url(#lg-teal-in)"
-      strokeWidth="1.4"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".46"
-    />
-    {/* convergence B → center card left edge at y:480 */}
-    <path
-      d="M340 530 C352 530 352 510 352 480"
-      stroke="#2ECFB8"
-      strokeWidth="1.8"
-      fill="none"
-      filter="url(#glow-c)"
-      opacity=".6"
-    />
-    {/* convergence dot B */}
-    <circle
-      cx={340}
-      cy={530}
-      r={4}
-      fill="#2ECFB8"
-      opacity=".8"
-      filter="url(#glow-s)"
-    />
-    {/*
-    RIGHT OUTPUT CONNECTORS
-    Center card right edge = x:862 (left:352 + width:510)
-    Output fan-out origin ~ x:862, y:415 (vertical mid of center card)
-    7 output cards right section starts at x:1090
-    Output card centers (right side x:1090+272/2 = 1226, irrelevant — dots just reach left edge):
-Right card left edge ≈ x:1090
-Card mid-y values (top:100, spacing≈88px each with 7px margin, card height≈82px):
-1. y ≈ 141
-2. y ≈ 230
-3. y ≈ 319
-4. y ≈ 408
-5. y ≈ 497
-6. y ≈ 586
-7. y ≈ 675
-  */}
-    {/* 1 Vendor Shortlists — yellow */}
-    <path
-      d="M862 340 C940 340 1010 141 1090 141"
-      stroke="url(#lg-yel-out)"
-      strokeWidth="1.6"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".88"
-    />
-    {/* 2 Vendor Comparisons — cyan */}
-    <path
-      d="M862 360 C940 360 1010 230 1090 230"
-      stroke="url(#lg-cyn-out)"
-      strokeWidth="1.6"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".82"
-    />
-    {/* 3 Vendor KPI Dashboard — teal */}
-    <path
-      d="M862 390 C940 390 1010 319 1090 319"
-      stroke="url(#lg-tel-out)"
-      strokeWidth="1.6"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".78"
-    />
-    {/* 4 Overall Negotiation Summary — purple */}
-    <path
-      d="M862 415 C940 415 1010 408 1090 408"
-      stroke="url(#lg-pur-out)"
-      strokeWidth="1.6"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".78"
-    />
-    {/* 5 Savings Opportunities — green */}
-    <path
-      d="M862 440 C940 440 1010 497 1090 497"
-      stroke="url(#lg-grn-out)"
-      strokeWidth="1.6"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".74"
-    />
-    {/* 6 Risk & Delivery Insights — blue */}
-    <path
-      d="M862 460 C940 460 1010 586 1090 586"
-      stroke="url(#lg-blu-out)"
-      strokeWidth="1.6"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".70"
-    />
-    {/* 7 Conversational Chatbot — yellow */}
-    <path
-      d="M862 480 C940 480 1010 675 1090 675"
-      stroke="url(#lg-yel-out)"
-      strokeWidth="1.6"
-      fill="none"
-      filter="url(#glow-s)"
-      opacity=".62"
-    />
-    {/* center output dot */}
-    <circle
-      cx={862}
-      cy={415}
-      r={5}
-      fill="#FFE600"
-      opacity=".55"
-      filter="url(#glow-s)"
-    />
-  </svg>
-  {/* ══════════════════════════════════════════
-     TITLE / SUBTITLE
-════════════════════════════════════════════ */}
-  <div className="title-block">
+    <>
+    <div className="banner-section">
+        <Banner
+          title="Smarter Vendor Evaluation with AI"
+          subtitle="ProcureSense helps procurement teams move beyond manual vendor comparison by using AI to analyze vendor pricing, performance, risk, and negotiation factors. It enables faster, more confident sourcing decisions while helping teams maximize savings and reduce supplier-related risks."
+          buttonText="Learn more"
+          image="/images/lego.jpeg"
+        />
+      </div>
+  {/* cards section */}
+
+<div className="ps-benefits">
+  <h2>What ProcureSense Enables</h2>
+
+  <div className="benefits-grid">
+
+    <div className="benefit-card">
+      <div className="icon-box icon-yellow">
+        <Zap size={20} />
+      </div>
+      <h3>Faster Vendor Evaluation</h3>
+      <p>Reduces manual effort and speeds up shortlisting.</p>
+    </div>
+
+    <div className="benefit-card highlight">
+      <div className="icon-box icon-cyan">
+        <ShieldCheck size={20} />
+      </div>
+      <h3>Better Risk Visibility</h3>
+      <p>Helps identify supplier risks before contract signing.</p>
+    </div>
+
+    <div className="benefit-card">
+      <div className="icon-box icon-green">
+        <DollarSign size={20} />
+      </div>
+      <h3>Improved Savings Potential</h3>
+      <p>Highlights pricing gaps and negotiation opportunities.</p>
+    </div>
+
+    <div className="benefit-card">
+      <div className="icon-box icon-blue">
+        <Clock size={20} />
+      </div>
+      <h3>Shorter Turnaround Time</h3>
+      <p>Accelerates procurement decisions and contract closure.</p>
+    </div>
+
+  </div>
+</div>
+
+   {/* canvas how ey works */}
+   <div className="canvas-wrapper">
+   <div className="canvas">
+  <div className="grid-bg" />
+  {/* HEADER */}
+  <div className="header">
     <h1>
-      How <span className="hl">ProcureSense</span> Works
+      How <span>ProcureSense</span> Works
     </h1>
     <p>
       AI-powered procurement and negotiation intelligence for data-backed
       supplier decisions
     </p>
   </div>
-  {/* ══════════════════════════════════════════
-     LEFT SECTION
-     Enterprise Systems + Procurement Data
-════════════════════════════════════════════ */}
-  <div className="left-section">
-    {/* Group A: Enterprise Systems */}
-    <div className="input-group grp-a">
-      <div className="group-label">Enterprise Systems</div>
-      {/* SAP Ariba */}
-      <div className="src-row">
-        <div className="src-icon">
-          {/* SAP-style badge */}
-          <span className="sap-badge">
-            <span className="sap-top">SAP</span>
-            <span className="sap-bot">Ariba</span>
-          </span>
-        </div>
-        <span className="src-title">SAP Ariba</span>
-        <span className="src-dot" />
-      </div>
-      {/* SAP S/4HANA */}
-      <div className="src-row">
-        <div className="src-icon">
-          <span className="sap-badge">
-            <span className="sap-top">SAP</span>
-            <span className="sap-bot">S/4HANA</span>
-          </span>
-        </div>
-        <span className="src-title">SAP S/4HANA</span>
-        <span className="src-dot" />
-      </div>
-      {/* Non-SAP ERP */}
-      <div className="src-row">
-        <div className="src-icon">
-          {/* Server stack icon */}
-          <svg
-            width={26}
-            height={24}
-            viewBox="0 0 26 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x={2}
-              y={3}
-              width={22}
-              height={6}
-              rx="2.5"
-              fill="rgba(59,130,246,.15)"
-              stroke="#3B82F6"
-              strokeWidth="1.2"
-            />
-            <rect
-              x={2}
-              y="11.5"
-              width={22}
-              height={6}
-              rx="2.5"
-              fill="rgba(59,130,246,.10)"
-              stroke="#3B82F6"
-              strokeWidth={1}
-              opacity=".7"
-            />
-            <circle cx={20} cy={6} r="1.5" fill="#3B82F6" opacity=".8" />
-            <circle cx={20} cy="14.5" r="1.5" fill="#3B82F6" opacity=".55" />
-          </svg>
-        </div>
-        <span className="src-title">Non-SAP ERP Systems</span>
-        <span className="src-dot" />
-      </div>
-      {/* Third-Party Tool */}
-      <div className="src-row">
-        <div className="src-icon">
-          {/* Plug/connector icon */}
-          <svg
-            width={26}
-            height={24}
-            viewBox="0 0 26 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x={8}
-              y={3}
-              width={10}
-              height={14}
-              rx={3}
-              fill="rgba(59,130,246,.12)"
-              stroke="#3B82F6"
-              strokeWidth="1.2"
-            />
-            <line
-              x1={10}
-              y1={17}
-              x2={10}
-              y2={21}
-              stroke="#3B82F6"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-            />
-            <line
-              x1={16}
-              y1={17}
-              x2={16}
-              y2={21}
-              stroke="#3B82F6"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-            />
-            <line
-              x1={10}
-              y1={7}
-              x2={10}
-              y2={3}
-              stroke="#3B82F6"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-            />
-            <line
-              x1={16}
-              y1={7}
-              x2={16}
-              y2={3}
-              stroke="#3B82F6"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-        <span className="src-title">Third-Party Tool</span>
-        <span className="src-dot" />
-      </div>
-    </div>
-    {/* /grp-a */}
-    {/* Group B: Procurement Data */}
-    <div className="input-group grp-b" style={{ marginTop: 12 }}>
-      <div className="group-label">Procurement Data</div>
-      {/* Supplier Master Data */}
-      <div className="src-row">
-        <div className="src-icon">
-          <svg width={26} height={24} viewBox="0 0 26 24" fill="none">
-            <circle
-              cx={13}
-              cy={8}
-              r={4}
-              stroke="#2ECFB8"
-              strokeWidth="1.3"
-              fill="rgba(46,207,184,.12)"
-            />
-            <path
-              d="M5 20c0-4 4-6 8-6s8 2 8 6"
-              stroke="#2ECFB8"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-              fill="none"
-            />
-          </svg>
-        </div>
-        <span className="src-title">Supplier Master Data</span>
-        <span className="src-dot" />
-      </div>
-      {/* PO & Invoice Data */}
-      <div className="src-row">
-        <div className="src-icon">
-          <svg width={26} height={24} viewBox="0 0 26 24" fill="none">
-            <rect
-              x={5}
-              y={3}
-              width={16}
-              height={18}
-              rx="2.5"
-              fill="rgba(46,207,184,.1)"
-              stroke="#2ECFB8"
-              strokeWidth="1.3"
-            />
-            <line
-              x1={9}
-              y1={9}
-              x2={17}
-              y2={9}
-              stroke="#2ECFB8"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-            />
-            <line
-              x1={9}
-              y1={13}
-              x2={17}
-              y2={13}
-              stroke="#2ECFB8"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-            />
-            <line
-              x1={9}
-              y1={17}
-              x2={13}
-              y2={17}
-              stroke="#2ECFB8"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-        <span className="src-title">PO &amp; Invoice Data</span>
-        <span className="src-dot" />
-      </div>
-      {/* Pricing & Discount History */}
-      <div className="src-row">
-        <div className="src-icon">
-          <svg width={26} height={24} viewBox="0 0 26 24" fill="none">
-            <polyline
-              points="4,18 9,11 13,14 18,7 22,10"
-              stroke="#2ECFB8"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-            <circle
-              cx={22}
-              cy={10}
-              r={2}
-              fill="rgba(46,207,184,.2)"
-              stroke="#2ECFB8"
-              strokeWidth={1}
-            />
-          </svg>
-        </div>
-        <span className="src-title">Pricing &amp; Discount History</span>
-        <span className="src-dot" />
-      </div>
-      {/* Contract & Payment Terms */}
-      <div className="src-row">
-        <div className="src-icon">
-          <svg width={26} height={24} viewBox="0 0 26 24" fill="none">
-            <path
-              d="M7 3h12l2 3v15a1 1 0 01-1 1H6a1 1 0 01-1-1V4a1 1 0 011-1z"
-              fill="rgba(46,207,184,.1)"
-              stroke="#2ECFB8"
-              strokeWidth="1.3"
-            />
-            <path
-              d="M10 10h6M10 14h4"
-              stroke="#2ECFB8"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-            />
-            <path
-              d="M15 3v4h4"
-              stroke="#2ECFB8"
-              strokeWidth="1.1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </svg>
-        </div>
-        <span className="src-title">Contract &amp; Payment Terms</span>
-        <span className="src-dot" />
-      </div>
-      {/* Delivery Performance Data */}
-      <div className="src-row">
-        <div className="src-icon">
-          <svg width={26} height={24} viewBox="0 0 26 24" fill="none">
-            <rect
-              x={2}
-              y={9}
-              width={14}
-              height={9}
-              rx={2}
-              fill="rgba(46,207,184,.1)"
-              stroke="#2ECFB8"
-              strokeWidth="1.3"
-            />
-            <path
-              d="M16 12h4l3 4v2h-7z"
-              fill="rgba(46,207,184,.15)"
-              stroke="#2ECFB8"
-              strokeWidth="1.2"
-              strokeLinejoin="round"
-            />
-            <circle
-              cx={7}
-              cy={20}
-              r={2}
-              fill="rgba(46,207,184,.2)"
-              stroke="#2ECFB8"
-              strokeWidth="1.1"
-            />
-            <circle
-              cx={20}
-              cy={20}
-              r={2}
-              fill="rgba(46,207,184,.2)"
-              stroke="#2ECFB8"
-              strokeWidth="1.1"
-            />
-          </svg>
-        </div>
-        <span className="src-title">Delivery Performance Data</span>
-        <span className="src-dot" />
-      </div>
-      {/* External Risk / Market Data */}
-      <div className="src-row">
-        <div className="src-icon">
-          <svg width={26} height={24} viewBox="0 0 26 24" fill="none">
-            <path
-              d="M13 3l8 4.5v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8V7.5z"
-              fill="rgba(46,207,184,.1)"
-              stroke="#2ECFB8"
-              strokeWidth="1.3"
-              strokeLinejoin="round"
-            />
-            <line
-              x1={13}
-              y1={9}
-              x2={13}
-              y2={13}
-              stroke="#2ECFB8"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <circle cx={13} cy={16} r={1} fill="#2ECFB8" />
-          </svg>
-        </div>
-        <span className="src-title">External Risk / Market Data</span>
-        <span className="src-dot" />
-      </div>
-      {/* Other Relevant Data (NEW) */}
-      <div className="src-row">
-        <div className="src-icon">
-          <svg width={26} height={24} viewBox="0 0 26 24" fill="none">
-            <ellipse
-              cx={13}
-              cy={12}
-              rx={8}
-              ry={5}
-              fill="rgba(46,207,184,.1)"
-              stroke="#2ECFB8"
-              strokeWidth="1.3"
-            />
-            <line
-              x1={5}
-              y1={12}
-              x2={5}
-              y2={17}
-              stroke="#2ECFB8"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-            />
-            <line
-              x1={21}
-              y1={12}
-              x2={21}
-              y2={17}
-              stroke="#2ECFB8"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-            />
-            <path
-              d="M5 17c0 2.8 3.6 5 8 5s8-2.2 8-5"
-              stroke="#2ECFB8"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              fill="none"
-            />
-          </svg>
-        </div>
-        <span className="src-title">Other Relevant Data</span>
-        <span className="src-dot" />
-      </div>
-    </div>
-    {/* /grp-b */}
-  </div>
-  {/* /left-section */}
-  {/* ══════════════════════════════════════════
-     CENTER CARD — ProcureSense AI
-════════════════════════════════════════════ */}
-  <div className="center-card">
-    {/* Header pill */}
-    <div className="center-pill">ProcureSense AI</div>
-    <div className="center-sub">Procurement Intelligence Agent</div>
-    {/* Crew label */}
-    <div className="crew-label">Procurement Agent Crew</div>
-    {/* ── Agent orbit cluster (no connector lines) ── */}
-    <div className="orbit-wrap">
-      {/* Orbit rings (visual only, suggest connectivity) */}
-      <div className="orbit-ring" />
-      <div className="orbit-ring-inner" />
-      {/* Central AI node */}
-      <div className="ai-node">
-        <span className="ai-label">AI</span>
-        <span className="ai-sub">ProcureSense</span>
-      </div>
-      {/*
-Six agent nodes in balanced orbit (no lines)
-Positions calculated at orbit radius ~120px around center (180,155)
+  {/* SVG CONNECTORS — drawn on top of everything, z-index managed */}
+  <svg
+    className="connectors-svg"
+    id="connectors"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      {/* Gradient for left connectors */}
+      <linearGradient id="lgLeft1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style={{ stopColor: "#00d4e8", stopOpacity: 0 }} />
+        <stop
+          offset="100%"
+          style={{ stopColor: "#00d4e8", stopOpacity: "0.6" }}
+        />
+      </linearGradient>
+      <linearGradient id="lgLeft2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style={{ stopColor: "#f5c842", stopOpacity: 0 }} />
+        <stop
+          offset="100%"
+          style={{ stopColor: "#f5c842", stopOpacity: "0.5" }}
+        />
+      </linearGradient>
+      {/* Gradient for right connectors */}
+      <linearGradient id="lgRight1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop
+          offset="0%"
+          style={{ stopColor: "#00d4e8", stopOpacity: "0.6" }}
+        />
+        <stop offset="100%" style={{ stopColor: "#00d4e8", stopOpacity: 0 }} />
+      </linearGradient>
+      <linearGradient id="lgRight2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop
+          offset="0%"
+          style={{ stopColor: "#f5c842", stopOpacity: "0.4" }}
+        />
+        <stop offset="100%" style={{ stopColor: "#f5c842", stopOpacity: 0 }} />
+      </linearGradient>
+      <linearGradient id="lgRight3" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop
+          offset="0%"
+          style={{ stopColor: "#8b5cf6", stopOpacity: "0.4" }}
+        />
+        <stop offset="100%" style={{ stopColor: "#8b5cf6", stopOpacity: 0 }} />
+      </linearGradient>
+      <linearGradient id="lgRight4" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop
+          offset="0%"
+          style={{ stopColor: "#22c55e", stopOpacity: "0.35" }}
+        />
+        <stop offset="100%" style={{ stopColor: "#22c55e", stopOpacity: 0 }} />
+      </linearGradient>
+      <linearGradient id="lgRight5" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop
+          offset="0%"
+          style={{ stopColor: "#3b82f6", stopOpacity: "0.35" }}
+        />
+        <stop offset="100%" style={{ stopColor: "#3b82f6", stopOpacity: 0 }} />
+      </linearGradient>
+    </defs>
+    {/* 
+Layout reference (all y values are relative to canvas top, including 48px padding + 36px header + 36px gap ≈ 120px to layout start):
+
+Left column right edge x = 60 + 330 = 390
+Center card left edge x = 60 + 330 + 60 = 450
+Center card right edge x = 60 + 330 + 60 + 540 = 990
+Right column left edge x = 60 + 330 + 60 + 540 + 60 = 1050
+
+Layout top y ≈ 160px (48px padding + 10px header area approx)
+Enterprise systems group midpoint y ≈ 245
+Procurement data group midpoint y ≈ 470
+
+Center card top y ≈ 160, height ~560
+Center card vertical mid ≈ 440
     */}
-      {/* Upper-left: Vendor Shortlisting */}
-      <div className="agent-node c-cyan an-ul">
-        Vendor
-        <br />
-        Shortlisting
-      </div>
-      {/* Top-center: Vendor Comparison */}
-      <div className="agent-node c-teal an-tc">
-        Vendor
-        <br />
-        Comparison
-      </div>
-      {/* Upper-right: KPI Insights */}
-      <div className="agent-node c-purple an-ur">
-        KPI
-        <br />
-        Insights
-      </div>
-      {/* Right: Negotiation Summary */}
-      <div className="agent-node c-blue an-rc">
-        Negotiation
-        <br />
-        Summary
-      </div>
-      {/* Lower-right: Savings Opportunity */}
-      <div className="agent-node c-green an-br">
-        Savings
-        <br />
-        Opportunity
-      </div>
-      {/* Lower-left: Risk & Delivery */}
-      <div className="agent-node c-yellow an-bl">
-        Risk &amp;
-        <br />
-        Delivery
-      </div>
-    </div>
-    {/* /orbit-wrap */}
-    {/* Bottom capability tiles */}
-    <div className="cap-tiles">
-      <div className="cap-tile">
-        <span className="cap-tile-icon">🧠</span>
-        <div className="cap-tile-name">Procurement Memory</div>
-        <div className="cap-tile-desc">
-          Supplier, spend &amp; negotiation context
+    {/* LEFT → CENTER: Enterprise Systems bundle (2 lines) */}
+    <path
+      d="M 390 245 C 420 245, 430 300, 450 300"
+      stroke="url(#lgLeft1)"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.8"
+    />
+    <path
+      d="M 390 265 C 422 265, 432 320, 450 320"
+      stroke="url(#lgLeft2)"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.6"
+    />
+    {/* LEFT → CENTER: Procurement Data bundle (3 lines) */}
+    <path
+      d="M 390 430 C 420 430, 430 400, 450 400"
+      stroke="url(#lgLeft1)"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.7"
+    />
+    <path
+      d="M 390 455 C 420 455, 432 420, 450 420"
+      stroke="url(#lgLeft2)"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.5"
+    />
+    <path
+      d="M 390 480 C 420 480, 432 440, 450 440"
+      stroke="url(#lgLeft1)"
+      strokeWidth={1}
+      fill="none"
+      opacity="0.4"
+    />
+    {/* CENTER → RIGHT: Fan of connector lines */}
+    {/* Output 1 - Vendor Shortlists (top) */}
+    <path
+      d="M 990 290 C 1020 290, 1030 215, 1050 215"
+      stroke="url(#lgRight1)"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.8"
+    />
+    {/* Output 2 - Vendor Comparisons */}
+    <path
+      d="M 990 320 C 1020 320, 1030 270, 1050 270"
+      stroke="url(#lgRight2)"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.7"
+    />
+    {/* Output 3 - KPI Dashboard */}
+    <path
+      d="M 990 350 C 1020 350, 1030 330, 1050 330"
+      stroke="url(#lgRight3)"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.7"
+    />
+    {/* Output 4 - Negotiation Summary */}
+    <path
+      d="M 990 380 C 1018 380, 1030 390, 1050 390"
+      stroke="url(#lgRight2)"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.7"
+    />
+    {/* Output 5 - Savings */}
+    <path
+      d="M 990 410 C 1018 410, 1030 450, 1050 450"
+      stroke="url(#lgRight4)"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.7"
+    />
+    {/* Output 6 - Risk & Delivery */}
+    <path
+      d="M 990 440 C 1018 440, 1030 510, 1050 510"
+      stroke="url(#lgRight1)"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.6"
+    />
+    {/* Output 7 - Chatbot */}
+    <path
+      d="M 990 470 C 1018 470, 1030 570, 1050 570"
+      stroke="url(#lgRight5)"
+      strokeWidth={1}
+      fill="none"
+      opacity="0.5"
+    />
+  </svg>
+  {/* THREE-COLUMN LAYOUT */}
+  <div className="layout">
+    {/* ═══ LEFT COLUMN ═══ */}
+    <div className="left-col">
+      {/* Enterprise Systems */}
+      <div className="input-group">
+        <div className="group-label">Enterprise Systems</div>
+        <div className="system-item">
+          <div className="sys-icon sap-ariba">SAP</div>
+          <span className="sys-name">SAP Ariba</span>
+          <span className="dot cyan" />
+        </div>
+        <div className="system-item">
+          <div className="sys-icon sap-s4">S/4</div>
+          <span className="sys-name">SAP S/4HANA</span>
+          <span className="dot yellow" />
+        </div>
+        <div className="system-item">
+          <div className="sys-icon erp">
+            <svg width={14} height={14} viewBox="0 0 14 14" fill="none">
+              <rect
+                x={1}
+                y={1}
+                width={12}
+                height={12}
+                rx={2}
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path d="M4 7h6M7 4v6" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
+          </div>
+          <span className="sys-name">Non-SAP ERP Systems</span>
+          <span className="dot blue" />
+        </div>
+        <div className="system-item">
+          <div className="sys-icon tool">
+            <svg width={14} height={14} viewBox="0 0 14 14" fill="none">
+              <circle
+                cx={7}
+                cy={7}
+                r="5.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path d="M7 4v3l2 1.5" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
+          </div>
+          <span className="sys-name">Third-Party Tool</span>
+          <span className="dot teal" />
         </div>
       </div>
-      <div className="cap-tile">
-        <span className="cap-tile-icon">⚡</span>
-        <div className="cap-tile-name">Negotiation Skills</div>
-        <div className="cap-tile-desc">Commercial levers &amp; tactics</div>
+      {/* Procurement Data */}
+      <div className="input-group">
+        <div className="group-label">Procurement Data</div>
+        <div className="data-item">
+          <svg className="data-icon" viewBox="0 0 18 18" fill="none">
+            <circle cx={9} cy={6} r={3} stroke="#8899b0" strokeWidth="1.4" />
+            <path
+              d="M3 15c0-3 2.7-5 6-5s6 2 6 5"
+              stroke="#8899b0"
+              strokeWidth="1.4"
+            />
+          </svg>
+          <span className="data-name">Supplier Master Data</span>
+          <span className="dot cyan" style={{ marginLeft: "auto" }} />
+        </div>
+        <div className="data-item">
+          <svg className="data-icon" viewBox="0 0 18 18" fill="none">
+            <rect
+              x={2}
+              y={2}
+              width={14}
+              height={14}
+              rx={2}
+              stroke="#8899b0"
+              strokeWidth="1.4"
+            />
+            <path d="M5 6h8M5 9h6M5 12h4" stroke="#8899b0" strokeWidth="1.2" />
+          </svg>
+          <span className="data-name">PO &amp; Invoice Data</span>
+          <span className="dot yellow" style={{ marginLeft: "auto" }} />
+        </div>
+        <div className="data-item">
+          <svg className="data-icon" viewBox="0 0 18 18" fill="none">
+            <path
+              d="M2 13 L6 8 L10 10 L14 5 L16 7"
+              stroke="#8899b0"
+              strokeWidth="1.4"
+              fill="none"
+            />
+          </svg>
+          <span className="data-name">Pricing &amp; Discount History</span>
+          <span className="dot blue" style={{ marginLeft: "auto" }} />
+        </div>
+        <div className="data-item">
+          <svg className="data-icon" viewBox="0 0 18 18" fill="none">
+            <rect
+              x={2}
+              y={3}
+              width={14}
+              height={12}
+              rx={2}
+              stroke="#8899b0"
+              strokeWidth="1.4"
+            />
+            <path d="M6 3V2M12 3V2M2 8h14" stroke="#8899b0" strokeWidth="1.2" />
+          </svg>
+          <span className="data-name">Contract &amp; Payment Terms</span>
+          <span className="dot green" style={{ marginLeft: "auto" }} />
+        </div>
+        <div className="data-item">
+          <svg className="data-icon" viewBox="0 0 18 18" fill="none">
+            <rect
+              x={2}
+              y={2}
+              width={14}
+              height={14}
+              rx={2}
+              stroke="#8899b0"
+              strokeWidth="1.4"
+            />
+            <path d="M9 5v4l3 2" stroke="#8899b0" strokeWidth="1.2" />
+          </svg>
+          <span className="data-name">Delivery Performance Data</span>
+          <span className="dot teal" style={{ marginLeft: "auto" }} />
+        </div>
+        <div className="data-item">
+          <svg className="data-icon" viewBox="0 0 18 18" fill="none">
+            <circle cx={9} cy={9} r={6} stroke="#8899b0" strokeWidth="1.4" />
+            <path d="M9 6v3l2 2" stroke="#8899b0" strokeWidth="1.2" />
+          </svg>
+          <span className="data-name">External Risk / Market Data</span>
+          <span
+            className="dot"
+            style={{ marginLeft: "auto", background: "var(--orange)" }}
+          />
+        </div>
+        <div className="data-item">
+          <svg className="data-icon" viewBox="0 0 18 18" fill="none">
+            <circle
+              cx={9}
+              cy={9}
+              r={6}
+              stroke="#8899b0"
+              strokeWidth="1.4"
+              strokeDasharray="3 2"
+            />
+          </svg>
+          <span className="data-name">Other Relevant Data</span>
+          <span
+            className="dot"
+            style={{ marginLeft: "auto", background: "var(--purple)" }}
+          />
+        </div>
       </div>
-      <div className="cap-tile">
-        <span className="cap-tile-icon">🛡️</span>
-        <div className="cap-tile-name">Data Guardrails</div>
-        <div className="cap-tile-desc">Grounded, masked &amp; policy-aware</div>
+    </div>
+    {/* ═══ CENTER CARD ═══ */}
+    <div className="center-card">
+      {/* Header pill */}
+      <div className="center-card-header">
+        <div className="ps-pill">
+          <div className="ps-pill-dot" />
+          <span className="ps-pill-text">ProcureSense AI</span>
+        </div>
+        <div className="ps-subtitle">Procurement Intelligence Agent</div>
+      </div>
+      {/* Agent Crew Label */}
+      <div className="crew-label">Procurement Agent Crew</div>
+      {/* Agent Crew Area */}
+      <div className="crew-area">
+        {/* Orbit rings */}
+        <div className="orbit-halo-outer" />
+        <div className="orbit-halo" />
+        {/* Central AI Node */}
+        <div className="ai-node">
+          <div className="ai-node-text">AI</div>
+          <div className="ai-node-sub">
+            Procure
+            <br />
+            Sense
+          </div>
+        </div>
+        {/* Agent Nodes */}
+        <div className="agent-node cyan agent-vendor-comparison">
+          Vendor
+          <br />
+          Comparison
+        </div>
+        <div className="agent-node teal agent-vendor-shortlisting">
+          Vendor
+          <br />
+          Shortlisting
+        </div>
+        <div className="agent-node blue agent-kpi">
+          KPI
+          <br />
+          Insights
+        </div>
+        <div className="agent-node orange agent-risk">
+          Risk &amp;
+          <br />
+          Delivery
+        </div>
+        <div className="agent-node green agent-savings">
+          Savings
+          <br />
+          Opportunity
+        </div>
+        <div className="agent-node purple agent-negotiation">
+          Negotiation
+          <br />
+          Summary
+        </div>
+      </div>
+      {/* Bottom Tiles */}
+      <div className="bottom-tiles">
+        <div className="bottom-tile">
+          <span className="tile-icon">🧠</span>
+          <div className="tile-name">Procurement Memory</div>
+          <div className="tile-desc">
+            Supplier, spend &amp; negotiation context
+          </div>
+        </div>
+        <div className="bottom-tile">
+          <span className="tile-icon">⚡</span>
+          <div className="tile-name">Negotiation Skills</div>
+          <div className="tile-desc">Commercial levers &amp; tactics</div>
+        </div>
+        <div className="bottom-tile">
+          <span className="tile-icon">🛡️</span>
+          <div className="tile-name">Data Guardrails</div>
+          <div className="tile-desc">Grounded, masked &amp; policy-aware</div>
+        </div>
+      </div>
+    </div>
+    {/* ═══ RIGHT COLUMN ═══ */}
+    <div className="right-col">
+      <div className="outputs-label">Procurement Intelligence Outputs</div>
+      <div className="output-card">
+        <div className="output-dot" style={{ background: "var(--yellow)" }} />
+        <div>
+          <div className="output-title">Vendor Shortlists</div>
+          <div className="output-desc">
+            Ranked vendors based on savings, risk, PO value, delivery terms, and
+            commercial fit.
+          </div>
+        </div>
+      </div>
+      <div className="output-card">
+        <div className="output-dot" style={{ background: "var(--cyan)" }} />
+        <div>
+          <div className="output-title">Vendor Comparisons</div>
+          <div className="output-desc">
+            Side-by-side comparison of pricing, payment terms, delivery,
+            discounts, and risk.
+          </div>
+        </div>
+      </div>
+      <div className="output-card">
+        <div className="output-dot" style={{ background: "var(--blue)" }} />
+        <div>
+          <div className="output-title">Vendor KPI Dashboard</div>
+          <div className="output-desc">
+            Annual spend, invoice values, average price per unit, discounts, and
+            supplier metrics.
+          </div>
+        </div>
+      </div>
+      <div className="output-card">
+        <div className="output-dot" style={{ background: "var(--orange)" }} />
+        <div>
+          <div className="output-title">Overall Negotiation Summary</div>
+          <div className="output-desc">
+            Summarized negotiation position, supplier context, key risks,
+            savings opportunities, and recommended talking points.
+          </div>
+        </div>
+      </div>
+      <div className="output-card">
+        <div className="output-dot" style={{ background: "var(--green)" }} />
+        <div>
+          <div className="output-title">Savings Opportunities</div>
+          <div className="output-desc">
+            Price-above-average gaps, discount leakage, and supplier
+            consolidation opportunities.
+          </div>
+        </div>
+      </div>
+      <div className="output-card">
+        <div className="output-dot" style={{ background: "var(--teal)" }} />
+        <div>
+          <div className="output-title">Risk &amp; Delivery Insights</div>
+          <div className="output-desc">
+            Supplier risk signals, delivery performance trends, and reliability
+            indicators.
+          </div>
+        </div>
+      </div>
+      <div className="output-card">
+        <div className="output-dot" style={{ background: "var(--purple)" }} />
+        <div>
+          <div className="output-title">Conversational Chatbot</div>
+          <div className="output-desc">
+            Role-based procurement intelligence through an interactive chatbot.
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  {/* /center-card */}
-  {/* ══════════════════════════════════════════
-     RIGHT SECTION — Procurement Intelligence Outputs
-     7 output cards
-════════════════════════════════════════════ */}
-  <div className="right-section">
-    <div className="right-label">Procurement Intelligence Outputs</div>
-    {/* 1. Vendor Shortlists */}
-    <div className="out-card">
-      <div
-        className="out-dot"
-        style={{ background: "var(--yellow)", color: "var(--yellow)" }}
-      />
-      <div>
-        <div className="out-title">Vendor Shortlists</div>
-        <div className="out-desc">
-          Ranked vendors based on savings, risk, PO value, delivery terms, and
-          commercial fit.
-        </div>
-      </div>
-    </div>
-    {/* 2. Vendor Comparisons */}
-    <div className="out-card">
-      <div
-        className="out-dot"
-        style={{ background: "var(--cyan)", color: "var(--cyan)" }}
-      />
-      <div>
-        <div className="out-title">Vendor Comparisons</div>
-        <div className="out-desc">
-          Side-by-side comparison of pricing, payment terms, delivery,
-          discounts, and risk.
-        </div>
-      </div>
-    </div>
-    {/* 3. Vendor KPI Dashboard */}
-    <div className="out-card">
-      <div
-        className="out-dot"
-        style={{ background: "var(--teal)", color: "var(--teal)" }}
-      />
-      <div>
-        <div className="out-title">Vendor KPI Dashboard</div>
-        <div className="out-desc">
-          Annual spend, invoice values, average price per unit, discounts, and
-          supplier metrics.
-        </div>
-      </div>
-    </div>
-    {/* 4. Overall Negotiation Summary */}
-    <div className="out-card">
-      <div
-        className="out-dot"
-        style={{ background: "var(--purple)", color: "var(--purple)" }}
-      />
-      <div>
-        <div className="out-title">Overall Negotiation Summary</div>
-        <div className="out-desc">
-          Summarized negotiation position, supplier context, key risks, savings
-          opportunities, and recommended talking points.
-        </div>
-      </div>
-    </div>
-    {/* 5. Savings Opportunities */}
-    <div className="out-card">
-      <div
-        className="out-dot"
-        style={{ background: "var(--green)", color: "var(--green)" }}
-      />
-      <div>
-        <div className="out-title">Savings Opportunities</div>
-        <div className="out-desc">
-          Price-above-average gaps, discount leakage, and supplier consolidation
-          opportunities.
-        </div>
-      </div>
-    </div>
-    {/* 6. Risk & Delivery Insights */}
-    <div className="out-card">
-      <div
-        className="out-dot"
-        style={{ background: "var(--blue)", color: "var(--blue)" }}
-      />
-      <div>
-        <div className="out-title">Risk &amp; Delivery Insights</div>
-        <div className="out-desc">
-          Supplier risk signals, delivery performance trends, and reliability
-          indicators.
-        </div>
-      </div>
-    </div>
-    {/* 7. Conversational Chatbot */}
-    <div className="out-card">
-      <div
-        className="out-dot"
-        style={{ background: "var(--yellow)", color: "var(--yellow)" }}
-      />
-      <div>
-        <div className="out-title">Conversational Chatbot</div>
-        <div className="out-desc">
-          Role-based procurement intelligence through an interactive chatbot.
-        </div>
-      </div>
-    </div>
-  </div>
-  {/* /right-section */}
+  {/* end .layout */}
 </div>
+</div>
+
+<div className="video-section">
+
+      <h2 className="video-title">See ProcureSense in Action</h2>
+      <p className="video-subtitle">
+        Watch how AI analyzes suppliers, identifies risks, and recommends savings opportunities in real time.
+      </p>
+
+      <div className="video-floating">
+
+        {/* VIDEO */}
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          onClick={togglePlay}
+          onTimeUpdate={handleTimeUpdate}
+        >
+          <source src="/videos/Procuresense.mp4" type="video/mp4" />
+        </video>
+
+        {/* PLAY / PAUSE BUTTON */}
+        <button className="play-btn" onClick={togglePlay}>
+          {isPlaying ? "❚❚" : "▶"}
+        </button>
+
+        {/* PROGRESS BAR */}
+        <div className="progress-bar" onClick={handleSeek}>
+          <div
+            className="progress-fill"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+
+      </div>
+    </div>
+
+</>
   );
 }

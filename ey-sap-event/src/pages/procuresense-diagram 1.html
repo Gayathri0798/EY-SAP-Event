@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How ProcureSense Works</title>
+<style>
+  :root {
+    --bg: #050c18;
+    --card-bg: #0a1628;
+    --card-border: rgba(255,255,255,0.08);
+    --center-card-bg: #071020;
+    --center-card-border: rgba(255,255,255,0.12);
+    --yellow: #f5c842;
+    --cyan: #00d4e8;
+    --teal: #00b8a0;
+    --blue: #3b82f6;
+    --purple: #8b5cf6;
+    --green: #22c55e;
+    --orange: #f97316;
+    --text-primary: #e8edf5;
+    --text-secondary: #8899b0;
+    --text-muted: #5a6a80;
+    --agent-bg: rgba(255,255,255,0.04);
+    --agent-border: rgba(255,255,255,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: auto;
+  }
+
+  /* ── CANVAS ── */
+  .canvas {
+    position: relative;
+    width: 1440px;
+    min-height: 720px;
+    margin: 0 auto;
+    padding: 48px 60px 60px;
+  }
+
+  /* ── GRID BACKGROUND ── */
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+    position: relative;
+    z-index: 10;
+  }
+  .header h1 {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+  .header h1 span { color: var(--yellow); }
+  .header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    letter-spacing: 0.2px;
+  }
+
+  /* ── THREE-COLUMN LAYOUT ── */
+  /* Canvas = 1440px, padding = 60px each side → content = 1320px
+     Left: 330px | Gap: 60px | Center: 540px | Gap: 60px | Right: 330px */
+  .layout {
+    position: relative;
+    display: grid;
+    grid-template-columns: 330px 540px 330px;
+    gap: 0 60px;
+    align-items: start;
+    z-index: 10;
+  }
+
+  /* ── LEFT COLUMN ── */
+  .left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .input-group {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 18px 16px;
+  }
+  .group-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .system-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.025);
+    margin-bottom: 7px;
+    position: relative;
+  }
+  .system-item:last-child { margin-bottom: 0; }
+  .sys-icon {
+    width: 30px;
+    height: 22px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .sys-icon.sap-ariba { background: #0070f3; color: #fff; }
+  .sys-icon.sap-s4 { background: #0070f3; color: #fff; }
+  .sys-icon.erp { background: rgba(255,255,255,0.1); color: var(--text-secondary); }
+  .sys-icon.tool { background: rgba(255,255,255,0.1); color: var(--text-secondary); }
+  .sys-name { font-size: 12.5px; color: var(--text-primary); flex: 1; }
+  .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    flex-shrink: 0;
+  }
+  .dot.yellow { background: var(--yellow); }
+  .dot.blue { background: var(--blue); }
+  .dot.green { background: var(--green); }
+  .dot.teal { background: var(--teal); }
+
+  .data-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+  }
+  .data-item:last-child { margin-bottom: 0; }
+  .data-icon { width: 18px; height: 18px; opacity: 0.6; flex-shrink: 0; }
+  .data-name { font-size: 12px; color: var(--text-secondary); }
+
+  /* ── CENTER CARD ── */
+  .center-card {
+    background: linear-gradient(160deg, #0d1f3a 0%, #071428 50%, #050e20 100%);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+    padding: 22px 20px 20px;
+    position: relative;
+    box-shadow:
+      0 0 60px rgba(0,212,232,0.06),
+      0 0 120px rgba(59,130,246,0.04),
+      inset 0 1px 0 rgba(255,255,255,0.07);
+    /* This card must be centered — the grid handles it */
+  }
+
+  .center-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .ps-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,200,66,0.12);
+    border: 1px solid rgba(245,200,66,0.35);
+    border-radius: 20px;
+    padding: 5px 16px;
+    margin-bottom: 8px;
+  }
+  .ps-pill-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--yellow);
+    box-shadow: 0 0 8px var(--yellow);
+  }
+  .ps-pill-text {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--yellow);
+    text-transform: uppercase;
+  }
+  .ps-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+  }
+
+  /* Agent Crew Section */
+  .crew-label {
+    text-align: center;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .crew-area {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 16px;
+  }
+
+  /* Central AI Node */
+  .ai-node {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #1a3a5c, #0a1e3a 60%, #050e20);
+    border: 2px solid rgba(245,200,66,0.5);
+    box-shadow:
+      0 0 20px rgba(245,200,66,0.3),
+      0 0 40px rgba(245,200,66,0.12),
+      inset 0 0 20px rgba(245,200,66,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+  .ai-node-text {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--yellow);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  .ai-node-sub {
+    font-size: 7px;
+    color: rgba(245,200,66,0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 3px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* Orbit halo */
+  .orbit-halo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 1px solid rgba(245,200,66,0.1);
+    box-shadow: 0 0 30px rgba(245,200,66,0.04);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .orbit-halo-outer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255,255,255,0.05);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Agent Nodes */
+  .agent-node {
+    position: absolute;
+    background: var(--agent-bg);
+    border: 1px solid var(--agent-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    line-height: 1.3;
+    width: 108px;
+    z-index: 4;
+    white-space: nowrap;
+  }
+  .agent-node.cyan { border-color: rgba(0,212,232,0.3); color: var(--cyan); }
+  .agent-node.teal { border-color: rgba(0,184,160,0.3); color: var(--teal); }
+  .agent-node.blue { border-color: rgba(59,130,246,0.3); color: var(--blue); }
+  .agent-node.purple { border-color: rgba(139,92,246,0.3); color: var(--purple); }
+  .agent-node.green { border-color: rgba(34,197,94,0.3); color: var(--green); }
+  .agent-node.orange { border-color: rgba(249,115,22,0.3); color: var(--orange); }
+
+  /* Agent node positions — centered relative to 500px crew area
+     Center of crew area: x=250 (half of 500px), y=150 (half of 300px) 
+     We offset each node by -54px (half of 108px width) for centering */
+  /* Vendor Comparison: top center */
+  .agent-vendor-comparison { left: calc(50% - 54px); top: 6px; }
+  /* Vendor Shortlisting: top-left */
+  .agent-vendor-shortlisting { left: calc(50% - 54px - 120px); top: 55px; }
+  /* KPI Insights: top-right */
+  .agent-kpi { left: calc(50% - 54px + 120px); top: 55px; }
+  /* Risk & Delivery: bottom-left */
+  .agent-risk { left: calc(50% - 54px - 120px); top: 175px; }
+  /* Savings Opportunity: bottom center */
+  .agent-savings { left: calc(50% - 54px); top: 215px; }
+  /* Negotiation Summary: bottom-right */
+  .agent-negotiation { left: calc(50% - 54px + 120px); top: 175px; }
+
+  /* ── BOTTOM TILES ── */
+  .bottom-tiles {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+  .bottom-tile {
+    flex: 1;
+    max-width: 160px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 10px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+  .tile-icon { font-size: 18px; margin-bottom: 6px; display: block; }
+  .tile-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .tile-desc {
+    font-size: 9.5px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ── RIGHT COLUMN ── */
+  .right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .outputs-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .output-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .output-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .output-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+  }
+  .output-desc {
+    font-size: 10.5px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  /* ── SVG CONNECTORS ── */
+  .connectors-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <div class="grid-bg"></div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>How <span>ProcureSense</span> Works</h1>
+    <p>AI-powered procurement and negotiation intelligence for data-backed supplier decisions</p>
+  </div>
+
+  <!-- SVG CONNECTORS — drawn on top of everything, z-index managed -->
+  <svg class="connectors-svg" id="connectors" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Gradient for left connectors -->
+      <linearGradient id="lgLeft1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#00d4e8;stop-opacity:0"/>
+        <stop offset="100%" style="stop-color:#00d4e8;stop-opacity:0.6"/>
+      </linearGradient>
+      <linearGradient id="lgLeft2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#f5c842;stop-opacity:0"/>
+        <stop offset="100%" style="stop-color:#f5c842;stop-opacity:0.5"/>
+      </linearGradient>
+      <!-- Gradient for right connectors -->
+      <linearGradient id="lgRight1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#00d4e8;stop-opacity:0.6"/>
+        <stop offset="100%" style="stop-color:#00d4e8;stop-opacity:0"/>
+      </linearGradient>
+      <linearGradient id="lgRight2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#f5c842;stop-opacity:0.4"/>
+        <stop offset="100%" style="stop-color:#f5c842;stop-opacity:0"/>
+      </linearGradient>
+      <linearGradient id="lgRight3" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.4"/>
+        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0"/>
+      </linearGradient>
+      <linearGradient id="lgRight4" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.35"/>
+        <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0"/>
+      </linearGradient>
+      <linearGradient id="lgRight5" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.35"/>
+        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0"/>
+      </linearGradient>
+    </defs>
+
+    <!-- 
+      Layout reference (all y values are relative to canvas top, including 48px padding + 36px header + 36px gap ≈ 120px to layout start):
+      
+      Left column right edge x = 60 + 330 = 390
+      Center card left edge x = 60 + 330 + 60 = 450
+      Center card right edge x = 60 + 330 + 60 + 540 = 990
+      Right column left edge x = 60 + 330 + 60 + 540 + 60 = 1050
+      
+      Layout top y ≈ 160px (48px padding + 10px header area approx)
+      Enterprise systems group midpoint y ≈ 245
+      Procurement data group midpoint y ≈ 470
+      
+      Center card top y ≈ 160, height ~560
+      Center card vertical mid ≈ 440
+    -->
+
+    <!-- LEFT → CENTER: Enterprise Systems bundle (2 lines) -->
+    <path d="M 390 245 C 420 245, 430 300, 450 300" stroke="url(#lgLeft1)" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <path d="M 390 265 C 422 265, 432 320, 450 320" stroke="url(#lgLeft2)" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+    <!-- LEFT → CENTER: Procurement Data bundle (3 lines) -->
+    <path d="M 390 430 C 420 430, 430 400, 450 400" stroke="url(#lgLeft1)" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <path d="M 390 455 C 420 455, 432 420, 450 420" stroke="url(#lgLeft2)" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M 390 480 C 420 480, 432 440, 450 440" stroke="url(#lgLeft1)" stroke-width="1" fill="none" opacity="0.4"/>
+
+    <!-- CENTER → RIGHT: Fan of connector lines -->
+    <!-- Output 1 - Vendor Shortlists (top) -->
+    <path d="M 990 290 C 1020 290, 1030 215, 1050 215" stroke="url(#lgRight1)" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <!-- Output 2 - Vendor Comparisons -->
+    <path d="M 990 320 C 1020 320, 1030 270, 1050 270" stroke="url(#lgRight2)" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <!-- Output 3 - KPI Dashboard -->
+    <path d="M 990 350 C 1020 350, 1030 330, 1050 330" stroke="url(#lgRight3)" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <!-- Output 4 - Negotiation Summary -->
+    <path d="M 990 380 C 1018 380, 1030 390, 1050 390" stroke="url(#lgRight2)" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <!-- Output 5 - Savings -->
+    <path d="M 990 410 C 1018 410, 1030 450, 1050 450" stroke="url(#lgRight4)" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <!-- Output 6 - Risk & Delivery -->
+    <path d="M 990 440 C 1018 440, 1030 510, 1050 510" stroke="url(#lgRight1)" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <!-- Output 7 - Chatbot -->
+    <path d="M 990 470 C 1018 470, 1030 570, 1050 570" stroke="url(#lgRight5)" stroke-width="1" fill="none" opacity="0.5"/>
+  </svg>
+
+  <!-- THREE-COLUMN LAYOUT -->
+  <div class="layout">
+
+    <!-- ═══ LEFT COLUMN ═══ -->
+    <div class="left-col">
+
+      <!-- Enterprise Systems -->
+      <div class="input-group">
+        <div class="group-label">Enterprise Systems</div>
+        <div class="system-item">
+          <div class="sys-icon sap-ariba">SAP</div>
+          <span class="sys-name">SAP Ariba</span>
+          <span class="dot cyan"></span>
+        </div>
+        <div class="system-item">
+          <div class="sys-icon sap-s4">S/4</div>
+          <span class="sys-name">SAP S/4HANA</span>
+          <span class="dot yellow"></span>
+        </div>
+        <div class="system-item">
+          <div class="sys-icon erp">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 7h6M7 4v6" stroke="currentColor" stroke-width="1.2"/></svg>
+          </div>
+          <span class="sys-name">Non-SAP ERP Systems</span>
+          <span class="dot blue"></span>
+        </div>
+        <div class="system-item">
+          <div class="sys-icon tool">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+          </div>
+          <span class="sys-name">Third-Party Tool</span>
+          <span class="dot teal"></span>
+        </div>
+      </div>
+
+      <!-- Procurement Data -->
+      <div class="input-group">
+        <div class="group-label">Procurement Data</div>
+        <div class="data-item">
+          <svg class="data-icon" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="3" stroke="#8899b0" stroke-width="1.4"/><path d="M3 15c0-3 2.7-5 6-5s6 2 6 5" stroke="#8899b0" stroke-width="1.4"/></svg>
+          <span class="data-name">Supplier Master Data</span>
+          <span class="dot cyan" style="margin-left:auto"></span>
+        </div>
+        <div class="data-item">
+          <svg class="data-icon" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#8899b0" stroke-width="1.4"/><path d="M5 6h8M5 9h6M5 12h4" stroke="#8899b0" stroke-width="1.2"/></svg>
+          <span class="data-name">PO &amp; Invoice Data</span>
+          <span class="dot yellow" style="margin-left:auto"></span>
+        </div>
+        <div class="data-item">
+          <svg class="data-icon" viewBox="0 0 18 18" fill="none"><path d="M2 13 L6 8 L10 10 L14 5 L16 7" stroke="#8899b0" stroke-width="1.4" fill="none"/></svg>
+          <span class="data-name">Pricing &amp; Discount History</span>
+          <span class="dot blue" style="margin-left:auto"></span>
+        </div>
+        <div class="data-item">
+          <svg class="data-icon" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#8899b0" stroke-width="1.4"/><path d="M6 3V2M12 3V2M2 8h14" stroke="#8899b0" stroke-width="1.2"/></svg>
+          <span class="data-name">Contract &amp; Payment Terms</span>
+          <span class="dot green" style="margin-left:auto"></span>
+        </div>
+        <div class="data-item">
+          <svg class="data-icon" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#8899b0" stroke-width="1.4"/><path d="M9 5v4l3 2" stroke="#8899b0" stroke-width="1.2"/></svg>
+          <span class="data-name">Delivery Performance Data</span>
+          <span class="dot teal" style="margin-left:auto"></span>
+        </div>
+        <div class="data-item">
+          <svg class="data-icon" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="#8899b0" stroke-width="1.4"/><path d="M9 6v3l2 2" stroke="#8899b0" stroke-width="1.2"/></svg>
+          <span class="data-name">External Risk / Market Data</span>
+          <span class="dot" style="margin-left:auto; background:var(--orange)"></span>
+        </div>
+        <div class="data-item">
+          <svg class="data-icon" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="#8899b0" stroke-width="1.4" stroke-dasharray="3 2"/></svg>
+          <span class="data-name">Other Relevant Data</span>
+          <span class="dot" style="margin-left:auto; background:var(--purple)"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ CENTER CARD ═══ -->
+    <div class="center-card">
+
+      <!-- Header pill -->
+      <div class="center-card-header">
+        <div class="ps-pill">
+          <div class="ps-pill-dot"></div>
+          <span class="ps-pill-text">ProcureSense AI</span>
+        </div>
+        <div class="ps-subtitle">Procurement Intelligence Agent</div>
+      </div>
+
+      <!-- Agent Crew Label -->
+      <div class="crew-label">Procurement Agent Crew</div>
+
+      <!-- Agent Crew Area -->
+      <div class="crew-area">
+        <!-- Orbit rings -->
+        <div class="orbit-halo-outer"></div>
+        <div class="orbit-halo"></div>
+
+        <!-- Central AI Node -->
+        <div class="ai-node">
+          <div class="ai-node-text">AI</div>
+          <div class="ai-node-sub">Procure<br>Sense</div>
+        </div>
+
+        <!-- Agent Nodes -->
+        <div class="agent-node cyan agent-vendor-comparison">Vendor<br>Comparison</div>
+        <div class="agent-node teal agent-vendor-shortlisting">Vendor<br>Shortlisting</div>
+        <div class="agent-node blue agent-kpi">KPI<br>Insights</div>
+        <div class="agent-node orange agent-risk">Risk &amp;<br>Delivery</div>
+        <div class="agent-node green agent-savings">Savings<br>Opportunity</div>
+        <div class="agent-node purple agent-negotiation">Negotiation<br>Summary</div>
+      </div>
+
+      <!-- Bottom Tiles -->
+      <div class="bottom-tiles">
+        <div class="bottom-tile">
+          <span class="tile-icon">🧠</span>
+          <div class="tile-name">Procurement Memory</div>
+          <div class="tile-desc">Supplier, spend &amp; negotiation context</div>
+        </div>
+        <div class="bottom-tile">
+          <span class="tile-icon">⚡</span>
+          <div class="tile-name">Negotiation Skills</div>
+          <div class="tile-desc">Commercial levers &amp; tactics</div>
+        </div>
+        <div class="bottom-tile">
+          <span class="tile-icon">🛡️</span>
+          <div class="tile-name">Data Guardrails</div>
+          <div class="tile-desc">Grounded, masked &amp; policy-aware</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ RIGHT COLUMN ═══ -->
+    <div class="right-col">
+      <div class="outputs-label">Procurement Intelligence Outputs</div>
+
+      <div class="output-card">
+        <div class="output-dot" style="background:var(--yellow)"></div>
+        <div>
+          <div class="output-title">Vendor Shortlists</div>
+          <div class="output-desc">Ranked vendors based on savings, risk, PO value, delivery terms, and commercial fit.</div>
+        </div>
+      </div>
+
+      <div class="output-card">
+        <div class="output-dot" style="background:var(--cyan)"></div>
+        <div>
+          <div class="output-title">Vendor Comparisons</div>
+          <div class="output-desc">Side-by-side comparison of pricing, payment terms, delivery, discounts, and risk.</div>
+        </div>
+      </div>
+
+      <div class="output-card">
+        <div class="output-dot" style="background:var(--blue)"></div>
+        <div>
+          <div class="output-title">Vendor KPI Dashboard</div>
+          <div class="output-desc">Annual spend, invoice values, average price per unit, discounts, and supplier metrics.</div>
+        </div>
+      </div>
+
+      <div class="output-card">
+        <div class="output-dot" style="background:var(--orange)"></div>
+        <div>
+          <div class="output-title">Overall Negotiation Summary</div>
+          <div class="output-desc">Summarized negotiation position, supplier context, key risks, savings opportunities, and recommended talking points.</div>
+        </div>
+      </div>
+
+      <div class="output-card">
+        <div class="output-dot" style="background:var(--green)"></div>
+        <div>
+          <div class="output-title">Savings Opportunities</div>
+          <div class="output-desc">Price-above-average gaps, discount leakage, and supplier consolidation opportunities.</div>
+        </div>
+      </div>
+
+      <div class="output-card">
+        <div class="output-dot" style="background:var(--teal)"></div>
+        <div>
+          <div class="output-title">Risk &amp; Delivery Insights</div>
+          <div class="output-desc">Supplier risk signals, delivery performance trends, and reliability indicators.</div>
+        </div>
+      </div>
+
+      <div class="output-card">
+        <div class="output-dot" style="background:var(--purple)"></div>
+        <div>
+          <div class="output-title">Conversational Chatbot</div>
+          <div class="output-desc">Role-based procurement intelligence through an interactive chatbot.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .layout -->
+</div><!-- end .canvas -->
+
+</body>
+</html>

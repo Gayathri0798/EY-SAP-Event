@@ -4,7 +4,7 @@ import "../styles/navbar.css";
 export default function Navbar() {
   return (
     <div className="navbar">
-
+<div class="navbar-inner">
       
 <NavLink to="/" className="logo">
         <img src="/images/logo.png" alt="EY Logo" />
@@ -20,7 +20,7 @@ export default function Navbar() {
         <NavLink to="/insights">Insights</NavLink>
         <NavLink to="/talk-to-experts">Talk to Experts</NavLink>
       </div>
-
+</div>
 
     </div>
   );

@@ -1,14 +1,15 @@
 /* Navbar */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background: #23232F;
-  font-size: small;
-  font-family: EYInterstate, Noto Sans, sans-serif;
-  font-size: .800rem;
-  color: #fff;
-  padding: 10px 15px;
+  z-index: 900;
+
+  /* padding-right: 40px 40px 0px 40px; */
+
   background: #23232F;
   font-family: EYInterstate, Noto Sans, sans-serif;
   
@@ -19,14 +20,25 @@
   letter-spacing: -0.02em;
 
   
-position: fixed;   /*   makes it stick */
-  top: 0;            /*   sticks to top */
+position: fixed;   /* ✅ makes it stick */
+  top: 0;            /* ✅ sticks to top */
   left: 0;
   width: 100%;  
   z-index: 900;
 
    
 }
+
+.navbar-inner {
+  max-width: 1280px;     /* controls total width */
+  margin: 0 auto;        /* centers content */
+  padding: 10px 24px;    /* proper side spacing */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 /* Nav links */
 .nav-links a {

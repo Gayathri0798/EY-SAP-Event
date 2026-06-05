@@ -612,7 +612,7 @@ position: relative;
 /* ───────────────────────────── */
 .video-section {
   position: relative;
-  padding: 120px 24px;
+  padding: 12px 24px 50px;
   background: linear-gradient(180deg, #f8fafc, #eef3f9);
   text-align: center;
   z-index: 0;

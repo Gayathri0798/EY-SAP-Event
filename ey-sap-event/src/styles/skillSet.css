@@ -1,10 +1,24 @@
-.layout {
-  display: flex;
-  gap: 20px;
-height: calc(100vh - 120px);
-  min-height: 0;
- margin-top: 0px;
+html,body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
+
+.layout {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 20px !important;
+
+  box-sizing: border-box !important;
+  width: 100vw !important;
+  padding: 40px;
+  background-color: #23232f; /* Dark enterprise structural foundation */
+  
+  /* Lock the structural height context to enable independent right column scroll */
+  height: calc(100vh - 65px); 
+  overflow: hidden; 
+}
+
+
 .skills-hero {
   position: relative;
   height: 100vh;
@@ -63,46 +77,116 @@ height: calc(100vh - 120px);
 
 /* LEFT PANEL */
 .sidebar {
-  width: 220px;
-  background: #f5f6f8;
-  padding: 20px;
-  border-radius: 10px;
-  color: #374151;
+  width: 290px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  max-height: 100%;
+  
+  /* Premium Dark Slate Panel Overhaul */
+  background: rgba(30, 41, 59, 0.4) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px 16px;
+  overflow-y: auto;
+}
 
-  height: 100%;           /* fill container */
-  overflow-y: auto;       /* scroll INSIDE sidebar */
+.sidebar h3 {
+  margin: 0 0 24px 16px;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #94a3b8; /* Brushed titanium label tint */
+  /* text-transform: uppercase; */
+  letter-spacing: 0.06em;
+}
 
+.filter-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .filterItem {
-  padding: 10px;
-  margin: 6px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #94a3b8;
+  padding: 12px 18px;
+  border-radius: 10px;
   cursor: pointer;
-  border-radius: 6px;
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
 }
 
 .filterItem:hover {
-  background: #e2e6ea;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.04);
 }
 
+/* Filter Selection Highlight State */
 .filterItem.active {
+  color: #ffffff !important;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Premium micro gold accent bar indicator */
+.filterItem.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 25%;
+  bottom: 25%;
+  width: 3px;
   background: #ffe600;
-  color: #374151;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 10px rgba(255, 230, 0, 0.5);
+}
+
+/* Card Internal Metadata Badges */
+.skillCard .bucket {
+  align-self: flex-start;
+  font-size: 0.725rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #60a5fa; /* Vibrant corporate structural blue label */
+  background: rgba(96, 165, 250, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* Card Titles */
+.skillCard .title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* Card Descriptions */
+.skillCard .desc-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #94a3b8; /* Optimized slate contrast weight */
 }
 
 /* RIGHT GRID */
 .skills-content {
-  flex: 1;
-  /* z-index: -999; */
-  padding-right: 30px;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100%;
   
-overflow-y: auto;   /*   ADD THIS */
-  height: 100%;       /*   ADD THIS */
-  min-height: 0; 
-
-scrollbar-width: none;
-  -ms-overflow-style: none
-
+  /* Enforce smooth vertical scroll on the cards area only */
+  overflow-y: auto;
+  padding-right: 8px; /* Safe scrollbar gutter space */
 }
 
 .skills-content::-webkit-scrollbar {
@@ -132,28 +216,32 @@ scrollbar-width: none;
 
 
 .skillCard {
+  background: rgba(255, 255, 255, 0.03); /* Floating translucent glass layer */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
   padding: 24px;
-  border-radius: 12px;
-  background-color: #ffffff;
-  border: 1px solid rgba(17,24,39,0.07);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.01), 0 4px 12px rgba(0,0,0,0.03);
-  transform-style: preserve-3d;
-  transition: transform 0.4s cubic-bezier(.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(.16, 1, 0.3, 1), background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .skillCard:hover {
-  background-color: #f2f9ff;
-  transform: translateY(-5px);
-  border-color: rgba(26, 86, 219, 0.15);
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01), 0 12px 24px -4px rgba(0,0,0,0.04), 0 24px 48px -8px rgba(0,0,0,0.05);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
-  perspective: 1000px;   /*   REQUIRED */
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important; /* Exactly 2 columns per row */
+  gap: 20px !important; /* Uniform tile margins */
+  width: 100% !important;
+  max-width: none !important;
 }
 
 
@@ -206,7 +294,7 @@ scrollbar-width: none;
 
 .skillsPage {
   font-family: EYInterstate, "Noto Sans", sans-serif;
-  padding-bottom: 80px;
+  padding-bottom: 30px;
   display: flex;
   flex-direction: column;
 
@@ -262,16 +350,11 @@ scrollbar-width: none;
   color: #374151;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
-  position: relative; 
-}
 .headingText{
     text-align: center;
-    margin-bottom: 50px;
-    background: radial-gradient(circle at top left, rgba(255, 212, 0, 0.12), rgba(255, 212, 0, 0.04) 40%, transparent 70%), linear-gradient(180deg, #111, #0a0a0f);
+      background: url("https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+    no-repeat center/cover;
+    /* background: radial-gradient(circle at top left, rgba(255, 212, 0, 0.12), rgba(255, 212, 0, 0.04) 40%, transparent 70%), linear-gradient(180deg, #111, #0a0a0f); */
     border: 1px solid rgba(255, 212, 0, 0.18);
     padding: 100px 20px;
     /* border-radius: 12px; */
@@ -283,22 +366,31 @@ scrollbar-width: none;
 
 }
 
-.headingText h1{
-  font-size: 40px;
-    margin-bottom: 20px;
-    color: #ffffff;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
+.headingText h1 {
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 20px; /* Cleaned up the duplicate declaration from the original code */
+  
+  /* Drop shadow shield protects bold letters over chaotic or bright imagery backgrounds */
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
-
-.headingText p{
-  font-size: 14px;
-  color: #ffe600;
+.headingText p {
+  font-size: 16.5px; /* Subtle bump for premium structural balance */
+  font-weight: 500; /* Increased font density so fine strokes don't blur out */
   line-height: 1.6;
+  letter-spacing: 0.01em;
   margin-bottom: 25px;
+  
+  /* OVERHAUL: Replaced the flat yellow (#ffeb0a) with a crisp, high-contrast matte white */
+  color: rgba(255, 255, 255, 0.92) !important;
+  
+  /* CRITICAL: Enforces high legibility against the white/yellow hot spots of the background image */
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6),
+               0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* font-size: 42px;
@@ -357,4 +449,52 @@ scrollbar-width: none;
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+/* SCROLL BAR */
+
+/* Firefox Global Support Configuration */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) rgba(0, 0, 0, 0);
+}
+
+/* WebKit Engine Environments (Chrome, Safari, Edge, VS Code Viewports) */
+
+/* 1. Dimensions of the scroll gutter */
+.skills-content::-webkit-scrollbar,
+.content-area::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 6px; /* Sleek, ultra-thin layout width footprint */
+  height: 6px; /* Horizontal track baseline height if triggered */
+}
+
+/* 2. Background track path configuration */
+.skills-content::-webkit-scrollbar-track,
+.content-area::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent; /* Totally clear so it doesn't leave an ugly gray stripe on your screen */
+}
+
+/* 3. Interactive Floating Drag Thumb Indicator */
+.skills-content::-webkit-scrollbar-thumb,
+.content-area::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12); /* Translucent floating pill */
+  border-radius: 10px; /* Perfectly round capsules */
+  border: 1px solid transparent; /* Acts as structural padding anchor */
+  background-clip: padding-box;
+  transition: background 0.2s ease-in-out;
+}
+
+/* 4. Elegant Hover Intent Elevation */
+.skills-content::-webkit-scrollbar-thumb:hover,
+.content-area::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28); /* darkens slightly when user interacts with it */
+}
+
+/* 5. Clean up structural alignment corners */
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

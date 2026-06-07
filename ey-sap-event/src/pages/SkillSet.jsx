@@ -221,12 +221,11 @@ export default function SkillsGrid() {
       {/*   HEADING */}
       <div className="headingText animateFadeUp delay-1">
         <h1>
-          Build faster with ready-to-use skills <br />
-          Skill Library
+          Skills Are Brewing
         </h1>
 
         <p>
-          Discover reusable skills designed to power enterprise agents.
+         Get ready for a library of reusable capabilities and enterprise-ready building blocks.
         </p>
       </div>
 
@@ -234,29 +233,27 @@ export default function SkillsGrid() {
 
         {/*   SIDEBAR */}
         <div className="sidebar">
-          <h3>Quick Filters</h3>
+  <h3>Quick Filters</h3>
+  
+  <div className="filter-options-list"> {/* Updated line 239 with class */}
+    <div
+      className={`filterItem ${selectedBucket === "All" ? "active" : ""}`}
+      onClick={() => setSelectedBucket("All")}
+    >
+      All
+    </div>
 
-          <div
-            className={`filterItem ${
-              selectedBucket === "All" ? "active" : ""
-            }`}
-            onClick={() => setSelectedBucket("All")}
-          >
-            All
-          </div>
-
-          {Object.keys(data).map(bucket => (
-            <div
-              key={bucket}
-              className={`filterItem ${
-                selectedBucket === bucket ? "active" : ""
-              }`}
-              onClick={() => setSelectedBucket(bucket)}
-            >
-              {bucket}
-            </div>
-          ))}
-        </div>
+    {Object.keys(data).map((bucket) => (
+      <div
+        key={bucket}
+        className={`filterItem ${selectedBucket === bucket ? "active" : ""}`}
+        onClick={() => setSelectedBucket(bucket)}
+      >
+        {bucket}
+      </div>
+    ))}
+  </div>
+</div>
 
         {/*   CONTENT */}
         <div className="skills-content">

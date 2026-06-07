@@ -4,7 +4,7 @@
   padding: 40px;
   align-items: flex-start;
   gap: 40px;
-  background-color: #23232f;
+  background-color: #111827;
   font-family: EYInterstate, "Noto Sans", sans-serif;
   overflow: hidden;
   
@@ -24,43 +24,219 @@ scrollbar-width: none;
 
 }
 .ai-font{
-  color:#facc15;
+  color:#ffeb0a;
 }
 
 
 /* SIDEBAR */
-.sidebar {
+/* .sidebar {
   width: 220px;
   
-height: 100%;     /*   stretch full height */
-  overflow-y: auto; /*   if filters grow */
+height: 100%;   
+  overflow-y: auto; 
 
   flex-shrink: 0;
 
+} */
+
+.sidebar {
+  width: 280px; /* Locked precise premium structural width */
+  flex-shrink: 0;
+  
+  /* Sticky behavior ensures it stays anchored right inside the container view */
+  position: sticky;
+  top: 0;
+  height: auto;
+  max-height: 100%;
+
+  background:rgba(15,23,42,0.45) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: 16px;
+  padding: 24px 16px;
 }
 
-.filter {
+/* .filter {
   padding: 12px;
   margin-bottom: 10px;
   cursor: pointer;
   border-radius: 8px;
-  background: #f1f5f9;
+  background: #212121;
 }
 
 .filter.active {
   background: #facc15;
+} */
+
+.filter-main-heading {
+  margin: 0 0 24px 12px;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #94a3b8; /* Muted corporate titanium text style */
+  /* text-transform: uppercase; */
+  letter-spacing: 0.05em;
+}
+
+.filter-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-item {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  padding: 14px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Subtle, upscale interactive state */
+.filter-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Premium Redesigned Active State (Replaces the flat solid yellow shape) */
+.filter-item.active {
+  color: #ffffff;
+  font-weight: 600;
+  /* Glassmorphism slate foundation */
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+              inset 0 1px 0px rgba(255, 255, 255, 0.1);
+}
+
+/* Sophisticated gold glowing indicator accent line */
+.filter-item.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 25%;
+  bottom: 25%;
+  width: 3px;
+  background: #ffe600; /* Re-engineered premium gold bar accent */
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 8px rgba(255, 230, 0, 0.6);
 }
 
 /* GRID */
 .pill-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
-  align-items: stretch;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:16px;
+  width: 100%;
+}
+
+.big-pill {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03); /* Sophisticated dark slate glass */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Feature 1: The New Accent Line (Replaces the clunky icon) */
+.big-pill::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(255, 255, 255, 0.1); /* Muted resting state */
+  transition: background 0.35s ease;
+}
+
+/* Premium Hover Transitions */
+.big-pill:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+/* Illuminate the accent line on hover */
+.big-pill:hover::before {
+  background: linear-gradient(to bottom, #ffeb0a, #f6ca3b); /* Premium tech-blue glow */
+}
+
+.pill-header {
+  display: flex;
+  align-items: flex-start;
+  gap:12px;
+  width: 100%;
+}
+
+.pill-header h4 {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #f8fafc; /* Crisp, premium off-white */
+  letter-spacing: -0.01em;
+}
+
+/* Feature 2: Subtle Trailing Micro-Arrow Indicator */
+.pill-header h4::after {
+  content: "➤";
+  /* font-family: -apple-system, BlinkMacSystemFont, sans-serif; */
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgba(148, 163, 184, 0.3);
+  transform: translateX(-4px);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Bring the arrow into view seamlessly on hover */
+.big-pill:hover .pill-header h4::after {
+  opacity: 1;
+  transform: translateX(0);
+  color: #ffeb0a;
+}
+
+.pill-header .icon, .pill-header span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  /* color:#eac10c; */
+}
+
+.box-descr {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; */
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #94a3b8; /* Muted slate for professional contrast */
 }
 
 /* CARD PILL */
-.big-pill {
+/* .big-pill {
   background: #fff;
   padding: 0px 10px;
   border-radius: 16px;
@@ -78,7 +254,7 @@ height: 100%;     /*   stretch full height */
 }
 
 /* HEADER */
-.pill-header {
+/* .pill-header {
   display: flex;
   align-items: center;
   gap: 0px;
@@ -88,7 +264,7 @@ height: 100%;     /*   stretch full height */
 .box-descr {
   margin-left: 28px;   /*   align with title start */
 
-  font-size: 14px;
+  /* font-size: 14px;
   color: #6b7280;
   line-height: 1.5;
   flex-grow: 1;
@@ -104,11 +280,11 @@ height: 100%;     /*   stretch full height */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+} */ */ */
 
 
 .icon {
-  color: #facc15;
+  color: #ffeb0a;
   margin-top: 10px;
 }
 
@@ -125,7 +301,7 @@ height: 100%;     /*   stretch full height */
   /*   IMPORTANT (no cutting) */
   white-space: normal;
 }
-.filter-main-heading {
+/* .filter-main-heading {
   font-size: 18px;
   font-weight: 700;
 
@@ -138,4 +314,53 @@ height: 100%;     /*   stretch full height */
 
   color: #6b7280;
   margin-bottom: 14px;
+} */
+
+
+/* SCROLL BAR */
+
+/* Firefox Global Support Configuration */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) rgba(0, 0, 0, 0);
+}
+
+/* WebKit Engine Environments (Chrome, Safari, Edge, VS Code Viewports) */
+
+/* 1. Dimensions of the scroll gutter */
+.skills-content::-webkit-scrollbar,
+.content-area::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 6px; /* Sleek, ultra-thin layout width footprint */
+  height: 6px; /* Horizontal track baseline height if triggered */
+}
+
+/* 2. Background track path configuration */
+.skills-content::-webkit-scrollbar-track,
+.content-area::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent; /* Totally clear so it doesn't leave an ugly gray stripe on your screen */
+}
+
+/* 3. Interactive Floating Drag Thumb Indicator */
+.skills-content::-webkit-scrollbar-thumb,
+.content-area::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12); /* Translucent floating pill */
+  border-radius: 10px; /* Perfectly round capsules */
+  border: 1px solid transparent; /* Acts as structural padding anchor */
+  background-clip: padding-box;
+  transition: background 0.2s ease-in-out;
+}
+
+/* 4. Elegant Hover Intent Elevation */
+.skills-content::-webkit-scrollbar-thumb:hover,
+.content-area::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28); /* darkens slightly when user interacts with it */
+}
+
+/* 5. Clean up structural alignment corners */
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

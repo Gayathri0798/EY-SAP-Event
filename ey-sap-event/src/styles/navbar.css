@@ -5,12 +5,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: #23232F;
+  background: #111;
   z-index: 900;
 
   /* padding-right: 40px 40px 0px 40px; */
 
-  background: #23232F;
   font-family: EYInterstate, Noto Sans, sans-serif;
   
   color: #fff;

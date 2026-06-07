@@ -119,7 +119,7 @@ export default function SapAI() {
             target="_blank"
             rel="noreferrer"
           >
-            Start Assessment →
+            Start Assessment<pre></pre> ➤
           </a></div>
         </div>
 
@@ -146,7 +146,7 @@ export default function SapAI() {
             target="_blank"
             rel="noreferrer"
           >
-            Start Assessment →
+            Start Assessment<pre></pre> ➤
           </a>
         </div></div>
 
@@ -160,7 +160,7 @@ export default function SapAI() {
           </div>
 
           <p className="font-ey btm-card-title">Procurement</p>
-          <p className="font-ey8 btm-card-desc">Intelligent spend management</p>
+          <p className="font-ey btm-card-desc">Intelligent spend management</p>
  <div className="btm-card-ddesc">
           <p className="font-ey btm-card-ddesc">
             Assess the readiness of your organization to apply SAP AI across
@@ -174,7 +174,7 @@ export default function SapAI() {
             target="_blank"
             rel="noreferrer"
           >
-            Start Assessment →
+            Start Assessment<pre></pre> ➤
           </a>
         </div>
 </div>
@@ -201,7 +201,7 @@ export default function SapAI() {
             target="_blank"
             rel="noreferrer"
           >
-            Start Assessment →
+            Start Assessment<pre></pre> ➤
           </a>
           </div>
         </div>

@@ -29,7 +29,7 @@ export default function TalkToExperts() {
     },
     {
       name: "Hari Balaji",
-      role: "Partner, Technology ConsultingGenAI | AI-led Transformation, EY",
+      role: "Partner, AI-led Transformation @ EY.ai | ex Goldman Strat | AI-Startup Founder | IN, SG, HK, UK",
       image: "/images/experts/hari-balaji.png",
       text: "Advises organizations on leveraging Generative AI and Agentic AI for digital transformation and business optimization. With a deep understanding of AI technologies and industry best practices, he helps clients design and implement tailored solutions that drive operational efficiency and competitive advantage.",
     },

@@ -320,7 +320,7 @@
 .cta:hover {
   background: #ffe600 !important; 
   color: #1e293b !important;
-  box-shadow: 0 0 24px rgba(255, 230, 0, 0.35);
+  box-shadow: 0px !important;
   transform: scale(1.02);
 }
 /* ================= RESPONSIVE ================= */

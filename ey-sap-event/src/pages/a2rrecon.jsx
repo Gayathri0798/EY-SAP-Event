@@ -103,9 +103,9 @@ export default function A2Rrecon() {
   <div className="grid-bg" />
   {/* HEADER */}
   <div className="header">
-    <h1>
+    {/* <h1>
       <span>Intelligent</span> Reconciliation
-    </h1>
+    </h1> */}
     <p>
       Solution integrates financial data from enterprise systems such as SAP and non-SAP sources into a unified reconciliation workflow. Its orchestration and validation engines process this data across accounting, policy, and control dimensions to identify breaks, generate correction proposals, and provide explainable rationale through an intuitive review dashboard. This enables faster, policy-aligned decisions with clear audit traceability before posting.
     </p>

@@ -105,13 +105,13 @@
 
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 200px;
+  /* width: 200px; */
 }
 
-.cta:hover {
+/* .cta:hover {
   background: #ffd700;
   transform: translateX(4px);
-}
+} */
 
 
 /* .cta,
@@ -139,13 +139,13 @@
 } */
 
 
-.cta:hover,
+/* .cta:hover,
 .cta:hover,
 .ctaPrimary:hover {
   transform: translateY(-3px) scale(1.02);
   background: #ffdf33;
   /* box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5); */
-}
+/* }  */
 
 .cta:active,
 .cta:active,

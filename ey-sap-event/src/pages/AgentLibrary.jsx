@@ -47,7 +47,6 @@ function AgentLibrary() {
     <div className="tiles">
         {/* TILE 1 */}
         <div className="tile">
-          <div className="tile-inner">
 
             <h2>Agent Library</h2>
             <p className="tile-subtitle">20+ enterprise agents, ready to explore</p>
@@ -57,12 +56,11 @@ function AgentLibrary() {
             </p>
 
             <button className="cta" onClick={() => navigate("/aiMarketPlace")}>Explore Agent Library ➤</button>
-          </div>
+          
         </div>
 
         {/* TILE 2 */}
         <div className="tile">
-          <div className="tile-inner">
 
             <h2>Skills Library</h2>
             <p className="tile-subtitle">90+ reusable skills to power your agents</p>
@@ -74,7 +72,6 @@ Build faster with modular skills designed for extraction, analysis, orchestratio
             <button className="cta" onClick={() => navigate("/skillCard")}>
               Explore Skill Library ➤
             </button>
-          </div>
         </div>
     </div>
 

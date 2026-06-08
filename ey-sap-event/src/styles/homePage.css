@@ -84,8 +84,9 @@
   font-weight: 700;
   font-size: 15px;
   cursor: pointer;
+  
 
-  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.35);
+  /* box-shadow: 0 8px 20px rgba(255, 215, 0, 0.35); */
   transition: all 0.25s ease;
 }
 
@@ -186,39 +187,57 @@
 
 .content-section {
   padding: 20px 120px ;
-  background-color: #efefef;
+  background-color: #111827 !important;
 }
 
 /* ================= TILES ================= */
 
 .tiles {
-  display: flex;
-  gap: 90px;
-  margin-top: 40px;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important; /* Distributes Tile 1 and Tile 2 evenly */
+  gap: 32px; /* Generous breathing room gap between libraries */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ================= CARD ================= */
 
+/* .tile {
+  height: 100%;
+   background: rgba(255, 255, 255, 0.03) !important; 
+} */
+
 .tile {
-  flex: 1;
-   padding: 24px;
-  border-radius: 18px;
-  width: 420px;
-
-  background-color: #23232f;
-
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.25),
-    0 20px 50px rgba(0, 0, 0, 0.15);
-
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.03) !important; /* Translucent glass foundation */
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 20px !important;
+  padding: 40px 32px !important;
+  
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important; /* Aligns content neatly to the left edge */
+  height: 100% !important; /* Guarantees both tiles scale to the exact same vertical length */
+  
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-sizing: border-box !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tile:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* .tile:hover {
   transform: translateY(-8px);
   box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-}
+} */
 
 /* ================= INNER ================= */
 
@@ -236,92 +255,73 @@
 }
 
 .tile h2 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: white;
+  font-size: 40px;
+  margin: 0 0 8px 0 !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important; 
+  letter-spacing: -0.02em;
 }
 
 .tile-subtitle {
-  font-size: 14px;
-  color: #bbbbbb;
-  margin-bottom: 15px;
+  margin: 0 0 20px 0 !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  color: #94a3b8 !important; 
+  letter-spacing: 0.01em;
 }
+
+.desc {
+  margin: 0 0 32px 0 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  color: #cbd5e1 !important; 
+  flex-grow: 1; 
+}
+
+
 /* .banner{
   height: 100vh;
 } */
 
-.description {
+/* .description {
     font-size: 18px;
     color: #d1d5db;
     line-height: 1.6;
     margin-bottom: 25px;
     max-width: 512px;
     font-family: 'EYInterstate', "Noto Sans", sans-serif;;
-}
+} */
 
 /* ================= BUTTON ================= */
 
 .cta {
-  background: #ffe600;
-  color: #000;
-
-  border: none;
-  border-radius: 6px;
-
-  padding: 10px 20px;
-  font-weight: 600;
-
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 200px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px;
+  padding: 14px 28px !important;
+  border-radius: 12px !important;
+  
+  /* Modern translucent gold styling replaces harsh solid blocks */
+  border: 1px solid #ffeb0a !important;
+  background: rgba(255, 230, 0, 0.06) !important; 
+  color: #ffeb0a !important;
+  box-shadow: 0px  !important;
+  
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  margin-top: auto; /* Securely fastens active tracking to the bottom floor anchor */
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .cta:hover {
-  background: #ffd700;
-  transform: translateX(4px);
+  background: #ffe600 !important; 
+  color: #1e293b !important;
+  box-shadow: 0 0 24px rgba(255, 230, 0, 0.35);
+  transform: scale(1.02);
 }
-
-
-.cta,
-.cta,
-.ctaPrimary {
-  width: 280px;
-  margin-top: 30px;
-  background: #ffd700;
-  color: #23232f;
-  border: none;
-  padding: 14px 20px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-
-  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.35);
-  transition: all 0.25s ease;
-}
-
-
-/* .cta,
-.ctaAlt {
-  margin-top: auto; 
-} */
-
-
-.cta:hover,
-.cta:hover,
-.ctaPrimary:hover {
-  transform: translateY(-3px) scale(1.02);
-  background: #ffdf33;
-  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
-}
-
-.cta:active,
-.cta:active,
-.cta:active {
-  transform: scale(0.97);
-}
-
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 900px) {

@@ -23,6 +23,7 @@ import BASample from "./pages/BASample";
 import A2Rrecon from "./pages/a2rrecon";
 import WorkingCapital from "./pages/workingCapital";
 import PriceWise from "./pages/priceWise";
+import ChatbotIcon from "./components/ChatbotIcon";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -73,7 +74,7 @@ function App() {
       <ScrollToTop /> {/* scroll always reset */}
 
       <AnimatedRoutes /> {/* animated navigation */}
-
+       <ChatbotIcon />
       <Footer />
     </div>
   );

@@ -49,12 +49,12 @@ export default function PrinciplesGrid() {
 <h1 className="ey-heading">
   How EY Helps Enterprises Scale AI
 </h1>
- <div className="ey-divider"></div>
+
 
     <p className="ey-subtext">
       A responsible, scalable and human-centered approach to enterprise AI transformation.
     </p>
-
+ <div className="ey-divider"></div>
   </div>
 
   <h2 className="main-title">Our Principles</h2>

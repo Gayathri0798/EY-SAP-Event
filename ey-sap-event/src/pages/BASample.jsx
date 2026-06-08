@@ -6,7 +6,7 @@ export default function BASample() {
         padding: '60px 20px', 
         fontFamily: 'system-ui, -apple-system, sans-serif',
         textAlign: 'center',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#111827',
         minHeight: '100vh'
       }}
     >
@@ -15,25 +15,25 @@ export default function BASample() {
         style={{ 
           fontSize: '2.5rem', 
           fontWeight: '700', 
-          color: '#2e2e2e', 
+          color: '#ffffff', 
           marginBottom: '16px',
           letterSpacing: '-0.5px'
         }}
       >
-        Bha Adv Draft
+        Agentic Finance Transformation
       </h1>
       
       <p 
         className="ba-subtitle" 
         style={{ 
           fontSize: '1.15rem', 
-          color: '#666666', 
+          color: '#94a3b8', 
           maxWidth: '800px', 
           margin: '0 auto 48px auto',
           lineHeight: '1.6'
         }}
       >
-        Bha Adv Draft Desc
+        Reimagining Core Finance Processes with AI-Powered Agents
       </p>
       
       <div 
@@ -63,6 +63,21 @@ export default function BASample() {
          <img 
           src="/images/ba2.jpg" 
           alt="BA Sample 2" 
+          className="ba-img" 
+          style={{ 
+            width: '100%', 
+            height: 'auto', 
+            borderRadius: '12px', 
+            boxShadow: '0 20px 40px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05)',
+            border: '1px solid #eaeaea',
+            marginTop: '40px' 
+          }}
+        />
+
+        
+         <img 
+          src="/images/ba3.jpg" 
+          alt="BA Sample 3" 
           className="ba-img" 
           style={{ 
             width: '100%', 

@@ -29,9 +29,9 @@ const solutions = [
     url:"/procuresense",
   },
   {
-    name: "BA Draft",
-    tagline: "BA Draft Test",
-    desc: "Enable suppliers to submit and track grievances directly.",
+    name: "Agentic Finance Transformation",
+    tagline: "AI-powered transformation",
+    desc: "Reimagining Core Finance Processes with AI-Powered Agents.",
     img: "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
     url:"/BASample",
   },

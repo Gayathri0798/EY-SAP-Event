@@ -7,16 +7,28 @@
 .tabs-header {
   display: flex;
   gap: 12px;
-  overflow-x: auto;
+  overflow-x: auto; /* Crucial: Retains the background scrolling framework */
   white-space: nowrap;
-  padding-bottom: 20px 0px 10px;
-  border-bottom: 1px solid #eee;
-  scroll-behavior: smooth;
+  padding-bottom: 14px;
   margin-top: 15px;
+  scroll-behavior: smooth;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* 1. Hide scrollbar track for Firefox */
+  scrollbar-width: none !important;
+
+  /* 2. Hide scrollbar track for Internet Explorer & legacy Edge */
+  -ms-overflow-style: none !important;
+  
+  /* Retain edge mask gradient if desired */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent);
 }
- 
+
 .tabs-header::-webkit-scrollbar {
-  display: none;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
  
 /* TAB */
@@ -27,19 +39,19 @@
   padding: 10px 18px;
   cursor: pointer;
   font-size: 14px;
-  color: #777;
+  color: #94a3b8;
   border-bottom: 3px solid transparent;
   transition: all 0.3s ease;
 }
  
 .tab-btn:hover {
-  color: black;
+  color: #ffeb0a;
 }
  
 .tab-btn.active {
-  color: black;
+  color: #ffffff;
   font-weight: 600;
-  border-bottom: 3px solid #ffd500;
+  border-bottom: 3px solid #ffeb0a;
 }
  
 /* HERO */

@@ -97,9 +97,7 @@ export default function Insights() {
     <span className="meta">{item.meta}</span>
   </div>
 </div>
-
         ))}
-
       </div>
     </div>
   );

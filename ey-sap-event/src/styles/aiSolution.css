@@ -81,14 +81,8 @@
 
 .solutions-container {
   padding: 60px;
-  background: #f5f7fb;
+  background: #111827;
   font-family: EYInterstate, "Noto Sans", sans-serif;
-   background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #fffdf5 25%,
-    #f5f7fb 100%
-  );
 }
 
 /* HEADER */

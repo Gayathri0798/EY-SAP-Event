@@ -80,37 +80,37 @@ export default function AiMarketPlace() {
   {
     "header": "Smart P2P Agent",
     "text": "Automates invoice processing to eliminate manual errors and delays. Improves accuracy, speeds up approvals, and reduces operational costs in Accounts Payable.",
-    "url":''
+    "url":'https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared Documents/SAP AI/Recordings %26 Demos/Joule/joule agents/EY Smart P2P Agent.mp4?csf=1&web=1&e=NCTQxq'
   },
   {
     "header": "FSM Agent",
     "text": "AI assistant integrated with SAP and Joule app gives field engineers real-time, hands-free access to asset data, repair instructions, and safety guidelines—boosting efficiency and reliability.",
-    "url":''
+    "url":'https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared Documents/SAP AI/Recordings %26 Demos/Joule/joule agents/EY Field Service Management Agent.mp4?csf=1&web=1&e=AczKjW'
   },
   {
     "header": "AI-Powered Circularity Advisor Agent",
     "text": "Helps teams choose compliant, eco-friendly materials with visibility into recyclability, fees, and regional regulations—reducing environmental impact and costs.",
-    "url":''
+    "url":'https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared Documents/SAP AI/Recordings %26 Demos/Joule/joule agents/EY AI-Powered Circularity Advisor Agent.mp4?csf=1&web=1&e=kQc6Ul'
   },
   {
     "header": "Load Optimizer Agent",
     "text": "Maximizes container load efficiency to cut shipping costs, carbon footprint, and handling charges—optimizing logistics and sustainability.",
-    "url":''
+    "url":'https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared Documents/SAP AI/Recordings %26 Demos/Joule/joule agents/EY Load Optimizer Agent.mp4?csf=1&web=1&e=a145y8'
   },
   {
     "header": "Finance Manager Invoicing Agent",
     "text": "Ensures timely invoicing with proforma previews, improving cash flow and customer experience.",
-    "url":''
+    "url":'https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared Documents/SAP AI/Recordings %26 Demos/Joule/joule agents/EY Finance Manager Invoicing Agent.mp4?csf=1&web=1&e=dGgvLS'
   },
   {
     "header": "Master Data Agent",
     "text": "Improves data quality and supports Master Data Management processes for accurate, consistent business information.",
-    "url":''
+    "url":'https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared Documents/SAP AI/Recordings %26 Demos/Joule/joule agents/EY Master Data Agent.mp4?csf=1&web=1&e=MoegFw'
   },
   {
     "header": "Quick Order Agent",
     "text": "AI-powered chatbot that enables store staff to place orders for goods not for resale via simple text interaction. Automatically creates order requests based on catalogue items.",
-    "url":''
+    "url":'https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared Documents/SAP AI/Recordings %26 Demos/Joule/joule agents/EY QuickOrder Agent.mov?csf=1&web=1&e=5sLKkl'
   }
 ];
 

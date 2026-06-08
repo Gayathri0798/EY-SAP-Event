@@ -27,14 +27,14 @@
   font-weight: 500;          /*   not too bold */
   line-height: 1.2;
   font-family: EYInterstate, "Noto Sans", sans-serif;
-  color: #090909f0;
+  color: #ffffff !important;
   margin-bottom: 20px;
 }
 
 /* Subtext */
 .ey-subtext {
   font-size: 18px;
-  color: #6f757d;
+  color: #94a3b8 !important;
   line-height: 1.6;
   font-family: EYInterstate, "Noto Sans", sans-serif;
   max-width: 890px;
@@ -83,7 +83,7 @@
   text-align: center;
   font-size: 34px;   /*   bigger */
   font-weight: 600;
-  color: #23232F;
+  color: #ffffff;
 
   margin-bottom: 70px;
 }
@@ -115,7 +115,7 @@
 /* Hover */
 .grid-item:hover {
   transform: translateY(-8px);
-  border-color: #fefbd9;
+  border-color: #ffeb0a;
       /*   hover background */
   transform: translateY(-8px);
 
@@ -135,7 +135,7 @@
   font-size: 20px;   /*   bigger */
   font-weight: 600;
 
-  color: #ffd700;
+  color: #ffeb0a;
 
   margin-bottom: 15px;
 }

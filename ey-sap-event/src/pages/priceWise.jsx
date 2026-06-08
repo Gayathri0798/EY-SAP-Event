@@ -1,5 +1,5 @@
 import "../styles/procuresense.css";
-import IntelligentReconciliationFlow from './IntelligentReconciliationFlow';
+import DataArchitecturePipeline from './DataArchitecturePipeline';
 import Banner from "../components/Banner";
 import {
   Zap,
@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { useRef, useState } from "react";
 
-export default function A2Rrecon() {
+export default function PriceWise() {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -49,8 +49,8 @@ export default function A2Rrecon() {
     <>
     <div className="banner-section">
         <Banner
-          title="Intelligent Reconciliation"
-          subtitle="This solution enables automated, policy-aware review of accounting data by loading source records, validating them, and generating correction proposals with clear rationale. It gives users a guided workflow to inspect validation outcomes, compare before/after quality, and apply corrections with confidence. It also improves auditability by making decisions and correction logic transparent and traceable end to end."
+          title="Intelligent Pricing Made Simple"
+          subtitle="Pricewise enables organizations to make informed pricing decisions by consolidating data from across the enterprise. By leveraging real-time inputs, it supports accurate price recommendations and enhances alignment between sales and operations."
           buttonText="Learn more"
           image="/images/lego.jpeg"
         />
@@ -58,7 +58,7 @@ export default function A2Rrecon() {
   {/* cards section */}
 
 <div className="ps-benefits">
-  <h2>What Intelligen Reconciliation Delivers</h2>
+  <h2>What Pricewise Delivers</h2>
 
   <div className="benefits-grid">
 
@@ -66,32 +66,32 @@ export default function A2Rrecon() {
       <div className="icon-box icon-yellow">
         <Zap size={20} />
       </div>
-      <h3>Accelerated Reconciliation</h3>
-      <p>Automates data loading, validation, and correction drafting to reduce manual close effort.</p>
+      <h3>Accelerated Pricing</h3>
+      <p>Generates instant pricing for RFQs, reducing manual effort.</p>
     </div>
 
     <div className="benefit-card highlight">
       <div className="icon-box icon-cyan">
         <ShieldCheck size={20} />
       </div>
-      <h3>Actionable Validation Insights</h3>
-      <p>Provides structured failure codes, targeted accounts, and rationale for faster reviewer action.</p>
+      <h3>Actionable Deal Insights</h3>
+      <p>Provides structured insights to support informed decision-making.</p>
     </div>
 
     <div className="benefit-card">
       <div className="icon-box icon-green">
         <DollarSign size={20} />
       </div>
-      <h3>Enhanced Financial Control Visibility</h3>
-      <p>Gives clear before/after validation visibility to understand risk and correction impact before posting.</p>
+      <h3>Enhanced Profitability Visibility</h3>
+      <p>Offers clear visibility into margin impact before execution.</p>
     </div>
 
     <div className="benefit-card">
       <div className="icon-box icon-blue">
         <Clock size={20} />
       </div>
-      <h3>Aligned Policy-Driven Decisioning</h3>
-      <p>Aligns correction proposals with accounting policy references and business rules for consistent outcomes.</p>
+      <h3>Aligned Business Planning</h3>
+      <p>Aligns pricing decisions with demand and supply conditions.</p>
     </div>
 
   </div>
@@ -104,14 +104,44 @@ export default function A2Rrecon() {
   {/* HEADER */}
   <div className="header">
     <h1>
-      <span>Intelligent</span> Reconciliation
+     How <span> Pricewise </span> Works
     </h1>
     <p>
-      Solution integrates financial data from enterprise systems such as SAP and non-SAP sources into a unified reconciliation workflow. Its orchestration and validation engines process this data across accounting, policy, and control dimensions to identify breaks, generate correction proposals, and provide explainable rationale through an intuitive review dashboard. This enables faster, policy-aligned decisions with clear audit traceability before posting.
+      Pricewise integrates data from enterprise systems such as SAP and Non SAP entites, CRM platforms, supply chain applications, and market data sources into a unified environment. Its core Pricing Engine processes this data in real time, combining inputs across customer, sales, operations, and financial dimensions to generate pricing recommendations and business insights through an intuitive dashboard.
     </p>
   </div>
   <div className="htmlViewer">
- <IntelligentReconciliationFlow/>
+    <div className="video-floating">
+        
+
+        {/* VIDEO */}
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          onClick={togglePlay}
+          onTimeUpdate={handleTimeUpdate}
+        >
+          <source src="/videos/Pricewise.mp4" type="video/mp4" />
+        </video>
+
+        {/* PLAY / PAUSE BUTTON */}
+        {/* <button className="play-btn" onClick={togglePlay}>
+          {isPlaying ? "❚❚" : "▶"}
+        </button> */}
+
+        {/* PROGRESS BAR */}
+        <div className="progress-bar" onClick={handleSeek}>
+          <div
+            className="progress-fill"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+
+      </div>
+ {/* <DataArchitecturePipeline/> */}
   </div>
  
 </div>
@@ -119,9 +149,9 @@ export default function A2Rrecon() {
 
 <div className="video-section">
 
-      <h2 className="video-title">See Intelligent Reconciliation  in Action</h2>
+      <h2 className="video-title">See Pricewise in Action</h2>
       <p className="video-subtitle">
-        Streamlines reconciliation workflows, improves correction accuracy, and enables data-driven, policy-aligned decisions to support stronger financial control, audit readiness, and operational alignment.
+        Discover how Pricewise streamlines RFQ responses, improves pricing accuracy, and enables data-driven decision-making to support sustainable revenue growth and operational alignment.
       </p>
 
       <div className="video-floating">
@@ -137,7 +167,7 @@ export default function A2Rrecon() {
           onClick={togglePlay}
           onTimeUpdate={handleTimeUpdate}
         >
-          <source src="/videos/IntelliReco.mp4" type="video/mp4" />
+          <source src="/videos/Pricewise.mp4" type="video/mp4" />
         </video>
 
         {/* PLAY / PAUSE BUTTON */}

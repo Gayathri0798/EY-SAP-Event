@@ -22,6 +22,7 @@ import Procuresense from "./pages/procuresense";
 import BASample from "./pages/BASample";
 import A2Rrecon from "./pages/a2rrecon";
 import WorkingCapital from "./pages/workingCapital";
+import PriceWise from "./pages/priceWise";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -57,6 +58,7 @@ exit={{ scale: 0.98, opacity: 0 }}
           <Route path="/BASample" element={<BASample />} />
           <Route path="/a2rrecon" element={<A2Rrecon />} />
           <Route path="/workingCapital" element={<WorkingCapital />} />
+          <Route path="/priceWise" element={<PriceWise />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

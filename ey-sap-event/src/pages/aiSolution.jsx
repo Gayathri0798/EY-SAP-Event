@@ -20,7 +20,8 @@ const solutions = [
     name: "PriceWise",
     tagline: "Pricing intelligence",
     desc: "Optimize pricing strategies with predictive analytics.",
-    img: "https://img.icons8.com/fluency/96/combo-chart.png"
+    img: "https://img.icons8.com/fluency/96/combo-chart.png",
+    url:"/priceWise"
   },
   {
     name: "ProcureSense",

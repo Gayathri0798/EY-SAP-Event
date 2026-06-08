@@ -168,7 +168,9 @@ export default function IntelligentReconciliationFlow() {
 
         .page {
           position: relative; z-index: 1;
-          width: min(1520px, 97vw);
+          width:100%;
+          max-width:1440px;
+          padding: 0 20px;
           margin: 28px auto 24px;
         }
 
@@ -479,10 +481,11 @@ export default function IntelligentReconciliationFlow() {
           }
         }
 
-        @media(max-width:1100px){
-          .layout { grid-template-columns:1fr; gap:16px; }
-          .connectors-svg { display:none; }
-        }
+          @media(max-width:1320px){
+  .layout { grid-template-columns: 300px 450px 300px;  gap:40px; }
+   
+  .data-card.card-bot { margin-top: 0; } /* Cleans up alignment when stacked */
+}
       `}</style>
 
       <div className="a2r-flow-wrapper">

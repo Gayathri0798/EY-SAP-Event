@@ -78,7 +78,7 @@ export default function TalkToExperts() {
 
   return (
     <div className="experts-page">
-      <div className="heading">Voices of Leadership</div>
+      <div className="heading">Know our Experts</div>
 
       {/* <h2 className="experts-title">
         What people are saying about us

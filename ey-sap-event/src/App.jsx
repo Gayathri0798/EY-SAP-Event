@@ -20,6 +20,8 @@ import JouleAiSystem from "./pages/jouleAI";
 import SapAiSolution from "./pages/aiSolution";
 import Procuresense from "./pages/procuresense";
 import BASample from "./pages/BASample";
+import A2Rrecon from "./pages/a2rrecon";
+import WorkingCapital from "./pages/workingCapital";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -53,6 +55,8 @@ exit={{ scale: 0.98, opacity: 0 }}
           <Route path="/aiSolution" element={<SapAiSolution />} />
           <Route path="/procuresense" element={<Procuresense />} />
           <Route path="/BASample" element={<BASample />} />
+          <Route path="/a2rrecon" element={<A2Rrecon />} />
+          <Route path="/workingCapital" element={<WorkingCapital />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

@@ -114,7 +114,7 @@
 }
 
 
-.cta,
+/* .cta,
 .cta,
 .ctaPrimary {
   width: 280px;
@@ -130,7 +130,7 @@
 
   box-shadow: 0 8px 20px rgba(255, 215, 0, 0.35);
   transition: all 0.25s ease;
-}
+} */
 
 
 /* .cta,
@@ -144,7 +144,7 @@
 .ctaPrimary:hover {
   transform: translateY(-3px) scale(1.02);
   background: #ffdf33;
-  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+  /* box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5); */
 }
 
 .cta:active,

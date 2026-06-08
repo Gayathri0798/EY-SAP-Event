@@ -4,7 +4,7 @@ import "../styles/principles-section.css";
 const principles = [
   {
     id: "PRINCIPLE 1",
-    title: "Building Confidence in AI",
+    title: "Building Confidence in Artifical Intelligence",
     description:
       "Establish trusted AI foundations with governance, explainability and enterprise-grade controls built into every workflow.",
     highlights: [

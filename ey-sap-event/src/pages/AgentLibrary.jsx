@@ -55,7 +55,7 @@ function AgentLibrary() {
               Your agent may already be built. Browse our library of pre-built agents designed to support common business processes, improve productivity, and accelerate deployment.
             </p>
 
-            <button className="cta" onClick={() => navigate("/aiMarketPlace")}>Explore Agent Library ➤</button>
+            <button className="cta" onClick={() => navigate("/aiMarketPlace")}>Explore Agent Library</button>
           
         </div>
 
@@ -70,7 +70,7 @@ Build faster with modular skills designed for extraction, analysis, orchestratio
             </p>
 
             <button className="cta" onClick={() => navigate("/skillCard")}>
-              Explore Skill Library ➤
+              Explore Skill Library
             </button>
         </div>
     </div>

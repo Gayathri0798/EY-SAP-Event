@@ -84,7 +84,7 @@
   font-weight: 700;
   font-size: 15px;
   cursor: pointer;
-  
+
 
   /* box-shadow: 0 8px 20px rgba(255, 215, 0, 0.35); */
   transition: all 0.25s ease;
@@ -274,6 +274,7 @@
 .desc {
   margin: 0 0 32px 0 !important;
   font-size: 0.95rem !important;
+  min-height: 80px;
   line-height: 1.6 !important;
   color: #cbd5e1 !important; 
   flex-grow: 1; 

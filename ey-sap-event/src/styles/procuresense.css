@@ -196,6 +196,16 @@
     overflow-x: auto;
   } */
 
+  .htmlViewer {
+    width: 100vw;
+  }
+
+  @media(max-width:1320px){
+  .layout { grid-template-columns:1fr; gap:24px; }
+  /* .connectors-svg { display:none; } */
+  .data-card.card-bot { margin-top: 0; } /* Cleans up alignment when stacked */
+}
+
   /* ── CANVAS ── */
   .canvas-wrapper {
   width: 100%;
@@ -278,7 +288,7 @@ position: relative;
   .layout {
     position: relative;
     display: grid;
-    grid-template-columns: 330px 540px 330px;
+    /* grid-template-columns: 330px 540px 330px; */
     gap: 0 60px;
     align-items: start;
     z-index: 10;

@@ -41,7 +41,7 @@ export default function AgentLanding() {
               AI agents integrated with SAP ecosystems.
             </p>
 
-            <button className="cta" onClick={() => navigate("/explore-nexus")}>Explore Nexus ➤</button>
+            <button className="cta" onClick={() => navigate("/explore-nexus")}>Explore Nexus</button>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ export default function AgentLanding() {
             </p>
 
             <button className="cta" onClick={handleExternalRedirect}>
-              Create Agent ➤
+              Create Agent
             </button>
           </div>
         </div>

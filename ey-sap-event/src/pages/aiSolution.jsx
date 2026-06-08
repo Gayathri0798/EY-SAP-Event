@@ -13,7 +13,8 @@ const solutions = [
     name: "A2R Reconciliation",
     tagline: "AI-powered automation",
     desc: "Detect errors and automate reconciliation processes.",
-    img: "https://img.icons8.com/fluency/96/ledger.png"
+    img: "https://img.icons8.com/fluency/96/ledger.png",
+    url: "/a2rrecon"
   },
   {
     name: "PriceWise",
@@ -29,11 +30,11 @@ const solutions = [
     url: "/procuresense",
   },
   {
-    name: "Agentic Finance Transformation",
-    tagline: "AI-powered transformation",
-    desc: "Reimagining Core Finance Processes with AI-Powered Agents.",
-    img: "https://img.icons8.com/fluency/96/artificial-intelligence.png",
-    url: "/BASample",
+    name: "Working Capital",
+    tagline: "Cash flow optimization",
+    desc: "Improve liquidity using DPO, DSO and DIO optimization.",
+    img: "https://img.icons8.com/fluency/96/wallet.png",
+    url: "/workingCapital"
   },
   {
     name: "Data Genie",
@@ -48,17 +49,18 @@ const solutions = [
     img: "https://img.icons8.com/fluency/96/document.png"
   },
   {
-    name: "Working Capital",
-    tagline: "Cash flow optimization",
-    desc: "Improve liquidity using DPO, DSO and DIO optimization.",
-    img: "https://img.icons8.com/fluency/96/wallet.png"
-  },
-  {
     name: "Autonomous Supply Chain",
     tagline: "AI-driven supply chain",
     desc: "Automate supply chain decisions intelligently.",
     img: "https://img.icons8.com/fluency/96/delivery.png"
-  }
+  },
+  {
+    name: "Agentic Finance Transformation",
+    tagline: "AI-powered transformation",
+    desc: "Reimagining Core Finance Processes with AI-Powered Agents.",
+    img: "https://img.icons8.com/fluency/96/artificial-intelligence.png",
+    url: "/BASample",
+  },
 ];
 
   return (

@@ -1,0 +1,152 @@
+/*   MAIN CONTAINER */
+.timeline-container {
+  padding: 40px;
+  background: #111827;
+  font-family: EYInterstate, "Noto Sans", sans-serif;
+}
+
+/*   HEADER */
+/*   HEADER */
+.timeline-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 700;
+
+  position: relative;
+  color: white;
+}
+
+/*   HEADER ITEM */
+.header-item {
+  position: relative;
+  font-size: 16px;
+}
+
+/*   CENTERED ARROWS */
+.header-arrow {
+  position: absolute;
+
+  right: -20px;      /*   pushes arrow to middle gap */
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 24px;   /*   bigger arrow */
+  font-weight: bold;
+
+  color: #fff;       /*   darker for visibility */
+}
+.timeline-header::after {
+  content: "";
+  position: absolute;
+
+  left: 5%;
+  right: 5%;
+  bottom: -10px;
+
+  height: 2px;
+  background: #d1d5db;
+}
+
+
+/*   MAIN GRID */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  position: relative;
+}
+
+/*   VERTICAL DIVIDER LINES (TIMELINE LOOK) */
+.timeline-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25%;
+  width: 1px;
+  background: #e5e7eb;
+
+  box-shadow:
+    25% 0 #e5e7eb,
+    50% 0 #e5e7eb,
+    75% 0 #e5e7eb;
+}
+
+/*   STAGE CARD (BIG COLUMN) */
+.stage-card {
+  padding: 16px;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+/* DISCOVER */
+.stage-card:nth-child(1) {
+  background: #dbeafe;   /* light blue */
+}
+
+/* CREATE */
+.stage-card:nth-child(2) {
+  background: #d1fae5;   /* light green */
+}
+
+/* TRANSFORM */
+.stage-card:nth-child(3) {
+  background: #ede9fe;   /* light purple */
+}
+
+/* SCALE */
+.stage-card:nth-child(4) {
+  background: #ffedd5;   /* light orange */
+}
+
+/*   INDIVIDUAL PILLS */
+.pill {
+  background: white;
+  border-radius: 10px;
+  padding: 12px;
+
+  border-left: 5px solid #facc15;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: 0.2s ease;
+}
+
+.pill:hover {
+  transform: translateY(-2px);
+}
+
+/*   COLORS PER COLUMN */
+.stage-card:nth-child(1) .pill {
+  border-left-color: #3B82F6;
+}
+
+.stage-card:nth-child(2) .pill {
+  border-left-color: #10B981;
+}
+
+.stage-card:nth-child(3) .pill {
+  border-left-color: #8B5CF6;
+}
+
+.stage-card:nth-child(4) .pill {
+  border-left-color: #F59E0B;
+}
+
+/*   TEXT */
+.pill h4 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.pill p {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.4;
+}

@@ -6,58 +6,58 @@ const solutions = [
     name: "FinOps",
     tagline: "Cloud financial operations",
     desc: "Optimize cloud spend and cost transparency.",
-    img: "https://cdn-icons-png.flaticon.com/512/1904/1904425.png",
+    img: "https://img.icons8.com/fluency/96/money.png",
     url: "https://finance-demo.wonderfulbush-ae06f75b.southindia.azurecontainerapps.io/",
   },
   {
     name: "A2R Reconciliation",
     tagline: "AI-powered automation",
     desc: "Detect errors and automate reconciliation processes.",
-    img: "https://cdn-icons-png.flaticon.com/512/4149/4149680.png"
+    img: "https://img.icons8.com/fluency/96/ledger.png"
   },
   {
     name: "PriceWise",
     tagline: "Pricing intelligence",
     desc: "Optimize pricing strategies with predictive analytics.",
-    img: "https://cdn-icons-png.flaticon.com/512/2331/2331712.png"
+    img: "https://img.icons8.com/fluency/96/combo-chart.png"
   },
   {
     name: "ProcureSense",
     tagline: "AI-powered vendor intelligence",
-    desc: "Maximize savings, minimize supplier risks and accelerate sourcing cycles.",
-    img: "https://cdn-icons-png.flaticon.com/512/4341/4341139.png",
-    url:"/procuresense",
+    desc: "Maximize savings and minimize supplier risks.",
+    img: "https://img.icons8.com/fluency/96/shopping-cart.png",
+    url: "/procuresense",
   },
   {
     name: "Agentic Finance Transformation",
     tagline: "AI-powered transformation",
     desc: "Reimagining Core Finance Processes with AI-Powered Agents.",
-    img: "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
-    url:"/BASample",
+    img: "https://img.icons8.com/fluency/96/artificial-intelligence.png",
+    url: "/BASample",
   },
   {
     name: "Data Genie",
     tagline: "Smart data insights",
     desc: "Transform enterprise data into actionable intelligence.",
-    img: "https://cdn-icons-png.flaticon.com/512/2103/2103633.png"
+    img: "https://img.icons8.com/fluency/96/database.png"
   },
   {
     name: "Document Analyser",
     tagline: "AI document processing",
     desc: "Extract and validate documents using AI models.",
-    img: "https://cdn-icons-png.flaticon.com/512/2991/2991112.png"
+    img: "https://img.icons8.com/fluency/96/document.png"
   },
   {
     name: "Working Capital",
     tagline: "Cash flow optimization",
     desc: "Improve liquidity using DPO, DSO and DIO optimization.",
-    img: "https://cdn-icons-png.flaticon.com/512/3135/3135673.png"
+    img: "https://img.icons8.com/fluency/96/wallet.png"
   },
   {
     name: "Autonomous Supply Chain",
     tagline: "AI-driven supply chain",
     desc: "Automate supply chain decisions intelligently.",
-    img: "https://cdn-icons-png.flaticon.com/512/3082/3082031.png"
+    img: "https://img.icons8.com/fluency/96/delivery.png"
   }
 ];
 

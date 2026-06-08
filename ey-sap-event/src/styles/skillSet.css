@@ -3,7 +3,7 @@ html,body {
   overflow-x: hidden;
 }
 
-.layout {
+.skills-layout {
   display: flex !important;
   align-items: flex-start;
   gap: 20px !important;

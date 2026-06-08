@@ -229,7 +229,7 @@ export default function SkillsGrid() {
         </p>
       </div>
 
-      <div className="layout">
+      <div className="skills-layout">
 
         {/*   SIDEBAR */}
         <div className="sidebar">

@@ -111,6 +111,11 @@ export default function AiMarketPlace() {
     "header": "Quick Order Agent",
     "text": "AI-powered chatbot that enables store staff to place orders for goods not for resale via simple text interaction. Automatically creates order requests based on catalogue items.",
     "url":'https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared Documents/SAP AI/Recordings %26 Demos/Joule/joule agents/EY QuickOrder Agent.mov?csf=1&web=1&e=5sLKkl'
+  },
+  {
+    "header":"Travel Agent",
+    "text":"Simplifies travel planning with AI recommendations.",
+    "url":"https://eyindia.sharepoint.com/:v:/s/SAPAITeam159/IQCAJNubbpdlT7ywS9MrfjoZAY2pwFheq2fJ_68HS472QaQ?e=ouuMhH",
   }
 ];
 

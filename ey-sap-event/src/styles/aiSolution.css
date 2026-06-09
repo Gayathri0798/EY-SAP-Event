@@ -123,3 +123,34 @@
     grid-template-columns: 1fr; /* mobile */
   }
 }
+
+
+.solution-tabs{
+  display:flex;
+  gap:100px;
+  justify-content:center;
+  margin:30px 0;
+  flex-wrap:wrap;
+  padding-bottom: 30px;
+}
+
+.solution-tab{
+  background:#111c34;
+  color:white;
+  border:1px solid #2f3d63;
+  padding:12px 24px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.solution-tab:hover{
+  background:#1e2b4d;
+}
+
+.active-tab{
+  background:yellow;
+  color:black;
+  /* border-color:#e5ea67; */
+}

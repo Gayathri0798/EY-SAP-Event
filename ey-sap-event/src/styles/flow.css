@@ -1,9 +1,10 @@
 .timeline-container {
-  width: 100% !important;
+  /* width: 100% !important; */
   display: flex !important;
   flex-direction: column !important;
   gap: 28px; 
   box-sizing: border-box !important;
+  margin: 0px 50px 60px;
 }
  
 .timeline-header {
@@ -33,7 +34,7 @@ align-items: center;
 }
  
 .header-arrow {
-  color: rgba(247, 242, 242, 0.15) !important;
+  color: #fff !important;
   font-size: 1.2rem !important;
   font-weight: 400;
   margin-left: auto;
@@ -52,31 +53,47 @@ align-items: center;
   display: flex !important;
   flex-direction: column !important;
   gap: 16px;
-  background: rgba(255, 255, 255, 0.01) !important; 
-  border: 1px solid rgba(255, 255, 255, 0.02) !important;
+  /* background: rgba(255, 255, 255, 0.01) !important; 
+  border: 1px solid rgba(255, 255, 255, 0.02) !important; */
   border-radius: 16px;
   padding: 16px !important;
   height: 100%;
 }
- 
+ /* DISCOVER */
+.stage-0 {
+  background: #fe0b0b40;   /* deep blue */
+  border: 1px solid #1e293b;
+}
+
+/* CREATE */
+.stage-1 {
+  background: #1f2937;   /* slate */
+  border: 1px solid #374151;
+}
+
+/* TRANSFORM */
+.stage-2 {
+  background: #022c2280;   /* dark green */
+  border: 1px solid #065f46;
+}
+
+/* SCALE */
+.stage-3 {
+  background: #2e10656b;   /* deep purple */
+  border: 1px solid #4c1d95;
+}
+
 .pill {
-  background: rgba(255, 255, 255, 0.03) !important; 
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
- 
-  border-left: 3px solid rgba(96, 165, 250, 0.4) !important; 
   
-  border-radius: 12px !important;
-  padding: 20px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box !important;
-  
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+
+  transition: all 0.25s ease;
 }
  
 .pill:hover {
@@ -85,8 +102,28 @@ align-items: center;
   border-color: rgba(255, 255, 255, 0.12) !important;
   border-left-color: #60a5fa !important; 
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(-4px) scale(1.02);
+  filter: brightness(1.1);
 }
- 
+ /* DISCOVER */
+.stage-0 .pill {
+  background: #59585826 !important; 
+}
+
+/* CREATE */
+.stage-1 .pill {
+  background: #59585826;
+}
+
+/* TRANSFORM */
+.stage-2 .pill {
+  background: #59585826;
+}
+
+/* SCALE */
+.stage-3 .pill {
+  background: #59585826;
+}
 .pill h4 {
   margin: 0 !important;
   font-size: 1.05rem !important;

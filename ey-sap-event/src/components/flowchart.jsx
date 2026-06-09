@@ -50,9 +50,6 @@ export default function FlowChart() {
     <div key={i} className="header-item">
       {stage.title}
 
-      {i < stages.length - 1 && (
-        <span className="header-arrow">➝</span>
-      )}
     </div>
   ))}
 </div>
@@ -62,7 +59,7 @@ export default function FlowChart() {
       <div className="timeline-grid">
 
         {stages.map((stage, i) => (
-          <div key={i} className="stage-card">
+          <div key={i} className={`stage-card stage-${i}`}>
 
             {stage.items.map((item, j) => (
               <div key={j} className="pill">

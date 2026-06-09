@@ -6,7 +6,7 @@ export default function EnterpriseSolutions() {
   const features = [
     {
       title: "SAP Embedded Solutions",
-      desc: "120+ enterprise use cases powered by Joule, Embedded AI and GenAI across Finance, spend, SCM, HCM, Customer experience.",
+      desc: "170+ enterprise use cases powered by Joule, Embedded AI and GenAI across Finance, spend, SCM, HCM, Customer experience.",
       img: "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?q=80&w=996&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       link: "/sapEcoSystem",
     },

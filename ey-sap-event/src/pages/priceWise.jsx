@@ -109,6 +109,7 @@ export default function PriceWise() {
     <p>
       Pricewise integrates data from enterprise systems such as SAP and Non SAP entites, CRM platforms, supply chain applications, and market data sources into a unified environment. Its core Pricing Engine processes this data in real time, combining inputs across customer, sales, operations, and financial dimensions to generate pricing recommendations and business insights through an intuitive dashboard.
     </p>
+    {/* <DataArchitecturePipeline /> */}
   </div>
   <div className="htmlViewer">
     <div className="video-floating">
@@ -118,7 +119,6 @@ export default function PriceWise() {
         <video
           ref={videoRef}
           autoPlay
-          muted
           loop
           playsInline
           onClick={togglePlay}
@@ -161,7 +161,6 @@ export default function PriceWise() {
         <video
           ref={videoRef}
           autoPlay
-          muted
           loop
           playsInline
           onClick={togglePlay}

@@ -1,10 +1,56 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../styles/carousel.css";
 import PrinciplesGrid from "../components/PrinciplesSection";
 import AwardsSection from "../components/AwardsSection";
 
 export default function HomeCarousel() {
   const [current, setCurrent] = useState(0);
+  const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [progress, setProgress] = useState(0);
+  
+    const togglePlay = () => {
+      if (!videoRef.current) return;
+  
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    };
+  useEffect(() => {
+    if (videoRef.current) {
+      setIsPlaying(!videoRef.current.paused);
+    }
+  }, []);
+    // const handleTimeUpdate = () => {
+    //   const video = videoRef.current;
+    //   if (!video) return;
+  
+    //   const percent = (video.currentTime / video.duration) * 100;
+    //   setProgress(percent);
+    // };
+  
+    const handleSeek = (e) => {
+      const video = videoRef.current;
+      if (!video) return;
+  
+      const rect = e.target.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+  
+      const newTime = (clickX / width) * video.duration;
+      video.currentTime = newTime;
+    };
+    const handleTimeUpdate = () => {
+      const video = videoRef.current;
+      if (!video) return;
+  
+      const percent = (video.currentTime / video.duration) * 100;
+      setProgress(percent);
+    };
 //   const [paused, setPaused] = useState(false);
   const slides = [
     {
@@ -144,6 +190,38 @@ export default function HomeCarousel() {
     </div>
     
 <PrinciplesGrid />
+<div className="video-section">
+  <div className="video-floating">
+
+    <video
+      ref={videoRef}
+      loop
+      playsInline
+      onClick={togglePlay}
+      onTimeUpdate={handleTimeUpdate}
+    >
+      <source src="/videos/sapHome.mp4" type="video/mp4" />
+    </video>
+
+    {/* GLASS OVERLAY */}
+    {!isPlaying && (
+      <div className="video-overlay" onClick={togglePlay}>
+        <div className="play-circle">▶</div>
+      </div>
+    )}
+
+    {/* CONTROLS */}
+    <div className="video-controls">
+      <div className="progress-bar" onClick={handleSeek}>
+        <div
+          className="progress-fill"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+    </div>
+
+  </div>
+</div>
       <AwardsSection />
       </>
   );

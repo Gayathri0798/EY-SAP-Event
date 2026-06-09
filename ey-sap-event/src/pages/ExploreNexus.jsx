@@ -9,24 +9,29 @@ export default function ExploreNexus() {
 
   const sections = [
     {
-      title: "Pre-Built Enterprise Agents",
-      desc: "Start with ready-to-use agents for procurement, finance and enterprise operations.",
+      title: "Accelerate Time-to-Value",
+      desc: "Move from idea to production-ready AI agents faster using reusable capabilities, pre-built assets, and enterprise-ready frameworks without extensive technical dependency.",
       image: "/images/enterprise.jpeg",
     },
     {
-      title: "No-Code Agent Builder",
-      desc: "Configure intelligent agents without heavy engineering.",
+      title: "Reuse AI Across the Enterprise",
+      desc: "Avoid rebuilding the same AI capabilities for every use case. Nexus enables organizations to create once and reuse across multiple business processes, datasets, and teams.",
       image: "/images/no-code.jpeg",
     },
     {
-      title: "SAP Integration Fabric",
-      desc: "Connect directly to SAP S/4HANA, CDS views, APIs and enterprise systems.",
+      title: "Integrate AI into Core Operations",
+      desc: "Connect AI agents directly to SAP and enterprise systems via CDS view, APIs so they can act on trusted business data and workflows..",
       image: "/images/sap4hana.jpg",
     },
     {
-      title: "Governance & Orchestration",
-      desc: "Monitor workflows, approvals, explainability and multi-agent operations.",
+      title: "Govern AI with Confidence",
+      desc: "Establish enterprise-wide controls for monitoring, approvals, explainability, and compliance—ensuring AI operates within organizational guardrails.",
       image: "/images/workflow.jpg",
+    },
+    {
+      title: "Scale Beyond Individual Use Cases",
+      desc: "Create a growing ecosystem of AI agents and capabilities that can be orchestrated across functions, processes, and business domains.",
+      image: "/images/aiface.jpg",
     },
   ];
 
@@ -45,9 +50,24 @@ export default function ExploreNexus() {
         <Banner
               title="EY SAP Nexus"
               heading="The Enterprise Control Plane for AI Agents"
-              subtitle="Build, orchestrate and govern AI agents integrated directly with SAP and enterprise systems."
+              
+subtitle={
+  
+ <div className="subtitle-block">
+    <p>
+      AI platform that enables organizations to build, govern, and scale AI agents across business functions and systems.
+      By combining enterprise-grade governance, orchestration, and deep SAP integration, Nexus helps organizations accelerate AI adoption while maintaining control, security, and compliance.
+    </p>
+    {/* <p>
+      By combining enterprise-grade governance, orchestration, and deep SAP integration, Nexus helps organizations accelerate AI adoption while maintaining control, security, and compliance.
+    </p> */}
+  </div>
+
+}
               image="/images/lego.jpeg"
-              buttonText="Learn more"
+              
+   buttonText="Explore EY Nexus"
+  onButtonClick={() => window.open("https://ey-nexus-approuter.cfapps.eu10-004.hana.ondemand.com/", "_blank")} 
             />
 
 <div className="auto-showcase">

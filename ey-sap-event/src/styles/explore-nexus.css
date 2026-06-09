@@ -10,6 +10,44 @@
   font-family: EYInterstate, "Noto Sans", sans-serif;
 }
 
+.banner-subtitle {
+  margin-top: 18px;
+}
+.subtitle-block {
+  max-width: 850px; 
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* paragraph styling */
+.subtitle-block p {
+  margin: 0;
+  margin-bottom: 14px;
+
+  font-size: 16px;
+  line-height: 1.7;
+  color: #cfd6e6;
+}
+.subtitle-block p:first-child {
+  font-size: 17px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.subtitle-block p:last-child {
+  font-size: 15px;
+  color: #aeb6c8;
+}
 /*   Section layout */
 .section {
   

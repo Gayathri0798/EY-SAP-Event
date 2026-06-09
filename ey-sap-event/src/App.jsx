@@ -24,6 +24,7 @@ import A2Rrecon from "./pages/a2rrecon";
 import WorkingCapital from "./pages/workingCapital";
 import PriceWise from "./pages/priceWise";
 import ChatbotIcon from "./components/ChatbotIcon";
+import DataGenie from "./pages/DataGenie";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -60,6 +61,7 @@ exit={{ scale: 0.98, opacity: 0 }}
           <Route path="/a2rrecon" element={<A2Rrecon />} />
           <Route path="/workingCapital" element={<WorkingCapital />} />
           <Route path="/priceWise" element={<PriceWise />} />
+          <Route path="/datagenie" element={<DataGenie />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

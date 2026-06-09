@@ -10,6 +10,13 @@ const solutions = [
     url: "https://finance-demo.wonderfulbush-ae06f75b.southindia.azurecontainerapps.io/",
   },
   {
+    name: "EY Jumpstart",
+    tagline: "AI-powered automation",
+    desc: "AI-powered consulting delivery platform embedding agentic AI across the full SDLC—from discovery and design through build, test, deployment, and support.",
+    img: "https://img.icons8.com/fluency/96/synchronize.png",
+    url: "https://jumpstart.centralindia.azure.uat.eycosmos.com/"
+  },
+  {
     name: "A2R Reconciliation",
     tagline: "AI-powered automation",
     desc: "Detect errors and automate reconciliation processes.",
@@ -31,7 +38,7 @@ const solutions = [
     url: "/procuresense",
   },
   {
-    name: "Working Capital",
+    name: "Cash Pilot",
     tagline: "Cash flow optimization",
     desc: "Improve liquidity using DPO, DSO and DIO optimization.",
     img: "https://img.icons8.com/fluency/96/wallet.png",
@@ -41,7 +48,8 @@ const solutions = [
     name: "Data Genie",
     tagline: "Smart data insights",
     desc: "Transform enterprise data into actionable intelligence.",
-    img: "https://img.icons8.com/fluency/96/database.png"
+    img: "https://img.icons8.com/fluency/96/database.png",
+    url: "/datagenie"
   },
   {
     name: "Document Analyser",

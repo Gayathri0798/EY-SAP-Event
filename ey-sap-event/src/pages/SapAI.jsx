@@ -1,6 +1,7 @@
 
 import "../styles/eySap.css";
 import FlowChart from "../components/flowchart";
+import ProcessDiagram from "../components/ProcessDiagram";
 
 export default function SapAI() {
   // const [active, setActive] = useState(null);
@@ -97,7 +98,7 @@ export default function SapAI() {
           }}
         />
       </div>
-      
+      <ProcessDiagram />
     </>
   );
 }

@@ -206,3 +206,105 @@ height: 36px;
   bottom: 0;
   padding-top: 10px
 }
+.video-section {
+  background: radial-gradient(circle at center, #0b1220, #050810);
+  padding: 100px 0;
+}
+
+.video-floating {
+  width: 100%;
+  max-width: 950px;
+  height: 500px;
+
+  margin: 80px auto;
+
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 
+    0 25px 80px rgba(0,0,0,0.7),
+    inset 0 0 20px rgba(255,255,255,0.04);
+
+  transition: transform 0.4s ease;
+}
+
+.video-floating:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+.video-floating video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.5)
+  );
+
+  backdrop-filter: blur(6px);
+
+  transition: opacity 0.3s ease;
+}
+.play-circle play{
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+
+  /* glass look */
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  color: #ffd84d;
+
+  box-shadow:
+    0 10px 40px rgba(255, 216, 77, 0.4),
+    inset 0 0 12px rgba(255,255,255,0.1);
+
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.play-circle:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.15);
+}
+.play-circle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}

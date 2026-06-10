@@ -1,15 +1,10 @@
-.chatbot-btn {
-  position: fixed;
-
-  bottom: 10%;   /* distance from bottom */
-  right: 5%;    /* distance from right */
-
-  width: 60px;
-  height: 60px;
-
-  background: #679aff8d;  /* yellow */
-  color: black;
-
+/* 1. Core Positioning & Floating Container */
+.chatbot-fab-wrapper {
+  position: fixed !important;
+  bottom: 24px !important; /* Spaced perfectly above your taskbar baseline */
+  right: 24px !important;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   z-index: 9999; /* Guarantees the avatar sits on top of all page grids */
   cursor: pointer;

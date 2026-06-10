@@ -6,7 +6,7 @@ export default function AgentLanding() {
   const navigate = useNavigate();
   const handleExternalRedirect = () => {
     window.open(
-      "https://ey-nexus-approuter.cfapps.eu10-004.hana.ondemand.com/",
+      "https://finagent-upl.wonderfulbush-ae06f75b.southindia.azurecontainerapps.io/demo/diy",
       "_blank",
     );
   };
@@ -19,7 +19,6 @@ export default function AgentLanding() {
     <Banner
       title="Build Enterprise AI Agents at Scale"
       subtitle="Create, orchestrate and govern intelligent agents powered by EY SAP Nexus."
-      buttonText="Learn more"
       image="/images/lego.jpeg"
     />
   </div>

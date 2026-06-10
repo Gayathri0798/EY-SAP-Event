@@ -24,6 +24,9 @@ import A2Rrecon from "./pages/a2rrecon";
 import WorkingCapital from "./pages/workingCapital";
 import PriceWise from "./pages/priceWise";
 import ChatbotIcon from "./components/ChatbotIcon";
+import DataGenie from "./pages/DataGenie";
+import AutonomousSupplyChain from "./pages/AutonomousSC";
+import DocumentAnalyser from "./pages/DocumentAnalyser"
 import DigiGST from "./pages/DigiGST";
 
 function AnimatedRoutes() {
@@ -61,6 +64,9 @@ exit={{ scale: 0.98, opacity: 0 }}
           <Route path="/a2rrecon" element={<A2Rrecon />} />
           <Route path="/workingCapital" element={<WorkingCapital />} />
           <Route path="/priceWise" element={<PriceWise />} />
+          <Route path="/datagenie" element={<DataGenie />} />
+          <Route path="/autonomous" element={<AutonomousSupplyChain/>} />
+          <Route path="/dataAnalyser" element={<DocumentAnalyser/>} />
           <Route path="/digigst" element={<DigiGST />} />
         </Routes>
       </motion.div>

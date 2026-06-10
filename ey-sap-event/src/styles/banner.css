@@ -10,7 +10,7 @@
   position: absolute;
   inset: 0;
 
-  background: url("/images/lego.jpeg") center / cover no-repeat;
+  background: url("/images/agl.jpg") center / cover no-repeat;
 
   z-index: 0;
 
@@ -77,18 +77,24 @@
   max-width: 480px;
   margin-bottom: 25px;
 }
-.banner-btn {
-  width: fit-content;
-
-  background: #ffe600;   /* EY yellow */
-  color: black;
-
-  padding: 12px 22px;
-  border-radius: 8px;
-  border: none;
-
+.banner-cta {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 14px;
   font-weight: 600;
+
+  background: linear-gradient(90deg, #f5c400, #ffd84d);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.banner-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(245, 196, 0, 0.4);
 }
 .banner-right {
   flex: 1.5;

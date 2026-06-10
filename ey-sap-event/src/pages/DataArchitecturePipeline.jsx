@@ -1,616 +1,483 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import "../styles/pricewise.css";
+import {
+  BadgeDollarSign,
+  ShieldAlert,
+  BarChart3,
+  TrendingUp,
+  ClipboardCheck,
+  Coins,
+  LineChart,
+} from "lucide-react";
 
-const PIPELINE_SCENARIOS = [
-  { id: "in-0", title: "SAP S4/HANA", targets: ["Sales", "Financials"], color: "#0EA5E9", inText: "Streaming historical transactional ledgers, actual material margins, and corporate billing profiles.", outText: "Calculating base margin caps to update PRICING RECOMMENDATIONS and REVENUE OPTIMIZATION matrices." },
-  { id: "in-1", title: "SAP ARIBA", targets: ["Supply Chain", "Operations"], color: "#A855F7", inText: "Extracting wholesale procurement agreements, vendor sourcing profiles, and logistics contract tables.", outText: "Evaluating contract coverage parameters inside Supply Chain nodes to mitigate raw index variances." },
-  { id: "in-2", title: "OTHER ERP SYSTEM", targets: ["Financials", "Strategy"], color: "#10B981", inText: "Pulling immediate facility asset capacities, assembly line speeds, and material stocks.", outText: "Executing pipeline constraint simulations to inform MARGIN ANALYSIS and COMPLIANCE metrics logs." },
-  { id: "in-3", title: "CRM SYSTEM", targets: ["Customer", "Sales"], color: "#EC4899", inText: "Capturing customer account pipeline health indexes and historical contract cycle speeds.", outText: "Injecting interaction variables into SEGMENT TRENDS and PRICING RECOMMENDATIONS to adjust regional rates." },
-  { id: "in-4", title: "POLICY & COMPLIANCE", targets: ["Operations", "Strategy"], color: "#F43F5E", inText: "Ingesting regulatory policy books, framework rules, and compliance parameter files.", outText: "Running background auditing filters across COMPLIANCE and DEAL RISK ASSESSMENT nodes to flag exposure rules." },
-  { id: "in-5", title: "MARKET DATA STREAM", targets: ["Supply Chain", "Customer"], color: "#F59E0B", inText: "Tracking external index commodity pricing cycles, competitive quotes, and cargo freight parameters.", outText: "Identifying immediate spot pricing arbitrage sweet-spots across REVENUE OPTIMIZATION assets." },
-  { id: "in-6", title: "INVENTORY LOGS", targets: ["Operations", "Financials"], color: "#06B6D4", inText: "Parsing localized stock adjustments, warehouse turnaround delays, and procurement queues.", outText: "Feeding data into FORECAST and MARGIN ANALYSIS arrays to ensure manufacturing layout protection." }
+/* ─── DATA ─── */
+const INPUTS = [
+  { id:"in-0", label:"SAP S4/HANA",         icon:"💾", color:"#0EA5E9", targets:["Sales","Financials"]          },
+  { id:"in-1", label:"SAP ARIBA",            icon:"📄", color:"#A855F7", targets:["Supply Chain","Operations"]   },
+  { id:"in-2", label:"OTHER ERP SYSTEM",     icon:"🔗", color:"#10B981", targets:["Financials","Strategy"]       },
+  { id:"in-3", label:"CRM SYSTEM",           icon:"👥", color:"#EC4899", targets:["Customer","Sales"]            },
+  { id:"in-4", label:"POLICY & COMPLIANCE",  icon:"⚖️",  color:"#F43F5E", targets:["Operations","Strategy"]      },
+  { id:"in-5", label:"MARKET DATA STREAM",   icon:"📈", color:"#F59E0B", targets:["Supply Chain","Customer"]     },
+  { id:"in-6", label:"INVENTORY LOGS",       icon:"📦", color:"#06B6D4", targets:["Operations","Financials"]     },
 ];
 
-const OUTPUT_CARDS = [
-  { id: "out-0", targets: ["Sales", "Financials"], color: "#0EA5E9", label: "PRICING RECOMMENDATION", explain: "Compiles commercial transactional pricing recommendations based on SKU costing ledgers and account histories." },
-  { id: "out-1", targets: ["Operations", "Strategy"], color: "#F43F5E", label: "DEAL RISK ASSESSMENT", explain: "Assesses contract compliance exposure flags and legal compliance rules to run diagnostic deal checks." },
-  { id: "out-2", targets: ["Financials", "Strategy"], color: "#A855F7", label: "MARGIN ANALYSIS", explain: "Evaluates gross margin thresholds across manufacturing and assembly units to track resource costs." },
-  { id: "out-3", targets: ["Sales", "Operations"], color: "#10B981", label: "FORECAST", explain: "Generates predictive customer demand parameters by correlating system backlog metrics with sales velocities." },
-  { id: "out-4", targets: ["Financials", "Operations"], color: "#94A3B8", label: "COMPLIANCE", explain: "Runs automated rule checking loops to confirm procurement and regulatory framework alignments." },
-  { id: "out-5", targets: ["Sales", "Financials", "Strategy"], color: "#F59E0B", label: "REVENUE OPTIMIZATION", explain: "Pinpoints market arbitrage configurations and rate adjustments by processing commodity streams." },
-  { id: "out-6", targets: ["Customer", "Sales"], color: "#EC4899", label: "SEGMENT TRENDS", explain: "Identifies dynamic cyclical shift factors across consumer accounts using account history inputs." }
+const OUTPUTS = [
+  {
+    id: "out-0",
+    label: "PRICING RECOMMENDATION",
+    icon: BadgeDollarSign,
+    abbr: "PR",
+    color: "#0EA5E9",
+    bg: "#0369a1",
+    targets: ["Sales", "Financials"],
+    explain:
+      "Compiles commercial transactional pricing recommendations based on SKU costing ledgers and account histories.",
+  },
+  {
+    id: "out-1",
+    label: "DEAL RISK ASSESSMENT",
+    icon: ShieldAlert,
+    abbr: "DR",
+    color: "#F43F5E",
+    bg: "#be123c",
+    targets: ["Operations", "Strategy"],
+    explain:
+      "Assesses contract compliance exposure flags and legal compliance rules to run diagnostic deal checks.",
+  },
+  {
+    id: "out-2",
+    label: "MARGIN ANALYSIS",
+    icon: BarChart3,
+    abbr: "MA",
+    color: "#A855F7",
+    bg: "#7e22ce",
+    targets: ["Financials", "Strategy"],
+    explain:
+      "Evaluates gross margin thresholds across manufacturing and assembly units to track resource costs.",
+  },
+  {
+    id: "out-3",
+    label: "FORECAST",
+    icon: TrendingUp,
+    abbr: "FC",
+    color: "#10B981",
+    bg: "#065f46",
+    targets: ["Sales", "Operations"],
+    explain:
+      "Generates predictive customer demand parameters by correlating system backlog metrics with sales velocities.",
+  },
+  {
+    id: "out-4",
+    label: "COMPLIANCE",
+    icon: ClipboardCheck,
+    abbr: "CO",
+    color: "#94A3B8",
+    bg: "#475569",
+    targets: ["Financials", "Operations"],
+    explain:
+      "Runs automated rule checking loops to confirm procurement and regulatory framework alignments.",
+  },
+  {
+    id: "out-5",
+    label: "REVENUE OPTIMIZATION",
+    icon: Coins,
+    abbr: "RO",
+    color: "#F59E0B",
+    bg: "#92400e",
+    targets: ["Sales", "Financials", "Strategy"],
+    explain:
+      "Pinpoints market arbitrage configurations and rate adjustments by processing commodity streams.",
+  },
+  {
+    id: "out-6",
+    label: "SEGMENT TRENDS",
+    icon: LineChart,
+    abbr: "ST",
+    color: "#EC4899",
+    bg: "#9d174d",
+    targets: ["Customer", "Sales"],
+    explain:
+      "Identifies dynamic cyclical shift factors across consumer accounts using account history inputs.",
+  },
 ];
 
-const ENGINE_SUB_BLOCKS = [
-  { id: "sb-1", label: "Customer", color: "#EC4899", icon: "group", styleClass: "t-1", top: "-5px", left: "140px" },
-  { id: "sb-2", label: "Financials", color: "#10B981", icon: "account_balance_wallet", styleClass: "t-2", top: "235px", left: "140px" },
-  { id: "sb-3", label: "Strategy", color: "#0EA5E9", icon: "explore", styleClass: "t-3", top: "55px", left: "35px" },
-  { id: "sb-4", label: "Operations", color: "#A855F7", icon: "settings_applications", styleClass: "t-4", top: "175px", left: "35px" },
-  { id: "sb-5", label: "Sales", color: "#F43F5E", icon: "stacked_line_chart", styleClass: "t-5", top: "55px", left: "245px" },
-  { id: "sb-6", label: "Supply Chain", color: "#F59E0B", icon: "local_shipping", styleClass: "t-6", top: "175px", left: "245px" }
+/*
+  Honeycomb layout — exact pixel positions matching the HTML reference:
+  wrap: 420 × 360px,  each hex: 140 × 120px
+
+  Center:        top:118  left:140
+  Customer:      top: -5  left:140   (top-center)
+  Financials:    top:238  left:140   (bottom-center)
+  Strategy:      top: 57  left: 34   (upper-left)
+  Operations:    top:177  left: 34   (lower-left)
+  Sales:         top: 57  left:245   (upper-right)
+  Supply Chain:  top:177  left:245   (lower-right)
+*/
+const NODES = [
+  { label:"Customer",    color:"#EC4899", bg:"rgba(236,72,153,0.35)", icon:"👤", style:{ top: -5,  left:140 } },
+  { label:"Strategy",    color:"#0EA5E9", bg:"rgba(14,165,233,0.35)", icon:"🧭", style:{ top: 57,  left: 34 } },
+  { label:"Sales",       color:"#F43F5E", bg:"rgba(244,63,94,0.35)",  icon:"📊", style:{ top: 57,  left:245 } },
+  { label:"Operations",  color:"#A855F7", bg:"rgba(168,85,247,0.35)", icon:"⚙️",  style:{ top:177,  left: 34 } },
+  { label:"Supply Chain",color:"#F59E0B", bg:"rgba(245,158,11,0.35)", icon:"🚚", style:{ top:177,  left:245 } },
+  { label:"Financials",  color:"#10B981", bg:"rgba(16,185,129,0.35)", icon:"💰", style:{ top:238,  left:140 } },
 ];
 
-export default function DataArchitecturePipeline() {
-  const [simulationIndex, setSimulationIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState(null);
-  
-  const pipelineSvgRef = useRef(null);
-  const wiresGroupRef = useRef(null);
-  const spokesGroupRef = useRef(null);
-  const perimeterRingRef = useRef(null);
-  const rfqLineRef = useRef(null);
-  const rfqNodeRef = useRef(null);
-  const centerTriggerRef = useRef(null);
-  const elementsRef = useRef({});
+const SCENARIOS = [
+  { title:"SAP S4/HANA",           inText:"Streaming historical transactional ledgers, actual material margins, and corporate billing profiles.",                outText:"Calculating base margin caps to update PRICING RECOMMENDATIONS and REVENUE OPTIMIZATION matrices." },
+  { title:"SAP ARIBA",             inText:"Extracting wholesale procurement agreements, vendor sourcing profiles, and logistics contract tables.",               outText:"Evaluating contract coverage parameters inside Supply Chain nodes to mitigate raw index variances." },
+  { title:"OTHER ERP SYSTEM",      inText:"Pulling immediate facility asset capacities, assembly line speeds, and material stocks.",                             outText:"Executing pipeline constraint simulations to inform MARGIN ANALYSIS and COMPLIANCE metrics logs." },
+  { title:"CRM SYSTEM",            inText:"Capturing customer account pipeline health indexes and historical contract cycle speeds.",                            outText:"Injecting interaction variables into SEGMENT TRENDS and PRICING RECOMMENDATIONS to adjust regional rates." },
+  { title:"POLICY & COMPLIANCE",   inText:"Ingesting regulatory policy books, framework rules, and compliance parameter files.",                                outText:"Running background auditing filters across COMPLIANCE and DEAL RISK ASSESSMENT nodes to flag exposure rules." },
+  { title:"MARKET DATA STREAM",    inText:"Tracking external index commodity pricing cycles, competitive quotes, and cargo freight parameters.",                outText:"Identifying immediate spot pricing arbitrage sweet-spots across REVENUE OPTIMIZATION assets." },
+  { title:"INVENTORY LOGS",        inText:"Parsing localized stock adjustments, warehouse turnaround delays, and procurement queues.",                          outText:"Feeding data into FORECAST and MARGIN ANALYSIS arrays to ensure manufacturing layout protection." },
+];
 
-  const isUserHovering = hoveredItem !== null;
-  const activeId = isUserHovering ? hoveredItem.id : (!isPaused ? `in-${simulationIndex}` : null);
-  const isActiveInput = isUserHovering ? hoveredItem.type === 'input' : true;
+/* ══════════════════════════════════════════════════
+   MAIN COMPONENT
+══════════════════════════════════════════════════ */
+export default function PriceWiseWorks() {
+  const [activeInput,  setActiveInput]  = useState(null);
+  const [activeOutput, setActiveOutput] = useState(null);
+  const [activeNodes,  setActiveNodes]  = useState([]);
+  const [infoText,     setInfoText]     = useState({
+    input:  "Initializing system streams…",
+    output: "Awaiting core inference cascade cycles…",
+  });
+  const [lines, setLines] = useState([]);
+  const [simIdx, setSimIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
 
-  let currentActiveTargets = [];
-  let currentActiveColor = '#ffffff';
-  let inputExplanation = "Initializing system streams...";
-  let outputExplanation = "Awaiting core inference cascade cycles...";
+  const svgRef      = useRef(null);
+  const engineRef   = useRef(null);
+  const inputRefs   = useRef({});
+  const outputRefs  = useRef({});
+  const timerRef    = useRef(null);
+  const hoveringRef = useRef(false);
 
-  if (activeId) {
-    if (isActiveInput) {
-      const matchedInput = PIPELINE_SCENARIOS.find(s => s.id === activeId);
-      if (matchedInput) {
-        currentActiveTargets = matchedInput.targets;
-        currentActiveColor = matchedInput.color;
-        inputExplanation = `<strong>${matchedInput.title}</strong> maps context parameters into <strong>${currentActiveTargets.join(' & ')}</strong> core nodes. ${matchedInput.inText}`;
-        outputExplanation = `Processing real-time inference matrices to trigger <strong>${matchedInput.outText}</strong>`;
-      }
-    } else {
-      const matchedOutput = OUTPUT_CARDS.find(o => o.id === activeId);
-      if (matchedOutput) {
-        currentActiveTargets = matchedOutput.targets;
-        currentActiveColor = matchedOutput.color;
-        const contributingInputs = PIPELINE_SCENARIOS
-          .filter(inCard => inCard.targets.some(t => currentActiveTargets.includes(t)))
-          .map(inCard => inCard.title);
-        inputExplanation = `<strong>${matchedOutput.label}</strong> calculations are formulated by evaluating primary <strong>${contributingInputs.join(', ')}</strong> datasets.`;
-        outputExplanation = `<strong>Business Outcome Logic:</strong> ${matchedOutput.explain}`;
-      }
-    }
-  }
+  /* ── pre-create refs ── */
+  useEffect(() => {
+    INPUTS.forEach(i  => { if (!inputRefs.current[i.id])  inputRefs.current[i.id]  = React.createRef(); });
+    OUTPUTS.forEach(o => { if (!outputRefs.current[o.id]) outputRefs.current[o.id] = React.createRef(); });
+  }, []);
+
+  /* ── compute wire lines ── */
+  const computeLines = useCallback(() => {
+    if (!svgRef.current || !engineRef.current) return;
+    const svgRect = svgRef.current.getBoundingClientRect();
+    const engRect = engineRef.current.getBoundingClientRect();
+    const cx = engRect.left + engRect.width  / 2 - svgRect.left;
+    const cy = engRect.top  + engRect.height / 2 - svgRect.top;
+    const newLines = [];
+
+    INPUTS.forEach(inp => {
+      const el = inputRefs.current[inp.id];
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      newLines.push({ id:inp.id, x1:r.right - svgRect.left, y1:r.top + r.height/2 - svgRect.top, x2:cx, y2:cy, color:inp.color, kind:"input" });
+    });
+    OUTPUTS.forEach(out => {
+      const el = outputRefs.current[out.id];
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      newLines.push({ id:out.id, x1:cx, y1:cy, x2:r.left - svgRect.left, y2:r.top + r.height/2 - svgRect.top, color:out.color, kind:"output" });
+    });
+    setLines(newLines);
+  }, []);
 
   useEffect(() => {
-    if (isPaused || isUserHovering) return;
-    const interval = setInterval(() => {
-      setSimulationIndex((prev) => (prev + 1) % PIPELINE_SCENARIOS.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isPaused, isUserHovering]);
+    const timer = setTimeout(computeLines, 100);
+    window.addEventListener("resize", computeLines);
+    return () => { clearTimeout(timer); window.removeEventListener("resize", computeLines); };
+  }, [computeLines]);
 
-  const updatePipelineLayout = () => {
-    const svg = pipelineSvgRef.current;
-    const svgGroup = wiresGroupRef.current;
-    const spokesGroup = spokesGroupRef.current;
-    const ring = perimeterRingRef.current;
-    const rfqLine = rfqLineRef.current;
-    const rfqNode = rfqNodeRef.current;
-    const centerHub = centerTriggerRef.current;
-    const topTarget = elementsRef.current['sb-1'];
-
-    if (!svg || !svgGroup || !spokesGroup || !ring || !rfqLine || !rfqNode || !centerHub || !topTarget) return;
-
-    svgGroup.innerHTML = '';
-    spokesGroup.innerHTML = '';
-    
-    const svgRect = svg.getBoundingClientRect();
-    const centerRect = centerHub.getBoundingClientRect();
-    const topRect = topTarget.getBoundingClientRect();
-
-    const centerX = centerRect.left + (centerRect.width / 2) - svgRect.left;
-    const centerY = centerRect.top + (centerRect.height / 2) - svgRect.top;
-    const radius = 194;
-
-    ring.setAttribute('cx', centerX);
-    ring.setAttribute('cy', centerY);
-    ring.setAttribute('r', radius);
-
-    const engineCX = (topRect.left + topRect.width / 2) - svgRect.left;
-    const engineT = topRect.top - svgRect.top;
-    
-    rfqLine.setAttribute('x1', engineCX);
-    rfqLine.setAttribute('y1', 0);
-    rfqLine.setAttribute('x2', engineCX);
-    rfqLine.setAttribute('y2', engineT);
-    rfqNode.setAttribute('cx', engineCX);
-    rfqNode.setAttribute('cy', engineT);
-
-    const inputBundleX = centerX - radius;
-    const inputBundleY = centerY;
-    const outputBundleX = centerX + radius;
-    const outputBundleY = centerY;
-
-    ENGINE_SUB_BLOCKS.forEach((block) => {
-      const el = elementsRef.current[block.id];
-      if (!el) return;
-
-      const blockRect = el.getBoundingClientRect();
-      const blockCX = blockRect.left + (blockRect.width / 2) - svgRect.left;
-      const blockCY = blockRect.top + (blockRect.height / 2) - svgRect.top;
-
-      const angle = Math.atan2(blockCY - centerY, blockCX - centerX);
-      const circumferenceX = centerX + radius * Math.cos(angle);
-      const circumferenceY = centerY + radius * Math.sin(angle);
-
-      const isSpokeActive = activeId && currentActiveTargets.includes(block.label);
-      const strokeColor = isSpokeActive ? currentActiveColor : block.color;
-
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', circumferenceX);
-      line.setAttribute('y1', circumferenceY);
-      line.setAttribute('x2', centerX);
-      line.setAttribute('y2', centerY);
-      line.setAttribute('class', `internal-wire ${isSpokeActive ? 'internal-wire-active' : ''}`);
-      line.setAttribute('stroke', strokeColor);
-      line.style.opacity = activeId ? (isSpokeActive ? '0.9' : '0.05') : '0.18';
-      
-      spokesGroup.appendChild(line);
+  /* ── apply scenario ── */
+  const applySim = useCallback((idx) => {
+    const inp = INPUTS[idx];
+    const sc  = SCENARIOS[idx];
+    setActiveInput(inp.id);
+    setActiveOutput(null);
+    setActiveNodes(inp.targets);
+    setInfoText({
+      input:  `<strong>${sc.title}</strong> maps context parameters into <strong>${inp.targets.join(" & ")}</strong> core nodes. ${sc.inText}`,
+      output: `Processing real-time inference matrices to trigger <strong>${sc.outText}</strong>`,
     });
+  }, []);
 
-    const createFunnelWire = (startX, startY, endX, endY, isInputSide, color, delay, id) => {
-      const dx = Math.abs(endX - startX);
-      const pathData = isInputSide ?
-        `M ${startX} ${startY} C ${startX + dx * 0.45} ${startY}, ${endX - dx * 0.15} ${endY}, ${endX} ${endY}` :
-        `M ${startX} ${startY} C ${startX + dx * 0.15} ${startY}, ${endX - dx * 0.45} ${endY}, ${endX} ${endY}`;
-      
-      let opacity = '1';
-      if (activeId) {
-        if (isActiveInput) {
-          if (isInputSide) {
-            opacity = (id === activeId) ? '1' : '0.05';
-          } else {
-            const matchedOut = OUTPUT_CARDS.find(o => o.id === id);
-            opacity = matchedOut?.targets.some(t => currentActiveTargets.includes(t)) ? '1' : '0.05';
-          }
-        } else {
-          if (isInputSide) {
-            const matchedIn = PIPELINE_SCENARIOS.find(i => i.id === id);
-            opacity = matchedIn?.targets.some(t => currentActiveTargets.includes(t)) ? '1' : '0.05';
-          } else {
-            opacity = (id === activeId) ? '1' : '0.05';
-          }
-        }
-      }
+  /* ── auto sim ── */
+  useEffect(() => {
+    const timer = setTimeout(() => applySim(0), 0);
+    return () => clearTimeout(timer);
+  }, [applySim]);
 
-      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      g.setAttribute('class', 'wire-set transition-all duration-300');
-      g.style.opacity = opacity;
+  useEffect(() => {
+    if (paused) return;
+    timerRef.current = setInterval(() => {
+      if (hoveringRef.current) return;
+      setSimIdx(prev => {
+        const next = (prev + 1) % INPUTS.length;
+        applySim(next);
+        return next;
+      });
+    }, 4500);
+    return () => clearInterval(timerRef.current);
+  }, [paused, applySim]);
 
-      const base = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      base.setAttribute('d', pathData);
-      base.setAttribute('class', 'data-wire');
-      base.setAttribute('stroke', color);
-      
-      const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      pulse.setAttribute('d', pathData);
-      pulse.setAttribute('class', 'pulse-wire');
-      pulse.setAttribute('stroke', color);
-      pulse.setAttribute('filter', 'url(#glow)');
-      pulse.style.animationDelay = `${delay}s`;
-      
-      g.appendChild(base);
-      g.appendChild(pulse);
-      svgGroup.appendChild(g);
-    };
-
-    PIPELINE_SCENARIOS.forEach((card, i) => {
-      const el = elementsRef.current[card.id];
-      if (!el) return;
-      const cardRect = el.getBoundingClientRect();
-      const startX = cardRect.right - svgRect.left;
-      const startY = cardRect.top + (cardRect.height / 2) - svgRect.top;
-      createFunnelWire(startX, startY, inputBundleX, inputBundleY, true, card.color, i * 0.18, card.id);
-    });
-
-    OUTPUT_CARDS.forEach((card, i) => {
-      const el = elementsRef.current[card.id];
-      if (!el) return;
-      const cardRect = el.getBoundingClientRect();
-      const endX = cardRect.left - svgRect.left;
-      const endY = cardRect.top + (cardRect.height / 2) - svgRect.top;
-      createFunnelWire(outputBundleX, outputBundleY, endX, endY, false, card.color, i * 0.22, card.id);
+  /* ── hover ── */
+  const onInputEnter = inp => {
+    hoveringRef.current = true;
+    clearInterval(timerRef.current);
+    const idx = INPUTS.indexOf(inp);
+    const sc  = SCENARIOS[idx];
+    setActiveInput(inp.id); setActiveOutput(null); setActiveNodes(inp.targets);
+    setInfoText({
+      input:  `<strong>${sc.title}</strong> maps context parameters into <strong>${inp.targets.join(" & ")}</strong> core nodes. ${sc.inText}`,
+      output: `Processing real-time inference matrices to trigger <strong>${sc.outText}</strong>`,
     });
   };
-
-  useEffect(() => {
-    updatePipelineLayout();
-    const resizeObserver = new ResizeObserver(() => {
-      requestAnimationFrame(updatePipelineLayout);
+  const onInputLeave = () => {
+    hoveringRef.current = false;
+    if (!paused) timerRef.current = setInterval(() => {
+      if (hoveringRef.current) return;
+      setSimIdx(p => { const n=(p+1)%INPUTS.length; applySim(n); return n; });
+    }, 4500);
+  };
+  const onOutputEnter = out => {
+    hoveringRef.current = true;
+    clearInterval(timerRef.current);
+    const contributing = INPUTS.filter(i => i.targets.some(t => out.targets.includes(t))).map(i => i.label);
+    setActiveOutput(out.id); setActiveInput(null); setActiveNodes(out.targets);
+    setInfoText({
+      input:  `<strong>${out.label}</strong> calculations are formulated by evaluating primary <strong>${contributing.join(", ")}</strong> datasets.`,
+      output: `<strong>Business Outcome Logic:</strong> ${out.explain}`,
     });
-    resizeObserver.observe(document.body);
-    
-    const observedKeys = [...PIPELINE_SCENARIOS, ...OUTPUT_CARDS, ...ENGINE_SUB_BLOCKS];
-    observedKeys.forEach(item => {
-      if (elementsRef.current[item.id]) resizeObserver.observe(elementsRef.current[item.id]);
-    });
-    if (centerTriggerRef.current) resizeObserver.observe(centerTriggerRef.current);
+  };
+  const onOutputLeave = () => {
+    hoveringRef.current = false;
+    if (!paused) timerRef.current = setInterval(() => {
+      if (hoveringRef.current) return;
+      setSimIdx(p => { const n=(p+1)%INPUTS.length; applySim(n); return n; });
+    }, 4500);
+  };
 
-    return () => resizeObserver.disconnect();
-  }, [activeId, currentActiveTargets, currentActiveColor]);
+  /* ── wire opacity ── */
+  const wireOp = line => {
+    if (!activeInput && !activeOutput) return 0.16;
+    if (activeInput) {
+      const inp = INPUTS.find(i => i.id === activeInput);
+      if (!inp) return 0.04;
+      if (line.id === activeInput) return 1;
+      if (line.kind === "output") {
+        const out = OUTPUTS.find(o => o.id === line.id);
+        if (out?.targets.some(t => inp.targets.includes(t))) return 0.85;
+      }
+      return 0.04;
+    }
+    if (activeOutput) {
+      const out = OUTPUTS.find(o => o.id === activeOutput);
+      if (!out) return 0.04;
+      if (line.id === activeOutput) return 1;
+      if (line.kind === "input") {
+        const inp = INPUTS.find(i => i.id === line.id);
+        if (inp?.targets.some(t => out.targets.includes(t))) return 0.85;
+      }
+      return 0.04;
+    }
+    return 0.16;
+  };
+
+  const isInputActive  = id => activeInput === id || (activeOutput && OUTPUTS.find(o=>o.id===activeOutput)?.targets.some(t=>INPUTS.find(i=>i.id===id)?.targets.includes(t)));
+  const isOutputActive = id => activeOutput === id || (activeInput && INPUTS.find(i=>i.id===activeInput)?.targets.some(t=>OUTPUTS.find(o=>o.id===id)?.targets.includes(t)));
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100;300;400;600;700;900&display=swap');
+    <div className="pw-works">
 
-        .pwise-pipeline-wrapper {
-          --primary: #ffd165;
-          --background: #121317;
-          --on-surface: #e3e2e7;
-          --on-surface-variant: #d3c5ac;
-          
-          background-color: var(--background);
-          color: var(--on-surface);
-          min-height: 100vh;
-          font-family: "Geist", "Segoe UI", sans-serif;
-          overflow-x: hidden;
-          position: relative;
-        }
+      {/* ══ SVG WIRE LAYER ══ */}
+      <svg ref={svgRef} className="pw-svg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="superglow">
+            <feGaussianBlur stdDeviation="5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <linearGradient id="rainbow-grad" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stopColor="#0EA5E9"/>
+            <stop offset="25%"  stopColor="#A855F7"/>
+            <stop offset="50%"  stopColor="#EC4899"/>
+            <stop offset="75%"  stopColor="#F59E0B"/>
+            <stop offset="100%" stopColor="#10B981"/>
+          </linearGradient>
+        </defs>
 
-        .pwise-pipeline-wrapper .font-data-label {
-          font-family: "JetBrains Mono", monospace;
-        }
+        {/* wires */}
+        {lines.map(line => {
+          const op = wireOp(line);
+          const isActive = op > 0.5;
+          const mx = (line.x1 + line.x2) / 2;
+          const path = `M ${line.x1},${line.y1} C ${mx},${line.y1} ${mx},${line.y2} ${line.x2},${line.y2}`;
+          return (
+            <g key={line.id} style={{ opacity: op, transition: "opacity 0.4s ease" }}>
+              {/* base static wire */}
+              <path d={path} stroke={line.color} strokeWidth="1.2" fill="none" opacity="0.45"/>
+              {/* animated pulse on active */}
+              {isActive && (
+                <path d={path} stroke={line.color} strokeWidth="2" fill="none"
+                  strokeDasharray="45,180"
+                  filter="url(#glow)"
+                  style={{ animation:"flow 3s linear infinite" }}
+                />
+              )}
+            </g>
+          );
+        })}
+      </svg>
 
-        .pwise-pipeline-wrapper .material-symbols-outlined {
-          font-family: 'Material Symbols Outlined';
-          font-weight: normal;
-          font-style: normal;
-          line-height: 1;
-          letter-spacing: normal;
-          text-transform: none;
-          display: inline-block;
-          white-space: nowrap;
-          word-wrap: normal;
-          direction: ltr;
-          -webkit-font-feature-settings: 'liga';
-          -webkit-font-smoothing: antialiased;
-        }
-
-        .glass-mirror {
-          background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 50%, rgba(0,0,0,0.3) 51%, rgba(0,0,0,0.6) 100%);
-          backdrop-filter: blur(24px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.02);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-mirror:hover {
-          border-color: rgba(255, 255, 255, 0.2);
-          background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 50%, rgba(0,0,0,0.2) 51%, rgba(0,0,0,0.5) 100%);
-        }
-
-        .hex-shape {
-          clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-        }
-        
-        .hex-3d-lift {
-          filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.85)) drop-shadow(0 16px 32px rgba(0, 0, 0, 0.75));
-          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-        }
-        
-        .cell-mirror-bg {
-          background: linear-gradient(180deg, #1f222c 0%, #111317 100%);
-          box-shadow: inset 0 3px 6px rgba(255,255,255,0.12), inset 0 -6px 14px rgba(0,0,0,0.7);
-        }
-        
-        .data-wire {
-          stroke-width: 1.2;
-          fill: none;
-          opacity: 0.15;
-          transition: opacity 0.4s ease, stroke 0.4s ease;
-        }
-
-        .pulse-wire {
-          stroke-width: 1.8;
-          fill: none;
-          stroke-dasharray: 45, 180;
-          animation: pwiseFlow 3.5s linear infinite;
-          transition: opacity 0.4s ease, stroke 0.4s ease, filter 0.4s ease;
-        }
-        
-        .internal-wire {
-          stroke-width: 1.5;
-          stroke-dasharray: 8, 12;
-          fill: none;
-          opacity: 0.15;
-          transition: opacity 0.4s ease, stroke 0.4s ease, stroke-width 0.4s ease;
-        }
-
-        .internal-wire-active {
-          opacity: 0.85;
-          stroke-width: 2;
-          animation: pwiseFlow 2s linear infinite;
-        }
-
-        @keyframes pwiseFlow {
-          to { stroke-dashoffset: -225; }
-        }
-        
-        .rainbow-animate {
-          animation: rainbowSweep 6s linear infinite;
-        }
-
-        @keyframes rainbowSweep {
-          0% { x1: 0%; y1: 0%; x2: 100%; y2: 0%; }
-          100% { x1: 100%; y1: 0%; x2: 200%; y2: 0%; }
-        }
-        
-        .cell-scanner {
-          background: linear-gradient(to bottom, transparent, rgba(255, 209, 101, 0.2), transparent);
-          height: 35px;
-          width: 100%;
-          position: absolute;
-          left: 0;
-          animation: individualScan 4s ease-in-out infinite;
-          pointer-events: none;
-        }
-        
-        .t-1 .cell-scanner { animation-delay: 0.3s; }
-        .t-2 .cell-scanner { animation-delay: 0.7s; }
-        .t-3 .cell-scanner { animation-delay: 1.1s; }
-        .t-4 .cell-scanner { animation-delay: 1.5s; }
-        .t-5 .cell-scanner { animation-delay: 1.9s; }
-        .t-6 .cell-scanner { animation-delay: 2.3s; }
-
-        @keyframes individualScan {
-          0% { top: -100%; opacity: 0; }
-          30% { opacity: 0.35; }
-          70% { opacity: 0.35; }
-          100% { top: 100%; opacity: 0; }
-        }
-
-        .pulse-green {
-          animation: pulseGreen 2s infinite;
-        }
-
-        @keyframes pulseGreen {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.4; transform: scale(1.1); }
-        }
-        
-        .sub-block-highlight {
-          transform: translateY(-5px) scale(1.04);
-          z-index: 35 !important;
-          filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.95));
-        }
-
-        .sub-block-highlight .outer-glow-border {
-          opacity: 1 !important;
-          filter: drop-shadow(0 0 15px currentColor);
-        }
-
-        .sub-block-highlight .cell-mirror-bg {
-          background: #202430 !important;
-        }
-
-        .sub-block-highlight .icon-fill {
-          font-variation-settings: 'FILL' 1;
-        }
-
-        .active-card-glow {
-          border-color: rgba(255, 209, 101, 0.5) !important;
-          background: rgba(255, 209, 101, 0.06) !important;
-          box-shadow: 0 0 15px rgba(255, 209, 101, 0.1);
-        }
-      `}</style>
-
-      <div className="pwise-pipeline-wrapper">
-        <nav className="fixed top-0 w-full Ever-Z z-50 bg-[#121317]/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-10 h-16">
-          <div className="flex items-center gap-4">
-            <span className="font-bold text-[#ffd165] tracking-tighter">Pricewise</span>
-            <div className="h-4 w-[1px] bg-white/10 mx-2" />
-            <span className="text-xs uppercase tracking-widest text-[#ffd165]/80">Data Architecture Pipeline</span>
-          </div>
-          
-          <div className="flex items-center gap-4 bg-white/[0.02] border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-md">
-            <button 
-              onClick={() => setIsPaused(!isPaused)} 
-              className="flex items-center gap-2 group cursor-pointer bg-transparent border-none outline-none"
+      {/* ══ LEFT: Input Ecosystem ══ */}
+      <div className="pw-col pw-col-left">
+        <div className="pw-col-header">
+          <h2>Input Ecosystem</h2>
+          <div className="pw-header-line"/>
+        </div>
+        <div className="pw-cards">
+          {INPUTS.map(inp => (
+            <div key={inp.id} ref={el => inputRefs.current[inp.id] = el}
+              className={`pw-input-card pw-glass ${isInputActive(inp.id) ? "pw-card-active" : ""}`}
+              style={{ borderLeftColor: inp.color }}
+              onMouseEnter={() => onInputEnter(inp)}
+              onMouseLeave={onInputLeave}
             >
-              <span className="material-symbols-outlined text-sm text-[#ffd165] group-hover:scale-110 transition-transform" style={{ fontVariationSettings: "'FILL' 1" }}>
-                {isPaused ? 'play_arrow' : 'pause'}
-              </span>
-              <span className={`font-data-label text-[10px] uppercase font-bold tracking-widest transition-colors ${isPaused ? 'text-[#ffd165]' : 'text-slate-300 group-hover:text-[#ffd165]'}`}>
-                {isPaused ? 'Simulation Paused' : 'Simulation Active'}
-              </span>
-            </button>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <span className="material-symbols-outlined text-[#d3c5ac] cursor-pointer hover:text-[#ffd165]">notifications</span>
-            <span className="material-symbols-outlined text-[#d3c5ac] cursor-pointer hover:text-[#ffd165]">settings</span>
-            <div className="w-8 h-8 rounded-full border border-white/20 overflow-hidden">
-              <img className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPWrTy3tGsIev9bME9tTLnAEHqPYbpA9zNoviwXqNME08moJd1QzUYBfvfstjbWAnMTdp34jw8p0xq54mBpQZ_i30C8UiNw7_kcc8iz5gBMd83TXejmPVpRpPcWskRkuVLqoi3l51I9WsK7P5kgMkgF09ZseQQ-iWGizfCloIdBIb92OnrDw54swM63rLwnxMHMf66n3cuyuA3CJRdSm74uHeLwAVPbRo4GrYykluDV1SQzoXskCG-jfMp-DXXWD1NSFnJsDTe" alt="User profile icon" />
+              <span className="pw-card-icon">{inp.icon}</span>
+              <span className="pw-card-label">{inp.label}</span>
             </div>
-          </div>
-        </nav>
+          ))}
+        </div>
+      </div>
 
-        <main className="relative min-h-[calc(100vh-4rem)] pt-16 w-full max-w-7xl mx-auto grid grid-cols-12 items-center px-4 z-20">
-          <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" id="pipeline-svg" ref={pipelineSvgRef} xmlns="http://www.w3.org/2000/svg">
+      {/* ══ CENTER: Engine + Ticker ══ */}
+      <div className="pw-col pw-col-center">
+
+        {/* Honeycomb engine */}
+        <div className="pw-engine-wrap" ref={engineRef}>
+
+          {/* Rainbow perimeter ring SVG */}
+          <svg className="pw-ring-svg" viewBox="0 0 500 440" xmlns="http://www.w3.org/2000/svg" style={{pointerEvents:"none"}}>
             <defs>
-              <linearGradient id="rainbow-ring-grad" x1="0%" y1="0%" x2="100%" y2="0%" className="rainbow-animate" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#0EA5E9" />
-                <stop offset="25%" stopColor="#A855F7" />
-                <stop offset="50%" stopColor="#EC4899" />
-                <stop offset="75%" stopColor="#F59E0B" />
-                <stop offset="100%" stopColor="#10B981" />
+              <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stopColor="#0EA5E9"/>
+                <stop offset="20%"  stopColor="#A855F7"/>
+                <stop offset="40%"  stopColor="#EC4899"/>
+                <stop offset="60%"  stopColor="#F59E0B"/>
+                <stop offset="80%"  stopColor="#10B981"/>
+                <stop offset="100%" stopColor="#0EA5E9"/>
               </linearGradient>
-              <linearGradient id="rfq-grad" x1="0%" x2="0%" y1="0%" y2="100%">
-                <stop offset="0%" stopColor="#ffd165" />
-                <stop offset="100%" stopColor="transparent" />
-              </linearGradient>
-              <filter id="glow">
-                <feGaussianBlur result="coloredBlur" stdDeviation="2.5" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
             </defs>
-            <line id="rfq-line" ref={rfqLineRef} stroke="url(#rfq-grad)" strokeWidth="1.5" x1="0" x2="0" y1="0" y2="0" />
-            <circle cx="0" cy="0" fill="#ffd165" id="rfq-node" ref={rfqNodeRef} r="4" filter="url(#glow)" />
-            <circle id="perimeter-ring" ref={perimeterRingRef} fill="none" stroke="url(#rainbow-ring-grad)" strokeWidth="2.5" filter="url(#glow)" />
-            <g id="internal-spokes-group" ref={spokesGroupRef} />
-            <g id="wires-group" ref={wiresGroupRef} />
+            <circle
+              cx="250" cy="220" r="190"
+              fill="none"
+              stroke="url(#ring-grad)"
+              strokeWidth="2"
+              strokeDasharray="30,10"
+              opacity="0.55"
+              style={{ animation:"rainbow-rotate 12s linear infinite" }}
+            />
+            <circle
+              cx="250" cy="220" r="190"
+              fill="none"
+              stroke="url(#ring-grad)"
+              strokeWidth="1"
+              opacity="0.2"
+            />
           </svg>
 
-          {/* COLUMN 1: INPUTS */}
-          <div className="col-span-3 flex flex-col gap-6 justify-center items-start w-full">
-            <div className="space-y-1 w-full max-w-[288px]">
-              <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-[#ffd165]">Input Ecosystem</h2>
-              <div className="h-px w-full bg-gradient-to-r from-[#ffd165]/40 to-transparent" />
+          {/* ── CENTER: Pricing Engine ── */}
+          <div className="pw-hex pw-hex-center" style={{ width:140, height:120, top:118, left:140 }}>
+            {/* gold gradient shell */}
+            <div className="hex-clip pw-hex-center-shell" style={{position:"absolute",inset:0}}>
+              <div className="hex-clip pw-hex-center-inner">
+                <div className="pw-scanner"/>
+              </div>
             </div>
-            
-            <div className="space-y-3.5 flex flex-col items-start w-full">
-              {PIPELINE_SCENARIOS.map((card) => {
-                const isSelectedCard = activeId === card.id;
-                const shouldDimCard = activeId && !isSelectedCard && (!isActiveInput || hoveredItem?.id !== card.id);
-                return (
-                  <div 
-                    key={card.id}
-                    ref={el => elementsRef.current[card.id] = el}
-                    onMouseEnter={() => setHoveredItem({ type: 'input', id: card.id })}
-                    onMouseLeave={() => setHoveredItem(null)}
-                    className={`input-card glass-mirror p-3.5 flex items-center justify-between group cursor-default w-72 border-l-2 rounded-r-md gap-2 transition-all duration-300 ${isSelectedCard ? 'active-card-glow' : ''}`}
-                    style={{ 
-                      borderLeftColor: card.color,
-                      opacity: shouldDimCard ? 0.35 : 1
-                    }}
-                  >
-                    <div className="flex items-center gap-2.5 overflow-hidden">
-                      <span className="material-symbols-outlined text-sm opacity-80 group-hover:scale-110 transition-transform" style={{ color: card.color }}>
-                        {card.id === 'in-0' ? 'database' : card.id === 'in-1' ? 'description' : card.id === 'in-2' ? 'hub' : card.id === 'in-3' ? 'groups_3' : card.id === 'in-4' ? 'gavel' : card.id === 'in-5' ? 'trending_up' : 'inventory_2'}
-                      </span>
-                      <span className="font-data-label text-[11px] tracking-widest text-[#e3e2e7] truncate">{card.title}</span>
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="pw-hex-content">
+              <span className="pw-hex-main-icon">🧠</span>
+              <span className="pw-hex-main-title">Pricing Engine</span>
             </div>
           </div>
 
-          {/* COLUMN 2: CENTER PIECE */}
-          <div className="col-span-6 flex flex-col justify-center items-center h-full w-full relative gap-8">
-            <div className="relative w-[420px] h-[350px] flex items-center justify-center">
-              
-              <div id="center-trigger" ref={centerTriggerRef} className="hex-3d-lift absolute w-[140px] h-[120px] z-30" style={{ top: '115px', left: '140px' }}>
-                <div className="absolute inset-0 hex-shape bg-gradient-to-b from-[#ffd165] via-amber-500 to-yellow-600 p-[4px] drop-shadow-[0_0_15px_rgba(255,209,101,0.45)]">
-                  <div className="w-full h-full bg-[#0d0f12] hex-shape relative overflow-hidden cell-mirror-bg">
-                    <div className="cell-scanner" />
+          {/* ── SATELLITE NODES ── */}
+          {NODES.map(node => {
+            const active = activeNodes.includes(node.label);
+            return (
+              <div key={node.label}
+                className={`pw-hex pw-hex-node ${active ? "pw-hex-node-active" : ""}`}
+                style={{ width:140, height:120, position:"absolute", "--node-color": node.color, ...node.style }}
+              >
+                {/* colored shell */}
+                <div className="hex-clip pw-hex-node-shell"
+                  style={{ position:"absolute", inset:0, background: node.bg }}>
+                  <div className="hex-clip pw-hex-node-inner">
+                    <div className="pw-scanner"/>
                   </div>
                 </div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-2 pointer-events-none">
-                  <span className="material-symbols-outlined text-[#ffd165] text-2xl mb-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>psychology</span>
-                  <h1 className="text-[10px] font-black uppercase tracking-[0.12em] text-[#ffd165] leading-tight">Pricing Engine</h1>
-                  <div className="flex items-center justify-center gap-1 mt-1">
-                    <div className="w-0.5 h-0.5 rounded-full bg-emerald-500 pulse-green" />
-                    <span className="font-data-label text-[6.5px] text-[#d3c5ac] tracking-wider uppercase opacity-70">4,821 tx/s</span>
-                  </div>
+                <div className="pw-hex-content">
+                  <span className="pw-hex-node-icon">{node.icon}</span>
+                  <span className="pw-hex-node-label">{node.label}</span>
                 </div>
               </div>
+            );
+          })}
+        </div>
 
-              {ENGINE_SUB_BLOCKS.map((block) => {
-                const isHighlighted = activeId && currentActiveTargets.includes(block.label);
-                const shouldDimBlock = activeId && !isHighlighted;
-                return (
-                  <div 
-                    key={block.id}
-                    ref={el => elementsRef.current[block.id] = el}
-                    className={`hex-3d-lift engine-sub-block absolute w-[140px] h-[120px] z-20 ${block.styleClass} ${isHighlighted ? 'sub-block-highlight' : ''}`} 
-                    style={{ 
-                      top: block.top, 
-                      left: block.left,
-                      opacity: shouldDimBlock ? 0.15 : 1
-                    }}
-                  >
-                    <div 
-                      className="outer-glow-border absolute inset-0 hex-shape p-[3.5px] transition-all duration-300 opacity-80"
-                      style={{ 
-                        backgroundColor: `${block.color}33`,
-                        color: block.color,
-                        border: `1px solid ${block.color}66`
-                      }}
-                    >
-                      <div className="w-full h-full bg-[#15171d] hex-shape relative overflow-hidden cell-mirror-bg">
-                        <div className="cell-scanner" />
-                      </div>
-                    </div>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none p-2">
-                      <span 
-                        className="material-symbols-outlined text-lg mb-0.5 transition-all duration-300"
-                        style={{ color: isHighlighted ? currentActiveColor : `${block.color}cc` }}
-                      >
-                        {block.icon}
-                      </span>
-                      <span className="text-[9.5px] font-bold uppercase tracking-widest text-slate-300">{block.label}</span>
-                    </div>
-                  </div>
-                );
-              })}
+        {/* Info ticker */}
+        <div className="pw-ticker">
+          <div className="pw-ticker-header">
+            <span className="pw-ticker-ping"/>
+            <span className="pw-ticker-tag">Pipeline Context Engine</span>
+          </div>
+          <div className="pw-ticker-body">
+            <div className="pw-ticker-col">
+              <div className="pw-ticker-col-label">Ingested Context Stream</div>
+              <p dangerouslySetInnerHTML={{ __html: infoText.input }}/>
             </div>
-
-            <div className="w-full max-w-xl bg-[#16181f]/80 backdrop-blur-xl border border-white/10 rounded-xl p-5 shadow-2xl relative mt-2 text-xs">
-              <div className="absolute top-2 left-4 flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-ping" />
-                <span className="font-data-label text-[8px] text-yellow-400 font-bold uppercase tracking-widest">Pipeline Context Engine</span>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-6 mt-2 pt-2 border-t border-white/5">
-                <div className="border-r border-white/5 pr-3 space-y-1">
-                  <div className="text-[9px] uppercase tracking-wider text-slate-400 font-bold">Ingested Context Stream</div>
-                  <p className="text-slate-300 leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: inputExplanation }} />
-                </div>
-                <div className="space-y-1">
-                  <div className="text-[9px] uppercase tracking-wider text-slate-400 font-bold">Generated Insight Deliverable</div>
-                  <p className="text-slate-300 leading-relaxed font-medium" dangerouslySetInnerHTML={{ __html: outputExplanation }} />
-                </div>
-              </div>
+            <div className="pw-ticker-divider"/>
+            <div className="pw-ticker-col">
+              <div className="pw-ticker-col-label">Generated Insight Deliverable</div>
+              <p dangerouslySetInnerHTML={{ __html: infoText.output }}/>
             </div>
           </div>
-
-          {/* COLUMN 3: OUTPUTS */}
-          <div className="col-span-3 flex flex-col gap-6 justify-center items-end w-full">
-            <div className="space-y-1 w-full max-w-[288px] text-right">
-              <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-[#ffd165]">Generated Insights</h2>
-              <div className="h-px w-full bg-gradient-to-l from-[#ffd165]/40 to-transparent" />
-            </div>
-            
-            <div className="space-y-3.5 flex flex-col items-end w-full">
-              {OUTPUT_CARDS.map((card) => {
-                let isOutCardHighlighted = activeId === card.id;
-                if (activeId && isActiveInput) {
-                  isOutCardHighlighted = card.targets.some(t => currentActiveTargets.includes(t));
-                }
-                const shouldDimCard = activeId && !isOutCardHighlighted;
-                return (
-                  <div 
-                    key={card.id}
-                    ref={el => elementsRef.current[card.id] = el}
-                    onMouseEnter={() => setHoveredItem({ type: 'output', id: card.id })}
-                    onMouseLeave={() => setHoveredItem(null)}
-                    className={`output-card glass-mirror p-3.5 flex items-center justify-between group cursor-default flex-row-reverse w-72 border-r-2 rounded-l-md transition-all duration-300 ${isOutCardHighlighted ? 'active-card-glow' : ''}`}
-                    style={{ 
-                      borderRightColor: isOutCardHighlighted && currentActiveColor !== '#ffffff' ? currentActiveColor : card.color,
-                      opacity: shouldDimCard ? 0.35 : 1
-                    }}
-                  >
-                    <span className="font-data-label text-[11px] tracking-widest text-[#e3e2e7] flex items-center gap-2">
-                      {card.label}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </main>
+        </div>
       </div>
-    </>
+
+      {/* ══ RIGHT: Generated Insights ══ */}
+      <div className="pw-col pw-col-right">
+        <div className="pw-col-header pw-col-header-right">
+          <h2>Generated Insights</h2>
+          <div className="pw-header-line pw-header-line-right"/>
+        </div>
+        <div className="pw-cards pw-cards-right">
+          {OUTPUTS.map((out) => {
+            const IconComponent = out.icon;
+            return (
+              <div
+                key={out.id}
+                ref={(el) => { outputRefs.current[out.id] = el; }}
+                className={`pw-output-card pw-glass ${isOutputActive(out.id) ? "pw-card-active" : ""}`}
+                style={{ borderRightColor: out.color }}
+                onMouseEnter={() => onOutputEnter(out)}
+                onMouseLeave={onOutputLeave}
+              >
+                <span className="pw-card-label">{out.label}</span>
+                <span className="pw-card-icon">
+                  <IconComponent size={20} color={out.color} strokeWidth={2} />
+                </span>
+              </div>
+            );
+          })}
+        </div>
+ 
+      </div>
+
+    </div>
   );
 }

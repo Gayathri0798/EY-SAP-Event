@@ -1,0 +1,492 @@
+/* ================================================================
+   PriceWiseWorks.css  —  exact replica of reference screenshot
+   Dark #121317 bg, gold #ffd165, glass cards, honeycomb engine
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@300;400;600;700;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── keyframes ── */
+@keyframes flow {
+  to { stroke-dashoffset: -225; }
+}
+@keyframes scan {
+  0%   { top: -40px; opacity: 0; }
+  20%  { opacity: 0.4; }
+  80%  { opacity: 0.4; }
+  100% { top: 100%;   opacity: 0; }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(1.4); }
+}
+@keyframes ping {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes rainbow-rotate {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -600; }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+/* ══════════════════════════════════════════════════════
+   ROOT LAYOUT
+══════════════════════════════════════════════════════ */
+.pw-works {
+  position: relative;
+  background: #121317;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
+  align-items: center;
+  padding: 48px 0px;
+  font-family: "Geist", sans-serif;
+  color: #e3e2e7;
+  overflow: hidden;
+  gap: 0;
+}
+
+/* faint radial bg glow behind engine */
+.pw-works::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,209,101,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── SVG wire overlay ── */
+.pw-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ══════════════════════════════════════════════════════
+   COLUMNS
+══════════════════════════════════════════════════════ */
+.pw-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 20;
+  position: relative;
+}
+.pw-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  z-index: 20;
+  position: relative;
+}
+.pw-col-right { align-items: flex-end; }
+
+/* ── section headers ── */
+.pw-col-header { }
+.pw-col-header h2 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: #ffd165;
+  margin-bottom: 8px;
+}
+.pw-header-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, rgba(255,209,101,0.5), transparent);
+}
+.pw-col-header-right h2 { text-align: right; }
+.pw-header-line-right {
+  background: linear-gradient(to left, rgba(255,209,101,0.5), transparent);
+}
+
+/* ══════════════════════════════════════════════════════
+   GLASS CARD BASE
+══════════════════════════════════════════════════════ */
+.pw-glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.055) 0%,
+    rgba(255,255,255,0.01)  50%,
+    rgba(0,0,0,0.28)        51%,
+    rgba(0,0,0,0.55)        100%
+  );
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.02);
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.pw-glass:hover {
+  border-color: rgba(255,255,255,0.18);
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.09) 0%,
+    rgba(255,255,255,0.02) 50%,
+    rgba(0,0,0,0.18)       51%,
+    rgba(0,0,0,0.45)       100%
+  );
+}
+
+/* active glow state */
+.pw-card-active {
+  border-color: rgba(255,209,101,0.55) !important;
+  background: rgba(255,209,101,0.07) !important;
+  box-shadow: 0 0 18px rgba(255,209,101,0.14), inset 0 0 12px rgba(255,255,255,0.02) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   INPUT CARDS  (left border accent)
+══════════════════════════════════════════════════════ */
+.pw-cards { display: flex; flex-direction: column; gap: 10px; }
+.pw-cards-right { align-items: flex-end; }
+
+.pw-input-card {
+  width: 280px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-left: 2px solid transparent;
+  border-radius: 0 8px 8px 0;
+  cursor: default;
+}
+.pw-input-card .pw-card-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+  width: 22px;
+  text-align: center;
+}
+.pw-card-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  color: #e3e2e7;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ══════════════════════════════════════════════════════
+   OUTPUT CARDS  (right border accent, reversed layout)
+══════════════════════════════════════════════════════ */
+.pw-output-card {
+  width: 280px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 16px;
+  border-right: 2px solid transparent;
+  border-radius: 8px 0 0 8px;
+  cursor: default;
+}
+.pw-card-abbr {
+  flex-shrink: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: #fff;
+  letter-spacing: 0.05em;
+  min-width: 28px;
+  text-align: center;
+}
+
+/* ══════════════════════════════════════════════════════
+   HEX CLIP PATH  (flat-top orientation)
+══════════════════════════════════════════════════════ */
+.hex-clip {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+/* ══════════════════════════════════════════════════════
+   ENGINE WRAP  — exact 420×360 honeycomb grid
+══════════════════════════════════════════════════════ */
+.pw-engine-wrap {
+  position: relative;
+  width: 420px;
+  height: 360px;
+  flex-shrink: 0;
+}
+
+/* ── Perimeter rainbow ring (SVG drawn in JSX) ── */
+.pw-ring-svg {
+  position: absolute;
+  inset: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════════════════════
+   HEX BLOCKS — base
+══════════════════════════════════════════════════════ */
+.pw-hex {
+  position: absolute;
+  width: 140px;
+  height: 120px;
+  z-index: 20;
+  /* 3-D lift shadow */
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.85))
+          drop-shadow(0 16px 32px rgba(0,0,0,0.75));
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1),
+              filter 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Center Pricing Engine ── */
+.pw-hex-center {
+  /* pixel-perfect match: top:115 left:140 in 420×360 wrap */
+  top: 118px;
+  left: 140px;
+  z-index: 30;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.9))
+          drop-shadow(0 0 30px rgba(255,209,101,0.3));
+}
+.pw-hex-center-shell {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, #ffd165 0%, #f59e0b 50%, #d97706 100%);
+  padding: 4px;
+}
+.pw-hex-center-inner {
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, #1a1d24 0%, #0d0f12 100%);
+  box-shadow: inset 0 3px 6px rgba(255,255,255,0.14),
+              inset 0 -6px 14px rgba(0,0,0,0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Satellite Nodes ── */
+.pw-hex-node { z-index: 20; }
+
+.pw-hex-node-shell {
+  position: absolute; inset: 0;
+  padding: 3.5px;
+  transition: all 0.35s;
+  opacity: 0.82;
+}
+.pw-hex-node-inner {
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, #1c1f28 0%, #13151c 100%);
+  box-shadow: inset 0 3px 6px rgba(255,255,255,0.1),
+              inset 0 -6px 14px rgba(0,0,0,0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+/* active node — lifts, brightens */
+.pw-hex-node-active {
+  transform: translateY(-6px) scale(1.05) !important;
+  filter: drop-shadow(0 18px 28px rgba(0,0,0,0.95)) !important;
+  z-index: 35 !important;
+}
+.pw-hex-node-active .pw-hex-node-shell {
+  opacity: 1 !important;
+}
+.pw-hex-node-active .pw-hex-node-shell {
+  filter: drop-shadow(0 0 14px var(--node-color));
+}
+
+/* ── scan animation inside each hex ── */
+.pw-scanner {
+  position: absolute;
+  left: 0; width: 100%; height: 32px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,209,101,0.18),
+    transparent
+  );
+  animation: scan 4s ease-in-out infinite;
+  pointer-events: none;
+}
+/* stagger delays per node */
+.pw-hex:nth-child(1) .pw-scanner { animation-delay: 0.0s; }
+.pw-hex:nth-child(2) .pw-scanner { animation-delay: 0.5s; }
+.pw-hex:nth-child(3) .pw-scanner { animation-delay: 1.0s; }
+.pw-hex:nth-child(4) .pw-scanner { animation-delay: 1.5s; }
+.pw-hex:nth-child(5) .pw-scanner { animation-delay: 2.0s; }
+.pw-hex:nth-child(6) .pw-scanner { animation-delay: 2.5s; }
+.pw-hex:nth-child(7) .pw-scanner { animation-delay: 3.0s; }
+
+/* ── hex content overlay ── */
+.pw-hex-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  padding: 8px;
+  gap: 3px;
+  z-index: 5;
+}
+.pw-hex-main-icon   { font-size: 22px; line-height: 1; margin-bottom: 1px; }
+.pw-hex-main-title  {
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: #ffd165;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+.pw-hex-node-icon  { font-size: 18px; line-height: 1; }
+.pw-hex-node-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #cbd5e1;
+  line-height: 1.2;
+}
+
+/* pulse row (center only) */
+.pw-hex-pulse-row {
+  display: flex; align-items: center; gap: 5px; margin-top: 3px;
+}
+.pw-pulse-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse-dot 2s infinite;
+}
+.pw-pulse-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5px;
+  color: #d3c5ac;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+}
+
+/* ══════════════════════════════════════════════════════
+   PERIMETER CIRCLE (SVG, rendered in JSX)
+  The rainbow animated ring that wraps around the whole cluster
+══════════════════════════════════════════════════════ */
+/* handled inline in JSX SVG — no extra CSS needed */
+
+/* ══════════════════════════════════════════════════════
+   INFO TICKER BOX
+══════════════════════════════════════════════════════ */
+.pw-ticker {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(18,19,23,0.88);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 14px;
+  padding: 16px 20px;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.55);
+}
+
+.pw-ticker-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.pw-ticker-ping {
+  position: relative;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #fbbf24;
+  flex-shrink: 0;
+}
+.pw-ticker-ping::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #fbbf24;
+  animation: ping 1.4s ease-out infinite;
+}
+.pw-ticker-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #fbbf24;
+}
+
+.pw-ticker-body {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.pw-ticker-divider {
+  background: rgba(255,255,255,0.06);
+}
+.pw-ticker-col { display: flex; flex-direction: column; gap: 6px; }
+.pw-ticker-col-label {
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #64748b;
+}
+.pw-ticker-col p {
+  font-size: 10.5px;
+  color: #cbd5e1;
+  line-height: 1.65;
+  font-weight: 500;
+}
+.pw-ticker-col p strong {
+  color: #e3e2e7;
+  font-weight: 700;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .pw-works { grid-template-columns: 260px 1fr 260px; padding: 32px 14px; }
+  .pw-input-card, .pw-output-card { width: 248px; }
+}
+@media (max-width: 960px) {
+  .pw-works {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    padding: 28px 16px;
+    gap: 30px;
+  }
+  .pw-col-right  { align-items: flex-start; }
+  .pw-cards-right { align-items: flex-start; }
+  .pw-output-card {
+    flex-direction: row;
+    border-right: none;
+    border-left: 2px solid transparent;
+    border-radius: 0 8px 8px 0;
+  }
+  .pw-col-header-right h2 { text-align: left; }
+  .pw-header-line-right {
+    background: linear-gradient(to right, rgba(255,209,101,0.5), transparent);
+  }
+  .pw-engine-wrap { width: 100%; max-width: 420px; }
+}

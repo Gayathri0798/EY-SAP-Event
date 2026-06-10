@@ -1,6 +1,6 @@
 import "../styles/procuresense.css";
-import DataArchitecturePipeline from './DataArchitecturePipeline';
 import Banner from "../components/Banner";
+import DocumentAnalyserPipeline from "../components/DocumentAnalyserPipeline";
 import {
   Zap,
   ShieldCheck,
@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { useRef, useState } from "react";
 
-export default function PriceWise() {
+export default function DataAnalyser() {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -49,8 +49,8 @@ export default function PriceWise() {
     <>
     <div className="banner-section">
         <Banner
-          title="Intelligent Pricing Made Simple"
-          subtitle="Pricewise enables organizations to make informed pricing decisions by consolidating data from across the enterprise. By leveraging real-time inputs, it supports accurate price recommendations and enhances alignment between sales and operations."
+          title="Unlock the Full Value of Your Documents with Document Analyser"
+          subtitle="Document Analyser is a no-code AI solution that transforms enterprise documents into actionable insights, helping organizations accelerate decision-making, improve efficiency, and reduce manual effort."
           buttonText="Learn more"
           image="/images/lego.jpeg"
         />
@@ -58,7 +58,7 @@ export default function PriceWise() {
   {/* cards section */}
 
 <div className="ps-benefits">
-  <h2>What Pricewise Delivers</h2>
+  <h2>What Document Analyser Enables</h2>
 
   <div className="benefits-grid">
 
@@ -66,64 +66,48 @@ export default function PriceWise() {
       <div className="icon-box icon-yellow">
         <Zap size={20} />
       </div>
-      <h3>Accelerated Pricing</h3>
-      <p>Generates instant pricing for RFQs, reducing manual effort.</p>
+      <h3>Intelligent Document Processing</h3>
+      <p>Automatically ingest, extract, and process information from scanned and digital documents.</p>
     </div>
 
     <div className="benefit-card highlight">
       <div className="icon-box icon-cyan">
         <ShieldCheck size={20} />
       </div>
-      <h3>Actionable Deal Insights</h3>
-      <p>Provides structured insights to support informed decision-making.</p>
+      <h3>Conversational Document Intelligence</h3>
+      <p>Interact with documents using natural language to retrieve answers, insights, and contextual information.</p>
     </div>
 
     <div className="benefit-card">
       <div className="icon-box icon-green">
         <DollarSign size={20} />
       </div>
-      <h3>Enhanced Profitability Visibility</h3>
-      <p>Offers clear visibility into margin impact before execution.</p>
+      <h3>Document Automation Workflows</h3>
+      <p>Configure and execute AI-powered document processing pipelines without complex development effort.</p>
     </div>
 
     <div className="benefit-card">
       <div className="icon-box icon-blue">
         <Clock size={20} />
       </div>
-      <h3>Aligned Business Planning</h3>
-      <p>Aligns pricing decisions with demand and supply conditions.</p>
+      <h3>Trust & Compliance Validation</h3>
+      <p>Detect digital and handwritten signatures to support verification, audit, and compliance processes across critical business documents.</p>
     </div>
 
   </div>
 </div>
 
    {/* canvas how ey works */}
-   <div className="canvas-wrapper">
-   <div className="canvas">
-  <div className="grid-bg" />
-  {/* HEADER */}
-  <div className="header">
-    <h1>
-     How <span> Pricewise </span> Works
-    </h1>
-    <p>
-      Pricewise integrates data from enterprise systems such as SAP and Non SAP entites, CRM platforms, supply chain applications, and market data sources into a unified environment. Its core Pricing Engine processes this data in real time, combining inputs across customer, sales, operations, and financial dimensions to generate pricing recommendations and business insights through an intuitive dashboard.
-    </p>
-    <DataArchitecturePipeline />
-  </div>
- 
-</div>
-</div>
+   <DocumentAnalyserPipeline />
 
 <div className="video-section">
 
-      <h2 className="video-title">See Pricewise in Action</h2>
+      <h2 className="video-title">Document Analyser in Action</h2>
       <p className="video-subtitle">
-        Discover how Pricewise streamlines RFQ responses, improves pricing accuracy, and enables data-driven decision-making to support sustainable revenue growth and operational alignment.
+        Watch how Document Analyser  transforms raw business data into actionable insights through AI-powered analytics.
       </p>
 
       <div className="video-floating">
-        
 
         {/* VIDEO */}
         <video
@@ -134,7 +118,7 @@ export default function PriceWise() {
           onClick={togglePlay}
           onTimeUpdate={handleTimeUpdate}
         >
-          <source src="/videos/Pricewise.mp4" type="video/mp4" />
+          <source src="/videos/Procuresense.mp4" type="video/mp4" />
         </video>
 
         {/* PLAY / PAUSE BUTTON */}

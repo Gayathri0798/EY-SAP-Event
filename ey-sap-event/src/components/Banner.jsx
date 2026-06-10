@@ -3,7 +3,9 @@ import "../styles/banner.css";
 export default function Banner({
   title,
   subtitle,
-  heading
+  heading,
+  buttonText, 
+  onButtonClick
 }) {
   return (
    <div className="banner">
@@ -19,6 +21,15 @@ export default function Banner({
     <h1>{title}</h1>
     <div className="banner-heading">{heading}</div>
     <p>{subtitle}</p>
+    
+
+{buttonText && (
+          <button className="banner-cta" onClick={onButtonClick}>
+            {buttonText}
+          </button>
+        )}
+
+
   </div>
 
 </div>

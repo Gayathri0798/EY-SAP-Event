@@ -39,7 +39,7 @@ export default function SapAiSolution() {
         url: "/priceWise",
       },
       {
-        name: "Working Capital",
+        name: "CashPilot",
         tagline: "Cash flow optimization",
         desc: "Improve liquidity using DPO, DSO and DIO optimization.",
         img: "https://img.icons8.com/fluency/96/wallet.png",
@@ -66,12 +66,14 @@ export default function SapAiSolution() {
         tagline: "AI document processing",
         desc: "Extract and validate documents using AI models.",
         img: "https://img.icons8.com/fluency/96/document.png",
+        url:"/dataAnalyser"
       },
       {
         name: "Autonomous Supply Chain",
         tagline: "AI-driven supply chain",
         desc: "Automate supply chain decisions intelligently.",
         img: "https://img.icons8.com/fluency/96/delivery.png",
+        url:'/autonomous'
       },
       {
         name: "Invoice Matching",
@@ -117,6 +119,13 @@ export default function SapAiSolution() {
         img: "https://img.icons8.com/fluency/96/network.png",
       },
       {
+    name: "EY Jumpstart",
+    tagline: "AI-powered automation",
+    desc: "AI-powered consulting delivery platform embedding agentic AI across the full SDLC—from discovery and design through build, test, deployment, and support.",
+    img: "https://img.icons8.com/fluency/96/synchronize.png",
+    url: "https://jumpstart.centralindia.azure.uat.eycosmos.com/"
+  },
+      {
         name: "FinOps",
         tagline: "Cloud financial operations",
         desc: "Optimize cloud spend and cost transparency.",
@@ -128,6 +137,7 @@ export default function SapAiSolution() {
         tagline: "Smart data insights",
         desc: "Transform enterprise data into actionable intelligence.",
         img: "https://img.icons8.com/fluency/96/database.png",
+         url: "/datagenie"
       },
       {
         name: "DigiGST",

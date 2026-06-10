@@ -1,6 +1,7 @@
 
 import "../styles/eySap.css";
 import FlowChart from "../components/flowchart";
+import ProcessDiagram from "../components/ProcessDiagram";
 
 export default function SapAI() {
   // const [active, setActive] = useState(null);
@@ -32,15 +33,50 @@ export default function SapAI() {
       <section className="hero-banner">
         <div className="overlay"></div>
         <div className="content">
-          <p className="font-ey">
+          <p className="font-ey sapai-banner-text">
             Unlock the power of SAP Business AI with EY’s industry knowledge,
             transformation experience and responsible AI approach.
           </p>
         </div>
       </section>
 
+       {/* <div className="premium-gold-divider" /> */}
+   <h1 
+        className="ba-heading" 
+        style={{ 
+          marginTop:'40px',
+          fontSize: '2rem', 
+          fontWeight: '700', 
+          color: '#ffffff', 
+          marginBottom: '16px',
+          letterSpacing: '-0.5px',
+          alignItems: 'center',
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        SAP AI Transformation Framework
+      </h1>
+       <p 
+        className="ba-subtitle" 
+        style={{ 
+          fontSize: '1.15rem', 
+          color: '#94a3b8', 
+          maxWidth: '800px', 
+          margin: '0 auto 18px auto',
+          lineHeight: '1.6',
+          alignItems: 'center',
+          display: 'flex',
+          justifyContent: 'center',
+          textAlign: 'center'
+        }}
+      >
+        Helping organizations identify, build, operationalize, and scale AI across the SAP landscape.
+      </p>
       {/* SECTION 2 - ACCORDION */}
       <FlowChart />
+
+      <div className="premium-gold-divider" />
       <h1 
         className="ba-heading" 
         style={{ 
@@ -62,7 +98,7 @@ export default function SapAI() {
           fontSize: '1.15rem', 
           color: '#94a3b8', 
           maxWidth: '800px', 
-          margin: '0 auto 48px auto',
+          margin: '0 auto 18px auto',
           lineHeight: '1.6',
           alignItems: 'center',
           display: 'flex',
@@ -72,6 +108,8 @@ export default function SapAI() {
       >
         Where SAP’s AI Foundation Meets EY’s Industry Intelligence — Building, Governing, and Scaling Autonomous Agents Across the Enterprise
       </p>
+
+
       <div 
         className="ba-image-frame" 
         style={{ 
@@ -97,7 +135,8 @@ export default function SapAI() {
           }}
         />
       </div>
-      
+      <div className="premium-gold-divider" />
+      <ProcessDiagram />
     </>
   );
 }

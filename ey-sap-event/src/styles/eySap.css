@@ -32,7 +32,7 @@ body {
   50% {
     /* Midway point: slight lift with a tiny clockwise cosmic tilt */
     transform: translateY(-5px) rotate(0.4deg); 
-    color: #ffeb0a;
+    color: #ca8a04;
   }
   100% {
     /* Peak point: 10px total float height with a tiny counter-clockwise settle */

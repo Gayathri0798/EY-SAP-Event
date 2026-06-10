@@ -110,6 +110,13 @@ export default function SapAiSolution() {
         img: "https://img.icons8.com/fluency/96/database.png",
          url: "/datagenie"
       },
+      {
+        name: "Transformation Realized for SAP",
+        tagline: "TRANSFORMATION ORCHESTRATION PLATFORM",
+        desc: "Connect strategy, technology, alliances, and execution to accelerate enterprise transformation and deliver measurable business outcomes.",
+        img: "https://img.icons8.com/fluency/96/workflow.png",
+         url: "https://deliveryplatform.launchpad.cfapps.eu10.hana.ondemand.com/9ad1a292-5498-478e-828b-d2aeaa209249.TrsPlatformMA.TrsPlatformMN-1.0.0/index.html#/"
+      },
     ],
 
     "Sapphire 2026": [

@@ -1,8 +1,8 @@
 /* 1. Core Positioning & Floating Container */
 .chatbot-fab-wrapper {
   position: fixed !important;
-  bottom: 24px !important; /* Spaced perfectly above your taskbar baseline */
-  right: 24px !important;
+  bottom: 10% !important; /* Spaced perfectly above your taskbar baseline */
+  right: 4% !important;
   width: 56px;
   height: 56px;
   border-radius: 50%;

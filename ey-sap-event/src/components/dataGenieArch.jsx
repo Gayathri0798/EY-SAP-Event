@@ -236,7 +236,7 @@ export default function DataGeniePipeline() {
           background: var(--bg);
           color: var(--text);
           min-height: 100vh;
-          font-family: 'Space Grotesk', sans-serif;
+          font-family: 'Inter', system-ui, sans-serif;
           position: relative;
           box-sizing: border-box;
         }

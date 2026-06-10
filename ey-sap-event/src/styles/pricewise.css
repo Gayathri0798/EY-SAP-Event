@@ -44,7 +44,7 @@
   display: grid;
   grid-template-columns: 300px 1fr 300px;
   align-items: center;
-  padding: 48px 24px;
+  padding: 48px 0px;
   font-family: "Geist", sans-serif;
   color: #e3e2e7;
   overflow: hidden;
@@ -351,6 +351,7 @@
   letter-spacing: 0.13em;
   color: #ffd165;
   line-height: 1.2;
+  margin-bottom: 15px;
 }
 .pw-hex-node-icon  { font-size: 18px; line-height: 1; }
 .pw-hex-node-label {

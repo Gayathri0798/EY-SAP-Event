@@ -12,7 +12,7 @@
   
 
 display: flex;
-  align-items: flex-start;   /* aligns text nicely at top */
+  align-items: center;   /* aligns text nicely at top */
   gap: 12px; 
 
 }
@@ -20,7 +20,7 @@ display: flex;
 .sap-bottom-section-number {
   color: #aaa;
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
    min-width: 30px; 
 }
 

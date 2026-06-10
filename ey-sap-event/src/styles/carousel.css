@@ -159,8 +159,33 @@ font-family: "Noto Sans", Arial, sans-serif;
 }
 /* Dots */
 .dots {
-  position: none;
-  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 10px;
+
+  z-index: 10;
+}
+.dots span {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.dots span.active {
+  background: #ffd84d;    /* EY yellow 🔥 */
+  transform: scale(1);
+
+  /* box-shadow:
+    0 0 10px rgba(255, 216, 77, 0.8),
+    0 0 20px rgba(255, 216, 77, 0.4); */
 }
 
 .hero-bg,
@@ -206,18 +231,18 @@ height: 36px;
   bottom: 0;
   padding-top: 10px
 }
-.video-section {
-  background: radial-gradient(circle at center, #0b1220, #050810);
-  padding: 100px 0;
+
+.home-video-section {
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  background: white;
 }
 
-.video-floating {
+.home-video-floating {
   width: 100%;
-  max-width: 950px;
-  height: 500px;
-
-  margin: 80px auto;
-
+  max-width: 90%;
+  height: 80%;
+  margin: 50px auto;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -228,23 +253,23 @@ height: 36px;
   border: 1px solid rgba(255,255,255,0.08);
 
   box-shadow: 
-    0 25px 80px rgba(0,0,0,0.7),
+    0 15px 20px rgba(0,0,0,0.7),
     inset 0 0 20px rgba(255,255,255,0.04);
 
   transition: transform 0.4s ease;
 }
 
-.video-floating:hover {
+.home-video-floating:hover {
   transform: translateY(-4px) scale(1.01);
 }
-.video-floating video {
+.home-video-floating video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.video-overlay {
+.home-video-overlay {
   position: absolute;
   inset: 0;
 
@@ -261,7 +286,7 @@ height: 36px;
 
   transition: opacity 0.3s ease;
 }
-.play-circle play{
+.home-play-circle{
   width: 90px;
   height: 90px;
 
@@ -289,11 +314,11 @@ height: 36px;
   transition: all 0.3s ease;
 }
 
-.play-circle:hover {
+.home-play-circle:hover {
   transform: scale(1.1);
   background: rgba(255,255,255,0.15);
 }
-.play-circle::after {
+.home-play-circle::after {
   content: "";
   position: absolute;
   inset: 0;

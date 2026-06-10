@@ -27,6 +27,7 @@ import ChatbotIcon from "./components/ChatbotIcon";
 import DataGenie from "./pages/DataGenie";
 import AutonomousSupplyChain from "./pages/AutonomousSC";
 import DocumentAnalyser from "./pages/DocumentAnalyser"
+import DigiGST from "./pages/DigiGST";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -66,6 +67,7 @@ exit={{ scale: 0.98, opacity: 0 }}
           <Route path="/datagenie" element={<DataGenie />} />
           <Route path="/autonomous" element={<AutonomousSupplyChain/>} />
           <Route path="/dataAnalyser" element={<DocumentAnalyser/>} />
+          <Route path="/digigst" element={<DigiGST />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

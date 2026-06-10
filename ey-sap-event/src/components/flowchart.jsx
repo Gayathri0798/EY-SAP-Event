@@ -42,37 +42,46 @@ export default function FlowChart() {
   ];
 
   return (
-    <div className="timeline-container">
+       <div className="offering-container">
+    <div className="offering-grid">
+      {stages.map((stage, i) => (
+        <div className={`offering-card stage-theme-${i}`} key={i}>
+          
+          {/* OVERHAULED: High-contrast premium layout header */}
+          <div className="offering-header">
+            <div className="icon-plate">
+              <img 
+                src={
+                  i === 0 ? "https://img.icons8.com/fluent-systems-filled/48/60a5fa/search.png" : // Discover (Blue)
+                  i === 1 ? "https://img.icons8.com/fluent-systems-filled/48/3b82f6/flash-on.png" :  // Create (Vibrant Blue)
+                  i === 2 ? "https://img.icons8.com/fluent-systems-filled/48/10b981/synchronize.png" : // Transform (Emerald)
+                            "https://img.icons8.com/fluent-systems-filled/48/8b5cf6/rocket.png"       // Scale (Purple)
+                } 
+                alt={`${stage.title} icon`}
+                className="offering-icon-img"
+              />
+            </div>
+            <div className="header-text-block">
+              <span className="phase-badge">Phase 0{i + 1}</span>
+              <h3>{stage.title}</h3>
+            </div>
+          </div>
 
-      {/*   HEADER WITH ARROWS */}
-      <div className="timeline-header">
-  {stages.map((stage, i) => (
-    <div key={i} className="header-item">
-      {stage.title}
-
-    </div>
-  ))}
-</div>
-
-
-      {/*   TIMELINE GRID */}
-      <div className="timeline-grid">
-
-        {stages.map((stage, i) => (
-          <div key={i} className={`stage-card stage-${i}`}>
-
+          {/* Capabilities List */}
+          <div className="capabilities-list">
             {stage.items.map((item, j) => (
-              <div key={j} className="pill">
+              <div className="capability-item" key={j}>
                 <h4>{item.title}</h4>
                 <p>{item.desc}</p>
               </div>
             ))}
-
           </div>
-        ))}
 
-      </div>
-
+        </div>
+      ))}
     </div>
+  </div>
+
+
   );
 }

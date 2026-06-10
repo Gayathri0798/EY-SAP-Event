@@ -138,3 +138,199 @@ border-radius: 12px;
   line-height: 1.5;
   color: #94a3b8 !important; 
 }
+
+.premium-gold-divider {
+  width: 100%;
+  height: 1px; /* Ultra-thin edge profile */
+  border: none;
+  margin: 40px 0; /* Breathing room above and below the line */
+  
+  /* Feathered fade effect prevents the gold from looking loud or cheap */
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(255, 230, 0, 0.25) 50%, 
+    transparent 100%
+  );
+}
+
+
+
+/* 1. Global Viewport Wrapping Alignment */
+.offering-container {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 18px 0;
+}
+
+/* 2. Four-Column Master Offering Matrix Grid Track */
+.offering-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  grid-auto-rows: 1fr !important; /* CRITICAL: Dynamically forces all cards to match the row's tallest item */
+  gap: 24px;
+  padding:15px;
+  width: 100% !important;
+  align-items: stretch !important; /* Stretches card bodies vertically from ceiling to floor */
+  box-sizing: border-box !important;
+}
+
+.offering-card {
+  height: 100% !important; /* Fills out the grid track layout space completely */
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 20px !important;
+  padding: 32px 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 28px;
+  position: relative !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.offering-card::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important; 
+  z-index: 10 !important;
+  
+  opacity: 0.4 !important; 
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.offering-card:hover::before {
+  opacity: 1 !important;
+}
+
+
+/* Phase 01: Discover (Soft Crimson / Red) */
+.stage-theme-0::before {
+  background: linear-gradient(90deg, #ef4444, #dc2626) !important;
+}
+
+/* Phase 02: Create (Tech Blueprint Blue) */
+.stage-theme-1::before {
+  background: linear-gradient(90deg, #3b82f6, #2563eb) !important;
+}
+
+/* Phase 03: Transform (Emerald / Green) */
+.stage-theme-2::before {
+  background: linear-gradient(90deg, #10b981, #059669) !important;
+}
+
+/* Phase 04: Scale (Royal Purple / Indigo) */
+.stage-theme-3::before {
+  background: linear-gradient(90deg, #8b5cf6, #7c3aed) !important;
+}
+
+.offering-header {
+  display: flex !important;
+  flex-direction: row !important; /* Swapped to dynamic row path alignment */
+  align-items: center !important;
+  gap: 16px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 20px !important;
+}
+
+/* Floating Glass Micro-Plate for the Vector Icon */
+.icon-plate {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1),
+              0 4px 12px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0; /* Prevents container distortion inside flex rows */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fine-tune image asset within the plate */
+.offering-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Card Hover Interactions: Elevate the Icon Plate */
+.offering-card:hover .icon-plate {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.offering-card:hover .offering-icon-img {
+  transform: scale(1.1) rotate(-4deg); 
+}
+
+/* Layout Text Block Stack */
+.header-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Premium structural phase badge identifier label */
+.phase-badge {
+  font-size: 13px;
+  /* font-weight: 700; */
+  /* text-transform: uppercase; */
+  letter-spacing: 0.04em;
+  color: #ffef3f;
+}
+
+.offering-header h3 {
+  margin: 0 !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.offering-card:hover .offering-header h3 {
+  color: #60a5fa;
+}
+
+.capabilities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.capability-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.capability-item h4 {
+  margin: 0 !important;
+  font-size: 1.025rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  transition: color 0.25s ease;
+}
+
+.capability-item p {
+  margin: 0 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  color: #94a3b8 !important;
+}
+
+/* Active Highlight Hook to track row focus */
+.offering-card:hover .capability-item h4 {
+  color: #ffeb0a !important; /* Shifts text line color to match global platform gold metrics */
+}

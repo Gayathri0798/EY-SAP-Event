@@ -1,30 +1,95 @@
-.chatbot-btn {
-  position: fixed;
-
-  bottom: 20px;   /* distance from bottom */
-  right: 20px;    /* distance from right */
-
-  width: 60px;
-  height: 60px;
-
-  background: #679aff8d;  /* yellow */
-  color: black;
-
+/* 1. Core Positioning & Floating Container */
+.chatbot-fab-wrapper {
+  position: fixed !important;
+  bottom: 24px !important; /* Spaced perfectly above your taskbar baseline */
+  right: 24px !important;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-
+  z-index: 9999; /* Guarantees the avatar sits on top of all page grids */
+  cursor: pointer;
+  
+  /* Decorative box configuration */
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  
   display: flex;
   align-items: center;
   justify-content: center;
-
-  font-size: 24px;
-  cursor: pointer;
-
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-
-  z-index: 9999;   /* ALWAYS ON TOP */
+  
+  /* Hardware acceleration config */
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* hover effect */
-.chatbot-btn:hover {
-  transform: scale(1.1);
+/* 2. AI RIPPLE ENGINE (Creates a breathing ring wave behind the avatar) */
+.chatbot-fab-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  
+  /* Uses your theme gold/amber highlight color with high transparency */
+  border: 2px solid rgba(255, 230, 0, 0.4); 
+  
+  z-index: -1;
+  animation: aiPulsePulse 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* 3. The Inner Image Element */
+.chatbot-fab-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffe600; /* Crisp uniform branding border frame */
+  box-shadow: 0 0 12px rgba(255, 230, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+/* ==========================================================================
+   INTERACTIVE STATES (Hover Focus & Click Physics)
+   ========================================================================== */
+
+/* Soft scale pop and enhanced illumination on hover pointer focus */
+.chatbot-fab-wrapper:hover {
+  transform: scale(1.08) translateY(-2px);
+  border-color: rgba(255, 230, 0, 0.4);
+  box-shadow: 0 12px 40px rgba(255, 230, 0, 0.15),
+              0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.chatbot-fab-wrapper:hover img {
+  transform: scale(1.02);
+  border-color: #ffffff; /* Turns clean white on focus to maximize depth */
+  box-shadow: 0 0 20px rgba(255, 230, 0, 0.4);
+}
+
+/* Quick physical depression kick on mouse click */
+.chatbot-fab-wrapper:active {
+  transform: scale(0.96) translateY(0);
+}
+
+/* ==========================================================================
+   PULSE KEYFRAME MECHANICS
+   ========================================================================== */
+@keyframes aiPulsePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.25); /* Fades outward into space smoothly */
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
 }

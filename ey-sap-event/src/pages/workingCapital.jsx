@@ -7,44 +7,9 @@ import {
   DollarSign,
   Clock
 } from "lucide-react";
-import { useRef, useState } from "react";
 
 export default function WorkingCapital() {
-  const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [progress, setProgress] = useState(0);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    } else {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
-
-  const handleTimeUpdate = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const percent = (video.currentTime / video.duration) * 100;
-    setProgress(percent);
-  };
-
-  const handleSeek = (e) => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const rect = e.target.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const width = rect.width;
-
-    const newTime = (clickX / width) * video.duration;
-    video.currentTime = newTime;
-  };
+  
   return (
     <>
     <div className="banner-section">
@@ -116,44 +81,6 @@ export default function WorkingCapital() {
     </div>
 </div>
 </div>
-
-<div className="video-section">
-
-      <h2 className="video-title">See CashPilot in Action</h2>
-      <p className="video-subtitle">
-        Watch how CashPilot detects overdue invoices, resolves short-payments and disputes, reconciles automatically, and accelerates cash release across receivables, payables, and inventory through an AI-powered workflow.
-      </p>
-
-      <div className="video-floating">
-
-        {/* VIDEO */}
-        {/* <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          onClick={togglePlay}
-          onTimeUpdate={handleTimeUpdate}
-        >
-          <source src="/videos/Procuresense.mp4" type="video/mp4" />
-        </video> */}
-
-        {/* PLAY / PAUSE BUTTON */}
-        <button className="play-btn" onClick={togglePlay}>
-          {isPlaying ? "❚❚" : "▶"}
-        </button>
-
-        {/* PROGRESS BAR */}
-        <div className="progress-bar" onClick={handleSeek}>
-          <div
-            className="progress-fill"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-
-      </div>
-    </div>
 
 </>
   );

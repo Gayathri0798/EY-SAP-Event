@@ -15,6 +15,32 @@ body {
     padding-bottom: 30px;
 }
 
+.sapai-banner-text {
+  font-size: 30px !important;
+  display: inline-block;    /* Ensures transform vectors process flawlessly */
+  will-change: transform;   /* Offloads calculation to GPU for buttery-smooth performance */
+  
+  /* Runs a super slow 8-second cycle that loops back and forth infinitely */
+  animation: gentleSpaceFloat 3s ease-in-out infinite alternate;
+
+}
+
+@keyframes gentleSpaceFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    /* Midway point: slight lift with a tiny clockwise cosmic tilt */
+    transform: translateY(-5px) rotate(0.4deg); 
+    color: #ffeb0a;
+  }
+  100% {
+    /* Peak point: 10px total float height with a tiny counter-clockwise settle */
+    transform: translateY(-10px) rotate(-0.2deg);
+  }
+}
+
+
 .overlay {
   position: absolute;
   inset: 0;

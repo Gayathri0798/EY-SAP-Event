@@ -1288,13 +1288,13 @@
    FOOTER
 ========================= */
 
-.footer {
+.dg-footer {
   text-align: center;
   padding: 30px;
   background: var(--bg2);
 }
 
-.footer-text {
+.dg-footer-text {
   color: var(--muted);
 }
 

@@ -4,7 +4,7 @@ import "../styles/aiSolution.css";
 export default function SapAiSolution() {
 
   const solutionData = {
-    
+
 
     "Record-to-Report": [
       {
@@ -80,6 +80,34 @@ export default function SapAiSolution() {
         desc: "Smart invoice validation and matching solution.",
         img: "https://img.icons8.com/fluency/96/receipt.png",
       },
+      {
+        name: "Requisition to Order",
+        tagline: "Requisition to Order",
+        desc: "",
+        img: ""
+      },
+      {
+        name: "PR Creation & PO Conversion",
+        tagline: "PR Creation & PO Conversion",
+        desc: "",
+        img: ""
+      },
+      {
+        name: "Stock Check & PR Creation",
+        tagline: "Stock Check & PR Creation",
+        desc: "",
+        img: ""
+      }, {
+        name: "Raw Material Forecast",
+        tagline: "Raw Material Forecast",
+        desc: "",
+        img: "",
+      }, {
+        name: "Invoice & Exception Management",
+        tagline: "Invoice & Exception Management",
+        desc: "",
+        img: ""
+      }
     ],
 
     "Enterprise Solutions": [
@@ -111,6 +139,13 @@ export default function SapAiSolution() {
          url: "/datagenie"
       },
       {
+        name: "DigiGST",
+        tagline: "Digi GST",
+        desc: "Integrated Solution for E-Invoicing, E-Way Bills and GST Returns Compliance",
+        img: "https://img.icons8.com/fluency/96/layers.png",
+        url: "/digigst",
+      },
+      {
         name: "Transformation Realized for SAP",
         tagline: "TRANSFORMATION ORCHESTRATION PLATFORM",
         desc: "Connect strategy, technology, alliances, and execution to accelerate enterprise transformation and deliver measurable business outcomes.",
@@ -130,7 +165,9 @@ export default function SapAiSolution() {
     ],
   };
 
+
   const [activeTab, setActiveTab] = useState("Order-to-Cash");
+  // const navigate = useNavigate();
 
   return (
     <section className="solutions-container">
@@ -165,6 +202,15 @@ export default function SapAiSolution() {
 
         {solutionData[activeTab].map((item, index) => (
 
+          // <a
+          //   href={item.url || "#"}
+          //   target="_blank"
+          //   rel="noopener noreferrer"
+          //   key={index}
+          //   style={{ textDecoration: "none", color: "inherit" }}
+          // >
+
+
           <a
             href={item.url || "#"}
             target="_blank"
@@ -172,6 +218,7 @@ export default function SapAiSolution() {
             key={index}
             style={{ textDecoration: "none", color: "inherit" }}
           >
+
 
             <div className="solution-card">
 

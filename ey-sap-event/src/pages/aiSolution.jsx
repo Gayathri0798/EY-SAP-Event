@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/aiSolution.css";
 
 export default function SapAiSolution() {
 
   const solutionData = {
-    
+
 
     "Record-to-Report": [
       {
@@ -78,6 +79,34 @@ export default function SapAiSolution() {
         desc: "Smart invoice validation and matching solution.",
         img: "https://img.icons8.com/fluency/96/receipt.png",
       },
+      {
+        name: "Requisition to Order",
+        tagline: "Requisition to Order",
+        desc: "",
+        img: ""
+      },
+      {
+        name: "PR Creation & PO Conversion",
+        tagline: "PR Creation & PO Conversion",
+        desc: "",
+        img: ""
+      },
+      {
+        name: "Stock Check & PR Creation",
+        tagline: "Stock Check & PR Creation",
+        desc: "",
+        img: ""
+      }, {
+        name: "Raw Material Forecast",
+        tagline: "Raw Material Forecast",
+        desc: "",
+        img: "",
+      }, {
+        name: "Invoice & Exception Management",
+        tagline: "Invoice & Exception Management",
+        desc: "",
+        img: ""
+      }
     ],
 
     "Enterprise Solutions": [
@@ -100,6 +129,13 @@ export default function SapAiSolution() {
         desc: "Transform enterprise data into actionable intelligence.",
         img: "https://img.icons8.com/fluency/96/database.png",
       },
+      {
+        name: "DigiGST",
+        tagline: "DigiGST",
+        desc: "",
+        img: "",
+        url: "/digigst",
+      }
     ],
 
     "Sapphire 2026": [
@@ -113,7 +149,9 @@ export default function SapAiSolution() {
     ],
   };
 
+
   const [activeTab, setActiveTab] = useState("Order-to-Cash");
+  const navigate = useNavigate();
 
   return (
     <section className="solutions-container">
@@ -148,6 +186,15 @@ export default function SapAiSolution() {
 
         {solutionData[activeTab].map((item, index) => (
 
+          // <a
+          //   href={item.url || "#"}
+          //   target="_blank"
+          //   rel="noopener noreferrer"
+          //   key={index}
+          //   style={{ textDecoration: "none", color: "inherit" }}
+          // >
+
+
           <a
             href={item.url || "#"}
             target="_blank"
@@ -155,6 +202,7 @@ export default function SapAiSolution() {
             key={index}
             style={{ textDecoration: "none", color: "inherit" }}
           >
+
 
             <div className="solution-card">
 

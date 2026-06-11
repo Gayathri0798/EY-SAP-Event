@@ -62,7 +62,7 @@ export default function FlowChart() {
               />
             </div>
             <div className="header-text-block">
-              <span className="phase-badge">Phase 0{i + 1}</span>
+              {/* <span className="phase-badge">Phase 0{i + 1}</span> */}
               <h3>{stage.title}</h3>
             </div>
           </div>

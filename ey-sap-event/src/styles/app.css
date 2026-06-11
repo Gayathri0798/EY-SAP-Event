@@ -18,6 +18,7 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow: visible;
 }
 
 .main-content {
@@ -37,7 +38,7 @@ radial-gradient(circle at 100% 10%, rgba(16, 16, 15, 0.25), transparent 40%),
     radial-gradient(circle at 50% 20%, rgba(0, 100, 255, 0.15), transparent 40%),
     #000; /* base */
   min-height: 100vh;
-  overflow: visible;
+  /* overflow: visible; */
   color: white;
   animation: bgMove 10s infinite alternate ease-in-out;
 }

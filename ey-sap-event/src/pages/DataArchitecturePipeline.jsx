@@ -144,8 +144,8 @@ export default function PriceWiseWorks() {
     output: "Awaiting core inference cascade cycles…",
   });
   const [lines, setLines] = useState([]);
-  const [simIdx, setSimIdx] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [ setSimIdx] = useState(0);
+  const [paused,] = useState(false);
 
   const svgRef      = useRef(null);
   const engineRef   = useRef(null);

@@ -145,7 +145,7 @@ useEffect(() => {
           onClick={togglePlay}
           onTimeUpdate={handleTimeUpdate}
         >
-          <source src="/videos/Datagenie.mp4" type="video/mp4" />
+          <source src="/videos/Video Project.mp4" type="video/mp4" />
         </video>
 
         {/* PLAY / PAUSE BUTTON */}

@@ -624,8 +624,8 @@ export default function DigiGST() {
             </section>
 
             {/* FOOTER */}
-            <footer className="footer">
-                <div className="footer-text">
+            <footer className="dg-footer">
+                <div className="dg-footer-text">
                     EY DigiGST — Integrated GST Compliance Platform
                 </div>
             </footer>

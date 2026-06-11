@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "../styles/aiSolution.css";
 
 export default function SapAiSolution() {
@@ -141,11 +140,18 @@ export default function SapAiSolution() {
       },
       {
         name: "DigiGST",
-        tagline: "DigiGST",
-        desc: "",
-        img: "",
+        tagline: "Digi GST",
+        desc: "Integrated Solution for E-Invoicing, E-Way Bills and GST Returns Compliance",
+        img: "https://img.icons8.com/fluency/96/layers.png",
         url: "/digigst",
-      }
+      },
+      {
+        name: "Transformation Realized for SAP",
+        tagline: "TRANSFORMATION ORCHESTRATION PLATFORM",
+        desc: "Connect strategy, technology, alliances, and execution to accelerate enterprise transformation and deliver measurable business outcomes.",
+        img: "https://img.icons8.com/fluency/96/workflow.png",
+         url: "https://deliveryplatform.launchpad.cfapps.eu10.hana.ondemand.com/9ad1a292-5498-478e-828b-d2aeaa209249.TrsPlatformMA.TrsPlatformMN-1.0.0/index.html#/"
+      },
     ],
 
     "Sapphire 2026": [
@@ -161,7 +167,7 @@ export default function SapAiSolution() {
 
 
   const [activeTab, setActiveTab] = useState("Order-to-Cash");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <section className="solutions-container">

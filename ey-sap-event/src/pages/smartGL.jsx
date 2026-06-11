@@ -15,7 +15,7 @@ export default function SmartGL() {
         <Banner
           title="Smart GL Account Reconciliation"
           subtitle="Smart GL Account Reconciliation is an AI based reconciliation capability built on SAP® BTP and powered by AI models in SAP® AI Core. Using agentic AI patterns, Large Language Models, and pattern recognition, the solution ingests and reconciles data from multiple sources—even in the absence of predefined data models."
-          buttonText="Learn more"
+          // buttonText="Learn more"
           image="/images/lego.jpeg"
         />
       </div>

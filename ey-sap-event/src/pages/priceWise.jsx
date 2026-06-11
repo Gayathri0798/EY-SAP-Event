@@ -16,7 +16,7 @@ export default function PriceWise() {
         <Banner
           title="Intelligent Pricing Made Simple"
           subtitle="Pricewise enables organizations to make informed pricing decisions by consolidating data from across the enterprise. By leveraging real-time inputs, it supports accurate price recommendations and enhances alignment between sales and operations."
-          buttonText="Learn more"
+          // buttonText="Learn more"
           image="/images/lego.jpeg"
         />
       </div>

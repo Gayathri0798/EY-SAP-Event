@@ -15,7 +15,7 @@ export default function FinancePlan() {
         <Banner
           title="Smart Financial Planning Automation"
           subtitle="Financial Plan Automation leverages SAP® Business Data Cloud (BDC) as a trusted, harmonized foundation for financial data, combined with SAP® Analytics Cloud (SAC) for integrated planning, budgeting, and analytics. The solution is augmented with AI to automate forecasting, scenario modeling, and anomaly detection. AI‑driven insights continuously analyze historical and real‑time financial data to identify trends, deviations, and risks, while SAC enables intuitive planning workflows and what‑if simulations. This integrated approach enables finance teams to move from manual, backward‑looking processes to intelligent, forward‑looking financial planning."
-          buttonText="Learn more"
+          // buttonText="Learn more"
           image="/images/lego.jpeg"
         />
       </div>

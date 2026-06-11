@@ -35,15 +35,13 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={location.pathname}
-   
-      
-initial={{ scale: 0.98, opacity: 0 }}
-animate={{ scale: 1, opacity: 1 }}
-exit={{ scale: 0.98, opacity: 0 }}
-
-
-        transition={{ duration: 0, ease: "easeOut" }}
+        
+key={location.pathname}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: 0.2 }}
+  style={{ minHeight: "100vh" }}
       >
         <Routes location={location}>
           <Route path="/" element={<HomeCarousel />} />

@@ -2,6 +2,36 @@ import "../styles/awards-section.css";
 
 const awards = [
   {
+    image: "/images/awards/Best AI for Sustainable Development.png",
+    title: "Best AI for Sustainable Development",
+    description: 'EY ESG Materiality Manager',
+  },
+  {
+    image: "/images/awards/ey-2025-newsweek-ai-impact-awards.png",
+    title: "Newsweek AI Impact Award",
+    description: 'EY Responsible AI framework',
+  },
+  {
+    image: "/images/awards/ey-mongodb-ai-Innovation-award-badge.png",
+    title: "MongoDB AI Innovation Award",
+    description: 'EYQ Assurance Knowledge',
+  },
+  {
+    image: "/images/awards/AI-for-Finance.png",
+    title: "AI TechAwards",
+    description: 'AI-assisted EY Regulatory and Compliance Manager',
+  },
+  {
+    image: "/images/awards/ABA25_Gold_Winner.png",
+    title: "Stevie American Business Awards",
+    description: 'EY.ai EYQ',
+  },
+  {
+    image: "/images/awards/ABA25_Bronze_Winner.png",
+    title: "Stevie American Business Awards",
+    description: 'AI-assisted EY Regulatory and Compliance Manager',
+  },
+  {
     image: "/images/ai-awards.webp",
     title: "Best AI for Sustainable Development",
     description: 'EY ESG Materiality Manager',
@@ -30,7 +60,7 @@ const awards = [
     image: "/images/awards.webp",
     title: "SAP Pinnacle Award for SAP Business Technology Platform",
     description: 'Extensibility and Clean Core',
-  },
+  }
 ];
 
 export default function AwardsSection() {

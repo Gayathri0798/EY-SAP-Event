@@ -89,7 +89,7 @@ export default function AutonomousSupplyChain() {
           }}
         />
         <img 
-          src="/images/autonomous3.jfif" 
+          src="/images/autonomous3.png" 
           alt="BA Sample 3" 
           className="ba-img" 
           style={{ 

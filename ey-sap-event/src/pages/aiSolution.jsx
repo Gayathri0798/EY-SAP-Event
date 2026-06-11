@@ -196,9 +196,9 @@ export default function SapAiSolution() {
     ],
      "Gen AI Solutions": [
       {
-        name: "Marketing Videos",
-        tagline: "Innovation Zone",
-        desc: "SAPPHIRE 2026 marketing demos and videos.",
+        name: "Gen AI Solutions",
+        tagline: "EY AI Solutions Hub",
+        desc: "Explore EY-built AI solutions with sector-agnostic use cases, technical architectures, and implementation guidance.",
         img: "https://img.icons8.com/fluency/96/pdf.png",
         url: "/videos/EYSAPAIUseCasesBriefing.pdf"
       },

@@ -77,7 +77,7 @@ export default function DataAnalyser() {
   
   {/* THUMBNAIL IMAGE */}
   <img
-    src="/images/cloudnetwork.jpeg"   // ✅ replace with your image
+    src="/images/prof.jpeg"   // ✅ replace with your image
     alt="Video Thumbnail"
     className="video-thumbnail"
   />

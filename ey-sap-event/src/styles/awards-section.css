@@ -55,7 +55,7 @@ border-top: 16px solid #ffffff;
 }
 
 .award-image img {
-  max-height: 250px;            /*   bigger logos */
+  max-height: 100px;            /*   bigger logos */
   max-width: 150px;
 
   object-fit: contain;

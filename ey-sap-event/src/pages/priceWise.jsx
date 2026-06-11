@@ -101,7 +101,7 @@ export default function PriceWise() {
     className="play-overlay-btn"
     onClick={() =>
       window.open(
-        "https://eyindia-my.sharepoint.com/personal/soumya_grover_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fsoumya_grover_in_ey_com%2FDocuments%2FSAP+NOW+2026%2FVideos%2FIntelliReco.mp4",
+        "https://eyindia-my.sharepoint.com/:v:/r/personal/soumya_grover_in_ey_com/Documents/SAP%20NOW%202026/Videos/Pricewise_Demo.mp4?csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=fhbkoT",
         "_blank"
       )
     }

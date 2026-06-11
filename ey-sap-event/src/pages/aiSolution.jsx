@@ -207,6 +207,13 @@ export default function SapAiSolution() {
         img: "https://img.icons8.com/fluency/96/pdf.png",
         url: "/videos/EYSAPAIUseCasesBriefing.pdf"
       },
+      {
+    name: "Agentic Business Process Transformation",
+    tagline: "AI-powered transformation",
+    desc: "Reimagining Core Enterprise Processes with AI-Powered Agents.",
+    img: "https://img.icons8.com/fluency/96/artificial-intelligence.png",
+    url: "/BASample",
+  },
     ],
   };
 

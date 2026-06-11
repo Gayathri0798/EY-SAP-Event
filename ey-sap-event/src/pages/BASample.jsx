@@ -20,7 +20,7 @@ export default function BASample() {
           letterSpacing: '-0.5px'
         }}
       >
-        Agentic Finance Transformation
+       Agentic Business Process Transformation
       </h1>
       
       <p 
@@ -33,7 +33,7 @@ export default function BASample() {
           lineHeight: '1.6'
         }}
       >
-        Reimagining Core Finance Processes with AI-Powered Agents
+        Reimagining Core Enterprise Processes with AI-Powered Agents.
       </p>
       
       <div 
@@ -48,7 +48,7 @@ export default function BASample() {
         }}
       >
         <img 
-          src="/images/ba1.jpg" 
+          src="/images/ba1.png" 
           alt="BA Sample 1" 
           className="ba-img" 
           style={{ 
@@ -61,7 +61,7 @@ export default function BASample() {
         />
 
          <img 
-          src="/images/ba2.jpg" 
+          src="/images/ba2.png" 
           alt="BA Sample 2" 
           className="ba-img" 
           style={{ 

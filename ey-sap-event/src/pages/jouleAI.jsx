@@ -71,7 +71,7 @@ const tabsData = [
   {
     id: 8,
     title: "EY Quick Order Agent",
-    video: "https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared%20Documents/SAP%20AI/Recordings%20%26%20Demos/Joule/joule%20agents/EY%20Master%20Data%20Agent.mp4?csf=1&web=1&e=cqIvEi",
+    video: "https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared%20Documents/SAP%20AI/Recordings%20%26%20Demos/Joule/joule%20agents/EY%20QuickOrder%20Agent.mov?csf=1&web=1&e=SnSeg8",
     content:
       "AI chatbot to place orders using simple text input.",
       thumbnail: "/images/legoscreen.jpeg"
@@ -94,7 +94,7 @@ const tabsData = [
   }, {
     id: 11,
     title: "Intelligent Invoice Matching",
-    vide: "https://eyindia.sharepoint.com/:v:/s/SAPAITeam159/IQBtaUtLPZMbSKfJvEpzFBy3AbXcqLiXh5ddNRZORBWuLzQ?e=h1Lvem",
+    video: "https://eyindia.sharepoint.com/:v:/s/SAPAITeam159/IQBtaUtLPZMbSKfJvEpzFBy3AbXcqLiXh5ddNRZORBWuLzQ?e=h1Lvem",
     content: "EY Intelligent Invoice Matching leverages AI to automate invoice data extraction, validation, and matching against purchase orders and goods receipts. The intelligent agent orchestrates end to end invoice processing workflows, accelerating approvals while ensuring data accuracy and compliance.",
     thumbnail: "/images/legoscreen.jpeg"
   }, {
@@ -106,7 +106,7 @@ const tabsData = [
   }, {
     id: 13,
     title: "Risk Assessment Predictive & Preventive Work Orders",
-    vidoe: "https://eyindia.sharepoint.com/:v:/s/SAPAITeam159/IQDFm0yrmlrwSakev03zbTeOAUsLn7hS1wXzioaeMPCo0ac?e=xABoJs",
+    video: "https://eyindia.sharepoint.com/:v:/s/SAPAITeam159/IQDFm0yrmlrwSakev03zbTeOAUsLn7hS1wXzioaeMPCo0ac?e=xABoJs",
     content: "AI‑Driven Alerts in SAP® Plant Maintenance enhance standard SAP® PM capabilities by integrating IoT data, machine learning models, and real‑time analytics to continuously monitor asset conditions. The solution automatically detects anomalies, deviations, and early indicators of potential failures. Intelligent alerts are generated and triggered directly within SAP® PM, enabling maintenance teams to take timely action based on predictive insights rather than reactive signals. These alerts can be configured based on asset criticality, operational thresholds, and business rules—ensuring relevant, actionable notifications reach the right users at the right time.",
     thumbnail: "/images/legoscreen.jpeg"
   },

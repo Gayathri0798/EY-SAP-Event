@@ -16,7 +16,7 @@ export default function A2Rrecon() {
         <Banner
           title="Intelligent Reconciliation"
           subtitle="This solution enables automated, policy-aware review of accounting data by loading source records, validating them, and generating correction proposals with clear rationale. It gives users a guided workflow to inspect validation outcomes, compare before/after quality, and apply corrections with confidence. It also improves auditability by making decisions and correction logic transparent and traceable end to end."
-          buttonText="Learn more"
+          // buttonText="Learn more"
           image="/images/lego.jpeg"
         />
       </div>

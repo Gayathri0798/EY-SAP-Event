@@ -163,13 +163,15 @@ export default function SapAiSolution() {
         name: "Intelligent Invoice Matching",
         tagline: "Intelligent Invoice Matching",
         desc: " ",
-        url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Intelligent%20Invoice%20Matching%20(Sapphire).mp4?csf=1&web=1&e=Ovy8Kl"
+        url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Intelligent%20Invoice%20Matching%20(Sapphire).mp4?csf=1&web=1&e=Ovy8Kl",
+        thumbnail: "/images/legoscreen.jpeg"
       },
       {
         name: "Finance Data Hub (Sapphire)",
         tagline: "SCM",
         desc: "",
         url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Finance%20Data%20Hub%20(Sapphire).mp4?csf=1&web=1&e=ehIctC",
+        thumbnail: "/images/legoscreen.jpeg"
       },
 
 
@@ -177,19 +179,22 @@ export default function SapAiSolution() {
         name: "Follow up on Outstanding Receivables (Sapphire)",
         tagline: "Innovation Lab",
         desc: "AI use cases.",
-        url: "https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Follow%20up%20on%20Outstanding%20Receivables%20(Sapphire).mp4?csf=1&web=1&e=5kjEHt"
+        url: "https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Follow%20up%20on%20Outstanding%20Receivables%20(Sapphire).mp4?csf=1&web=1&e=5kjEHt",
+        thumbnail: "/images/legoscreen.jpeg"
       },
       {
         name: "Smart aATP (Sapphire)",
         tagline: "CX",
         desc: "CX demos.",
-        url: "https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Smart%20aATP%20(Sapphire).mp4?csf=1&web=1&e=FhISpC"
+        url: "https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Smart%20aATP%20(Sapphire).mp4?csf=1&web=1&e=FhISpC",
+        thumbnail: "/images/legoscreen.jpeg"
       },
       {
         name: "TrueCost Agent (Sapphire)",
         tagline: "CX",
         desc: "CX demos.",
-        url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20TrueCost%20Agent%20(Sapphire).mp4?csf=1&web=1&e=qf3lnI"
+        url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20TrueCost%20Agent%20(Sapphire).mp4?csf=1&web=1&e=qf3lnI",
+        thumbnail: "/images/legoscreen.jpeg"
       }
 
 
@@ -298,14 +303,20 @@ export default function SapAiSolution() {
 
               <div className="video-card-ui">
 
-                <video
+                {/* <video
                   className="video-element-ui"
                   src={item.video}
                   autoPlay
                   muted
                   loop
                   playsInline
-                />
+                /> */}
+
+                <img
+              src={item.thumbnail}
+              alt="Video preview"
+              className="video-element-ui"
+            />
 
                 <div className="video-play">▶</div>
 

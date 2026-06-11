@@ -16,7 +16,7 @@ export default function ProcureSense() {
         <Banner
           title="Smarter Vendor Evaluation with AI"
           subtitle="ProcureSense helps procurement teams move beyond manual vendor comparison by using AI to analyze vendor pricing, performance, risk, and negotiation factors. It enables faster, more confident sourcing decisions while helping teams maximize savings and reduce supplier-related risks."
-          buttonText="Learn more"
+          // buttonText="Learn more"
           image="/images/lego.jpeg"
         />
       </div>

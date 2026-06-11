@@ -66,11 +66,25 @@ function AgentLibrary() {
             <p className="tile-subtitle">90+ reusable skills to power your agents</p>
 
             <p className="desc">
-Build faster with modular skills designed for extraction, analysis, orchestration, workflow automation, risk checks, and enterprise integrations.
+              Build faster with modular skills designed for extraction, analysis, orchestration, workflow automation, risk checks, and enterprise integrations.
             </p>
 
             <button className="cta" onClick={() => navigate("/skillCard")}>
               Explore Skill Library
+            </button>
+        </div>
+
+
+        <div className="tile">
+
+            <h2>BPA Library</h2>
+            <p className="tile-subtitle">24+ pre-configured & tested automation templates</p>
+
+            <p className="desc">
+              Accelerate enterprise automation with reusable, SAP-delivered business content across Finance, Procurement, HR, Sales, and IT.</p>
+
+            <button className="cta" onClick={() => navigate("/skillCard")}>
+              Explore BPA Library
             </button>
         </div>
     </div>

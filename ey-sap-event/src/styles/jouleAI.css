@@ -77,17 +77,49 @@
 }
  
 /* VIDEO */
+
 .video-wrapper {
-  display: flex;
-  justify-content: center;
-}
- 
-.hero-video {
-  width: 80%;
+  position: relative;
+  width: 100%;
   max-width: 900px;
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  margin: 20px auto;
+  cursor: pointer;
 }
+
+.hero-video {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #000;
+
+  position: relative;
+  z-index: 1; /* ✅ video niche rahe */
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  font-size: 40px;  /* ✅ BIG icon */
+  color: white;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999; /* ✅ ALWAYS on top */
+  pointer-events: none;
+}
+
  
 /* ---------------- ANIMATIONS ---------------- */
  

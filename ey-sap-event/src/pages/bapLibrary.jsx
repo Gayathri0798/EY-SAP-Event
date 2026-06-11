@@ -4,7 +4,7 @@ import "../styles/skillSet.css";
 export default function BpaLibrary() {
   const [selectedBucket, setSelectedBucket] = useState("All");
 
-  const data = {
+ const data = {
   "Finance": [
     {
       skill: "Accounts Payable - Invoice Approval Process",
@@ -19,7 +19,7 @@ export default function BpaLibrary() {
       desc: "Validates journal entry details and posts to SAP S/4HANA on-premise; covers period-end adjustments and business transactions"
     },
     {
-      skill: "General Ledger - Automated Upload of Manual Journal Entries via API",
+      skill: "General Ledger - Automated Upload of Manual Journal Entries via API (4CA)",
       desc: "Automates posting of journal entries to GL accounts for period-end closing and recording transactions without source documents"
     },
     {
@@ -43,76 +43,76 @@ export default function BpaLibrary() {
   "Procurement": [
     {
       skill: "Purchase Requisition - Purchase Requisition Header Approval and Release",
-      desc: "Automates PR approval and release in SAP ERP with UI5 forms and real-time visibility dashboard"
+      desc: "Automates PR approval and release in SAP ERP. UI5 form for header and item details; process triggers on submission; real-time visibility dashboard included"
     },
     {
       skill: "Goods Receipt - Goods Receipt for Purchase Orders (Low Value)",
-      desc: "Reads open POs, checks delivery due date, prepares template, creates GR and sends logs via email"
+      desc: "Reads open POs, checks delivery due date, prepares template with order details, creates GR for low-value POs; generates log and emails requestor"
     },
     {
       skill: "Vendor Management - Inactive Vendor Identification and Deactivation",
-      desc: "Identifies inactive vendors, triggers approval workflow and marks vendors for deletion or block"
+      desc: "Retrieves vendor data, applies Excel rules to identify inactive vendors, triggers approval workflow, marks vendors for deletion or block; sends log to stakeholders"
     },
     {
       skill: "Vendor Management - Vendor Onboarding",
-      desc: "Flexible vendor creation process with configurable approval variants and automatic vendor master creation"
+      desc: "Flexible vendor creation process with configurable approval variants and automatic vendor master creation in SAP ERP"
     },
     {
       skill: "Purchase Order - Purchase Order Approval",
-      desc: "Multi-level PO approval workflow with configurable approval levels based on value and attributes"
+      desc: "Multi-level PO approval workflow triggered from SAP S/4HANA; configurable approval levels based on PO value and attributes"
     },
     {
       skill: "Goods Receipt - Goods Receipt Approval for Purchase Orders",
-      desc: "Enables GR creation for PO data with auto-generated logs emailed to requestor"
+      desc: "After approval task completion, template enables GR creation for PO data with auto-generated log file emailed to requestor"
     }
   ],
 
   "Human Resources": [
     {
       skill: "Recruiting - Creation and Approval of Job Requisition",
-      desc: "Automates job requisition creation and approval process in SAP SuccessFactors"
+      desc: "Automates basic job requisition creation and approval process in SAP SuccessFactors"
     },
     {
       skill: "Recruiting - Creation and Approval of Mass Job Requisition",
-      desc: "Manages large-scale recruitment with multiple job openings and approval workflows"
+      desc: "Manages large-scale recruitment; allows HR to create multiple job openings simultaneously with approval for budgetary control and compliance"
     },
     {
-      skill: "Recruiting - Handle Questions and Approvals",
-      desc: "Handles recruiter queries and routes approvals within SuccessFactors"
+      skill: "Recruiting - Handle Questions and Approvals in SAP SuccessFactors Recruiting",
+      desc: "Handles recruiter queries and routes approvals within SAP SuccessFactors Recruiting module"
     },
     {
       skill: "Employee Contracts - Contract Employee End Date Extension",
-      desc: "Automates extension of contract employee end dates with approval routing"
+      desc: "Automates the process of extending contract employee end dates including approval routing in SAP SuccessFactors"
     },
     {
-      skill: "Access Management - Create Permission Group",
-      desc: "Automates creation of permission groups in SuccessFactors"
+      skill: "Access Management - Create Permission Group in SuccessFactors",
+      desc: "Automates creation of permission groups in SAP SuccessFactors to streamline access management"
     },
     {
-      skill: "Learning Management - Merge User in LMS",
-      desc: "Automates merging of duplicate user records in Learning Management System"
+      skill: "Learning Management - Merge User in Learning Management System",
+      desc: "Automates merging of duplicate user records in SAP SuccessFactors Learning Management System"
     }
   ],
 
   "Sales": [
     {
       skill: "Order Management - Manage Credit Block on Sales Order",
-      desc: "Automates credit block handling with validation and approval routing"
+      desc: "Automates credit block management on sales orders with configurable business validation decisions and approval routing"
     },
     {
       skill: "Order Management - Sales Agent for Open Sales Order",
-      desc: "Fetches open sales order details for a specific customer from SAP S/4HANA"
+      desc: "Joule agent to fetch open sales order details for a specific customer from SAP S/4HANA backend"
     }
   ],
 
   "IT / Cross-Functional": [
     {
-      skill: "ERP Transactions - Create Reservation MB21",
-      desc: "Automates creation of reservations using SAP ECC transaction MB21 via bot"
+      skill: "ERP Transactions - Create Reservation – MB21 (ECC) – Cloud Studio",
+      desc: "Automates creation of reservations using SAP ECC transaction MB21 via Cloud Studio bot"
     },
     {
-      skill: "UI Automation - Pilot a UI Automation Application",
-      desc: "Starter template to learn and pilot UI automation using calc.exe example"
+      skill: "UI Automation - Pilot a UI Automation Application (calc.exe)",
+      desc: "SAP-published starter template to learn and pilot UI automation capabilities using calc.exe as example"
     }
   ]
 };

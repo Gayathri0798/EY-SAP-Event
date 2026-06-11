@@ -34,6 +34,7 @@ import ProductAvailability from "./pages/aATP";
 import IntelliWorkingCapital from "./pages/intelliWorking";
 import DeliveryInsights from "./pages/deliveryInsights";
 import CustomerCorres from "./pages/customerCorrespondence";
+import BpaLibrary from "./pages/bapLibrary";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -78,6 +79,7 @@ key={location.pathname}
           <Route path="/customer" element={<CustomerCorres />} />
           <Route path="/aATP" element={<ProductAvailability />} />
           <Route path="/deliveryinsights" element={<DeliveryInsights />} />
+          <Route path="/bapSkills" element={<BpaLibrary />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

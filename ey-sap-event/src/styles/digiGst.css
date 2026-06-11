@@ -756,6 +756,88 @@
    AI ACTION SECTION
 ========================================== */
 
+/* MAIN LAYOUT */
+.layout-with-video {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* LEFT VIDEO */
+.ai-video-wrapper {
+    flex: 0 0 40%;
+    max-width: 500px;
+    
+position: relative;
+  z-index: 2;
+
+}
+
+.ai-video-wrapper video {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+
+.top-play-btn{
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 26px;
+
+  cursor: pointer;
+   z-index: 999;
+}
+
+.ai-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 26px;
+
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* RIGHT CONTENT */
+.ai-content-wrapper {
+    flex: 1;
+}
+
+/* RESPONSIVE (important) */
+@media (max-width: 992px) {
+    .layout-with-video {
+        flex-direction: column;
+    }
+
+    .ai-video-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
 .ai-action-section {
   position: relative;
   background: #020817;

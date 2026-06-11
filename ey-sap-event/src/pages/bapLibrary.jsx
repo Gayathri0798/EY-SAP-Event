@@ -137,11 +137,11 @@ export default function BpaLibrary() {
       {/*   HEADING */}
       <div className="headingText animateFadeUp delay-1">
         <h1>
-          Skills Are Brewing
+          SAP Build Process Automation
         </h1>
 
         <p>
-         Get ready for a library of reusable capabilities and enterprise-ready building blocks.
+        The Fastest Path to Enterprise Automation
         </p>
       </div>
 

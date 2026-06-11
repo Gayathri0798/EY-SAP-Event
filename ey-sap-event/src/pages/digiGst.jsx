@@ -6,6 +6,8 @@ import FinolexVideo from "../video/Finolex.mp4";
 
 
 import GMRVideo from "../video/GMR.mp4";
+import MediaVideo from "../video/Media.mp4";
+import CopioltVideo from "../video/copoilt.mp4"
 
 export default function DigiGST() {
     const stats = [
@@ -37,18 +39,31 @@ export default function DigiGST() {
     ];
 
     const logos = [
-        "image17.png",
-        "image18.png",
-        "image19.png",
-        "image20.png",
-        "image21.png",
-        "image22.png",
-        "image23.png",
-        "image24.png",
-        "image25.png",
-        "image26.jpeg",
-        "image27.png",
-        "image28.png",
+        "images/Designer (3).png",
+        "images/vst.png",
+        "images/agro.png",
+        "images/fab.png",
+        "images/balmer.png",
+        "images/siemens.png",
+        "images/schwing.png",
+        "images/indigo.png",
+        "images/sony.png",
+        "images/tataRealty.png",
+        "images/duro.png",
+        "images/tvs.png",
+        "images/hcl.png",
+        "images/kel.png",
+        "images/nalco.png",
+        "images/Designer (2).png",
+        "images/Designer (1).png",
+        "images/parle.png",
+        "images/fino.png",
+        "images/capiller.png",
+        "images/voltas.png",
+        "images/ceat.png",
+        "images/Designer.png",
+        "images/shree.png",
+        "images/exide.png",
     ];
 
     return (
@@ -186,7 +201,21 @@ export default function DigiGST() {
                     <div className="top-panels">
 
                         <div className="big-panel left-panel">
-                            <div className="play-btn">›</div>
+
+
+                            <video
+                                className="panel-video"
+                                src={MediaVideo}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+
+                            />
+                            <button
+                                className="top-play-btn"
+                                onClick={() => window.open(MediaVideo, "_blank")}
+                            > ▶</button>
                         </div>
 
                         <div className="big-panel right-panel">
@@ -303,101 +332,94 @@ export default function DigiGST() {
             <section className="section ai-action-section">
                 <div className="grid-bg"></div>
 
-                <div className="ai-action-container">
+                <div className="ai-action-container layout-with-video">
 
-                    <h2 className="ai-action-title">
-                        DigiGST - AI in <span>Action</span>
-                    </h2>
+                    {/* LEFT SIDE VIDEO */}
+                    <div className="ai-video-wrapper">
+                        <video
+                            src={CopioltVideo}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                        />
 
-                    <p className="ai-action-desc">
-                        DigiGST — an AI-ready platform, rapidly advancing with AI-driven
-                        capabilities to enable smarter insights, automated actions and
-                        future-ready tax operations for the business.
-                    </p>
+                        <button
+                        className="ai-play-btn"
+                        onClick={() => window.open(CopioltVideo, "_blank")}
+                        type="button"
+                    >
+                        ▶
+                    </button>
+                    </div>
+                    
+                    
 
-                    <div className="ai-action-grid">
+                    {/* RIGHT SIDE CONTENT */}
+                    <div className="ai-content-wrapper">
 
-                        {/* CARD 1 */}
-                        <div className="ai-action-card">
+                        <h2 className="ai-action-title">
+                            DigiGST - AI in <span>Action</span>
+                        </h2>
 
-                            <div className="icon-box">
-                                ✧
+                        <p className="ai-action-desc">
+                            DigiGST — an AI-ready platform, rapidly advancing with AI-driven
+                            capabilities to enable smarter insights, automated actions and
+                            future-ready tax operations for the business.
+                        </p>
+
+                        <div className="ai-action-grid">
+                            {/* KEEP YOUR CARDS SAME */}
+                            {/* CARD 1 */}
+                            <div className="ai-action-card">
+                                <div className="icon-box">✧</div>
+                                <div className="card-number">01</div>
+                                <h3>Reverse Charge Identifier</h3>
+                                <p>
+                                    Auto-detects transactions liable for reverse-charge.
+                                    Flags missed RCM liabilities — eliminates audit exposure.
+                                </p>
                             </div>
 
-                            <div className="card-number">01</div>
+                            {/* CARD 2 */}
+                            <div className="ai-action-card">
+                                <div className="icon-box">✓</div>
+                                <div className="card-number">02</div>
+                                <h3>GST ITC Eligibility Classifier</h3>
+                                <p>
+                                    Classifies every line item as eligible / ineligible /
+                                    blocked under Sec 17(5). Protects ITC claims.
+                                </p>
+                            </div>
 
-                            <h3>Reverse Charge Identifier</h3>
+                            {/* CARD 3 */}
+                            <div className="ai-action-card">
+                                <div className="icon-box">☰</div>
+                                <div className="card-number">03</div>
+                                <h3>Tax Research Assistant (LLM)</h3>
+                                <p>
+                                    Conversational AI grounded on GST law, notifications,
+                                    circulars and case-law.
+                                </p>
+                            </div>
 
-                            <p>
-                                Auto-detects transactions liable for reverse-charge.
-                                Flags missed RCM liabilities — eliminates audit exposure.
-                            </p>
-
+                            {/* CARD 4 */}
+                            <div className="ai-action-card">
+                                <div className="icon-box">▣</div>
+                                <div className="card-number">04</div>
+                                <h3>AI-enabled Dashboards</h3>
+                                <p>
+                                    Scans KPIs to surface anomalies and predict risks.
+                                </p>
+                            </div>
                         </div>
 
-                        {/* CARD 2 */}
-                        <div className="ai-action-card">
-
-                            <div className="icon-box">
-                                ✓
-                            </div>
-
-                            <div className="card-number">02</div>
-
-                            <h3>GST ITC Eligibility Classifier</h3>
-
-                            <p>
-                                Classifies every line item as eligible / ineligible /
-                                blocked under Sec 17(5). Protects ITC claims and
-                                prevents wrongful credit availment.
-                            </p>
-
-                        </div>
-
-                        {/* CARD 3 */}
-                        <div className="ai-action-card">
-
-                            <div className="icon-box">
-                                ☰
-                            </div>
-
-                            <div className="card-number">03</div>
-
-                            <h3>Tax Research Assistant (LLM)</h3>
-
-                            <p>
-                                Conversational AI grounded on GST law, notifications,
-                                circulars, advance rulings and case-law. Tax teams ask
-                                in plain English and get cited answers in seconds.
-                            </p>
-
-                        </div>
-
-                        {/* CARD 4 */}
-                        <div className="ai-action-card">
-
-                            <div className="icon-box">
-                                ▣
-                            </div>
-
-                            <div className="card-number">04</div>
-
-                            <h3>AI-enabled Dashboards</h3>
-
-                            <p>
-                                Scans compliance KPIs to surface anomalies, predict
-                                filing risks and recommend next-best actions.
-                            </p>
-
+                        <div className="bottom-line">
+                            <span>Smarter compliance. Faster decisions.</span>
+                            <strong> Audit-ready outcomes.</strong>
                         </div>
 
                     </div>
-
-                    <div className="bottom-line">
-                        <span>Smarter compliance. Faster decisions.</span>
-                        <strong> Audit-ready outcomes.</strong>
-                    </div>
-
                 </div>
             </section>
 
@@ -573,7 +595,7 @@ export default function DigiGST() {
                             {/* <video className="video-element" controls>
                                 <source src={FinolexVideo} type="video/mp4" />
                             </video> */}
-                           <button
+                            <button
                                 className="play-btn"
                                 onClick={() => window.open(FinolexVideo, "_blank")}
                             />

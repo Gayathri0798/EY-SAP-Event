@@ -16,7 +16,7 @@ export default function Hero() {
         {/* Vertical Line */}
         <div className="horizontal-line"></div>
 
-        <button>Learn More</button>
+        {/* <button>Learn More</button> */}
       </div>
 
     </div>

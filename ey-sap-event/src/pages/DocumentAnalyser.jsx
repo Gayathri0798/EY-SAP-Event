@@ -17,7 +17,7 @@ export default function DataAnalyser() {
         <Banner
           title="Unlock the Full Value of Your Documents with Document Analyser"
           subtitle="Document Analyser is a no-code AI solution that transforms enterprise documents into actionable insights, helping organizations accelerate decision-making, improve efficiency, and reduce manual effort."
-          buttonText="Learn more"
+          // buttonText="Learn more"
           image="/images/lego.jpeg"
         />
       </div>

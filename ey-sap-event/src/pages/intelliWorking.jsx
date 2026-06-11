@@ -15,7 +15,7 @@ export default function IntelliWorkingCapital() {
         <Banner
           title="Smart Working Capital Intelligence"
           subtitle="The Intelligent Working Capital solution is an autonomous, AI led framework that continuously analyzes customer behavior, payment patterns, and outstanding balances. Goal oriented AI agents prioritize follow ups, recommend actions, and drive collections efficiency to optimize working capital."
-          buttonText="Learn more"
+          // buttonText="Learn more"
           image="/images/lego.jpeg"
         />
       </div>

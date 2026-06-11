@@ -16,7 +16,7 @@ export default function DataGenie() {
         <Banner
           title="Unlock the Full Value of Your Data with DataGenie"
           subtitle="DataGenie transforms enterprise data into actionable intelligence through AI-powered conversational analytics. By automatically generating queries, visualizations, summaries, and business insights, it enables organizations to make faster, smarter, and more confident decisions without requiring SQL expertise or manual reporting."
-          buttonText="Learn more"
+          // buttonText="Learn more"
           image="/images/lego.jpeg"
         />
       </div>

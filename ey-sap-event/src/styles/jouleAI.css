@@ -69,20 +69,22 @@
  
 /* SUBTITLE */
 .hero-subtitle {
-  font-size: 16px;
+  font-size: 14px;
   color: #94a3b8;
   max-width: 700px;
   margin: 15px auto 35px;
-  line-height: 1.6;
+  /* line-height: 1.6; */
 }
  
 /* VIDEO */
 
-.video-wrapper {
-  position: relative;
+.video-inner {
+  position: relative;  /* ✅ THIS FIXES YOUR ISSUE */
   width: 100%;
-  max-width: 900px;
-  margin: 20px auto;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #000;
   cursor: pointer;
 }
 
@@ -91,10 +93,7 @@
   height: 420px;
   object-fit: cover;
   border-radius: 12px;
-  background: #000;
-
-  position: relative;
-  z-index: 1; /* ✅ video niche rahe */
+  display: block;
 }
 
 .play-btn {
@@ -103,20 +102,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
   
-  font-size: 40px;  /* ✅ BIG icon */
-  color: white;
-
   width: 80px;
   height: 80px;
   border-radius: 50%;
-
-  background: rgba(0, 0, 0, 0.7);
+  /* background: rgba(0, 0, 0, 0.7); */
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  z-index: 9999; /* ✅ ALWAYS on top */
+  font-size: 40px;
+  color: white;
+
+  z-index: 9999;   /* ✅ enough */
   pointer-events: none;
 }
 

@@ -164,10 +164,8 @@ export default function JouleAiSystem() {
 
 
         <div className="video-wrapper zoom-in">
-
           <div
-            onClick={() => window.open(activeData.video, "_blank")}
-            style={{ cursor: "pointer" }}
+            className="video-inner"
           >
             <video
               key={activeData.video}
@@ -180,10 +178,19 @@ export default function JouleAiSystem() {
             />
 
             {/* ✅ Play Button */}
-            <div className="play-btn">▶</div>
+             <button
+                        className="ai-play-btn"
+                        onClick={() => window.open(activeData.video, "_blank")}
+                        type="button"
+                    >
+                        ▶
+                    </button>
           </div>
+          
 
+                       
         </div>
+
 
 
       </div>

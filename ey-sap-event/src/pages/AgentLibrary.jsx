@@ -83,7 +83,7 @@ function AgentLibrary() {
             <p className="desc">
               Accelerate enterprise automation with reusable, SAP-delivered business content across Finance, Procurement, HR, Sales, and IT.</p>
 
-            <button className="cta" onClick={() => navigate("/skillCard")}>
+            <button className="cta" onClick={() => navigate("/bapSkills")}>
               Explore BPA Library
             </button>
         </div>

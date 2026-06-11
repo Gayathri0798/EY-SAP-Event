@@ -2,6 +2,12 @@ import "../styles/insights.css";
 
 export default function Insights() {
   const insights = [
+    {
+      image:"/images/cloud.jpg",
+      title:"Realizing SAP Joule: Enterprise AI Readiness",
+      desc:"Discover how organizations can build the data, governance, process, and cloud foundations needed to scale SAP Joule and unlock sustainable AI-driven business value.",
+      link:"https://eyindia-my.sharepoint.com/:b:/g/personal/ganugapenta_aishwarya_in_ey_com/IQAqinFoqFyfQJ_xlGInvu-nAbcbGZzuLln9oPnnHn2hO6A?e=uL3Asy"
+    },
   {
     image: "/images/news.png",
     title: "New Joule Studio: Enterprise-Scale Agentic Development",

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "../styles/aiSolution.css";
+import Intelligent from "../video/IntelligentInvoice.mp4";
+import FinanceDataVideo from "../video/FinanceDataHub.mp4";
+import OutstandingVideo from "../video/Outstanding.mp4";
 
 export default function SapAiSolution() {
 
@@ -162,6 +165,38 @@ export default function SapAiSolution() {
         img: "https://img.icons8.com/fluency/96/video.png",
         url: "https://sites.ey.com/sites/eysapinnovationcoe/Innovation%20P/Forms/AllItems.aspx?id=%2Fsites%2Feysapinnovationcoe%2FInnovation%20P%2FSAPPHIRE%202026%2FInternal%20%2D%20Prep%20for%20Live%20Demos%2FMarketing%20Videos&p=true&ga=1",
       },
+      
+
+{
+    name: "Intelligent Invoice Matching",
+    tagline: "Intelligent Invoice Matching",
+    desc: " ",
+    video: {Intelligent},
+  },
+  {
+    name: "Finance Data Hub (Sapphire)",
+    tagline: "SCM",
+    desc: "",
+    video: {FinanceDataVideo},
+  },
+
+ 
+{
+    name: "Follow up on Outstanding Receivables (Sapphire)",
+    tagline: "Innovation Lab",
+    desc: "AI use cases.",
+    video: {OutstandingVideo},
+    url: "#"
+  },
+  {
+    name: "Customer Experience",
+    tagline: "CX",
+    desc: "CX demos.",
+    video: "/videos/cx.mp4",
+    url: "#"
+  }
+
+
     ],
   };
 
@@ -198,7 +233,7 @@ export default function SapAiSolution() {
 
       {/* CARDS */}
 
-      <div className="solutions-grid">
+      {/* <div className="solutions-grid">
 
         {solutionData[activeTab].map((item, index) => (
 
@@ -240,7 +275,77 @@ export default function SapAiSolution() {
 
         ))}
 
-      </div>
+      </div> */}
+
+      <div className="solutions-grid">
+
+  {solutionData[activeTab].map((item, index) => (
+
+    activeTab === "Sapphire 2026" ? (
+
+      <a
+        href={item.url || "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+        key={index}
+        style={{ textDecoration: "none" }}
+      >
+
+        <div className="video-card-ui">
+
+          <video
+            className="video-element-ui"
+            src={item.video}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+
+          <div className="video-play">▶</div>
+
+          <div className="video-footer-ui">
+            {item.name}
+          </div>
+
+        </div>
+
+      </a>
+
+    ) : (
+
+      <a
+        href={item.url || "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+        key={index}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+
+        <div className="solution-card">
+
+          {item.img && (
+            <img
+              src={item.img}
+              alt={item.name}
+              className="card-image-ai"
+            />
+          )}
+
+          <h3>{item.name}</h3>
+          <h5>{item.tagline}</h5>
+          <p>{item.desc}</p>
+
+        </div>
+
+      </a>
+
+    )
+
+  ))}
+
+</div>
+
 
     </section>
   );

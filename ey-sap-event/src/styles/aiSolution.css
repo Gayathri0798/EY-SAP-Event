@@ -154,3 +154,65 @@
   color:black;
   /* border-color:#e5ea67; */
 }
+
+
+.video-card-ui {
+  position: relative;
+  height: 260px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  cursor: pointer;
+  transition: 0.3s;
+  background: #061b37;
+}
+
+.video-card-ui:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+/* VIDEO */
+.video-element-ui {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PLAY BUTTON */
+.video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+  z-index: 2;
+}
+
+/* FOOTER */
+.video-footer-ui {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  padding: 14px 18px;
+
+  background: rgba(2, 11, 29, 0.95);
+
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}

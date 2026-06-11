@@ -28,6 +28,12 @@ import DataGenie from "./pages/DataGenie";
 import AutonomousSupplyChain from "./pages/AutonomousSC";
 import DocumentAnalyser from "./pages/DocumentAnalyser"
 import DigiGST from "./pages/DigiGST";
+import SmartGL from "./pages/smartGL";
+import FinancePlan from "./pages/financialPlan";
+import ProductAvailability from "./pages/aATP";
+import IntelliWorkingCapital from "./pages/intelliWorking";
+import DeliveryInsights from "./pages/deliveryInsights";
+import CustomerCorres from "./pages/customerCorrespondence";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -66,6 +72,12 @@ key={location.pathname}
           <Route path="/autonomous" element={<AutonomousSupplyChain/>} />
           <Route path="/dataAnalyser" element={<DocumentAnalyser/>} />
           <Route path="/digigst" element={<DigiGST />} />
+          <Route path="/smartgl" element={<SmartGL />} />
+          <Route path="/intelliworking" element={<IntelliWorkingCapital />} />
+          <Route path="/financeplan" element={<FinancePlan />} />
+          <Route path="/customer" element={<CustomerCorres />} />
+          <Route path="/aATP" element={<ProductAvailability />} />
+          <Route path="/deliveryinsights" element={<DeliveryInsights />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

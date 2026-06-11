@@ -1,50 +1,15 @@
 import "../styles/procuresense.css";
 import Banner from "../components/Banner";
 import ProcureSenseArchitecture from "../components/ProcureSenseArchitecture";
+import "../styles/video-section.css"
 import {
   Zap,
   ShieldCheck,
   DollarSign,
   Clock
 } from "lucide-react";
-import { useRef, useState } from "react";
 
 export default function ProcureSense() {
-  const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [progress, setProgress] = useState(0);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    } else {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
-
-  const handleTimeUpdate = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const percent = (video.currentTime / video.duration) * 100;
-    setProgress(percent);
-  };
-
-  const handleSeek = (e) => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const rect = e.target.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const width = rect.width;
-
-    const newTime = (clickX / width) * video.duration;
-    video.currentTime = newTime;
-  };
   return (
     <>
     <div className="banner-section">
@@ -107,34 +72,29 @@ export default function ProcureSense() {
         Watch how AI analyzes suppliers, identifies risks, and recommends savings opportunities in real time.
       </p>
 
-      <div className="video-floating">
+      <div className="video-thumbnail-wrapper">
+  
+  {/* THUMBNAIL IMAGE */}
+  <img
+    src="/images/cloudnetwork.jpeg"   // ✅ replace with your image
+    alt="Video Thumbnail"
+    className="video-thumbnail"
+  />
 
-        {/* VIDEO */}
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          playsInline
-          onClick={togglePlay}
-          onTimeUpdate={handleTimeUpdate}
-        >
-          <source src="/videos/Procuresense.mp4" type="video/mp4" />
-        </video>
+  {/* PLAY BUTTON */}
+  <button
+    className="play-overlay-btn"
+    onClick={() =>
+      window.open(
+        "https://eyindia-my.sharepoint.com/personal/soumya_grover_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fsoumya_grover_in_ey_com%2FDocuments%2FSAP+NOW+2026%2FVideos%2FIntelliReco.mp4",
+        "_blank"
+      )
+    }
+  >
+    ▶
+  </button>
 
-        {/* PLAY / PAUSE BUTTON */}
-        <button className="play-btn" onClick={togglePlay}>
-          {isPlaying ? "❚❚" : "▶"}
-        </button>
-
-        {/* PROGRESS BAR */}
-        <div className="progress-bar" onClick={handleSeek}>
-          <div
-            className="progress-fill"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-
-      </div>
+</div>
     </div>
 
 </>

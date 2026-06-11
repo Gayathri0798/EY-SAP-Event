@@ -7,55 +7,9 @@ import {
   DollarSign,
   Clock
 } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import "../styles/video-section.css"
 
 export default function DataGenie() {
-  const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    } else {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
-useEffect(() => {
-  if (videoRef.current) {
-    setIsPlaying(!videoRef.current.paused);
-  }
-}, []);
-  // const handleTimeUpdate = () => {
-  //   const video = videoRef.current;
-  //   if (!video) return;
-
-  //   const percent = (video.currentTime / video.duration) * 100;
-  //   setProgress(percent);
-  // };
-
-  const handleSeek = (e) => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const rect = e.target.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const width = rect.width;
-
-    const newTime = (clickX / width) * video.duration;
-    video.currentTime = newTime;
-  };
-  const handleTimeUpdate = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const percent = (video.currentTime / video.duration) * 100;
-    setProgress(percent);
-  };
   return (
     <>
     <div className="banner-section">
@@ -135,36 +89,29 @@ useEffect(() => {
        Watch how DataGenie transforms raw business data into actionable insights through AI-powered analytics.
       </p>
 
-      <div className="video-floating">
+      <div className="video-thumbnail-wrapper">
+  
+  {/* THUMBNAIL IMAGE */}
+  <img
+    src="/images/cloudnetwork.jpeg"   // ✅ replace with your image
+    alt="Video Thumbnail"
+    className="video-thumbnail"
+  />
 
-        {/* VIDEO */}
-        <video
-          ref={videoRef}
-          loop
-          playsInline
-          onClick={togglePlay}
-          onTimeUpdate={handleTimeUpdate}
-        >
-          <source src="/videos/Video Project.mp4" type="video/mp4" />
-        </video>
+  {/* PLAY BUTTON */}
+  <button
+    className="play-overlay-btn"
+    onClick={() =>
+      window.open(
+        "https://eyindia-my.sharepoint.com/personal/soumya_grover_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fsoumya_grover_in_ey_com%2FDocuments%2FSAP+NOW+2026%2FVideos%2FIntelliReco.mp4",
+        "_blank"
+      )
+    }
+  >
+    ▶
+  </button>
 
-        {/* PLAY / PAUSE BUTTON */}
-        
-{!isPlaying && (
-    <div className="video-overlay" onClick={togglePlay}>
-      <div className="play-circle">▶</div>
-    </div>
-  )}
-
-  {/* PROGRESS BAR */}
-  <div className="progress-bar" onClick={handleSeek}>
-    <div
-      className="progress-fill"
-      style={{ width: `${progress}%` }}
-    ></div>
-  </div>
-
-      </div>
+</div>
     </div>
 
 </>

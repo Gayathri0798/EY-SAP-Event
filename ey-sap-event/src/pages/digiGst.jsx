@@ -1,13 +1,13 @@
 import "../styles/digiGst.css";
 
-import CaterPillerVideo from "../video/CaterPiller.mp4";
+// import CaterPillerVideo from "../video/CaterPiller.mp4";
 
-import FinolexVideo from "../video/Finolex.mp4";
+// import FinolexVideo from "../video/Finolex.mp4";
 
 
-import GMRVideo from "../video/GMR.mp4";
-import MediaVideo from "../video/Media.mp4";
-import CopioltVideo from "../video/copoilt.mp4"
+// import GMRVideo from "../video/GMR.mp4";
+// import MediaVideo from "../video/Media.mp4";
+// import CopioltVideo from "../video/copoilt.mp4"
 
 export default function DigiGST() {
     const stats = [
@@ -205,7 +205,7 @@ export default function DigiGST() {
 
                             <video
                                 className="panel-video"
-                                src={MediaVideo}
+                                src="https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj%5Fkinra%5Fin%5Fey%5Fcom%2FDocuments%2FMedia1%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ec3199364%2De19a%2D4007%2D963d%2Dd9ce8185fb8d"
                                 autoPlay
                                 muted
                                 loop
@@ -214,7 +214,7 @@ export default function DigiGST() {
                             />
                             <button
                                 className="top-play-btn"
-                                onClick={() => window.open(MediaVideo, "_blank")}
+                                onClick={() => window.open("https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj%5Fkinra%5Fin%5Fey%5Fcom%2FDocuments%2FMedia1%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ec3199364%2De19a%2D4007%2D963d%2Dd9ce8185fb8d", "_blank")}
                             > ▶</button>
                         </div>
 
@@ -306,8 +306,26 @@ export default function DigiGST() {
 
                     <div className="bottom-panels">
 
-                        <div className="big-panel left-panel">
+                        {/* <div className="big-panel left-panel">
                             <div className="play-btn">›</div>
+                        </div> */}
+
+                        <div className="big-panel left-panel">
+
+
+                            <video
+                                className="panel-video"
+                                src="https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj%5Fkinra%5Fin%5Fey%5Fcom%2FDocuments%2FVideos%2FClipchamp%2FVideo%20Project%203%2FExports%2FCopilot%201%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1FbWFpbCIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ee327feaa%2De7a0%2D436e%2Da4c2%2D8da06537c694"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+
+                            />
+                            <button
+                                className="top-play-btn"
+                                onClick={() => window.open("https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj%5Fkinra%5Fin%5Fey%5Fcom%2FDocuments%2FVideos%2FClipchamp%2FVideo%20Project%203%2FExports%2FCopilot%201%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1FbWFpbCIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ee327feaa%2De7a0%2D436e%2Da4c2%2D8da06537c694", "_blank")}
+                            > ▶</button>
                         </div>
 
                         <div className="big-panel right-panel bottom-text">
@@ -337,7 +355,7 @@ export default function DigiGST() {
                     {/* LEFT SIDE VIDEO */}
                     <div className="ai-video-wrapper">
                         <video
-                            src={CopioltVideo}
+                            src="https://eyindia-my.sharepoint.com/personal/neha_jodha_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fneha%5Fjodha%5Fin%5Fey%5Fcom%2FDocuments%2FMicrosoft%20Teams%20Chat%20Files%2FCopilot%5FTRA%5FRCM%5FITC%20V1%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E169730b1%2D65d2%2D4f67%2Da94d%2D6ebf371f10ae&ct=1781156603144&or=Teams%2DHL&ga=1&LOF=1"
                             autoPlay
                             muted
                             loop
@@ -346,7 +364,7 @@ export default function DigiGST() {
 
                         <button
                         className="ai-play-btn"
-                        onClick={() => window.open(CopioltVideo, "_blank")}
+                        onClick={() => window.open("https://eyindia-my.sharepoint.com/personal/neha_jodha_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fneha%5Fjodha%5Fin%5Fey%5Fcom%2FDocuments%2FMicrosoft%20Teams%20Chat%20Files%2FCopilot%5FTRA%5FRCM%5FITC%20V1%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E169730b1%2D65d2%2D4f67%2Da94d%2D6ebf371f10ae&ct=1781156603144&or=Teams%2DHL&ga=1&LOF=1", "_blank")}
                         type="button"
                     >
                         ▶
@@ -572,12 +590,12 @@ export default function DigiGST() {
 
                             <button
                                 className="play-btn"
-                                onClick={() => window.open(CaterPillerVideo, "_blank")}
+                                onClick={() => window.open("https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj%5Fkinra%5Fin%5Fey%5Fcom%2FDocuments%2FDocuments%2F1%2E%20ASP%2DGSP%2FSAP%2FSuccess%20Stories%20SAP%2FCater%20piller%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ee4d7dd5d%2D3a44%2D45df%2D822f%2D0a16aed90505&isSPOFile=1&xsdata=MDV8MDJ8fDhlOTgwZDMxM2M2MTQ2MmMyNzcxMDhkZWM3N2FlMDQ4fDViOTczZjk5NzdkZjRiZWJiMjdkYWEwYzcwYjg0ODJjfDB8MHw2MzkxNjc1Mjc2OTU5NTE3Mjl8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T21Ga09EZ3dZV1kyTFRVMk1qQXRORGhsWmkxaVpEazRMVE16WWpGaU5UTTNZakF6Tmw5a01qUXhZVEUzWmkwNU1URTJMVFJsWVRZdE9UTTNNQzA0Tm1FM1lUQmhaRGxtWlRSQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjNE1URTFOVGsyT1RBM05RPT18Y2Y1ZDFmMmYxMWZmNGFlYzhhZDMwOGRlYzc3YWUwNDd8ZGQwNTJiNGY3NmYzNDI0Y2I2N2I0N2NiNGVmYmFhZTI%3D&sdata=UkpkMkczMHljY0N1N3RNWENuTmxZb3JFd0VNTE9MVVhxcnZrQTNZMTlxUT0%3D&ovuser=5b973f99-77df-4beb-b27d-aa0c70b8482c%2CRohit.Sharma1%40in.ey.com", "_blank")}
                             />
 
                             <video
                                 className="video-element"
-                                src={CaterPillerVideo}
+                                src="https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj%5Fkinra%5Fin%5Fey%5Fcom%2FDocuments%2FDocuments%2F1%2E%20ASP%2DGSP%2FSAP%2FSuccess%20Stories%20SAP%2FCater%20piller%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ee4d7dd5d%2D3a44%2D45df%2D822f%2D0a16aed90505&isSPOFile=1&xsdata=MDV8MDJ8fDhlOTgwZDMxM2M2MTQ2MmMyNzcxMDhkZWM3N2FlMDQ4fDViOTczZjk5NzdkZjRiZWJiMjdkYWEwYzcwYjg0ODJjfDB8MHw2MzkxNjc1Mjc2OTU5NTE3Mjl8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T21Ga09EZ3dZV1kyTFRVMk1qQXRORGhsWmkxaVpEazRMVE16WWpGaU5UTTNZakF6Tmw5a01qUXhZVEUzWmkwNU1URTJMVFJsWVRZdE9UTTNNQzA0Tm1FM1lUQmhaRGxtWlRSQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjNE1URTFOVGsyT1RBM05RPT18Y2Y1ZDFmMmYxMWZmNGFlYzhhZDMwOGRlYzc3YWUwNDd8ZGQwNTJiNGY3NmYzNDI0Y2I2N2I0N2NiNGVmYmFhZTI%3D&sdata=UkpkMkczMHljY0N1N3RNWENuTmxZb3JFd0VNTE9MVVhxcnZrQTNZMTlxUT0%3D&ovuser=5b973f99-77df-4beb-b27d-aa0c70b8482c%2CRohit.Sharma1%40in.ey.com"
                                 autoPlay
                                 muted
                                 loop
@@ -597,12 +615,12 @@ export default function DigiGST() {
                             </video> */}
                             <button
                                 className="play-btn"
-                                onClick={() => window.open(FinolexVideo, "_blank")}
+                                onClick={() => window.open("https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj_kinra_in_ey_com%2FDocuments%2FDocuments%2F1.+ASP-GSP%2FSAP%2FSuccess+Stories+SAP%2FFinolex.mp4&referrer=StreamWebApp.Web&referrerScenario=AddressBarCopied.view.7ff907e8-f590-4bbc-a398-dc4742a41a46&web=1&TeamsCID=70004092-23da-4581-8673-54a41c99a7d8", "_blank")}
                             />
 
                             <video
                                 className="video-element"
-                                src={FinolexVideo}
+                                src="https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj_kinra_in_ey_com%2FDocuments%2FDocuments%2F1.+ASP-GSP%2FSAP%2FSuccess+Stories+SAP%2FFinolex.mp4&referrer=StreamWebApp.Web&referrerScenario=AddressBarCopied.view.7ff907e8-f590-4bbc-a398-dc4742a41a46&web=1&TeamsCID=70004092-23da-4581-8673-54a41c99a7d8"
                                 autoPlay
                                 muted
                                 loop
@@ -622,12 +640,12 @@ export default function DigiGST() {
                             </video> */}
                             <button
                                 className="play-btn"
-                                onClick={() => window.open(GMRVideo, "_blank")}
+                                onClick={() => window.open("https://eyindia-my.sharepoint.com/:v:/r/personal/manuj_kinra_in_ey_com/Documents/Documents/1.%20ASP-GSP/SAP/Success%20Stories%20SAP/GMR.mp4?csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ff4BcV", "_blank")}
                             />
 
                             <video
                                 className="video-element"
-                                src={GMRVideo}
+                                src="https://eyindia-my.sharepoint.com/:v:/r/personal/manuj_kinra_in_ey_com/Documents/Documents/1.%20ASP-GSP/SAP/Success%20Stories%20SAP/GMR.mp4?csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ff4BcV"
                                 autoPlay
                                 muted
                                 loop

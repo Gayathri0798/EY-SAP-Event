@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "../styles/aiSolution.css";
-import Intelligent from "../video/IntelligentInvoice.mp4";
-import FinanceDataVideo from "../video/FinanceDataHub.mp4";
-import OutstandingVideo from "../video/Outstanding.mp4";
+// import Intelligent from "../video/InvoiceMatching.mp4";
+// import FinanceDataVideo from "../video/FinanceDataHub.mp4";
+// import OutstandingVideo from "../video/Outstanding.mp4";
+// import SmartAtpVideo from "../video/SmartaATP.mp4";
+// import TrueAgent from "../video/TrueCostAgent.mp4";
 
 export default function SapAiSolution() {
 
@@ -68,14 +70,14 @@ export default function SapAiSolution() {
         tagline: "AI document processing",
         desc: "Extract and validate documents using AI models.",
         img: "https://img.icons8.com/fluency/96/document.png",
-        url:"/dataAnalyser"
+        url: "/dataAnalyser"
       },
       {
         name: "Autonomous Supply Chain",
         tagline: "AI-driven supply chain",
         desc: "Automate supply chain decisions intelligently.",
         img: "https://img.icons8.com/fluency/96/delivery.png",
-        url:'/autonomous'
+        url: '/autonomous'
       },
       {
         name: "Invoice Matching",
@@ -121,12 +123,12 @@ export default function SapAiSolution() {
         img: "https://img.icons8.com/fluency/96/network.png",
       },
       {
-    name: "EY Jumpstart",
-    tagline: "AI-powered automation",
-    desc: "AI-powered consulting delivery platform embedding agentic AI across the full SDLC—from discovery and design through build, test, deployment, and support.",
-    img: "https://img.icons8.com/fluency/96/synchronize.png",
-    url: "https://jumpstart.centralindia.azure.uat.eycosmos.com/"
-  },
+        name: "EY Jumpstart",
+        tagline: "AI-powered automation",
+        desc: "AI-powered consulting delivery platform embedding agentic AI across the full SDLC—from discovery and design through build, test, deployment, and support.",
+        img: "https://img.icons8.com/fluency/96/synchronize.png",
+        url: "https://jumpstart.centralindia.azure.uat.eycosmos.com/"
+      },
       {
         name: "FinOps",
         tagline: "Cloud financial operations",
@@ -139,7 +141,7 @@ export default function SapAiSolution() {
         tagline: "Smart data insights",
         desc: "Transform enterprise data into actionable intelligence.",
         img: "https://img.icons8.com/fluency/96/database.png",
-         url: "/datagenie"
+        url: "/datagenie"
       },
       {
         name: "DigiGST",
@@ -153,48 +155,52 @@ export default function SapAiSolution() {
         tagline: "TRANSFORMATION ORCHESTRATION PLATFORM",
         desc: "Connect strategy, technology, alliances, and execution to accelerate enterprise transformation and deliver measurable business outcomes.",
         img: "https://img.icons8.com/fluency/96/workflow.png",
-         url: "https://deliveryplatform.launchpad.cfapps.eu10.hana.ondemand.com/9ad1a292-5498-478e-828b-d2aeaa209249.TrsPlatformMA.TrsPlatformMN-1.0.0/index.html#/"
+        url: "https://deliveryplatform.launchpad.cfapps.eu10.hana.ondemand.com/9ad1a292-5498-478e-828b-d2aeaa209249.TrsPlatformMA.TrsPlatformMN-1.0.0/index.html#/"
       },
     ],
 
     "Sapphire 2026": [
+      // {
+      //   name: "Marketing Videos",
+      //   tagline: "Innovation Zone",
+      //   desc: "SAPPHIRE 2026 marketing demos and videos.",
+      //   img: "https://img.icons8.com/fluency/96/video.png",
+      //   url: "https://sites.ey.com/sites/eysapinnovationcoe/Innovation%20P/Forms/AllItems.aspx?id=%2Fsites%2Feysapinnovationcoe%2FInnovation%20P%2FSAPPHIRE%202026%2FInternal%20%2D%20Prep%20for%20Live%20Demos%2FMarketing%20Videos&p=true&ga=1",
+      // },
+
+
       {
-        name: "Marketing Videos",
-        tagline: "Innovation Zone",
-        desc: "SAPPHIRE 2026 marketing demos and videos.",
-        img: "https://img.icons8.com/fluency/96/video.png",
-        url: "https://sites.ey.com/sites/eysapinnovationcoe/Innovation%20P/Forms/AllItems.aspx?id=%2Fsites%2Feysapinnovationcoe%2FInnovation%20P%2FSAPPHIRE%202026%2FInternal%20%2D%20Prep%20for%20Live%20Demos%2FMarketing%20Videos&p=true&ga=1",
+        name: "Intelligent Invoice Matching",
+        tagline: "Intelligent Invoice Matching",
+        desc: " ",
+        url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Intelligent%20Invoice%20Matching%20(Sapphire).mp4?csf=1&web=1&e=Ovy8Kl"
       },
-      
+      {
+        name: "Finance Data Hub (Sapphire)",
+        tagline: "SCM",
+        desc: "",
+        url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Finance%20Data%20Hub%20(Sapphire).mp4?csf=1&web=1&e=ehIctC",
+      },
 
-{
-    name: "Intelligent Invoice Matching",
-    tagline: "Intelligent Invoice Matching",
-    desc: " ",
-    video: {Intelligent},
-  },
-  {
-    name: "Finance Data Hub (Sapphire)",
-    tagline: "SCM",
-    desc: "",
-    video: {FinanceDataVideo},
-  },
 
- 
-{
-    name: "Follow up on Outstanding Receivables (Sapphire)",
-    tagline: "Innovation Lab",
-    desc: "AI use cases.",
-    video: {OutstandingVideo},
-    url: "#"
-  },
-  {
-    name: "Customer Experience",
-    tagline: "CX",
-    desc: "CX demos.",
-    video: "/videos/cx.mp4",
-    url: "#"
-  }
+      {
+        name: "Follow up on Outstanding Receivables (Sapphire)",
+        tagline: "Innovation Lab",
+        desc: "AI use cases.",
+        url: "https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Follow%20up%20on%20Outstanding%20Receivables%20(Sapphire).mp4?csf=1&web=1&e=5kjEHt"
+      },
+      {
+        name: "Smart aATP (Sapphire)",
+        tagline: "CX",
+        desc: "CX demos.",
+        url: "https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Smart%20aATP%20(Sapphire).mp4?csf=1&web=1&e=FhISpC"
+      },
+      {
+        name: "TrueCost Agent (Sapphire)",
+        tagline: "CX",
+        desc: "CX demos.",
+        url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20TrueCost%20Agent%20(Sapphire).mp4?csf=1&web=1&e=qf3lnI"
+      }
 
 
     ],
@@ -279,72 +285,72 @@ export default function SapAiSolution() {
 
       <div className="solutions-grid">
 
-  {solutionData[activeTab].map((item, index) => (
+        {solutionData[activeTab].map((item, index) => (
 
-    activeTab === "Sapphire 2026" ? (
+          activeTab === "Sapphire 2026" ? (
 
-      <a
-        href={item.url || "#"}
-        target="_blank"
-        rel="noopener noreferrer"
-        key={index}
-        style={{ textDecoration: "none" }}
-      >
+            <a
+              href={item.url || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={index}
+              style={{ textDecoration: "none" }}
+            >
 
-        <div className="video-card-ui">
+              <div className="video-card-ui">
 
-          <video
-            className="video-element-ui"
-            src={item.video}
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+                <video
+                  className="video-element-ui"
+                  src={item.video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
 
-          <div className="video-play">▶</div>
+                <div className="video-play">▶</div>
 
-          <div className="video-footer-ui">
-            {item.name}
-          </div>
+                <div className="video-footer-ui">
+                  {item.name}
+                </div>
 
-        </div>
+              </div>
 
-      </a>
+            </a>
 
-    ) : (
+          ) : (
 
-      <a
-        href={item.url || "#"}
-        target="_blank"
-        rel="noopener noreferrer"
-        key={index}
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
+            <a
+              href={item.url || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={index}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
 
-        <div className="solution-card">
+              <div className="solution-card">
 
-          {item.img && (
-            <img
-              src={item.img}
-              alt={item.name}
-              className="card-image-ai"
-            />
-          )}
+                {item.img && (
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="card-image-ai"
+                  />
+                )}
 
-          <h3>{item.name}</h3>
-          <h5>{item.tagline}</h5>
-          <p>{item.desc}</p>
+                <h3>{item.name}</h3>
+                <h5>{item.tagline}</h5>
+                <p>{item.desc}</p>
 
-        </div>
+              </div>
 
-      </a>
+            </a>
 
-    )
+          )
 
-  ))}
+        ))}
 
-</div>
+      </div>
 
 
     </section>

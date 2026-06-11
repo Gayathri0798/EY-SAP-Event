@@ -6,6 +6,7 @@ import FinolexVideo from "../video/Finolex.mp4";
 
 
 import GMRVideo from "../video/GMR.mp4";
+import MediaVideo from "../video/Media.mp4";
 
 export default function DigiGST() {
     const stats = [
@@ -199,7 +200,21 @@ export default function DigiGST() {
                     <div className="top-panels">
 
                         <div className="big-panel left-panel">
-                            <div className="play-btn">›</div>
+                            
+
+                            <video
+                                className="panel-video"
+                                src={MediaVideo}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+
+                            />
+                            <button
+                                className="play-btn"
+                                onClick={() => window.open(FinolexVideo, "_blank")}
+                            />
                         </div>
 
                         <div className="big-panel right-panel">

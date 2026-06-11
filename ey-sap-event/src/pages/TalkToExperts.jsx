@@ -28,6 +28,18 @@ export default function TalkToExperts() {
       text: "Leads AI adoption initiatives at EY, helping organizations identify high-value AI opportunities and translate business challenges into actionable transformation roadmaps. Working closely with executive stakeholders, he facilitates AI strategy and innovation workshops, enabling clients to prioritize use cases, accelerate value realization, and scale AI adoption across the enterprise. He also plays a key role in advancing SAP Business AI adoption, helping organizations unlock the full potential of AI-powered business processes and intelligent enterprise capabilities.",
     },
     {
+      name: "Dileep Ramachandran",
+      role: "Head of Product Delivery - EY SAP products at EY",
+      image: "/images/experts/DileepRamachandran.jpg",
+      text: "Leads AI adoption initiatives at EY, helping organizations identify high-value AI opportunities and translate business challenges into actionable transformation roadmaps. Working closely with executive stakeholders, he facilitates AI strategy and innovation workshops, enabling clients to prioritize use cases, accelerate value realization, and scale AI adoption across the enterprise. He also plays a key role in advancing SAP Business AI adoption, helping organizations unlock the full potential of AI-powered business processes and intelligent enterprise capabilities.",
+    },
+    {
+      name: "Aayush Garg",
+      role: "Associate Director | Senior Manager | Leading Innovations and AI at EY CT SAP",
+      image: "/images/experts/AayushGarg.jpg",
+      text: "Leads AI adoption initiatives at EY, helping organizations identify high-value AI opportunities and translate business challenges into actionable transformation roadmaps. Working closely with executive stakeholders, he facilitates AI strategy and innovation workshops, enabling clients to prioritize use cases, accelerate value realization, and scale AI adoption across the enterprise. He also plays a key role in advancing SAP Business AI adoption, helping organizations unlock the full potential of AI-powered business processes and intelligent enterprise capabilities.",
+    },
+    {
       name: "Hari Balaji",
       role: "Partner, AI-led Transformation @ EY.ai | ex Goldman Strat | AI-Startup Founder | IN, SG, HK, UK",
       image: "/images/experts/hari-balaji.png",

@@ -20,17 +20,25 @@ export default function SapAiSolution() {
         url: "/a2rrecon",
       },
       {
-        name: "Agentic Finance Transformation",
-        tagline: "AI-powered transformation",
-        desc: "Reimagining Core Finance Processes with AI-Powered Agents.",
-        img: "https://img.icons8.com/fluency/96/artificial-intelligence.png",
-        url: "/BASample",
-      },
-      {
         name: "Smart GL Account Reconciliation",
         tagline: "Smart finance",
         desc: "Automated GL reconciliation with AI insights.",
         img: "https://img.icons8.com/fluency/96/accounting.png",
+        url:'/smartgl'
+      },
+      {
+        name: "EY intelligent Working Capital Dashboard",
+        tagline: "OUTSTANDING RECEIVABLES",
+        desc: "AI-driven collections and working capital optimization.",
+        img: "https://img.icons8.com/fluency/96/bar-chart.png",
+         url:'/intelliworking'
+      },
+      {
+        name: "Financial Plan Automation",
+        tagline: "SMART PLANNING",
+        desc: "AI-powered planning, forecasting, and scenario insights.",
+        img: "https://img.icons8.com/fluency/96/calculator.png",
+         url:'/financeplan'
       },
     ],
 
@@ -54,6 +62,21 @@ export default function SapAiSolution() {
         tagline: "Outstanding receivables",
         desc: "AI-driven customer communication and collections.",
         img: "https://img.icons8.com/fluency/96/customer-support.png",
+         url:'/customer'
+      },
+      {
+        name: "aATP - Product Availability, Back Order Processing, Product Allocation",
+        tagline: "Smart Fullfillment",
+        desc: "AI-optimized product availability and allocation decisions.",
+        img: "https://img.icons8.com/fluency/96/package.png",
+         url:'/aATP'
+      },
+      {
+        name: "EY Delivery Insights",
+        tagline: "DELIVERY INTELLIGENCE",
+        desc: "Predictive delivery risk and delay insights.",
+        img: "https://img.icons8.com/fluency/96/truck.png",
+         url:'/deliveryinsights'
       },
     ],
 
@@ -79,40 +102,6 @@ export default function SapAiSolution() {
         img: "https://img.icons8.com/fluency/96/delivery.png",
         url: '/autonomous'
       },
-      {
-        name: "Invoice Matching",
-        tagline: "Invoice automation",
-        desc: "Smart invoice validation and matching solution.",
-        img: "https://img.icons8.com/fluency/96/receipt.png",
-      },
-      {
-        name: "Requisition to Order",
-        tagline: "Requisition to Order",
-        desc: "",
-        img: ""
-      },
-      {
-        name: "PR Creation & PO Conversion",
-        tagline: "PR Creation & PO Conversion",
-        desc: "",
-        img: ""
-      },
-      {
-        name: "Stock Check & PR Creation",
-        tagline: "Stock Check & PR Creation",
-        desc: "",
-        img: ""
-      }, {
-        name: "Raw Material Forecast",
-        tagline: "Raw Material Forecast",
-        desc: "",
-        img: "",
-      }, {
-        name: "Invoice & Exception Management",
-        tagline: "Invoice & Exception Management",
-        desc: "",
-        img: ""
-      }
     ],
 
     "Enterprise Solutions": [
@@ -121,6 +110,7 @@ export default function SapAiSolution() {
         tagline: "Enterprise platform",
         desc: "Unified enterprise intelligence platform.",
         img: "https://img.icons8.com/fluency/96/network.png",
+        url:'https://ey-nexus-approuter.cfapps.eu10-004.hana.ondemand.com/'
       },
       {
         name: "EY Jumpstart",
@@ -203,6 +193,15 @@ export default function SapAiSolution() {
       }
 
 
+    ],
+     "Gen AI Solutions": [
+      {
+        name: "Marketing Videos",
+        tagline: "Innovation Zone",
+        desc: "SAPPHIRE 2026 marketing demos and videos.",
+        img: "https://img.icons8.com/fluency/96/pdf.png",
+        url: "/videos/EYSAPAIUseCasesBriefing.pdf"
+      },
     ],
   };
 

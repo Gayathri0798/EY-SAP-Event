@@ -1,0 +1,70 @@
+.video-thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1050px;
+  margin: 40px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Thumbnail image */
+.video-thumbnail {
+  width: 100%;
+  height: 500px;
+  display: block;
+  border-radius: 12px;
+  transition: filter 0.3s ease;
+}
+
+/* Dark overlay on hover */
+.video-thumbnail-wrapper:hover .video-thumbnail {
+  filter: brightness(0.7);
+}
+
+/* Center Play Button */
+.play-overlay-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 32px;
+  line-height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for play button */
+.play-overlay-btn:hover {
+  background: #ffe600;
+  color: black;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Optional: subtle glow */
+.play-overlay-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 230, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.play-overlay-btn:hover::after {
+  opacity: 1;
+}

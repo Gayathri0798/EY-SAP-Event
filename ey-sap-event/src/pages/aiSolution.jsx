@@ -150,15 +150,6 @@ export default function SapAiSolution() {
     ],
 
     "Sapphire 2026": [
-      // {
-      //   name: "Marketing Videos",
-      //   tagline: "Innovation Zone",
-      //   desc: "SAPPHIRE 2026 marketing demos and videos.",
-      //   img: "https://img.icons8.com/fluency/96/video.png",
-      //   url: "https://sites.ey.com/sites/eysapinnovationcoe/Innovation%20P/Forms/AllItems.aspx?id=%2Fsites%2Feysapinnovationcoe%2FInnovation%20P%2FSAPPHIRE%202026%2FInternal%20%2D%20Prep%20for%20Live%20Demos%2FMarketing%20Videos&p=true&ga=1",
-      // },
-
-
       {
         name: "Intelligent Invoice Matching",
         tagline: "Intelligent Invoice Matching",
@@ -173,8 +164,6 @@ export default function SapAiSolution() {
         url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20Finance%20Data%20Hub%20(Sapphire).mp4?csf=1&web=1&e=ehIctC",
         thumbnail: "/images/legoscreen.jpeg"
       },
-
-
       {
         name: "Follow up on Outstanding Receivables (Sapphire)",
         tagline: "Innovation Lab",
@@ -195,9 +184,12 @@ export default function SapAiSolution() {
         desc: "CX demos.",
         url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Intro%20to%20EY%20TrueCost%20Agent%20(Sapphire).mp4?csf=1&web=1&e=qf3lnI",
         thumbnail: "/images/legoscreen.jpeg"
+      },
+      {
+        name:"Intelligent Invoice Matching (Demo)",
+        url:"https://sites.ey.com/:v:/r/sites/eysapinnovationcoe/Innovation%20P/SAPPHIRE%202026/Internal%20-%20Prep%20for%20Live%20Demos/Marketing%20Videos/Demo%20Video%20-%20Intelligent%20Invoice%20Matching.mp4?csf=1&web=1&e=GzJAkX%22",
+        thumbnail: "/images/legoscreen.jpeg"
       }
-
-
     ],
      "Gen AI Solutions": [
       {

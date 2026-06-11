@@ -121,6 +121,8 @@ useEffect(() => {
   return () => clearTimeout(timer);
 }, [current]);
 const videoContainerRef = useRef(null);
+const [isFullscreen, setIsFullscreen] = useState(false);
+const [hasTriggered, setHasTriggered] = useState(false);
 
 useEffect(() => {
   const video = videoRef.current;
@@ -130,23 +132,49 @@ useEffect(() => {
 
   const observer = new IntersectionObserver(
     ([entry]) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && !hasTriggered) {
         video.play().catch(() => {});
         setIsPlaying(true);
-      } else {
+
+        setIsFullscreen(true);   // ✅ FULLSCREEN TRIGGER
+        setHasTriggered(true);  // ✅ prevent loop
+      }
+
+      if (!entry.isIntersecting) {
         video.pause();
         setIsPlaying(false);
       }
     },
     {
-      threshold: 0.6, // ✅ plays when 60% visible
+      threshold: 0.6,
     }
   );
 
   observer.observe(section);
 
   return () => observer.disconnect();
-}, []);
+}, [hasTriggered]);
+useEffect(() => {
+  if (!isFullscreen) return;
+
+  let scrollAmount = 0;
+
+  const handleWheel = (e) => {
+    scrollAmount += Math.abs(e.deltaY);
+
+    if (scrollAmount > 200) {
+      setTimeout(() => {
+        setIsFullscreen(false);
+      }, 200);
+    }
+  };
+
+  window.addEventListener("wheel", handleWheel);
+
+  return () => {
+    window.removeEventListener("wheel", handleWheel);
+  };
+}, [isFullscreen]);
 
   const slideVideoRefs = useRef([]);
 useEffect(() => {
@@ -170,8 +198,8 @@ useEffect(() => {
     }
   });
 }, [current]);
-  //onMouseEnter={() => setPaused(true)}
-//onMouseLeave={() => setPaused(false)}
+
+
   return (
     <>
     <div className="carousel"
@@ -246,7 +274,7 @@ useEffect(() => {
     </div>
     
 {/* <PrinciplesGrid /> */}
-<div className="home-video-section" ref={videoContainerRef}>
+<div className={`home-video-section ${isFullscreen ? "fullscreen" : ""}`} ref={videoContainerRef}>
   <div className="home-video-floating">
 
     <video

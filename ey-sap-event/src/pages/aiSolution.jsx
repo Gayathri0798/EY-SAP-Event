@@ -206,7 +206,7 @@ export default function SapAiSolution() {
   };
 
 
-  const [activeTab, setActiveTab] = useState("Order-to-Cash");
+  const [activeTab, setActiveTab] = useState("Record-to-Report");
   // const navigate = useNavigate();
 
   return (

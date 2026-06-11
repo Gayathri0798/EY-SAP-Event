@@ -35,6 +35,7 @@ const tabsData = [
     title: "EY FSM Agent",
     video: "https://eyindia.sharepoint.com/:v:/r/sites/SAPAITeam159/Shared%20Documents/SAP%20AI/Recordings%20%26%20Demos/Joule/joule%20agents/EY%20Field%20Service%20Management%20Agent.mp4?csf=1&web=1&e=bZOkmr",
     content:"Provides field engineers real-time access to asset data and repair instructions.",
+    thumbnail:"/images/legoscreen.jpeg"
   },
   {
     id: 4,

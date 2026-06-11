@@ -141,7 +141,7 @@ export default function BpaLibrary() {
         </h1>
 
         <p>
-        The Fastest Path to Enterprise Automation
+        The Fastest Path to Enterprise Automation Brewing
         </p>
       </div>
 

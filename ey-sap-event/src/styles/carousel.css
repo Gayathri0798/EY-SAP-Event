@@ -240,8 +240,8 @@ height: 36px;
 
 .home-video-floating {
   width: 100%;
-  max-width: 90%;
-  height: 80%;
+  max-width: 70%;
+  height: 430px;
   margin: 50px auto;
   border-radius: 20px;
   overflow: hidden;
@@ -257,6 +257,25 @@ height: 36px;
     inset 0 0 20px rgba(255,255,255,0.04);
 
   transition: transform 0.4s ease;
+}
+
+/* ✅ FULLSCREEN MODE */
+.home-video-section.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: black;
+}
+
+
+/* Make video fill */
+.home-video-section.fullscreen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .home-video-floating:hover {

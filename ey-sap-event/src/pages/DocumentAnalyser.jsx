@@ -66,38 +66,6 @@ export default function DataAnalyser() {
    {/* canvas how ey works */}
    <DocumentAnalyserPipeline />
 
-<div className="video-section">
-
-      <h2 className="video-title">Document Analyser in Action</h2>
-      <p className="video-subtitle">
-        Watch how Document Analyser  transforms raw business data into actionable insights through AI-powered analytics.
-      </p>
-
-      <div className="video-thumbnail-wrapper">
-  
-  {/* THUMBNAIL IMAGE */}
-  <img
-    src="/images/prof.jpeg"   // ✅ replace with your image
-    alt="Video Thumbnail"
-    className="video-thumbnail"
-  />
-
-  {/* PLAY BUTTON */}
-  <button
-    className="play-overlay-btn"
-    onClick={() =>
-      window.open(
-        "https://eyindia-my.sharepoint.com/personal/soumya_grover_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fsoumya_grover_in_ey_com%2FDocuments%2FSAP+NOW+2026%2FVideos%2FIntelliReco.mp4",
-        "_blank"
-      )
-    }
-  >
-    ▶
-  </button>
-
-</div>
-    </div>
-
 </>
   );
 }

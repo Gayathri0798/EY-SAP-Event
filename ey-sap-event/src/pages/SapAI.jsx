@@ -55,7 +55,7 @@ export default function SapAI() {
           justifyContent: 'center'
         }}
       >
-        SAP AI Transformation Framework
+        EY SAP AI Transformation Framework
       </h1>
        <p 
         className="ba-subtitle" 

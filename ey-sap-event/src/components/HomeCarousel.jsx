@@ -184,6 +184,7 @@ useEffect(() => {
     const slide = slides[i];
 
     if (i === current) {
+      if(video.paused){
       video.currentTime = 0;
 
       if (slide.enableAudio) {
@@ -192,7 +193,7 @@ useEffect(() => {
         video.muted = true;    // ✅ keep others muted
       }
 
-      video.play().catch(() => {});
+      video.play().catch(() => {});}
     } else {
       video.pause();
     }

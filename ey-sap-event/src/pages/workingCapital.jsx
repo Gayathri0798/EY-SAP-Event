@@ -16,7 +16,7 @@ export default function WorkingCapital() {
         <Banner
           title="Smarter Working Capital with AI"
           subtitle="CashPilot helps finance teams move beyond manual receivables, payables, and inventory tracking by using AI to detect cash leakage, resolve exceptions, and act autonomously across DSO, DPO, and DIO. It enables faster cash release, fewer manual touchpoints, and continuously improving working capital performance."
-          buttonText="Learn more"
+          // buttonText="Learn more"
           image="/images/lego.jpeg"
         />
       </div>

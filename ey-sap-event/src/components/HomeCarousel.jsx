@@ -286,7 +286,7 @@ useEffect(() => {
       onTimeUpdate={handleTimeUpdate}
       poster="/images/aiface.jpg"
     >
-      <source src="/videos/sapHome.mp4" type="video/mp4" />
+      <source src="/videos/saphomevideo.mp4" type="video/mp4" />
     </video>
 
     {/* GLASS OVERLAY */}

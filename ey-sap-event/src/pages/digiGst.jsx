@@ -81,7 +81,9 @@ export default function DigiGST() {
                     </span>
 
                     <img
-                        src="/sap-store.png"
+                    height={50}
+                    width={50}
+                        src="https://img.icons8.com/fluency/96/shopping-cart.png"
                         alt="SAP Store"
                     />
                 </a>

@@ -212,6 +212,7 @@ export default function DigiGST() {
                                 muted
                                 loop
                                 playsInline
+                                poster="/images/aiworks.jpeg"
 
                             />
                             <button
@@ -322,6 +323,7 @@ export default function DigiGST() {
                                 muted
                                 loop
                                 playsInline
+                                poster="/images/aiworks.jpeg"
 
                             />
                             <button
@@ -362,6 +364,7 @@ export default function DigiGST() {
                             muted
                             loop
                             playsInline
+                            poster="images/legoscreen.jpeg"
                         />
 
                         <button
@@ -580,21 +583,7 @@ export default function DigiGST() {
 
                         {/* Card 1 */}
                         <div className="video-card">
-                            {/* <video className="video-element" controls>
-                                <source src={CaterpillerVideo} type="video/mp4" />
-                            </video> */}
-
-                            {/* <video
-                                className="video-element"
-                                controls
-                                src={CaterPillerVideo}
-                            /> */}
-
-                            <button
-                                className="play-btn"
-                                onClick={() => window.open("https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj%5Fkinra%5Fin%5Fey%5Fcom%2FDocuments%2FDocuments%2F1%2E%20ASP%2DGSP%2FSAP%2FSuccess%20Stories%20SAP%2FCater%20piller%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ee4d7dd5d%2D3a44%2D45df%2D822f%2D0a16aed90505&isSPOFile=1&xsdata=MDV8MDJ8fDhlOTgwZDMxM2M2MTQ2MmMyNzcxMDhkZWM3N2FlMDQ4fDViOTczZjk5NzdkZjRiZWJiMjdkYWEwYzcwYjg0ODJjfDB8MHw2MzkxNjc1Mjc2OTU5NTE3Mjl8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T21Ga09EZ3dZV1kyTFRVMk1qQXRORGhsWmkxaVpEazRMVE16WWpGaU5UTTNZakF6Tmw5a01qUXhZVEUzWmkwNU1URTJMVFJsWVRZdE9UTTNNQzA0Tm1FM1lUQmhaRGxtWlRSQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjNE1URTFOVGsyT1RBM05RPT18Y2Y1ZDFmMmYxMWZmNGFlYzhhZDMwOGRlYzc3YWUwNDd8ZGQwNTJiNGY3NmYzNDI0Y2I2N2I0N2NiNGVmYmFhZTI%3D&sdata=UkpkMkczMHljY0N1N3RNWENuTmxZb3JFd0VNTE9MVVhxcnZrQTNZMTlxUT0%3D&ovuser=5b973f99-77df-4beb-b27d-aa0c70b8482c%2CRohit.Sharma1%40in.ey.com", "_blank")}
-                            />
-
+                        
                             <video
                                 className="video-element"
                                 src="https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj%5Fkinra%5Fin%5Fey%5Fcom%2FDocuments%2FDocuments%2F1%2E%20ASP%2DGSP%2FSAP%2FSuccess%20Stories%20SAP%2FCater%20piller%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ee4d7dd5d%2D3a44%2D45df%2D822f%2D0a16aed90505&isSPOFile=1&xsdata=MDV8MDJ8fDhlOTgwZDMxM2M2MTQ2MmMyNzcxMDhkZWM3N2FlMDQ4fDViOTczZjk5NzdkZjRiZWJiMjdkYWEwYzcwYjg0ODJjfDB8MHw2MzkxNjc1Mjc2OTU5NTE3Mjl8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T21Ga09EZ3dZV1kyTFRVMk1qQXRORGhsWmkxaVpEazRMVE16WWpGaU5UTTNZakF6Tmw5a01qUXhZVEUzWmkwNU1URTJMVFJsWVRZdE9UTTNNQzA0Tm1FM1lUQmhaRGxtWlRSQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjNE1URTFOVGsyT1RBM05RPT18Y2Y1ZDFmMmYxMWZmNGFlYzhhZDMwOGRlYzc3YWUwNDd8ZGQwNTJiNGY3NmYzNDI0Y2I2N2I0N2NiNGVmYmFhZTI%3D&sdata=UkpkMkczMHljY0N1N3RNWENuTmxZb3JFd0VNTE9MVVhxcnZrQTNZMTlxUT0%3D&ovuser=5b973f99-77df-4beb-b27d-aa0c70b8482c%2CRohit.Sharma1%40in.ey.com"
@@ -602,9 +591,15 @@ export default function DigiGST() {
                                 muted
                                 loop
                                 playsInline
+                                poster="/images/cat.webp"
 
                             />
-
+                            <button
+                           
+                                className="dg-play-btn"
+                                onClick={() => window.open("https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj%5Fkinra%5Fin%5Fey%5Fcom%2FDocuments%2FDocuments%2F1%2E%20ASP%2DGSP%2FSAP%2FSuccess%20Stories%20SAP%2FCater%20piller%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ee4d7dd5d%2D3a44%2D45df%2D822f%2D0a16aed90505&isSPOFile=1&xsdata=MDV8MDJ8fDhlOTgwZDMxM2M2MTQ2MmMyNzcxMDhkZWM3N2FlMDQ4fDViOTczZjk5NzdkZjRiZWJiMjdkYWEwYzcwYjg0ODJjfDB8MHw2MzkxNjc1Mjc2OTU5NTE3Mjl8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T21Ga09EZ3dZV1kyTFRVMk1qQXRORGhsWmkxaVpEazRMVE16WWpGaU5UTTNZakF6Tmw5a01qUXhZVEUzWmkwNU1URTJMVFJsWVRZdE9UTTNNQzA0Tm1FM1lUQmhaRGxtWlRSQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjNE1URTFOVGsyT1RBM05RPT18Y2Y1ZDFmMmYxMWZmNGFlYzhhZDMwOGRlYzc3YWUwNDd8ZGQwNTJiNGY3NmYzNDI0Y2I2N2I0N2NiNGVmYmFhZTI%3D&sdata=UkpkMkczMHljY0N1N3RNWENuTmxZb3JFd0VNTE9MVVhxcnZrQTNZMTlxUT0%3D&ovuser=5b973f99-77df-4beb-b27d-aa0c70b8482c%2CRohit.Sharma1%40in.ey.com", "_blank")}
+                            >▶</button>
+                                {/* <button class="dg-play-btn" onClick={()=>window.open()}>▶</button> */}
                             <div className="video-footer">
                                 Caterpillar
                             </div>
@@ -616,9 +611,9 @@ export default function DigiGST() {
                                 <source src={FinolexVideo} type="video/mp4" />
                             </video> */}
                             <button
-                                className="play-btn"
+                                className="dg-play-btn"
                                 onClick={() => window.open("https://eyindia-my.sharepoint.com/personal/manuj_kinra_in_ey_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmanuj_kinra_in_ey_com%2FDocuments%2FDocuments%2F1.+ASP-GSP%2FSAP%2FSuccess+Stories+SAP%2FFinolex.mp4&referrer=StreamWebApp.Web&referrerScenario=AddressBarCopied.view.7ff907e8-f590-4bbc-a398-dc4742a41a46&web=1&TeamsCID=70004092-23da-4581-8673-54a41c99a7d8", "_blank")}
-                            />
+                            >▶</button>
 
                             <video
                                 className="video-element"
@@ -627,6 +622,7 @@ export default function DigiGST() {
                                 muted
                                 loop
                                 playsInline
+                                poster="/images/fino.png"
 
                             />
 
@@ -641,9 +637,9 @@ export default function DigiGST() {
                                 <source src={GMRVideo} type="video/mp4" />
                             </video> */}
                             <button
-                                className="play-btn"
+                                className="dg-play-btn"
                                 onClick={() => window.open("https://eyindia-my.sharepoint.com/:v:/r/personal/manuj_kinra_in_ey_com/Documents/Documents/1.%20ASP-GSP/SAP/Success%20Stories%20SAP/GMR.mp4?csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ff4BcV", "_blank")}
-                            />
+                            >▶</button>
 
                             <video
                                 className="video-element"
@@ -652,6 +648,7 @@ export default function DigiGST() {
                                 muted
                                 loop
                                 playsInline
+                                poster="/images/OIP (3).webp"
 
                             />
 
